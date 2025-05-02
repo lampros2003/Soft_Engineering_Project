@@ -1,0 +1,10 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Build output
+/out/
+bin/
+*.class
+*.jar
+*.log
