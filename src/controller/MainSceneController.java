@@ -3,6 +3,9 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+import util.SceneSwitching;
 
 public class MainSceneController {
 
@@ -13,8 +16,9 @@ public class MainSceneController {
     private Button loginBtn;
 
     @FXML
-    void btnORDERClicked(ActionEvent event) {
-        System.out.println("Order button clicked!");
+    private void btnORDERClicked(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/view/MenuScreen.fxml");
     }
 
     @FXML
