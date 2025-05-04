@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="14.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="100.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Restaurant Name" wrappingWidth="173.7089385986328">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="150.0" fitWidth="54.0" layoutX="33.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../LOGO.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ScrollPane layoutX="3.0" layoutY="80.0" prefHeight="520.0" prefWidth="793.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="777.0">
+               <children>
+                  <Button fx:id="testBtn" layoutX="363.0" layoutY="120.0" mnemonicParsing="false" text="Test" />
+                  <Text layoutX="35.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu" wrappingWidth="122.13671875" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
