@@ -10,8 +10,15 @@ public class MainSceneController {
     private Button orderBtn;
 
     @FXML
+    private Button loginBtn;
+
+    @FXML
     void btnORDERClicked(ActionEvent event) {
         System.out.println("Order button clicked!");
     }
 
+    @FXML
+    void btnLOGINClicked(ActionEvent event) {
+        System.out.println("Login button clicked!");
+    }
 }

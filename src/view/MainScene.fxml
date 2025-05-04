@@ -45,6 +45,7 @@
    <children>
       <Pane layoutY="8.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: white;">
          <children>
+            <Button fx:id="loginBtn" layoutX="722.0" layoutY="19.0" mnemonicParsing="false" onAction="#btnLOGINClicked" text="Log In" />
             <Text layoutX="100.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Restaurant Name" wrappingWidth="173.7089385986328">
                <font>
                   <Font size="16.0" />
