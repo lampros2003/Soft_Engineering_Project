@@ -1,3 +1,7 @@
+// Software Engineering Project
+// SmartRestaurant
+// UPatras Spring Semester 2024-2025
+
 // Imports
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,17 +13,22 @@ import java.util.Objects;
 
 // App Class
 public class Main extends Application {
+    // Main setup code for GUI
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         Parent root;
+        // Load UI from fxml file
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/MainScene.fxml")));
+        // Construct the main Window
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("SmartRestaurant");
         primaryStage.setScene(scene);
+        // Show the main Window
         primaryStage.show();
 
+        // Set window size unchangeable
         primaryStage.setResizable(false);
 
     }
