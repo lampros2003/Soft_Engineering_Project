@@ -10,20 +10,37 @@ import util.SceneSwitching;
 public class MenuController {
 
     @FXML
-    private Button testBtn;
-
-    @FXML
     private Button backToMainScreen;
-
-    @FXML
-    void btnClicked(ActionEvent event) {
-        System.out.println("Test button clicked!");
-    }
 
     @FXML
     void nagivateToMainScreen(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/view/MainScreen.fxml");
     }
+
+    @FXML
+    private Button orderBtn;
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+        System.out.println("Place Order");
+    }
+
+    @FXML
+    private Button commentsBtn;
+
+    @FXML
+    void addComments(ActionEvent event) {
+        System.out.println("Add Comments");
+    }
+
+    @FXML
+    private Button allergenInfoBtn;
+
+    @FXML
+    void allergenInfo(ActionEvent event) {
+        System.out.println("Pressed Allergen Information");
+    }
+
 
 }
