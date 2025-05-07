@@ -42,5 +42,12 @@ public class MenuController {
         System.out.println("Pressed Allergen Information");
     }
 
+    @FXML
+    private Button callWaiterBtn;
+
+    @FXML
+    void callWaiter(ActionEvent event) {
+        System.out.println("Call Waiter");
+    }
 
 }
