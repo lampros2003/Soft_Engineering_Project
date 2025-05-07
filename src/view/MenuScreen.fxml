@@ -22,7 +22,7 @@
             </Text>
             <ImageView fitHeight="150.0" fitWidth="54.0" layoutX="33.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../LOGO.png" />
+                  <Image url="@../images/LOGO.png" />
                </image>
             </ImageView>
             <Button fx:id="backToMainScreen" layoutX="643.0" layoutY="20.0" mnemonicParsing="false" onAction="#nagivateToMainScreen" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back to MainScreen" textFill="WHITE" />
@@ -64,6 +64,7 @@
                         </Button>
                      </children>
                   </Pane>
+                  <Button fx:id="callWaiterBtn" layoutX="606.0" layoutY="23.0" mnemonicParsing="false" onAction="#callWaiter" prefHeight="46.0" prefWidth="92.0" style="-fx-background-color: navy; -fx-font-weight: bold;" text="Call Waiter" textFill="WHITE" />
                </children>
             </AnchorPane>
         </content>
