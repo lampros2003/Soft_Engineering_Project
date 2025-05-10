@@ -7,14 +7,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
+
     
     // Today's Analytics
     @FXML private VBox occupiedTablesCard;
@@ -42,10 +42,7 @@ public class HelloController {
     @FXML private Label lastMonthOrdersLabel;
     @FXML private Label lastMonthStatsLabel;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+
 
     private void navigateToDetailedView(String metricName, String currentValue, String metricType, Node sourceNode) {
         try {
@@ -66,15 +63,11 @@ public class HelloController {
                 detailStage.initOwner(sourceNode.getScene().getWindow());
             }
 
-            // Optional: Make the popup modal so user must interact with it first
-            // detailStage.initModality(Modality.APPLICATION_MODAL);
-
             // Show the detailed view as a popup
-            detailStage.show(); // Use showAndWait() if you want to block until the detail window is closed
-            
+            detailStage.show(); 
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Logger logger = Logger.getLogger(HelloController.class.getName());
+            logger.log(Level.SEVERE, "Failed to load detailed view", e);
     }
 
     // Today's Analytics handlers (existing)

@@ -5,10 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
 
 public class AnalyticsData {
-    private String metricName;
-    private String currentValue;
-    private String metricType;
-    private String timeframe;
+    private final String metricName;
+    private final String currentValue;
+    private final String metricType;
+    private final String timeframe;
     private XYChart.Series<String, Number> chartSeries;
     private ObservableList<DetailViewController.MetricDataPoint> tableData;
 
