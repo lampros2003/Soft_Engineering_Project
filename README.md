@@ -1,6 +1,6 @@
 **Software Engineering Project**
 *SmartRestaurant*
-![Smart Restaurant Logo](LOGO.png)
+![Smart Restaurant Logo](src/main/resources/images/LOGO.png)
 
 *University of Patras - Spring Semester 2024-2025*
 
