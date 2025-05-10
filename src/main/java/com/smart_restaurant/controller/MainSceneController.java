@@ -17,9 +17,8 @@ public class MainSceneController {
 
     @FXML
     private void btnORDERClicked(ActionEvent event) {
-        System.out.println("Order button clicked!");
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/view/MenuScreen.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/view/MenuScreen.fxml");
     }
 
     @FXML
