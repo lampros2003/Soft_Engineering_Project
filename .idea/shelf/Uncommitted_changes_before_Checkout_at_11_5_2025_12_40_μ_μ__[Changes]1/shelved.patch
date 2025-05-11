@@ -1,0 +1,16 @@
+Index: src/main/java/com/smart_restaurant/util/SceneSwitching.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package util;\r\n\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class SceneSwitching {\r\n\r\n    public static void switchScene(Stage stage, String fxmlPath) {\r\n        try {\r\n            FXMLLoader loader = new FXMLLoader(SceneSwitching.class.getResource(fxmlPath));\r\n            Parent root = loader.load();\r\n            stage.setScene(new Scene(root));\r\n        } catch (IOException e) {\r\n            System.err.println(\"Error loading scene: \" + fxmlPath);\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/smart_restaurant/util/SceneSwitching.java b/src/main/java/com/smart_restaurant/util/SceneSwitching.java
+--- a/src/main/java/com/smart_restaurant/util/SceneSwitching.java	(revision ee67047c29117f9d4385ff4f30cb4461f6712e23)
++++ b/src/main/java/com/smart_restaurant/util/SceneSwitching.java	(date 1746955973340)
+@@ -1,4 +1,4 @@
+-package util;
++package com.smart_restaurant.util;
+ 
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Parent;

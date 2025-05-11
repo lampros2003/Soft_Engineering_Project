@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Initial commit - structure of project and mainscreen">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Initital commit for the project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/MainSceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,26 +40,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.com.smart_restaurant.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/menu",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.smart_restaurant.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [deploy].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [site].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Soft-Eng_Project [verify].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/menu&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main" />
@@ -91,9 +99,8 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.com.smart_restaurant.Main" />
+        <item itemvalue="Application.com.smart_restaurant.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.com.smart_restaurant.Main" />
-        <item itemvalue="Application.com.smart_restaurant.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -117,7 +124,8 @@
       <workItem from="1746894759428" duration="125000" />
       <workItem from="1746894954844" duration="1230000" />
       <workItem from="1746896277498" duration="408000" />
-      <workItem from="1746896777018" duration="3084000" />
+      <workItem from="1746896777018" duration="613000" />
+      <workItem from="1746993121197" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -127,15 +135,7 @@
       <option name="project" value="LOCAL" />
       <updated>1746886649338</updated>
     </task>
-    <task id="LOCAL-00002" summary="Initial commit - structure of project and mainscreen">
-      <option name="closed" value="true" />
-      <created>1746897548936</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1746897548936</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +154,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initital commit for the project" />
-    <MESSAGE value="Initial commit - structure of project and mainscreen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit - structure of project and mainscreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initital commit for the project" />
   </component>
 </project>
