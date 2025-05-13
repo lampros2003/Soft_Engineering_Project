@@ -1,0 +1,17 @@
+@font-face{
+	/*font-family:"Inter";*/
+	src:url('../fonts/Inter_24pt-SemiBold.ttf');
+}
+.text{
+	-fx-font-family:"Inter 24pt SemiBold";
+	-fx-fill:"#FFFFFF";
+}
+.action{
+	-fx-fill: "#000000";
+	-fx-stroke:"#313131";
+	-fx-stroke-width:1;
+}
+.button{
+	-fx-background-color:"#000000";
+	-fx-fill:"#FFFFFF"
+}

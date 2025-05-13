@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smart_restaurant.controller.InvMGMTController">
+   <children>
+      <Text layoutX="150.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temp mainScreen" wrappingWidth="299.610595703125">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Text>
+      <Text layoutX="62.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="for yours truly's use cases xoxoxo" />
+      <Button layoutX="79.0" layoutY="310.0" mnemonicParsing="false" onAction="#invMGMTButton" text="use case 5" />
+   </children>
+</AnchorPane>
