@@ -1,11 +1,11 @@
-package com.smart_restaurant.controller;
+package com.menu;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import util.SceneSwitching;
+import com.mainpackage.SceneSwitching;
 
 public class MenuController {
 
@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     void navigateToMainScreen(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/view/MainScreen.fxml");
+        SceneSwitching.switchScene(stage, "/com.mainUI/MainScreen.fxml");
     }
 
     @FXML

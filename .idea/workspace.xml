@@ -4,8 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Initital commit for the project">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Fixing the the project  structure.">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_12_40_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_12_40_____Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_12_40_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_12_40_μ_μ__[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_5_22_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_5_2025_5_22_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/MainSceneController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/MenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/util/SceneSwitching.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MainScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MenuScreen.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,16 +46,10 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;giorgoskon3&quot;
-  }
-}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,
-    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;
+    &quot;accountId&quot;: &quot;8422a76c-902c-42e2-8407-8e76400d726d&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -40,54 +60,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.smart_restaurant.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [site].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Soft-Eng_Project [verify].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/menu&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/menu",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main" />
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\images" />
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\java\mainpackage" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+      <recent name="com.analyticsui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.smart_restaurant.Main">
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Soft-Eng_Project" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.smart_restaurant.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.smart_restaurant.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.mainpackage.Main" />
       <module name="Soft-Eng_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.smart_restaurant.*" />
+          <option name="PATTERN" value="com.mainpackage.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,9 +102,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.com.smart_restaurant.Main" />
-        <item itemvalue="Application.com.smart_restaurant.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -120,12 +122,6 @@
       <option name="presentableId" value="Default" />
       <updated>1746885118348</updated>
       <workItem from="1746885119397" duration="1423000" />
-      <workItem from="1746887449370" duration="7029000" />
-      <workItem from="1746894759428" duration="125000" />
-      <workItem from="1746894954844" duration="1230000" />
-      <workItem from="1746896277498" duration="408000" />
-      <workItem from="1746896777018" duration="613000" />
-      <workItem from="1746993121197" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -141,19 +137,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initital commit for the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initital commit for the project" />
+    <MESSAGE value="Fixing the the project  structure." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing the the project  structure." />
   </component>
 </project>
