@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Fixing the the project  structure.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainSceneController.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Change login and menu screens to the proper direcotries">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +52,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.menu" />
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.login" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\images" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\java\mainpackage" />
     </key>
@@ -85,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746886649338</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Change login and menu screens to the proper direcotries">
+      <option name="closed" value="true" />
+      <created>1747158985014</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747158985014</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +104,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initital commit for the project" />
     <MESSAGE value="Fixing the the project  structure." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing the the project  structure." />
+    <MESSAGE value="Change login and menu screens to the proper direcotries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change login and menu screens to the proper direcotries" />
   </component>
 </project>
