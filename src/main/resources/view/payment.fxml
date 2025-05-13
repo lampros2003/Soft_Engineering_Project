@@ -27,7 +27,7 @@
       </Text>
       <Text layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank Page" />
       <Button layoutX="521.0" layoutY="360.0" mnemonicParsing="false" onAction="#bankButton" text="Continue" />
-      <TextField fx:id="cardsNum" layoutX="106.0" layoutY="110.0" />
+      <TextField fx:id="cardsNum" layoutX="106.0" layoutY="110.0" prefHeight="26.0" prefWidth="150.0" />
       <Text layoutX="19.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card's number:" />
       <Text layoutX="42.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" />
       <TextField fx:id="fullName" layoutX="107.0" layoutY="149.0" />
