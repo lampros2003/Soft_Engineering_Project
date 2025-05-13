@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smart_restaurant.controller.PaymentController">
+   <children>
+      <Pane prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView fitHeight="42.0" fitWidth="82.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Text layoutX="14.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pay Your Order">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank Page" />
+      <Button layoutX="521.0" layoutY="360.0" mnemonicParsing="false" onAction="#bankButton" text="Continue" />
+      <TextField fx:id="cardsNum" layoutX="106.0" layoutY="110.0" />
+      <Text layoutX="19.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card's number:" />
+      <Text layoutX="42.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" />
+      <TextField fx:id="fullName" layoutX="107.0" layoutY="149.0" />
+      <Text layoutX="74.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cvc:" />
+      <TextField fx:id="cvc" layoutX="107.0" layoutY="187.0" prefHeight="26.0" prefWidth="49.0" />
+   </children>
+</AnchorPane>
