@@ -18,13 +18,13 @@ public class MainSceneController {
     private void btnORDERClicked(ActionEvent event) {
         System.out.println("Order button clicked!");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/com.mainUI/MenuScreen.fxml");
+        SceneSwitching.switchScene(stage, "/com.menu/MenuScreen.fxml");
     }
 
     @FXML
     void btnLOGINClicked(ActionEvent event) {
         System.out.println("Login button clicked!");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/com.mainUI/LoginScreen.fxml");
+        SceneSwitching.switchScene(stage, "/com.login/LoginScreen.fxml");
     }
 }
