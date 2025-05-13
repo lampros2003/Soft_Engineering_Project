@@ -3,87 +3,87 @@ package com.analyticsui.demo1;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
+import com.analyticsui.demo1.DetailViewController.MetricDataPoint;
 
 public class AnalyticsData {
-    private final String metricName;
-    private final String currentValue;
-    private final String metricType;
-    private final String timeframe;
+    private String metricName;
+    private String currentValue;
+    private String metricType;
     private XYChart.Series<String, Number> chartSeries;
-    private ObservableList<DetailViewController.MetricDataPoint> tableData;
+    private ObservableList<MetricDataPoint> tableData;
 
     public AnalyticsData(String metricName, String currentValue, String metricType) {
         this.metricName = metricName;
         this.currentValue = currentValue;
         this.metricType = metricType;
-
-        // Determine timeframe from metric name
-        if (metricName.toLowerCase().contains("monthly") || metricName.toLowerCase().contains("month")) {
-            this.timeframe = "monthly";
-        } else if (metricName.toLowerCase().contains("year")) {
-            this.timeframe = "yearly";
-        } else {
-            this.timeframe = "daily";
-        }
-        generateSampleData();
+        
+        // Initialize with sample data
+        initializeSampleData();
     }
 
-    private void generateSampleData() {
-        this.chartSeries = new XYChart.Series<>();
-        this.chartSeries.setName(metricName + " Over Time");
+    private void initializeSampleData() {
+        // Create sample chart data
+        chartSeries = new XYChart.Series<>();
+        chartSeries.setName(metricName);
+        
+        // Add some sample data points based on the metric type
+        switch(metricType.toLowerCase()) {
+            case "tables":
+            case "count":
+                for (int i = 1; i <= 12; i++) {
+                    chartSeries.getData().add(new XYChart.Data<>("Hour " + i, Math.random() * 10));
+                }
+                break;
+            case "currency":
+                for (int i = 1; i <= 12; i++) {
+                    chartSeries.getData().add(new XYChart.Data<>("Hour " + i, Math.random() * 100));
+                }
+                break;
+            case "percentage":
+                for (int i = 1; i <= 12; i++) {
+                    chartSeries.getData().add(new XYChart.Data<>("Hour " + i, Math.random() * 100));
+                }
+                break;
+            default:
+                for (int i = 1; i <= 12; i++) {
+                    chartSeries.getData().add(new XYChart.Data<>("Hour " + i, Math.random() * 50));
+                }
+        }
 
-        if (timeframe.equals("yearly")) {
-            // Yearly data points
-            chartSeries.getData().add(new XYChart.Data<>("Q1", 125));
-            chartSeries.getData().add(new XYChart.Data<>("Q2", 165));
-            chartSeries.getData().add(new XYChart.Data<>("Q3", 205));
-            chartSeries.getData().add(new XYChart.Data<>("Q4", 245));
-
-            tableData = FXCollections.observableArrayList(
-                    new DetailViewController.MetricDataPoint("Q1", "125", "+25"),
-                    new DetailViewController.MetricDataPoint("Q2", "165", "+40"),
-                    new DetailViewController.MetricDataPoint("Q3", "205", "+40"),
-                    new DetailViewController.MetricDataPoint("Q4", "245", "+40")
-            );
-        } else if (timeframe.equals("monthly")) {
-            // Monthly data points
-            chartSeries.getData().add(new XYChart.Data<>("Jan", 2));
-            chartSeries.getData().add(new XYChart.Data<>("Feb", 4));
-            chartSeries.getData().add(new XYChart.Data<>("Mar", 3));
-            chartSeries.getData().add(new XYChart.Data<>("Apr", 5));
-            chartSeries.getData().add(new XYChart.Data<>("May", 6));
-            chartSeries.getData().add(new XYChart.Data<>("Jun", 8));
-
-            tableData = FXCollections.observableArrayList(
-                    new DetailViewController.MetricDataPoint("January", "2", "+2"),
-                    new DetailViewController.MetricDataPoint("February", "4", "+2"),
-                    new DetailViewController.MetricDataPoint("March", "3", "-1"),
-                    new DetailViewController.MetricDataPoint("April", "5", "+2"),
-                    new DetailViewController.MetricDataPoint("May", "6", "+1"),
-                    new DetailViewController.MetricDataPoint("June", "8", "+2")
-            );
-        } else {
-            // Daily data points
-            chartSeries.getData().add(new XYChart.Data<>("9 AM", 2));
-            chartSeries.getData().add(new XYChart.Data<>("10 AM", 4));
-            chartSeries.getData().add(new XYChart.Data<>("11 AM", 3));
-            chartSeries.getData().add(new XYChart.Data<>("12 PM", 5));
-            chartSeries.getData().add(new XYChart.Data<>("1 PM", 6));
-            chartSeries.getData().add(new XYChart.Data<>("2 PM", 8));
-            chartSeries.getData().add(new XYChart.Data<>("3 PM", 7));
-
-            tableData = FXCollections.observableArrayList(
-                    new DetailViewController.MetricDataPoint("9:00 AM", "2", "+2"),
-                    new DetailViewController.MetricDataPoint("10:00 AM", "4", "+2"),
-                    new DetailViewController.MetricDataPoint("11:00 AM", "3", "-1"),
-                    new DetailViewController.MetricDataPoint("12:00 PM", "5", "+2"),
-                    new DetailViewController.MetricDataPoint("1:00 PM", "6", "+1"),
-                    new DetailViewController.MetricDataPoint("2:00 PM", "8", "+2"),
-                    new DetailViewController.MetricDataPoint("3:00 PM", "7", "-1")
-            );
+        // Create sample table data
+        tableData = FXCollections.observableArrayList();
+        for (int i = 1; i <= 12; i++) {
+            String timeLabel = "Hour " + i;
+            String valueLabel;
+            String changeLabel;
+            
+            double value = Math.random() * 100;
+            double change = Math.random() * 10 - 5; // -5 to +5
+            
+            switch(metricType.toLowerCase()) {
+                case "currency":
+                    valueLabel = String.format("$%.2f", value);
+                    changeLabel = String.format("%s%.2f%%", (change >= 0 ? "+" : ""), change);
+                    break;
+                case "percentage":
+                    valueLabel = String.format("%.1f%%", value);
+                    changeLabel = String.format("%s%.1f%%", (change >= 0 ? "+" : ""), change);
+                    break;
+                case "tables":
+                    int tables = (int)(value % 20);
+                    valueLabel = tables + "/20";
+                    changeLabel = String.format("%s%d", (change >= 0 ? "+" : ""), (int)change);
+                    break;
+                default:
+                    valueLabel = String.format("%.1f", value);
+                    changeLabel = String.format("%s%.1f", (change >= 0 ? "+" : ""), change);
+            }
+            
+            tableData.add(new MetricDataPoint(timeLabel, valueLabel, changeLabel));
         }
     }
 
+    // Getters
     public String getMetricName() {
         return metricName;
     }
@@ -96,15 +96,11 @@ public class AnalyticsData {
         return metricType;
     }
 
-    public String getTimeframe() {
-        return timeframe;
-    }
-
     public XYChart.Series<String, Number> getChartSeries() {
         return chartSeries;
     }
 
-    public ObservableList<DetailViewController.MetricDataPoint> getTableData() {
+    public ObservableList<MetricDataPoint> getTableData() {
         return tableData;
     }
 }

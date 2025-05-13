@@ -13,7 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HelloController {
+public class HelloController
+{
 
     
     // Today's Analytics
@@ -48,11 +49,11 @@ public class HelloController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("detailed-view.fxml"));
             Parent detailedViewRoot = loader.load();
-            
+
             DetailViewController controller = loader.getController();
             AnalyticsData data = new AnalyticsData(metricName, currentValue, metricType);
             controller.setAnalyticsData(data);
-            
+
             // Create a new stage for the detailed view
             Stage detailStage = new Stage();
             detailStage.setTitle("Detailed Analytics - " + metricName);
@@ -64,12 +65,12 @@ public class HelloController {
             }
 
             // Show the detailed view as a popup
-            detailStage.show(); 
+            detailStage.show();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(HelloController.class.getName());
             logger.log(Level.SEVERE, "Failed to load detailed view", e);
+        }
     }
-
     // Today's Analytics handlers (existing)
     @FXML
     protected void onOccupiedTablesCardClicked() {
@@ -133,3 +134,4 @@ public class HelloController {
         navigateToDetailedView("Last Month's Statistics", lastMonthStatsLabel.getText(), "general", lastMonthStatsCard);
     }
 }
+
