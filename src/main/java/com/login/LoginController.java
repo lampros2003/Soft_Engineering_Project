@@ -11,6 +11,6 @@ public class LoginController {
     @FXML
     private void backToMain(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/com.mainUI/MainScreen.fxml");
+        SceneSwitching.switchScene(stage, "/mainUI/MainScreen.fxml");
     }
 }

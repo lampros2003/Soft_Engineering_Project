@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     void navigateToMainScreen(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/com.mainUI/MainScreen.fxml");
+        SceneSwitching.switchScene(stage, "/mainUI/MainScreen.fxml");
     }
 
     @FXML
