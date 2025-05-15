@@ -1,4 +1,4 @@
-module com.analyticsui.demo1 {
+module com.mainpackage {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -6,7 +6,8 @@ module com.analyticsui.demo1 {
     requires javafx.media;
     requires javafx.swing;
     requires java.logging;
-    
+
+    // Analytics UI package
     opens com.analyticsui.demo1 to javafx.fxml;
     exports com.analyticsui.demo1;
     
