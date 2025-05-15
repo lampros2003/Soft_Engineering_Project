@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutY="20.0" prefHeight="154.0" prefWidth="238.0" style="-fx-spacing: 20; -fx-background-color: #FFFFFF;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Table-(NUM) has called a waiter" underline="true" wrappingWidth="175.02886962890625" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" text="Accept" textAlignment="JUSTIFY" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" text="Decline" textAlignment="JUSTIFY" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
