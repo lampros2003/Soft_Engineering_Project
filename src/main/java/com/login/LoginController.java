@@ -38,7 +38,7 @@ public class LoginController {
     @FXML
     private void loginAsChef(ActionEvent event) {
         System.out.println("loginAsChef");
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/chefUI/ChefScreen.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/chefUI/ChefScreen.fxml");
     }
 }

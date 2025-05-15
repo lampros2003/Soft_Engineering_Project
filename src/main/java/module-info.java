@@ -22,4 +22,8 @@ module com.mainpackage {
     // Menu package
     opens com.menu to javafx.fxml;
     exports com.menu;
+
+    // Chef package
+    opens com.chefView to javafx.fxml;
+    exports com.chefView;
 }
