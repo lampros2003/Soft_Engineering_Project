@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added login buttons and added respective actions in LoginController">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/waiter/waiterViewController.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="feature/menu" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -106,8 +107,8 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -131,6 +132,8 @@
       <workItem from="1747301817046" duration="1144000" />
       <workItem from="1747311788446" duration="10000" />
       <workItem from="1747318869540" duration="1850000" />
+      <workItem from="1747339022947" duration="593000" />
+      <workItem from="1747398459882" duration="5491000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -156,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747335071814</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added waiterViewController">
+      <option name="closed" value="true" />
+      <created>1747417606133</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747417606133</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +189,7 @@
     <MESSAGE value="Fixing the the project  structure." />
     <MESSAGE value="Change login and menu screens to the proper direcotries" />
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
-    <option name="LAST_COMMIT_MESSAGE" value="added login buttons and added respective actions in LoginController" />
+    <MESSAGE value="added waiterViewController" />
+    <option name="LAST_COMMIT_MESSAGE" value="added waiterViewController" />
   </component>
 </project>
