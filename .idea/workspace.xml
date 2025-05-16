@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/invMGMT/controller/InvMGMTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InvMGMTController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/invMGMT/view/InvMGMTScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/view/InvMGMTScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/invMGMT.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/itemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/itemDetails.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +71,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.menu" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.login" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\images" />
@@ -112,14 +118,6 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

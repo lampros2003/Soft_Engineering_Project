@@ -1,5 +1,6 @@
 package com.login;
 
+import com.invMGMT.view.InvMGMTScreen;
 import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,15 +25,18 @@ public class LoginController {
     @FXML
     private void loginAsAdministrator(ActionEvent event) {
         System.out.println("loginAsAdministrator");
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/adminUI/AdminScreen.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        InvMGMTScreen invMGMTScreen=new InvMGMTScreen(stage);
+        SceneSwitching.switchScene(stage, "/com/analyticsui/analytics/hello-view.fxml");
+//        System.out.println("here");
+//        invMGMTScreen.changeTitle("Inventory Management");
+//        SceneSwitching.switchScene(stage, "/adminUI/AdminScreen.fxml")
+
     }
 
     @FXML
     private void loginAsFrontDesk(ActionEvent event) {
         System.out.println("loginAsFrontDesk");
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/fontdeskUI/FrontDescScreen.fxml");
     }
 
     @FXML
@@ -40,5 +44,8 @@ public class LoginController {
         System.out.println("loginAsChef");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/chefUI/ChefScreen.fxml");
+    }
+    public void invMGMTButton(ActionEvent event){
+
     }
 }
