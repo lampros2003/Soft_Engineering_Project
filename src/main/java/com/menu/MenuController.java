@@ -1,16 +1,53 @@
 package com.menu;
 
-import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import com.mainpackage.SceneSwitching;
 
 public class MenuController {
-    
+
     @FXML
-    private void backToMain(ActionEvent event) {
+    private Button backToMainScreen;
+
+    @FXML
+    void navigateToMainScreen(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/com.mainUI/MainScreen.fxml");
+        SceneSwitching.switchScene(stage, "/mainUI/MainScreen.fxml");
     }
+
+    @FXML
+    private Button orderBtn;
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+        System.out.println("Place Order");
+    }
+
+    @FXML
+    private Button commentsBtn;
+
+    @FXML
+    void addComments(ActionEvent event) {
+        System.out.println("Add Comments");
+    }
+
+    @FXML
+    private Button allergenInfoBtn;
+
+    @FXML
+    void allergenInfo(ActionEvent event) {
+        System.out.println("Pressed Allergen Information");
+    }
+
+    @FXML
+    private Button callWaiterBtn;
+
+    @FXML
+    void callWaiter(ActionEvent event) {
+        System.out.println("Call Waiter");
+    }
+
 }

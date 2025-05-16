@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SchedulingPage">
+   <children>
+      <Pane layoutX="128.0" layoutY="62.0" prefHeight="399.0" prefWidth="755.0" styleClass="text">
+         <children>
+            <GridPane gridLinesVisible="true" prefHeight="399.0" prefWidth="755.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="62.59998931884766" minHeight="10.0" prefHeight="48.8" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="108.00001831054688" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="129.19999389648436" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="142.40001831054684" minHeight="10.0" prefHeight="112.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="1" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="2" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="3" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="4" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="5" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="6" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" disable="true" fill="#ff1f1f" height="55.0" stroke="#ffffff00" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0" width="95.0" GridPane.columnIndex="7" />
+                  <Region prefHeight="133.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Wednsday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thusday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="4">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" textAlignment="CENTER" wrappingWidth="95.36956787109375" GridPane.columnIndex="7">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule" textAlignment="CENTER" wrappingWidth="95.36956787109375">
+                     <font>
+                        <Font name="Arial Black" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="SHIFT 1&#10;12pm - 4pm" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="SHIFT 2&#10;4pm - 8pm" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </TextArea>
+                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="SHIFT 2&#10;8pm - 12am" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </TextArea>
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="94.0" text="//empty &#10;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children></Pane>
+      <Pane prefHeight="460.0" prefWidth="128.0" style="-fx-background-color: #433D3D;">
+         <children>
+            <Pane layoutY="60.0" onMouseClicked="#clickedAutoCompleteSchedule">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d92ff" height="36.0" stroke="BLACK" strokeType="INSIDE" styleClass="action" width="128.0" />
+                  <Text layoutX="-10.0" layoutY="-26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="AutoComplete Schedule" textAlignment="CENTER" wrappingWidth="128.00000000000006" x="10.0" y="40.0" />
+               </children>
+            </Pane>
+            <Pane layoutY="107.0" onMouseClicked="#clickedLastWeekSchedule">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d92ff" height="36.0" stroke="BLACK" strokeType="INSIDE" styleClass="action" width="128.0" />
+                  <Text layoutX="3.0" layoutY="-26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Last Week's Schedule" textAlignment="CENTER" wrappingWidth="102.39999389648443" x="10.0" y="40.0" />
+               </children>
+            </Pane>
+            <Pane layoutY="230.0" onMouseClicked="#clickedFinalize">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d92ff" height="36.0" stroke="BLACK" strokeType="INSIDE" styleClass="action" width="128.0" />
+                  <Text layoutX="12.0" layoutY="-26.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Finalize Schedule" textAlignment="CENTER" wrappingWidth="84.7999877929688" x="10.0" y="40.0" />
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Dashboard">
+               <font>
+                  <Font name="Impact" size="12.0" />
+               </font>
+            </Text>
+            <Pane layoutX="216.0" layoutY="18.0">
+               <children>
+                  <Text fill="WHITE" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Schedule">
+                     <font>
+                        <Font name="Impact" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="379.0" layoutY="17.0">
+               <children>
+                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Employees">
+                     <font>
+                        <Font name="Impact" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="559.0" layoutY="16.0">
+               <children>
+                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Analytics">
+                     <font>
+                        <Font name="Impact" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="723.0" layoutY="17.0">
+               <children>
+                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Orders">
+                     <font>
+                        <Font name="Impact" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
