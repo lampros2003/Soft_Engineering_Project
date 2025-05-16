@@ -1,5 +1,5 @@
-package com.smart_restaurant.controller;
- import com.smart_restaurant.view.InvMGMTScreen;
+package com.smart_restaurant.invMGMT.controller;
+ import com.smart_restaurant.invMGMT.view.InvMGMTScreen;
  import javafx.scene.Node;
  import javafx.scene.Parent;
  import javafx.scene.Scene;
