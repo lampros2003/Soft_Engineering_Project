@@ -14,8 +14,14 @@
     <junit.version>5.10.2</junit.version>  
   </properties>
 
-  <dependencies>
+  <repositories>
+    <repository>
+      <id>gluon-releases</id>
+      <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+    </repository>
+  </repositories>
 
+  <dependencies>
     
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -96,6 +102,11 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.gluonhq</groupId>
+      <artifactId>charm-glisten</artifactId>
+      <version>6.0.6</version>
     </dependency>
   </dependencies>
 
