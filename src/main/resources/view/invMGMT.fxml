@@ -24,7 +24,7 @@
          <children>
             <Pane layoutY="60.0" />
             <Pane layoutY="104.0" />
-            <Button layoutY="68.0" mnemonicParsing="false" onAction="#addIngredientButton" prefHeight="36.0" prefWidth="128.0" text="add Ingredient" />
+            <Button layoutY="68.0" mnemonicParsing="false" onAction="#addIngredientButton" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="add Ingredient" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>
@@ -35,86 +35,62 @@
             </Text>
             <Pane layoutX="143.0" layoutY="18.0">
                <children>
-                  <Text fill="WHITE" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Schedule">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
                   <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/Calendar.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="-12.0" layoutY="1.0" mnemonicParsing="false" styleClass="dashboard-button" text="Schedule" />
                </children>
             </Pane>
             <Pane layoutX="265.0" layoutY="17.0">
                <children>
-                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Employees">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
                   <ImageView fitHeight="29.0" fitWidth="35.0" layoutX="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/person.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="-11.0" layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="Employees" />
                </children>
             </Pane>
             <Pane layoutX="649.0" layoutY="16.0">
                <children>
-                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Analytics">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
                   <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/check_small.png" />
                      </image>
                   </ImageView>
+                  <Button layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="analytics" />
                </children>
             </Pane>
             <Pane layoutX="773.0" layoutY="16.0">
                <children>
-                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Orders">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
                   <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/list.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="-12.0" layoutY="2.0" mnemonicParsing="false" styleClass="dashboard-button" text="Orders" />
                </children>
             </Pane>
-            <Pane layoutX="373.0" layoutY="17.0">
+            <Pane layoutX="394.0" layoutY="16.0" prefHeight="29.0" prefWidth="93.0">
                <children>
-                  <Text fill="WHITE" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="ManageMenu">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="72.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/menu.png" />
                      </image>
                   </ImageView>
+                  <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" styleClass="dashboard-button" text="Menu" />
                </children>
             </Pane>
             <Pane layoutX="516.0" layoutY="15.0">
                <children>
-                  <Text fill="WHITE" layoutX="3.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Manage Inventory" wrappingWidth="95.24390411376953">
-                     <font>
-                        <Font name="Impact" size="12.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="58.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/misc/inv.png" />
                      </image>
                   </ImageView>
+                  <Button layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="Invantory" />
                </children>
             </Pane>
          </children>

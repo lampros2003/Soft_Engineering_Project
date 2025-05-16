@@ -11,7 +11,11 @@
 	-fx-stroke:"#313131";
 	-fx-stroke-width:1;
 }
-.button{
+.action-button{
 	-fx-background-color:"#000000";
+	-fx-fill:"#FFFFFF"
+}
+.dashboard-button{
+	-fx-background-color:"#232121";
 	-fx-fill:"#FFFFFF"
 }
