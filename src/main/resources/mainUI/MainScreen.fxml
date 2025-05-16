@@ -41,11 +41,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD:src/main/resources/mainUI/MainScreen.fxml
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mainpackage.MainSceneController">
-=======
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smart_restaurant.invMGMT.controller.MainSceneController">
->>>>>>> feature/invMGMT:src/main/resources/view/MainScreen.fxml
    <children>
       <Pane layoutY="8.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: white;">
          <children>
