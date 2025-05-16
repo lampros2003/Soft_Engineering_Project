@@ -17,8 +17,8 @@ public class LoginController {
     @FXML
     private void loginAsWaiter(ActionEvent event) {
         System.out.println("loginAsWaiter");
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/waiterUI/WaiterScreen.fxml");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/waiter/TABLES_PAGE.fxml");
     }
 
     @FXML
