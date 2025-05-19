@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/invMGMT/controller/InvMGMTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InvMGMTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/invMGMT/view/InvMGMTScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/view/InvMGMTScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/invMGMT.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/invMGMT/itemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/itemDetails.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/menu" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,7 +54,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;giorgos&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -119,6 +113,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="" />
@@ -132,6 +134,10 @@
       <workItem from="1747318869540" duration="1850000" />
       <workItem from="1747339022947" duration="593000" />
       <workItem from="1747398459882" duration="5491000" />
+      <workItem from="1747562377580" duration="60000" />
+      <workItem from="1747573353204" duration="1000" />
+      <workItem from="1747577669031" duration="1805000" />
+      <workItem from="1747647738068" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
