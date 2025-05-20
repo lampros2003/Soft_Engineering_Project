@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/waiter/ManageWaiterWindowClass.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Updates - added new classes and rename some old classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.login/LoginScreen.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.menu/MenuScreen.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/MenuScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/MenuScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/ManageWaiterWindowClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/ManageWaiterScreenClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +144,10 @@
       <workItem from="1747573353204" duration="1000" />
       <workItem from="1747577669031" duration="1805000" />
       <workItem from="1747647738068" duration="26000" />
-      <workItem from="1747661213638" duration="13482000" />
+      <workItem from="1747661213638" duration="14002000" />
+      <workItem from="1747746312240" duration="1989000" />
+      <workItem from="1747761380558" duration="1000" />
+      <workItem from="1747762122061" duration="6928000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -201,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747662633424</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updates - added new classes and rename some old classes">
+      <option name="closed" value="true" />
+      <created>1747690277687</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747690277687</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,6 +229,7 @@
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
     <MESSAGE value="added waiterViewController" />
     <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+    <MESSAGE value="Updates - added new classes and rename some old classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates - added new classes and rename some old classes" />
   </component>
 </project>

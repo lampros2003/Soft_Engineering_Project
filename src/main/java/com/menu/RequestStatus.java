@@ -15,11 +15,11 @@ public class RequestStatus {
         status = "Arrived";
     }
 
-    public void cancel() {
+    public void cancelRequestStatus() {
         status = "Canceled";
     }
 
-    public String getStatus() {
+    public String getRequestStatus() {
         return status;
     }
 }

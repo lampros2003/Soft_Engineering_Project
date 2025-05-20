@@ -1,6 +1,5 @@
 package com.waiter;
 
-import com.waiter.waiterViewController;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class ManageWaiterScreenClass {
     // Ειδοποίηση όλων των σερβιτόρων
     public void notifyAllWaiters() {
         for (waiterViewController waiter : waiters) {
-            waiter.displayNotification("📢 New request from customer!");
+//            waiter.displayNotification("New request from customer!");
         }
     }
 

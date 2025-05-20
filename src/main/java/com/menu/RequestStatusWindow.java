@@ -13,12 +13,28 @@ public class RequestStatusWindow {
     @FXML
     private VBox messagesBox;
 
-    private final ManageRequestStatusClass manager = new ManageRequestStatusClass();
+    private ManageRequestStatusClass manager;
+
+    public void setManager(ManageRequestStatusClass requestManager) {
+        this.manager = new ManageRequestStatusClass();
+        showRequestStatus();
+    }
 
     @FXML
-    public void initialize() {
-        manager.initialize();
+    public void showRequestStatus() {
         addMessage("Request sent to waiter...");
+    }
+
+    public void updateRequestStatusAccepted() {
+        addMessage("Request accepted by waiter.");
+    }
+
+    public void updateRequestStatusArrived() {
+        addMessage("Request arrived by waiter.");
+    }
+
+    public void cancelRequestStatus(){
+        addMessage("Request canceled.");
     }
 
     public void addMessage(String message) {
@@ -27,25 +43,5 @@ public class RequestStatusWindow {
         label.setStyle("-fx-background-color: #f0f0f0; -fx-padding: 8 12; -fx-background-radius: 10;");
         messagesBox.getChildren().add(label);
     }
-
-    @FXML
-    public void handleAccept() {
-        manager.accept();
-        addMessage("Waiter accepted the request.");
-    }
-
-    @FXML
-    public void handleArrived() {
-        manager.arrived();
-        addMessage("Waiter arrived at your table.");
-    }
-
-    @FXML
-    public void handleCancel() {
-        manager.cancel();
-        addMessage("Request canceled.");
-    }
-
-
 }
 

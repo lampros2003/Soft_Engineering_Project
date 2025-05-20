@@ -1,34 +1,39 @@
 package com.menu;
 
-import com.waiter.ManageWaiterWindowClass;
+import com.waiter.ManageWaiterScreenClass;
 
 public class ManageRequestStatusClass {
     private RequestStatus requestStatus;
-    private ManageWaiterWindowClass waiterManager;
+    private ManageWaiterScreenClass waiterManager;
 
     public ManageRequestStatusClass() {
         this.requestStatus = new RequestStatus();
-        this.waiterManager = new ManageWaiterWindowClass();
+        this.waiterManager = new ManageWaiterScreenClass();
+    }
+
+    public boolean checkIfRequested(){
+        String status = requestStatus.getRequestStatus();
+        if (status!=null){
+            return !status.equals("Canceled");
+        }
+        return false;
     }
 
     public void callWaiter() {
         requestStatus.initializeStatus();
         waiterManager.notifyAllWaiters();
-    }
-
-    public void acceptRequest() {
-        requestStatus.updateRequestStatusAccepted();
-    }
-
-    public void waiterArrived() {
-        requestStatus.updateRequestStatusArrived();
-    }
-
-    public void cancelRequest() {
-        requestStatus.cancel();
+        startCountingTime();
     }
 
     public RequestStatus getRequestStatus() {
         return requestStatus;
+    }
+
+    public void startCountingTime(){
+
+    }
+
+    public void stopCountingTime(){
+
     }
 }

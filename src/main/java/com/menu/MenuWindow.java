@@ -12,6 +12,8 @@ import java.io.IOException;
 
 
 public class MenuWindow {
+    private final ManageMenuClass manager = new ManageMenuClass();
+
     @FXML
     void redirectToMainScreen(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -35,16 +37,6 @@ public class MenuWindow {
 
     @FXML
     void callWaiter(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/RequestStatusWindow.fxml"));
-            Parent root = loader.load();
-
-            RequestStatusWindow controller = loader.getController();
-            controller.getStatus();
-
-            Stage stage = new Stage();
-            stage.setTitle("Request Status");
-            stage.setScene(new Scene(root));
-            stage.show();
-
+            manager.callWaiter();
     }
 }
