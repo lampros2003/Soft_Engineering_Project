@@ -1,0 +1,21 @@
+.table-available {
+    -fx-cursor: hand;
+}
+
+.table-unavailable {
+    -fx-cursor: default;
+}
+
+.chair-marker {
+    -fx-background-color: #777777;
+    -fx-background-radius: 5px;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.chair-marker-available {
+    -fx-background-color: #555555;
+    -fx-background-radius: 5px;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
