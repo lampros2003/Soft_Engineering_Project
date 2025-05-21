@@ -1,4 +1,4 @@
-package com.analyticsui.demo1;
+package com.analytics;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +47,7 @@ public class HelloController
 
     private void navigateToDetailedView(String metricName, String currentValue, String metricType, Node sourceNode) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("src/main/resources/com/analyticsui/analytics/detailed-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com.analytics/detailed-view.fxml"));
             Parent detailedViewRoot = loader.load();
 
             DetailViewController controller = loader.getController();

@@ -8,8 +8,8 @@ module com.mainpackage {
     requires java.logging;
 
     // Analytics UI package
-    opens com.analyticsui.demo1 to javafx.fxml;
-    exports com.analyticsui.demo1;
+    opens com.analytics to javafx.fxml;
+    exports com.analytics;
     
     // Main package
     opens com.mainpackage to javafx.fxml;
@@ -26,4 +26,8 @@ module com.mainpackage {
     // Chef package
     opens com.chefView to javafx.fxml;
     exports com.chefView;
+
+    // Tables package
+    opens com.tables to javafx.fxml;
+    exports com.tables;
 }

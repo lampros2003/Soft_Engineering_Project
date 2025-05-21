@@ -8,6 +8,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Main application class for the Tables Screen.
+ *
+ * To run this application without warnings, use the VM argument:
+ * --enable-native-access=javafx.graphics
+ */
 public class TablesScreenApplication extends Application {
 
     @Override
@@ -41,13 +47,17 @@ public class TablesScreenApplication extends Application {
             
             // Get controller instance for further customization if needed
             TablesScreenController controller = loader.getController();
-            
+            System.out.println("Tables Screen loaded successfully!");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
+        System.out.println("Starting Tables Screen Application...");
+        System.out.println("To avoid warnings, run with VM argument: --enable-native-access=javafx.graphics");
+
         launch(args);
     }
 }

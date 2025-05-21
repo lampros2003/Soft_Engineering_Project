@@ -6,6 +6,10 @@
     -fx-cursor: default;
 }
 
+.table-occupied {
+    -fx-cursor: hand;
+}
+
 .chair-marker {
     -fx-background-color: #777777;
     -fx-background-radius: 5px;
@@ -18,4 +22,48 @@
     -fx-background-radius: 5px;
     -fx-pref-width: 10px;
     -fx-pref-height: 10px;
+}
+
+.chair-marker-occupied {
+    -fx-background-color: #b26900;
+    -fx-background-radius: 5px;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.table-number {
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-text-alignment: center;
+}
+
+.tooltip {
+    -fx-font-size: 12px;
+    -fx-background-radius: 5px;
+}
+
+/* ScrollPane styling */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 0 5 5 0;
+}
+
+.scroll-pane > .scroll-bar:horizontal {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 0 0 5 5;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 0 0 5 0;
 }
