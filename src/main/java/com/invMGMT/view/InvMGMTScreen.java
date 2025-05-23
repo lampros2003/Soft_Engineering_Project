@@ -1,5 +1,5 @@
 package com.invMGMT.view;
-import com.smart_restaurant.util.Screen;
+import com.mainpackage.Screen;
 import javafx.stage.Stage;
 
 public class InvMGMTScreen extends Screen{

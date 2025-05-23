@@ -27,7 +27,8 @@ public class LoginController {
         System.out.println("loginAsAdministrator");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        InvMGMTScreen invMGMTScreen=new InvMGMTScreen(stage);
-        SceneSwitching.switchScene(stage, "/com/analyticsui/analytics/hello-view.fxml");
+//        SceneSwitching.switchScene(stage, "/com/analyticsui/analytics/hello-view.fxml");
+        SceneSwitching.switchScene(stage, "/invMGMT/invMGMT.fxml");
 //        System.out.println("here");
 //        invMGMTScreen.changeTitle("Inventory Management");
 //        SceneSwitching.switchScene(stage, "/adminUI/AdminScreen.fxml")

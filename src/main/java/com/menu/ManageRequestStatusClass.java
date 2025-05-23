@@ -2,20 +2,29 @@ package com.menu;
 
 import com.waiter.ManageWaiterScreenClass;
 
-public class ManageRequestStatusClass {
-    private RequestStatus requestStatus;
-    private ManageWaiterScreenClass waiterManager;
+import java.util.ArrayList;
+import java.util.List;
 
-    public ManageRequestStatusClass() {
-        this.requestStatus = new RequestStatus();
+public class ManageRequestStatusClass {
+    private List<RequestStatus> requests;
+    private ManageWaiterScreenClass waiterManager;
+    private RequestStatus requestStatus;
+    private int tableNumber;
+
+    public ManageRequestStatusClass(int tableNumber) {
+        this.tableNumber = tableNumber;
+        this.requests = new ArrayList<>();
         this.waiterManager = new ManageWaiterScreenClass();
     }
 
-    public boolean checkIfRequested(){
-        String status = requestStatus.getRequestStatus();
-        if (status!=null){
-            return !status.equals("Canceled");
+    public boolean checkIfRequested() {
+        for (RequestStatus r : requests) {
+            if (r.getTableNumber() == tableNumber && r.isActive()) {
+                return true;
+            }
         }
+        requestStatus = new RequestStatus(tableNumber, "Pending");
+        requests.add(requestStatus);
         return false;
     }
 
@@ -25,8 +34,8 @@ public class ManageRequestStatusClass {
         startCountingTime();
     }
 
-    public RequestStatus getRequestStatus() {
-        return requestStatus;
+    public String getRequestStatus() {
+        return requestStatus.getRequestStatus();
     }
 
     public void startCountingTime(){

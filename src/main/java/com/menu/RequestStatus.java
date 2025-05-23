@@ -1,7 +1,13 @@
 package com.menu;
 
 public class RequestStatus {
+    private final int tableNumber;
     private String status;
+
+    public RequestStatus(int tableNumber, String pending) {
+        this.tableNumber = tableNumber;
+        this.initializeStatus();
+    }
 
     public void initializeStatus() {
         status = "Pending";
@@ -21,5 +27,13 @@ public class RequestStatus {
 
     public String getRequestStatus() {
         return status;
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public boolean isActive() {
+        return status.equals("Pending") || status.equals("Accepted");
     }
 }

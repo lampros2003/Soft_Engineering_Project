@@ -16,7 +16,7 @@ public class RequestStatusWindow {
     private ManageRequestStatusClass manager;
 
     public void setManager(ManageRequestStatusClass requestManager) {
-        this.manager = new ManageRequestStatusClass();
+        this.manager = requestManager;
         showRequestStatus();
     }
 

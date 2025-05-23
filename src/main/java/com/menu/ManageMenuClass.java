@@ -5,12 +5,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class ManageMenuClass {
     ManageRequestStatusClass requestManager;
-    public void callWaiter() {
+    private int tableNumber = 1; // Example table number, replace with actual value
+
+    public ManageMenuClass(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public void callWaiter(int tableNumber) {
         try {
             // Create an instance of ManageRequestStatusClass
-            requestManager = new ManageRequestStatusClass();
+            requestManager = new ManageRequestStatusClass(tableNumber);
 
             if (!requestManager.checkIfRequested()) {
                 requestManager.callWaiter();
@@ -20,9 +28,7 @@ public class ManageMenuClass {
             }
 
         } catch (Exception e) {
-            System.out.println("Σφάλμα στην κλήση σερβιτόρου");
-            System.out.println(e);
-//            ErrorNotificationScreen.showErrorScreen("Αποτυχία αποστολής αιτήματος.");
+            System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
         }
     }
 
@@ -37,6 +43,10 @@ public class ManageMenuClass {
         stage.setTitle("Request Status");
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public int getTableNumber() {
+        return tableNumber;
     }
 
 }
