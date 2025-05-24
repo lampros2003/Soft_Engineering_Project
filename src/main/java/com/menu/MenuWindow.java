@@ -12,8 +12,8 @@ import java.io.IOException;
 
 
 public class MenuWindow {
-    public int tableNumber = 1; // Example table number, replace with actual value
-    private final ManageMenuClass manager = new ManageMenuClass(tableNumber);
+    public static int tableNumber = 1; // Example table number, replace with actual value
+    private final static ManageMenuClass menuManager = new ManageMenuClass(tableNumber);
 
     @FXML
     void redirectToMainScreen(ActionEvent event) {
@@ -38,6 +38,6 @@ public class MenuWindow {
 
     @FXML
     void callWaiter(ActionEvent event) throws IOException {
-            manager.callWaiter(tableNumber);
+            menuManager.callWaiter();
     }
 }

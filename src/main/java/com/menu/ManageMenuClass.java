@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.swing.*;
+import java.io.IOException;
 
 public class ManageMenuClass {
     ManageRequestStatusClass requestManager;
@@ -15,16 +15,17 @@ public class ManageMenuClass {
         this.tableNumber = tableNumber;
     }
 
-    public void callWaiter(int tableNumber) {
+    public void callWaiter() {
         try {
             // Create an instance of ManageRequestStatusClass
-            requestManager = new ManageRequestStatusClass(tableNumber);
+            requestManager = new ManageRequestStatusClass(this.tableNumber);
 
             if (!requestManager.checkIfRequested()) {
+                requestManager.createNewRequest();
                 requestManager.callWaiter();
-                openRequestStatusWindow(requestManager);
+                showRequestStatus(requestManager);
             } else {
-                System.out.println("Υπάρχει ήδη ενεργό αίτημα.");
+                showAlreadyRequestedError(requestManager);
             }
 
         } catch (Exception e) {
@@ -32,8 +33,8 @@ public class ManageMenuClass {
         }
     }
 
-    private void openRequestStatusWindow(ManageRequestStatusClass requestManager) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/RequestStatusWindow.fxml"));
+    private void showAlreadyRequestedError(ManageRequestStatusClass requestManager) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/errorHandling/alreadyRequested.fxml"));
         Parent root = loader.load();
 
         RequestStatusWindow controller = loader.getController();
@@ -45,8 +46,17 @@ public class ManageMenuClass {
         stage.show();
     }
 
-    public int getTableNumber() {
-        return tableNumber;
+    private void showRequestStatus(ManageRequestStatusClass requestManager) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/RequestStatusWindow.fxml"));
+        Parent root = loader.load();
+
+        RequestStatusWindow controller = loader.getController();
+        controller.setManager(requestManager);
+
+        Stage stage = new Stage();
+        stage.setTitle("Request Status");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 }

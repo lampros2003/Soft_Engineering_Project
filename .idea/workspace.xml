@@ -4,38 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Use Case 8 - Call Waiter update">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="update methods and classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adminView/manageMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/errorHandling/alreadyRequested.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/DBManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_40_____Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_40_μ_μ__[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_44_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_44_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_8_44_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_8_44_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_8_45_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_8_45_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_____Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_π_μ__[Changes]1/MainSceneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_π_μ__[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_04_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_04_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_24_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_24_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_27_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_27_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/view/InvMGMTScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/view/InvMGMTScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Screen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -147,8 +127,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -179,6 +159,13 @@
       <workItem from="1748021068915" duration="3000" />
       <workItem from="1748026783636" duration="593000" />
       <workItem from="1748029616289" duration="9017000" />
+      <workItem from="1748041592896" duration="869000" />
+      <workItem from="1748081945580" duration="5037000" />
+      <workItem from="1748088533363" duration="2000" />
+      <workItem from="1748088547139" duration="3087000" />
+      <workItem from="1748112582323" duration="2000" />
+      <workItem from="1748122636186" duration="473000" />
+      <workItem from="1748123480195" duration="1943000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -244,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747769156575</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update methods and classes">
+      <option name="closed" value="true" />
+      <created>1748041867932</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748041867932</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +265,7 @@
     <MESSAGE value="updates" />
     <MESSAGE value="Updates - added new classes and rename some old classes" />
     <MESSAGE value="Use Case 8 - Call Waiter update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use Case 8 - Call Waiter update" />
+    <MESSAGE value="update methods and classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="update methods and classes" />
   </component>
 </project>
