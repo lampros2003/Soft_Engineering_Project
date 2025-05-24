@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-public class modifyMenu {
+public class manageMenu {
     @FXML
     private void onModifyMenu(ActionEvent event) {
         System.out.println("Modify Menu button clicked");
