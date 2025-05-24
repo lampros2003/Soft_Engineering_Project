@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.menu.MenuWindow">
+   <children>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="100.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Restaurant Name" wrappingWidth="173.7089385986328">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="150.0" fitWidth="54.0" layoutX="33.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/LOGO.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="backToMainScreen" layoutX="643.0" layoutY="20.0" mnemonicParsing="false" onAction="#redirectToMainScreen" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back to MainScreen" textFill="WHITE" />
+         </children>
+      </Pane>
+      <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="1057.0" prefWidth="794.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1065.0" prefWidth="778.0">
+               <children>
+                  <Text layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Manage Menu" textAlignment="CENTER" wrappingWidth="345.3367462158203">
+                     <font>
+                        <Font name="Comic Sans MS" size="48.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutX="37.0" layoutY="78.0" prefHeight="438.0" prefWidth="730.0">
+                     <children>
+                        <Pane layoutX="14.0" layoutY="15.0" prefHeight="416.0" prefWidth="426.0">
+                           <children>
+                              <TableView fx:id="menuTable" layoutY="8.0" prefHeight="390.0" prefWidth="421.0">
+                                <columns>
+                                  <TableColumn fx:id="dishColumn" prefWidth="303.9999809265137" text="Dish" />
+                                  <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                        <TableView fx:id="menuTable1" layoutX="440.0" layoutY="24.0" prefHeight="390.0" prefWidth="283.0">
+                           <columns>
+                              <TableColumn fx:id="recommendedIngredients" prefWidth="303.9999809265137" text="Recommended Ingredients" />
+                              <TableColumn fx:id="priceColumn1" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <AnchorPane layoutY="516.0" minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="777.0">
+                     <children>
+                        <Text layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Deals" textAlignment="CENTER" wrappingWidth="154.13671875">
+                           <font>
+                              <Font name="Comic Sans MS" size="48.0" />
+                           </font>
+                        </Text>
+                        <Pane layoutX="37.0" layoutY="78.0" prefHeight="438.0" prefWidth="738.0">
+                           <children>
+                              <TableView fx:id="menuTable2" layoutX="14.0" layoutY="24.0" prefHeight="390.0" prefWidth="421.0">
+                                 <columns>
+                                    <TableColumn fx:id="dishColumn1" prefWidth="303.9999809265137" text="Dish" />
+                                    <TableColumn fx:id="priceColumn2" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="menuTable11" layoutX="441.0" layoutY="24.0" prefHeight="390.0" prefWidth="283.0">
+                                 <columns>
+                                    <TableColumn fx:id="recommendedIngredients1" prefWidth="303.9999809265137" text="Expired Offers" />
+                                    <TableColumn fx:id="priceColumn11" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
+                                 </columns>
+                              </TableView>
+                           </children></Pane>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="modifyBtn" layoutX="653.0" layoutY="35.0" mnemonicParsing="false" onAction="#onModifyMenu" style="-fx-background-color: gray; -fx-font-weight: bold;" text="Modify Menu" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
