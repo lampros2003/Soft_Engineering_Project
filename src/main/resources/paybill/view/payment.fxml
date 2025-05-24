@@ -6,16 +6,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smart_restaurant.controller.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.payBill.controller.BankPageController">
    <children>
       <Pane prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <ImageView fitHeight="42.0" fitWidth="82.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/logo.png" />
+                  <Image url="@../images/LOGO.png" />
                </image>
             </ImageView>
          </children>
@@ -33,5 +34,6 @@
       <TextField fx:id="fullName" layoutX="107.0" layoutY="149.0" />
       <Text layoutX="74.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cvc:" />
       <TextField fx:id="cvc" layoutX="107.0" layoutY="187.0" prefHeight="26.0" prefWidth="49.0" />
+      <VBox fx:id="vboxTest" layoutX="323.0" layoutY="87.0" prefHeight="200.0" prefWidth="100.0" />
    </children>
 </AnchorPane>

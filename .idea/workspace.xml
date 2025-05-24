@@ -5,24 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Initital commit for the project">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analyticsui/demo1/AnalyticsData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analyticsui/demo1/DetailViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analyticsui/demo1/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analyticsui/demo1/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/analyticsui/demo1/detailed-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/analyticsui/demo1/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/setup.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/MainSceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/MainSceneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/util/SceneSwitching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/util/SceneSwitching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/util/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/util/Screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/view/BankPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/view/BankPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/view/OrderCompletedScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/view/OrderCompletedScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smart_restaurant/view/OrderSummurizationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/view/OrderSummurizationScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/LOGO.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/images/LOGO.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/misc/approve.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/images/misc/approve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MainScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/mainButNotReally.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/payment.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/paymentSuccessScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/summuryPayment.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -49,11 +70,13 @@
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.mainpackage.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.payBill.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.com.smart_restaurant.Main.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/payBill&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -67,10 +90,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\common\view" />
+      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\java" />
+      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\paybill\images" />
+      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\paybill" />
       <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.smart_restaurant.Main">
+  <component name="RunManager" selected="Application.com.mainpackage.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Soft-Eng_Project" />
@@ -78,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.smart_restaurant.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.smart_restaurant.Main" />
+    <configuration name="com.mainpackage.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mainpackage.Main" />
       <module name="Soft-Eng_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.smart_restaurant.*" />
+          <option name="PATTERN" value="com.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,20 +118,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.com.mainpackage.Main" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.smart_restaurant.Main" />
+        <item itemvalue="Application.com.mainpackage.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,11 +1,8 @@
-package com.smart_restaurant.controller;
+package com.payBill.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.Node;
-import javafx.stage.Stage;
-import util.SceneSwitching;
 
 public class MainSceneController {
 

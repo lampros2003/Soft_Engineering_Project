@@ -2,7 +2,7 @@
 // SmartRestaurant
 // UPatras Spring Semester 2024-2025
 
-package com.smart_restaurant;
+package com.mainpackage;
 // Imports
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +21,7 @@ public class Main extends Application {
         Parent root;
         // Load UI from fxml file
 //        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/MainScreen.fxml")));
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/mainButNotReally.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/paybill/view/mainButNotReally.fxml")));
         // Construct the main Window
         Scene scene = new Scene(root);
 
