@@ -1,0 +1,27 @@
+[33m1ba2e84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mFix_main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: rebase (finish): returning to refs/heads/Fix_main
+[33m1ba2e84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mFix_main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{1}: rebase (start): checkout refs/heads/main
+[33me362e6e[m[33m ([m[1;31morigin/Fix_main[m[33m)[m HEAD@{2}: checkout: moving from main to Fix_main
+[33m1ba2e84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mFix_main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: checkout: moving from Fix_main to main
+[33me362e6e[m[33m ([m[1;31morigin/Fix_main[m[33m)[m HEAD@{4}: checkout: moving from main to Fix_main
+[33m1ba2e84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mFix_main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: checkout: moving from Fix_main to main
+[33me362e6e[m[33m ([m[1;31morigin/Fix_main[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33me362e6e[m[33m ([m[1;31morigin/Fix_main[m[33m)[m HEAD@{7}: checkout: moving from main to Fix_main
+[33m1ba2e84[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mFix_main[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{8}: commit (merge): Merge branch 'Fix_main'
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{9}: checkout: moving from Fix_main to main
+[33me362e6e[m[33m ([m[1;31morigin/Fix_main[m[33m)[m HEAD@{10}: commit: Change login and menu screens to the proper direcotries
+[33ma80291a[m HEAD@{11}: commit: Change login and menu screens to the proper direcotries
+[33mb968bbf[m HEAD@{12}: checkout: moving from main to Fix_main
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{13}: reset: moving to HEAD
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{14}: checkout: moving from Fix_main to main
+[33mb968bbf[m HEAD@{15}: commit: Fixing the the project structure.
+[33m0330d36[m HEAD@{16}: checkout: moving from main to Fix_main
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{17}: checkout: moving from LamprosBarnch to main
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{18}: checkout: moving from FixMainBranch to LamprosBarnch
+[33m0330d36[m HEAD@{19}: reset: moving to HEAD
+[33m0330d36[m HEAD@{20}: checkout: moving from LamprosBarnch to FixMainBranch
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{21}: reset: moving to HEAD
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{22}: checkout: moving from main to LamprosBarnch
+[33me7bd555[m[33m ([m[1;32mLamprosBarnch[m[33m)[m HEAD@{23}: merge origin/main: Fast-forward
+[33m741214a[m HEAD@{24}: commit: Small modifications/ fixing warnings
+[33md06cdb9[m HEAD@{25}: commit: Initital commit for the project
+[33md2b3812[m HEAD@{26}: clone: from https://github.com/lampros2003/Soft_Engineering_Project.git

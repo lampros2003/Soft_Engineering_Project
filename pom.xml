@@ -4,39 +4,44 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.smart_restaurant</groupId>
+  <groupId>com.analyticsui</groupId>
   <artifactId>Soft-Eng_Project</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>SmartRestaurant</name>
+  <name>demo1</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>5.10.2</junit.version>
-    <javafx.version>17.0.6</javafx.version>
+    <junit.version>5.10.2</junit.version>  
   </properties>
 
+  <repositories>
+    <repository>
+      <id>gluon-releases</id>
+      <url>https://nexus.gluonhq.com/nexus/content/repositories/releases/</url>
+    </repository>
+  </repositories>
+
   <dependencies>
-
-
+    
     <dependency>
       <groupId>org.openjfx</groupId>
-      <artifactId>javafx-graphics</artifactId>
-      <version>${javafx.version}</version>
+      <artifactId>javafx-controls</artifactId>
+      <version>17.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>${javafx.version}</version>
+      <version>17.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-web</artifactId>
-      <version>${javafx.version}</version>
+      <version>17.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-swing</artifactId>
-      <version>${javafx.version}</version>
+      <version>17.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.controlsfx</groupId>
@@ -98,6 +103,11 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.gluonhq</groupId>
+      <artifactId>charm-glisten</artifactId>
+      <version>6.0.6</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -121,7 +131,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.smart_restaurant/com.smart_restaurant.Main</mainClass>
+              <mainClass>com.analyticsui.demo1/com.analyticsui.demo1.HelloApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

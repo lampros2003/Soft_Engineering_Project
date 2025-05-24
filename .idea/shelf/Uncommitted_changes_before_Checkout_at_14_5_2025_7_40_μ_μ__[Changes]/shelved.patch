@@ -1,0 +1,3 @@
+diff --git a/src/main/java/com/module-info.java b/src/main/java/module-info.java
+rename from src/main/java/com/module-info.java
+rename to src/main/java/module-info.java

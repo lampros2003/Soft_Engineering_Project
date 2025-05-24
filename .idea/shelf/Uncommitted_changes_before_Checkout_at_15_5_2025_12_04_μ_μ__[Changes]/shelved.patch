@@ -1,0 +1,75 @@
+Index: src/main/java/com/mainpackage/SceneSwitching.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package util;\r\n\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class SceneSwitching {\r\n\r\n    public static void switchScene(Stage stage, String fxmlPath) {\r\n        try {\r\n            FXMLLoader loader = new FXMLLoader(SceneSwitching.class.getResource(fxmlPath));\r\n            Parent root = loader.load();\r\n            stage.setScene(new Scene(root));\r\n        } catch (IOException e) {\r\n            System.err.println(\"Error loading scene: \" + fxmlPath);\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mainpackage/SceneSwitching.java b/src/main/java/com/mainpackage/SceneSwitching.java
+--- a/src/main/java/com/mainpackage/SceneSwitching.java	(revision 52bfc6b27b89e38b0817a888b71522706540a111)
++++ b/src/main/java/com/mainpackage/SceneSwitching.java	(date 1747299684167)
+@@ -1,4 +1,4 @@
+-package util;
++package com.mainpackage;
+ 
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Parent;
+Index: src/main/java/com/mainpackage/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Software Engineering Project\r\n// SmartRestaurant\r\n// UPatras Spring Semester 2024-2025\r\n\r\npackage com.smart_restaurant;\r\n// Imports\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.util.Objects;\r\n\r\n// App Class\r\npublic class Main extends Application {\r\n    // Main setup code for GUI\r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception {\r\n\r\n        Parent root;\r\n        // Load UI from fxml file\r\n        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"/view/MainScreen.fxml\")));\r\n        // Construct the main Window\r\n        Scene scene = new Scene(root);\r\n\r\n        primaryStage.setTitle(\"SmartRestaurant\");\r\n        primaryStage.setScene(scene);\r\n        // Show the main Window\r\n        primaryStage.show();\r\n\r\n        // Set window size unchangeable\r\n        primaryStage.setResizable(false);\r\n\r\n    }\r\n\r\n    // Main Method\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mainpackage/Main.java b/src/main/java/com/mainpackage/Main.java
+--- a/src/main/java/com/mainpackage/Main.java	(revision 52bfc6b27b89e38b0817a888b71522706540a111)
++++ b/src/main/java/com/mainpackage/Main.java	(date 1747299613356)
+@@ -2,7 +2,7 @@
+ // SmartRestaurant
+ // UPatras Spring Semester 2024-2025
+ 
+-package com.smart_restaurant;
++package com.mainpackage;
+ // Imports
+ import javafx.application.Application;
+ import javafx.fxml.FXMLLoader;
+@@ -20,7 +20,7 @@
+ 
+         Parent root;
+         // Load UI from fxml file
+-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/view/MainScreen.fxml")));
++        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com.mainUI/MainScreen.fxml")));
+         // Construct the main Window
+         Scene scene = new Scene(root);
+ 
+@@ -38,4 +38,4 @@
+     public static void main(String[] args) {
+         launch(args);
+     }
+-}
+\ No newline at end of file
++}
+Index: src/main/java/com/mainpackage/MainSceneController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.smart_restaurant.controller;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.Node;\r\nimport javafx.stage.Stage;\r\nimport util.SceneSwitching;\r\n\r\npublic class MainSceneController {\r\n\r\n    @FXML\r\n    private Button orderBtn;\r\n\r\n    @FXML\r\n    private Button loginBtn;\r\n\r\n    @FXML\r\n    private void btnORDERClicked(ActionEvent event) {\r\n        System.out.println(\"Order button clicked!\");\r\n//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n//        SceneSwitching.switchScene(stage, \"/view/MenuScreen.fxml\");\r\n    }\r\n\r\n    @FXML\r\n    void btnLOGINClicked(ActionEvent event) {\r\n        System.out.println(\"Login button clicked!\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/mainpackage/MainSceneController.java b/src/main/java/com/mainpackage/MainSceneController.java
+--- a/src/main/java/com/mainpackage/MainSceneController.java	(revision 52bfc6b27b89e38b0817a888b71522706540a111)
++++ b/src/main/java/com/mainpackage/MainSceneController.java	(date 1747299720533)
+@@ -1,11 +1,11 @@
+-package com.smart_restaurant.controller;
++package com.mainpackage;
+ 
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Button;
+ import javafx.scene.Node;
+ import javafx.stage.Stage;
+-import util.SceneSwitching;
++import com.mainpackage.SceneSwitching;
+ 
+ public class MainSceneController {
+ 
