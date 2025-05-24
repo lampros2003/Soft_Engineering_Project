@@ -27,7 +27,6 @@ public class LoginController {
         System.out.println("loginAsAdministrator");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
-
     }
 
     @FXML

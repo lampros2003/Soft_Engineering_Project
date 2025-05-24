@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="fix method name">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="fix class and method names">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/manageMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ΜanageMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ΜanageMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,7 +160,7 @@
       <workItem from="1748088547139" duration="3087000" />
       <workItem from="1748112582323" duration="2000" />
       <workItem from="1748122636186" duration="473000" />
-      <workItem from="1748123480195" duration="2815000" />
+      <workItem from="1748123480195" duration="3414000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -271,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748125868320</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix class and method names">
+      <option name="closed" value="true" />
+      <created>1748126378196</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748126378196</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +313,7 @@
     <MESSAGE value="added manageMenu classes and fxml files" />
     <MESSAGE value="added fxml files" />
     <MESSAGE value="fix method name" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix method name" />
+    <MESSAGE value="fix class and method names" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix class and method names" />
   </component>
 </project>
