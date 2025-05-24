@@ -1,12 +1,15 @@
 package com.tables;
 
 import javafx.geometry.Point2D;
+import java.io.Serializable;
 import java.time.LocalTime;
 
 /**
  * Extended table class that includes status information
  */
-public class TableStatus {
+public class TableStatus implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
     private final int id;
     private final Point2D position;
     private final double width;
@@ -75,24 +78,27 @@ public class TableStatus {
         return guestsCount;
     }
     
-    public void setGuestsCount(int guestsCount) {
+    public TableStatus setGuestsCount(int guestsCount) {
         this.guestsCount = guestsCount;
+        return this;
     }
     
     public LocalTime getOccupiedTime() {
         return occupiedTime;
     }
     
-    public void setOccupiedTime(LocalTime occupiedTime) {
+    public TableStatus setOccupiedTime(LocalTime occupiedTime) {
         this.occupiedTime = occupiedTime;
+        return this;
     }
     
     public String getServerName() {
         return serverName;
     }
     
-    public void setServerName(String serverName) {
+    public TableStatus setServerName(String serverName) {
         this.serverName = serverName;
+        return this;
     }
     
     public int getColumnIndex() {

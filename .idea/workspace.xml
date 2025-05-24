@@ -22,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -42,9 +43,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,
-    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;
+    &quot;accountId&quot;: &quot;8422a76c-902c-42e2-8407-8e76400d726d&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -57,32 +61,46 @@
   &quot;keyToString&quot;: {
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RunTablesScreen.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TablesScreenApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.analytics.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;TablesBranch&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com\tables" />
+      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.analytics" />
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.menu" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.login" />
-      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\images" />
-      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\java\mainpackage" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="com.analyticsui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.analyticsui.demo1.HelloApplication" />
       <module name="Soft-Eng_Project" />
@@ -119,6 +137,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="" />
@@ -132,6 +158,10 @@
       <workItem from="1747318869540" duration="1850000" />
       <workItem from="1747339022947" duration="593000" />
       <workItem from="1747398459882" duration="5491000" />
+      <workItem from="1747478425664" duration="6535000" />
+      <workItem from="1747805881779" duration="9129000" />
+      <workItem from="1748120325351" duration="731000" />
+      <workItem from="1748121105247" duration="6085000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -165,7 +195,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747417606133</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Create the view tables use case and put buttons allowing for ht future implementation of the make reservations and edit layout use cases">
+      <option name="closed" value="true" />
+      <created>1747811258089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747811258089</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Create the layout class that allows for searching the restaurant layout for certain table sizes, modifying table statuses by seating partys of guest and also adding moving and removing tables.&#10;Finaly it allows the caching of the layout to file.&#10;Still needs Database functionality.&#10;It is able to be used in all layouts that require the tables view and the restaurant layout.">
+      <option name="closed" value="true" />
+      <created>1747815578420</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747815578420</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +222,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="TablesBranch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -188,6 +246,8 @@
     <MESSAGE value="Change login and menu screens to the proper direcotries" />
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
     <MESSAGE value="added waiterViewController" />
-    <option name="LAST_COMMIT_MESSAGE" value="added waiterViewController" />
+    <MESSAGE value="Create the view tables use case and put buttons allowing for ht future implementation of the make reservations and edit layout use cases" />
+    <MESSAGE value="Create the layout class that allows for searching the restaurant layout for certain table sizes, modifying table statuses by seating partys of guest and also adding moving and removing tables.&#10;Finaly it allows the caching of the layout to file.&#10;Still needs Database functionality.&#10;It is able to be used in all layouts that require the tables view and the restaurant layout." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the layout class that allows for searching the restaurant layout for certain table sizes, modifying table statuses by seating partys of guest and also adding moving and removing tables.&#10;Finaly it allows the caching of the layout to file.&#10;Still needs Database functionality.&#10;It is able to be used in all layouts that require the tables view and the restaurant layout." />
   </component>
 </project>

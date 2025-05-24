@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tables.TableLayoutEditorController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="60.0" style="-fx-background-color: #252020;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Table Layout Editor" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <GridPane fx:id="editorGrid" alignment="CENTER" hgap="40.0" style="-fx-background-color: white;" vgap="30.0">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </center>
+   <right>
+      <VBox prefWidth="250.0" spacing="15.0" style="-fx-background-color: #f5f5f5; -fx-padding: 15px;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Add New Table" underline="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Seating Capacity:" />
+                  <Spinner fx:id="seatingSpinner" amountToStepBy="1" editable="true" initialValue="4" max="20" min="2" prefWidth="80.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Table Width:" />
+                  <Spinner fx:id="widthSpinner" amountToStepBy="10" editable="true" initialValue="100" max="200" min="60" prefWidth="80.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Table Height:" />
+                  <Spinner fx:id="heightSpinner" amountToStepBy="10" editable="true" initialValue="100" max="180" min="60" prefWidth="80.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label text="Status:" />
+                  <ComboBox fx:id="tableStateComboBox" prefWidth="150.0" promptText="Select State" />
+               </children>
+            </HBox>
+            <Button fx:id="addTableButton" mnemonicParsing="false" onAction="#onAddTableClicked" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #252020; -fx-text-fill: white;" text="Add Table" />
+            <Separator prefWidth="200.0" />
+            <Label text="Selected Table" underline="true">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedTableLabel" text="No table selected" />
+            <Button fx:id="removeTableButton" disable="true" mnemonicParsing="false" onAction="#onRemoveTableClicked" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Remove Selected Table" />
+            <Separator prefWidth="200.0" />
+            <Label text="Instructions:" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="• Click on tables to select them" wrapText="true" />
+            <Label text="• Drag tables to move them" wrapText="true" />
+            <Label text="• Add tables using the form above" wrapText="true" />
+            <Label text="• Click Save to confirm changes" wrapText="true" />
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="60.0" spacing="20.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dddddd; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#onCancelClicked" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #7f8c8d; -fx-text-fill: white;" text="Cancel" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#onSaveClicked" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Save Layout" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

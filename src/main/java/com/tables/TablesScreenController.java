@@ -1,28 +1,28 @@
 package com.tables;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.util.Random;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class TablesScreenController implements Initializable {
@@ -34,74 +34,35 @@ public class TablesScreenController implements Initializable {
     private final Color AVAILABLE_COLOR = Color.web("#2ECC71"); // Green for available tables
     private final Color UNAVAILABLE_COLOR = Color.web("#AAAAAA"); // Gray for unavailable tables
     
-    private final List<TableStatus> tables = new ArrayList<>();
+    private RestaurantLayout restaurantLayout;
     private final Map<Integer, Pane> tablePanes = new HashMap<>();
-    private final Random random = new Random();
+    
+    // Enum for table states
+    public enum TableState {
+        AVAILABLE,
+        OCCUPIED,
+        UNAVAILABLE
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Initialize the table data
-        initializeTableData();
+        // Initialize the restaurant layout
+        restaurantLayout = RestaurantLayout.createSampleLayout();
         
-        // Render tables from the data structure
+        // Render tables from the restaurant layout
         renderTables();
     }
 
     /**
-     * Initialize the table data structure with information about each table
-     */
-    private void initializeTableData() {
-        // Add sample table data with status
-        // Table format: id, position, width, height, seating capacity, status, guests, time, server, column index, row inde
-        // First floor section
-        tables.add(new TableStatus(1, new Point2D(0, 0), 150, 100, 10, TableState.UNAVAILABLE, 0, null, "", 0, 0));
-        tables.add(new TableStatus(2, new Point2D(0, 0), 120, 100, 8, TableState.UNAVAILABLE, 0, null, "", 1, 0));
-        tables.add(new TableStatus(3, new Point2D(0, 0), 120, 100, 10, TableState.UNAVAILABLE, 0, null, "", 2, 0));
-        tables.add(new TableStatus(4, new Point2D(0, 0), 150, 100, 12, TableState.UNAVAILABLE, 0, null, "", 3, 0));
-        
-        tables.add(new TableStatus(5, new Point2D(0, 0), 90, 100, 8, TableState.UNAVAILABLE, 0, null, "", 0, 1));
-        tables.add(new TableStatus(6, new Point2D(0, 0), 70, 100, 4, TableState.OCCUPIED, 3, LocalTime.now().minusMinutes(45), "Sarah", 1, 1));
-        tables.add(new TableStatus(7, new Point2D(0, 0), 100, 100, 8, TableState.UNAVAILABLE, 0, null, "", 2, 1));
-        tables.add(new TableStatus(8, new Point2D(0, 0), 70, 100, 4, TableState.OCCUPIED, 2, LocalTime.now().minusMinutes(20), "John", 3, 1));
-        
-        tables.add(new TableStatus(9, new Point2D(0, 0), 120, 100, 8, TableState.AVAILABLE, 0, null, "", 0, 2));
-        tables.add(new TableStatus(10, new Point2D(0, 0), 60, 100, 4, TableState.UNAVAILABLE, 0, null, "", 1, 2));
-        tables.add(new TableStatus(11, new Point2D(0, 0), 100, 100, 6, TableState.OCCUPIED, 4, LocalTime.now().minusMinutes(15), "Mike", 2, 2));
-        tables.add(new TableStatus(12, new Point2D(0, 0), 100, 100, 8, TableState.AVAILABLE, 0, null, "", 3, 2));
-        
-        // Adding more tables to demonstrate scrolling
-        // VIP section
-        tables.add(new TableStatus(13, new Point2D(0, 0), 180, 120, 14, TableState.AVAILABLE, 0, null, "", 0, 3));
-        tables.add(new TableStatus(14, new Point2D(0, 0), 180, 120, 14, TableState.OCCUPIED, 10, LocalTime.now().minusMinutes(65), "Robert", 1, 3));
-        tables.add(new TableStatus(15, new Point2D(0, 0), 180, 120, 14, TableState.AVAILABLE, 0, null, "", 2, 3));
-        tables.add(new TableStatus(16, new Point2D(0, 0), 180, 120, 14, TableState.OCCUPIED, 12, LocalTime.now().minusMinutes(30), "Jennifer", 3, 3));
-        
-        // Patio tables
-        tables.add(new TableStatus(17, new Point2D(0, 0), 80, 80, 4, TableState.UNAVAILABLE, 0, null, "", 0, 4));
-        tables.add(new TableStatus(18, new Point2D(0, 0), 80, 80, 4, TableState.UNAVAILABLE, 0, null, "", 1, 4));
-        tables.add(new TableStatus(19, new Point2D(0, 0), 80, 80, 4, TableState.AVAILABLE, 0, null, "", 2, 4));
-        tables.add(new TableStatus(20, new Point2D(0, 0), 80, 80, 4, TableState.OCCUPIED, 2, LocalTime.now().minusMinutes(40), "Patricia", 3, 4));
-        
-        // Bar section
-        tables.add(new TableStatus(21, new Point2D(0, 0), 60, 60, 2, TableState.OCCUPIED, 1, LocalTime.now().minusMinutes(10), "James", 0, 5));
-        tables.add(new TableStatus(22, new Point2D(0, 0), 60, 60, 2, TableState.OCCUPIED, 2, LocalTime.now().minusMinutes(25), "Linda", 1, 5));
-        tables.add(new TableStatus(23, new Point2D(0, 0), 60, 60, 2, TableState.AVAILABLE, 0, null, "", 2, 5));
-        tables.add(new TableStatus(24, new Point2D(0, 0), 60, 60, 2, TableState.AVAILABLE, 0, null, "", 3, 5));
-        
-        // Private room
-        tables.add(new TableStatus(25, new Point2D(0, 0), 200, 120, 16, TableState.OCCUPIED, 14, LocalTime.now().minusMinutes(75), "Birthday Party", 0, 6));
-        tables.add(new TableStatus(26, new Point2D(0, 0), 200, 120, 16, TableState.AVAILABLE, 0, null, "", 2, 6));
-    }
-
-    /**
-     * Render tables from the data structure
+     * Render tables from the restaurant layout
      */
     private void renderTables() {
         // Clear existing content in the grid
         tablesContainer.getChildren().clear();
+        tablePanes.clear();
         
         // Create and add tables to the grid
-        for (TableStatus table : tables) {
+        for (TableStatus table : restaurantLayout.getAllTables()) {
             Pane tablePane = createTablePane(table);
             tablePanes.put(table.getId(), tablePane);
             
@@ -165,7 +126,10 @@ public class TablesScreenController implements Initializable {
         // Add tooltip showing detailed status information for occupied tables
         if (table.getState() == TableState.OCCUPIED) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-            String occupiedTime = table.getOccupiedTime().format(formatter);
+            String occupiedTime = table.getOccupiedTime() != null 
+                ? table.getOccupiedTime().format(formatter) 
+                : "unknown";
+                
             String tooltipText = String.format(
                 "Table %d\nGuests: %d\nServer: %s\nOccupied since: %s",
                 table.getId(),
@@ -185,6 +149,9 @@ public class TablesScreenController implements Initializable {
             statusIcon.setTranslateY(15);
             tablePane.getChildren().add(statusIcon);
         }
+        
+        // Add mouse click event handler
+        tablePane.setOnMouseClicked(this::onTableClick);
         
         stackPane.getChildren().add(tablePane);
         return stackPane;
@@ -280,9 +247,30 @@ public class TablesScreenController implements Initializable {
      */
     @FXML
     public void onEditLayoutClicked(ActionEvent event) {
-        System.out.println("Edit Layout clicked");
-        // TODO: Open table layout editor screen
-
+        try {
+            // Load the table layout editor FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tables/TableLayoutEditor.fxml"));
+            Parent root = loader.load();
+            
+            // Get the controller and set the main controller reference
+            TableLayoutEditorController editorController = loader.getController();
+            editorController.setMainController(this);
+            
+            // Create a new stage for the editor
+            Stage editorStage = new Stage();
+            editorStage.setTitle("Edit Table Layout");
+            editorStage.setScene(new Scene(root));
+            
+            // Set modality to block input to other windows
+            editorStage.initModality(Modality.WINDOW_MODAL);
+            editorStage.initOwner(((Node) event.getSource()).getScene().getWindow());
+            
+            // Show the editor
+            editorStage.showAndWait();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     /**
@@ -290,35 +278,41 @@ public class TablesScreenController implements Initializable {
      */
     @FXML
     public void onMakeReservationClicked(ActionEvent event) {
-        System.out.println("Make Reservation clicked");
-        // TODO: Open reservation screen
-
+        // TODO: Implement reservation functionality
+        System.out.println("Make Reservation clicked - to be implemented");
     }
-
+    
+    /**
+     * Handle the Back button click
+     */
     @FXML
     public void onBackButtonClicked(ActionEvent event) {
-        System.out.println("Back button clicked");
-        
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+        // Return to previous screen
+        // For now, just print a message
+        System.out.println("Back button clicked - would return to previous screen");
     }
     
     /**
-     * Get the Table object by ID
+     * Get a table by its ID
      */
-    public TableStatus getTableById(int id) {
-        return tables.stream()
-                .filter(table -> table.getId() == id)
-                .findFirst()
-                .orElse(null);
+    private TableStatus getTableById(int id) {
+        return restaurantLayout.getTable(id);
     }
     
     /**
-     * Enum representing the possible states of a table
+     * Get the restaurant layout
+     * This is used by the editor controller
      */
-    public enum TableState {
-        AVAILABLE,
-        OCCUPIED,
-        UNAVAILABLE
+    public RestaurantLayout getRestaurantLayout() {
+        return restaurantLayout;
+    }
+    
+    /**
+     * Update the restaurant layout and refresh the UI
+     * This is called by the editor controller when the user saves changes
+     */
+    public void updateLayout(RestaurantLayout newLayout) {
+        this.restaurantLayout = newLayout;
+        renderTables();
     }
 }
