@@ -6,15 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-public class manageMenu {
+public class ΜanageMenu {
     @FXML
     private void onModifyMenu(ActionEvent event) {
         System.out.println("Modify Menu button clicked");
     }
 
     @FXML
-    private void redirectToMenu(ActionEvent event) {
+    private void redirectToDashboard(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/mainUI/MainScreen.fxml");
+        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
     }
 }
