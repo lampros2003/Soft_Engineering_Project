@@ -1,6 +1,5 @@
-package com.schedule;
+package com.mainpackage;
 
-import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
