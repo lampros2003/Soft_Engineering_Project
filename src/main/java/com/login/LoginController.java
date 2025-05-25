@@ -1,6 +1,5 @@
 package com.login;
 
-import com.invMGMT.view.InvMGMTScreen;
 import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
