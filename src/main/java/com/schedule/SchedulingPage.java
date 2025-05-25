@@ -1,5 +1,6 @@
 package com.schedule;
 
+import com.mainpackage.PopUp;
 import com.mainpackage.SceneSwitching;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
