@@ -17,6 +17,10 @@ public class InventoryManager {
         this.db=new DatabaseManager();
         this.inventory=db.getIngredints();
         InventoryListController listController=loader.getController();
+        listController.setManager(this);
         listController.display(this.inventory);
+    }
+    public void itemDetails(){
+        this.loader=SceneSwitching.switchSceneR(stage,"/invMGMT/itemDetails.fxml");
     }
 }

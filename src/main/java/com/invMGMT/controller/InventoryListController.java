@@ -16,6 +16,7 @@ public class InventoryListController {
     private Scene scene;
     private Parent root;
     @FXML ListView<Text> invList;
+    public InventoryManager inventoryManager;
     public void addIngredientButton(ActionEvent event){
         System.out.println("add ingredient");
     }
@@ -35,6 +36,14 @@ public class InventoryListController {
     }
     public void modifySelectedIngredint(){
         System.out.println("modify");
-//        invList.getSelectionModel().selected
+        if(invList.getSelectionModel().getSelectedItems()!=null) {
+            String modifyId = invList.getSelectionModel().getSelectedItems().get(0).getText();//.split("-")[0];
+        }
+        System.out.println(modifyId);
+
+        inventoryManager.itemDetails();
+    }
+    public void setManager(InventoryManager manager){
+        this.inventoryManager=manager;
     }
 }
