@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.menu.MenuWindow">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.menu.MenuController">
    <children>
-      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: white;">
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="66.0" prefWidth="335.0" style="-fx-background-color: white;">
          <children>
             <Text layoutX="100.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Restaurant Name" wrappingWidth="173.7089385986328">
                <font>
@@ -27,10 +27,10 @@
                   <Image url="@../images/LOGO.png" />
                </image>
             </ImageView>
-            <Button fx:id="backToMainScreen" layoutX="643.0" layoutY="20.0" mnemonicParsing="false" onAction="#redirectToMainScreen" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back to MainScreen" textFill="WHITE" />
+            <Button fx:id="backToMainScreen" layoutX="278.0" layoutY="21.0" mnemonicParsing="false" onAction="#navigateToMainScreen" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back" textFill="WHITE" />
          </children>
       </Pane>
-      <ScrollPane fx:id="dish1Btn" layoutX="2.0" layoutY="66.0" prefHeight="534.0" prefWidth="794.0">
+      <ScrollPane fx:id="dish1Btn" layoutY="66.0" prefHeight="534.0" prefWidth="335.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1251.0" prefWidth="778.0">
                <children>
@@ -65,7 +65,7 @@
                         </Button>
                         <Pane layoutX="14.0" layoutY="15.0" prefHeight="416.0" prefWidth="426.0">
                            <children>
-                              <VBox prefHeight="419.0" prefWidth="428.0">
+                              <VBox prefHeight="419.0" prefWidth="260.0">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="48.0" prefWidth="94.0" text="Starters" textAlignment="CENTER">
                                        <font>

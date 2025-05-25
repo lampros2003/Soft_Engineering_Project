@@ -4,6 +4,6 @@
 
 *University of Patras - Spring Semester 2024-2025*  
 
-This is the first version of our code!  
+This is the **Project-code-v1.0**  
 
 **More informations about our project in Project Description**  
