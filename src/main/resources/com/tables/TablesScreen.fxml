@@ -84,14 +84,15 @@
                 <!-- Main content area with scrollable canvas and side buttons -->
                 <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                     <!-- Scrollable container for tables canvas - takes most of the space -->
-                    <ScrollPane prefViewportWidth="650.0" prefViewportHeight="420.0"
-                              HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" 
+                    <ScrollPane fx:id="canvasScrollPane" fitToWidth="true" fitToHeight="true"
+                              HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"
                               style="-fx-background: transparent; -fx-border-color: #cccccc; -fx-border-radius: 5px;"
-                              pannable="true" fx:id="canvasScrollPane">
+                              pannable="true">
                         <content>
-                            <Pane fx:id="canvasContainer">
-                                <Canvas fx:id="tablesCanvas" width="800.0" height="600.0" />
-                            </Pane>
+                            <!-- Use an AnchorPane to allow the canvas to be resized -->
+                            <AnchorPane fx:id="canvasContainer" minWidth="650.0" minHeight="400.0">
+                                <Canvas fx:id="tablesCanvas" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            </AnchorPane>
                         </content>
                     </ScrollPane>
                     

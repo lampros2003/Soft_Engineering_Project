@@ -1,6 +1,5 @@
 package com.tables;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,29 +20,29 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 public class TableLayoutEditorController implements Initializable {
 
     @FXML private Canvas editorCanvas;
     @FXML private ScrollPane editorScrollPane;
-    @FXML private Pane editorCanvasContainer;
+    @FXML private AnchorPane editorCanvasContainer;
+
     @FXML private Spinner<Integer> seatingSpinner;
     @FXML private Spinner<Integer> widthSpinner;
     @FXML private Spinner<Integer> heightSpinner;
     @FXML private ComboBox<TablesScreenController.TableState> tableStateComboBox;
-    @FXML private Button addTableButton;
     @FXML private Label selectedTableLabel;
     @FXML private Button removeTableButton;
-    @FXML private Button cancelButton;
-    @FXML private Button saveButton;
+
 
     private RestaurantLayout workingLayout;
-    private Map<Integer, TableBounds> tableBoundsMap = new HashMap<>();
+    private final Map<Integer, TableBounds> tableBoundsMap = new HashMap<>();
     private TableStatus selectedTable = null;
 
     // Colors for different table states
@@ -53,8 +52,9 @@ public class TableLayoutEditorController implements Initializable {
 
     // Constants for the canvas
     private static final double CANVAS_PADDING = 20;
-    private static final double CANVAS_WIDTH = 800;
-    private static final double CANVAS_HEIGHT = 600;
+    private static final double MIN_CANVAS_WIDTH = 800;
+    private static final double MIN_CANVAS_HEIGHT = 600;
+    private static final double ADDITIONAL_PADDING = 100; // Extra space beyond the last table
 
     // Variables for table dragging
     private TableStatus draggedTable = null;
@@ -67,30 +67,13 @@ public class TableLayoutEditorController implements Initializable {
     private TablesScreenController mainController;
 
     // Class to store table bounds for hit testing
-    private static class TableBounds {
-        private final int tableId;
-        private final double x;
-        private final double y;
-        private final double width;
-        private final double height;
-
-        public TableBounds(int tableId, double x, double y, double width, double height) {
-            this.tableId = tableId;
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-        }
+    private record TableBounds(int tableId, double x, double y, double width, double height) {
 
         public boolean contains(double pointX, double pointY) {
-            return pointX >= x && pointX <= x + width &&
-                   pointY >= y && pointY <= y + height;
+                return pointX >= x && pointX <= x + width &&
+                        pointY >= y && pointY <= y + height;
+            }
         }
-
-        public int getTableId() {
-            return tableId;
-        }
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,11 +90,31 @@ public class TableLayoutEditorController implements Initializable {
         ));
         tableStateComboBox.setValue(TablesScreenController.TableState.AVAILABLE);
 
+        // Set up listeners for canvas resizing
+        setupCanvasSizeListener();
+
         // Add canvas event handlers for drag and drop
         editorCanvas.setOnMousePressed(this::onCanvasMousePressed);
         editorCanvas.setOnMouseDragged(this::onCanvasMouseDragged);
         editorCanvas.setOnMouseReleased(this::onCanvasMouseReleased);
         editorCanvas.setOnMouseClicked(this::onCanvasMouseClicked);
+    }
+
+    /**
+     * Set up listeners for changes in scroll pane size
+     */
+    private void setupCanvasSizeListener() {
+        // Listen for changes in the scroll pane's viewport size
+        editorScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
+            Platform.runLater(this::setupCanvas);
+        });
+
+        // Also add listener to scene changes to catch initial sizing
+        editorScrollPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                Platform.runLater(this::setupCanvas);
+            }
+        });
     }
 
     /**
@@ -154,10 +157,10 @@ public class TableLayoutEditorController implements Initializable {
     }
 
     /**
-     * Set up the canvas with appropriate size
+     * Set up the canvas with the appropriate size
      */
     private void setupCanvas() {
-        // Ensure the canvas is large enough for all tables
+        // Calculate required canvas size based on table positions
         double maxX = CANVAS_PADDING;
         double maxY = CANVAS_PADDING;
 
@@ -182,9 +185,28 @@ public class TableLayoutEditorController implements Initializable {
             if (tableBottom > maxY) maxY = tableBottom;
         }
 
-        // Set canvas size with extra padding
-        editorCanvas.setWidth(Math.max(CANVAS_WIDTH, maxX + CANVAS_PADDING));
-        editorCanvas.setHeight(Math.max(CANVAS_HEIGHT, maxY + CANVAS_PADDING));
+        // Add padding to ensure some extra space beyond the last table
+        maxX += ADDITIONAL_PADDING;
+        maxY += ADDITIONAL_PADDING;
+
+        // Calculate minimum size based on viewport and content
+        double viewportWidth = editorScrollPane.getViewportBounds().getWidth();
+        double viewportHeight = editorScrollPane.getViewportBounds().getHeight();
+
+        // The canvas should be at least as large as the viewport or the minimum size
+        double canvasWidth = Math.max(Math.max(viewportWidth, MIN_CANVAS_WIDTH), maxX);
+        double canvasHeight = Math.max(Math.max(viewportHeight, MIN_CANVAS_HEIGHT), maxY);
+
+        // Set the size of the canvas
+        editorCanvas.setWidth(canvasWidth);
+        editorCanvas.setHeight(canvasHeight);
+
+        // Also update the container's preferred size
+        editorCanvasContainer.setPrefWidth(canvasWidth);
+        editorCanvasContainer.setPrefHeight(canvasHeight);
+
+        // Re-render tables since canvas size changed
+        renderTables();
     }
 
     /**
@@ -251,19 +273,11 @@ public class TableLayoutEditorController implements Initializable {
         double tableHeight = table.getHeight();
 
         // Set color based on table state
-        Color tableColor;
-        switch (table.getState()) {
-            case AVAILABLE:
-                tableColor = AVAILABLE_COLOR;
-                break;
-            case OCCUPIED:
-                tableColor = OCCUPIED_COLOR;
-                break;
-            case UNAVAILABLE:
-            default:
-                tableColor = UNAVAILABLE_COLOR;
-                break;
-        }
+        Color tableColor = switch (table.getState()) {
+            case AVAILABLE -> AVAILABLE_COLOR;
+            case OCCUPIED -> OCCUPIED_COLOR;
+            default -> UNAVAILABLE_COLOR;
+        };
 
         // Draw table rectangle with rounded corners
         gc.setFill(tableColor);
@@ -312,7 +326,7 @@ public class TableLayoutEditorController implements Initializable {
         for (TableBounds bounds : tableBoundsMap.values()) {
             if (bounds.contains(mouseX, mouseY)) {
                 // Get the table and prepare for dragging
-                TableStatus table = getTableById(bounds.getTableId());
+                TableStatus table = getTableById(bounds.tableId());
                 if (table != null) {
                     draggedTable = table;
                     dragStartX = mouseX;
@@ -365,7 +379,7 @@ public class TableLayoutEditorController implements Initializable {
                 draggedTable.getOccupiedTime(),
                 draggedTable.getServerName(),
                 0, // Column index not used with direct positioning
-                0  // Row index not used with direct positioning
+                0  // Row index is not used with direct positioning
             );
 
             // Replace the table in the working layout
@@ -413,7 +427,7 @@ public class TableLayoutEditorController implements Initializable {
         boolean tableClicked = false;
         for (TableBounds bounds : tableBoundsMap.values()) {
             if (bounds.contains(mouseX, mouseY)) {
-                TableStatus table = getTableById(bounds.getTableId());
+                TableStatus table = getTableById(bounds.tableId());
                 if (table != null) {
                     selectTable(table);
                     tableClicked = true;
@@ -502,7 +516,7 @@ public class TableLayoutEditorController implements Initializable {
             seatingSpinner.getValue(),
             tableStateComboBox.getValue(),
             0, // Column index not used with direct positioning
-            0  // Row index not used with direct positioning
+            0  // Row index is not used with direct positioning
         );
 
         // Select the new table

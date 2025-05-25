@@ -17,7 +17,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -25,6 +25,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Optional;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 
 public class TablesScreenController implements Initializable {
 
@@ -35,7 +37,7 @@ public class TablesScreenController implements Initializable {
     private ScrollPane canvasScrollPane;
 
     @FXML
-    private Pane canvasContainer;
+    private AnchorPane canvasContainer;
 
     private final Color OCCUPIED_COLOR = Color.web("#F39C12"); // Orange for occupied tables
     private final Color AVAILABLE_COLOR = Color.web("#2ECC71"); // Green for available tables
@@ -46,8 +48,9 @@ public class TablesScreenController implements Initializable {
 
     // Constants for the canvas
     private static final double CANVAS_PADDING = 20;
-    private static final double CANVAS_WIDTH = 800;
-    private static final double CANVAS_HEIGHT = 600;
+    private static final double MIN_CANVAS_WIDTH = 800;
+    private static final double MIN_CANVAS_HEIGHT = 600;
+    private static final double ADDITIONAL_PADDING = 100; // Extra space beyond the last table
 
     // Enum for table states
     public enum TableState {
@@ -57,7 +60,7 @@ public class TablesScreenController implements Initializable {
     }
 
     // Class to store table bounds for hit testing
-        private record TableBounds(int tableId, double x, double y, double width, double height) {
+    private record TableBounds(int tableId, double x, double y, double width, double height) {
 
         public boolean contains(double pointX, double pointY) {
                 return pointX >= x && pointX <= x + width &&
@@ -70,7 +73,10 @@ public class TablesScreenController implements Initializable {
         // Initialize the restaurant layout
         restaurantLayout = RestaurantLayout.createSampleLayout();
 
-        // Set up the canvas
+        // Set up the canvas size listener to handle window resizing
+        setupCanvasSizeListener();
+
+        // Set up the canvas with initial sizing
         setupCanvas();
 
         // Render tables from the restaurant layout
@@ -81,10 +87,33 @@ public class TablesScreenController implements Initializable {
     }
 
     /**
+     * Set up listeners for changes in scroll pane size
+     */
+    private void setupCanvasSizeListener() {
+        // Listen for changes in the scroll pane's viewport size
+        ChangeListener<Number> resizeListener = (observable, oldValue, newValue) -> {
+            // Re-setup the canvas when the container size changes
+            Platform.runLater(this::setupCanvas);
+        };
+
+        // Add listeners to the width and height properties
+        canvasScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
+            Platform.runLater(this::setupCanvas);
+        });
+
+        // Also add listener to scene changes to catch initial sizing
+        canvasScrollPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                Platform.runLater(this::setupCanvas);
+            }
+        });
+    }
+
+    /**
      * Set up the canvas with the right size
      */
     private void setupCanvas() {
-        // Ensure the canvas is large enough for all tables
+        // Calculate required canvas size based on table positions
         double maxX = CANVAS_PADDING;
         double maxY = CANVAS_PADDING;
 
@@ -109,9 +138,28 @@ public class TablesScreenController implements Initializable {
             if (tableBottom > maxY) maxY = tableBottom;
         }
 
-        // Set canvas size with extra padding
-        tablesCanvas.setWidth(Math.max(CANVAS_WIDTH, maxX + CANVAS_PADDING));
-        tablesCanvas.setHeight(Math.max(CANVAS_HEIGHT, maxY + CANVAS_PADDING));
+        // Add padding to ensure some extra space beyond the last table
+        maxX += ADDITIONAL_PADDING;
+        maxY += ADDITIONAL_PADDING;
+
+        // Calculate minimum size based on viewport and content
+        double viewportWidth = canvasScrollPane.getViewportBounds().getWidth();
+        double viewportHeight = canvasScrollPane.getViewportBounds().getHeight();
+
+        // The canvas should be at least as large as the viewport or the minimum size
+        double canvasWidth = Math.max(Math.max(viewportWidth, MIN_CANVAS_WIDTH), maxX);
+        double canvasHeight = Math.max(Math.max(viewportHeight, MIN_CANVAS_HEIGHT), maxY);
+
+        // Set the size of the canvas
+        tablesCanvas.setWidth(canvasWidth);
+        tablesCanvas.setHeight(canvasHeight);
+
+        // Also update the container's preferred size
+        canvasContainer.setPrefWidth(canvasWidth);
+        canvasContainer.setPrefHeight(canvasHeight);
+
+        // Re-render tables since canvas size changed
+        renderTables();
     }
 
     /**
