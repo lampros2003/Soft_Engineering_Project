@@ -197,6 +197,22 @@ public class RestaurantLayout implements Serializable {
     }
     
     /**
+     * Replace a table in the layout with an updated version
+     * This is used for updating the table's position or other attributes
+     */
+    public void replaceTable(TableStatus updatedTable) {
+        if (updatedTable != null) {
+            tables.put(updatedTable.getId(), updatedTable);
+
+            // Update grid dimensions if necessary based on column/row indices
+            int columnIndex = updatedTable.getColumnIndex();
+            int rowIndex = updatedTable.getRowIndex();
+            if (columnIndex >= columns) columns = columnIndex + 1;
+            if (rowIndex >= rows) rows = rowIndex + 1;
+        }
+    }
+
+    /**
      * Save the restaurant layout to a file
      */
     public void saveToFile(String filePath) throws IOException {

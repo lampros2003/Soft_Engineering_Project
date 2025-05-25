@@ -8,9 +8,10 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tables.TableLayoutEditorController">
@@ -26,13 +27,11 @@
       </HBox>
    </top>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="editorScrollPane">
          <content>
-            <GridPane fx:id="editorGrid" alignment="CENTER" hgap="40.0" style="-fx-background-color: white;" vgap="30.0">
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-            </GridPane>
+            <Pane fx:id="editorCanvasContainer">
+               <Canvas fx:id="editorCanvas" width="800.0" height="600.0" />
+            </Pane>
          </content>
       </ScrollPane>
    </center>
@@ -87,6 +86,7 @@
             <Label text="• Drag tables to move them" wrapText="true" />
             <Label text="• Add tables using the form above" wrapText="true" />
             <Label text="• Click Save to confirm changes" wrapText="true" />
+            <Label text="• Double-click to place new table" wrapText="true" />
          </children>
       </VBox>
    </right>

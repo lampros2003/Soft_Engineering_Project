@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.canvas.Canvas?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tables.TablesScreenController">
     <top>
@@ -80,21 +81,17 @@
                     </VBox.margin>
                 </Label>
 
-                <!-- Main content area with scrollable grid and side buttons -->
+                <!-- Main content area with scrollable canvas and side buttons -->
                 <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
-                    <!-- Scrollable container for tables grid - takes most of the space -->
-                    <ScrollPane prefViewportWidth="650.0" prefViewportHeight="420.0" 
+                    <!-- Scrollable container for tables canvas - takes most of the space -->
+                    <ScrollPane prefViewportWidth="650.0" prefViewportHeight="420.0"
                               HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" 
                               style="-fx-background: transparent; -fx-border-color: #cccccc; -fx-border-radius: 5px;"
-                              pannable="true">
+                              pannable="true" fx:id="canvasScrollPane">
                         <content>
-                            <GridPane fx:id="tablesContainer" alignment="CENTER" hgap="40.0" vgap="30.0" 
-                                     style="-fx-padding: 20px; -fx-background-color: white;">
-                                <!-- Tables will be added dynamically here -->
-                                <padding>
-                                    <Insets top="20" right="20" bottom="20" left="20" />
-                                </padding>
-                            </GridPane>
+                            <Pane fx:id="canvasContainer">
+                                <Canvas fx:id="tablesCanvas" width="800.0" height="600.0" />
+                            </Pane>
                         </content>
                     </ScrollPane>
                     

@@ -47,7 +47,7 @@ public class HelloController
 
     private void navigateToDetailedView(String metricName, String currentValue, String metricType, Node sourceNode) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com.analytics/detailed-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/analytics/detailed-view.fxml"));
             Parent detailedViewRoot = loader.load();
 
             DetailViewController controller = loader.getController();
