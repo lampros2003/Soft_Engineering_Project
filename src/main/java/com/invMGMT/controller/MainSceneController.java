@@ -1,4 +1,4 @@
-package com.smart_restaurant.invMGMT.controller;
+package com.invMGMT.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

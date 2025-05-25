@@ -2,7 +2,7 @@
 // SmartRestaurant
 // UPatras Spring Semester 2024-2025
 
-package com.smart_restaurant;
+package com.mainpackage;
 // Imports
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
