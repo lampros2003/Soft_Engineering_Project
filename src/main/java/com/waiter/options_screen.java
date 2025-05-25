@@ -26,7 +26,7 @@ public class options_screen {
     void clicked_edit(MouseEvent event) {
         System.out.println("Edit button clicked");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/waiter/menu_screen_for_phone.fxml");
+        SceneSwitching.switchScene(stage, "waiter/menu_screen_for_phone.fxml");
     }
 
 }
