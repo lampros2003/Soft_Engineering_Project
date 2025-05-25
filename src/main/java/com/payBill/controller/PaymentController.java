@@ -3,6 +3,7 @@ package com.payBill.controller;
 
 import com.common.Order;
 import com.common.OrderItem;
+import com.invMGMT.controller.InventoryManager;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,8 +29,8 @@ public class PaymentController{
 	}
 	public void invMGMTButton(ActionEvent event) {
 		stage=getStage(event);
-//		InventoryManagementMain invMGMTMain=new InventoryManagementMain(stage);
-//		invMGMTMain.changeTitle("Inventory Management Screen");
+		InventoryManager im=new InventoryManager();
+		im.init(stage);
 	}
 	//end of to be deleted
 	private Stage getStage(ActionEvent event) {

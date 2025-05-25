@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.login/LoginScreen.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.menu/MenuScreen.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +61,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#3 on dev",
+    "git-widget-placeholder": "feature/invMGMT",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -107,6 +110,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.HelloApplication" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />

@@ -18,13 +18,14 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <ListView layoutX="14.0" layoutY="26.0" prefHeight="332.0" prefWidth="725.0" />
+            <ListView fx:id="invList" layoutX="14.0" layoutY="26.0" prefHeight="332.0" prefWidth="725.0" />
          </children></Pane>
       <Pane prefHeight="460.0" prefWidth="128.0" style="-fx-background-color: #433D3D;">
          <children>
             <Pane layoutY="60.0" />
             <Pane layoutY="104.0" />
             <Button layoutY="68.0" mnemonicParsing="false" onAction="#addIngredientButton" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="add Ingredient" />
+            <Button layoutY="112.0" mnemonicParsing="false" onAction="#modifySelectedIngredint" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="modify Ingredient" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>
@@ -37,7 +38,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/Calendar.png" />
+                        <Image url="@../images/misc/Calendar.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="-12.0" layoutY="1.0" mnemonicParsing="false" styleClass="dashboard-button" text="Schedule" />
@@ -47,7 +48,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="35.0" layoutX="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/person.png" />
+                        <Image url="@../images/misc/person.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="-11.0" layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="Employees" />
@@ -57,7 +58,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/check_small.png" />
+                        <Image url="@../images/misc/check_small.png" />
                      </image>
                   </ImageView>
                   <Button layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="analytics" />
@@ -67,7 +68,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/list.png" />
+                        <Image url="@../images/misc/list.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="-12.0" layoutY="2.0" mnemonicParsing="false" styleClass="dashboard-button" text="Orders" />
@@ -77,7 +78,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/menu.png" />
+                        <Image url="@../images/misc/menu.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" styleClass="dashboard-button" text="Menu" />
@@ -87,7 +88,7 @@
                <children>
                   <ImageView fitHeight="29.0" fitWidth="46.0" layoutX="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/misc/inv.png" />
+                        <Image url="@../images/misc/inv.png" />
                      </image>
                   </ImageView>
                   <Button layoutY="3.0" mnemonicParsing="false" styleClass="dashboard-button" text="Invantory" />
