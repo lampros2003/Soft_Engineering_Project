@@ -1,0 +1,53 @@
+.table-available {
+    -fx-border-color: #2ECC71;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.table-occupied {
+    -fx-border-color: #F39C12;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.table-unavailable {
+    -fx-border-color: #AAAAAA;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.chair-marker {
+    -fx-background-color: #777777;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+    -fx-background-radius: 5px;
+}
+
+.chair-marker-available {
+    -fx-background-color: #2ECC71;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+    -fx-background-radius: 5px;
+}
+
+.chair-marker-occupied {
+    -fx-background-color: #F39C12;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+    -fx-background-radius: 5px;
+}
+
+.selected-table {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.editor-grid {
+    -fx-background-color: white;
+    -fx-grid-lines-visible: true;
+}
