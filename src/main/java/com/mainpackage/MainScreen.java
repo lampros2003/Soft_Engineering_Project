@@ -6,12 +6,12 @@ import javafx.scene.Node;
 import javafx.stage.Stage;
 
 
-public class MainSceneController {
+public class MainScreen {
 
     @FXML
     private void btnORDERClicked(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/menu/MenuScreen.fxml");
+        SceneSwitching.switchScene(stage, "/menu/MenuWindow.fxml");
     }
 
     @FXML

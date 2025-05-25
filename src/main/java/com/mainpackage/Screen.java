@@ -1,4 +1,4 @@
-package com.smart_restaurant.util;
+package com.mainpackage;
 
 import java.io.IOException;
 
