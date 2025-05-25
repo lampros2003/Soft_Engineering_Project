@@ -1,4 +1,4 @@
-package com.analyticsui.demo1;
+package com.analytics;
 
 import javafx.fxml.FXML;
 

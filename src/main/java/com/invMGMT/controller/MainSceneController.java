@@ -1,5 +1,7 @@
 
-package com.payBill.controller;
+
+
+package com.invMGMT.controller;
 
 
 import javafx.event.ActionEvent;

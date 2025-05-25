@@ -1,9 +1,9 @@
-package com.analyticsui.demo1;
+package com.analytics;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
-import com.analyticsui.demo1.DetailViewController.MetricDataPoint;
+import com.analytics.DetailViewController.MetricDataPoint;
 
 public class AnalyticsData {
     private String metricName;

@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="676.0" prefWidth="565.0" style="-fx-background-color: #3c3232;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.analyticsui.demo1.HelloController">
+<BorderPane prefHeight="676.0" prefWidth="565.0" style="-fx-background-color: #3c3232;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.analytics.HelloController">
    <top>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #252020;">
          <children>
@@ -409,124 +409,7 @@
                   </VBox>
                </children>
             </HBox>
-
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Year's Analytics:">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" spacing="10.0">
-               <children>
-                  <VBox fx:id="lastMonthOccupationCard" alignment="TOP_CENTER" onMouseClicked="#onLastMonthOccupationCardClicked" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);">
-                     <children>
-                        <Label text="Avg. Occupation">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <StackPane prefHeight="80.0" prefWidth="100.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="80.0" stroke="TRANSPARENT" width="80.0" />
-                           </children>
-                        </StackPane>
-                        <Label fx:id="lastMonthOccupationLabel" text="??%">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Click for details" textFill="#0066cc">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox fx:id="lastMonthEarningsCard" alignment="TOP_CENTER" onMouseClicked="#onLastMonthEarningsCardClicked" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <Label text="Earnings">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <StackPane prefHeight="80.0" prefWidth="100.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="80.0" stroke="TRANSPARENT" width="80.0" />
-                           </children>
-                        </StackPane>
-                        <Label fx:id="lastMonthEarningsLabel" text="i">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Click for details" textFill="#0066cc">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="lastMonthOrdersCard" alignment="TOP_CENTER" onMouseClicked="#onLastMonthOrdersCardClicked" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <Label text="Orders Placed">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <StackPane prefHeight="80.0" prefWidth="100.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="80.0" stroke="TRANSPARENT" width="80.0" />
-                           </children>
-                        </StackPane>
-                        <Label fx:id="lastMonthOrdersLabel" text="###">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Click for details" textFill="#0066cc">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="lastMonthStatsCard" alignment="TOP_CENTER" onMouseClicked="#onLastMonthStatsCardClicked" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <children>
-                        <Label text="Other Statistic">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <StackPane prefHeight="80.0" prefWidth="100.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="80.0" stroke="TRANSPARENT" width="80.0" />
-                           </children>
-                        </StackPane>
-                        <Label fx:id="lastMonthStatsLabel" text="###">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Click for details" textFill="#0066cc">
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" spacing="10.0" />
          </children>
          <BorderPane.margin>
             <Insets />
