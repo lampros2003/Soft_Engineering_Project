@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="238.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.waiter.call_waiter_pop_up">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="20.0" prefHeight="154.0" prefWidth="238.0" style="-fx-spacing: 20; -fx-background-color: #FFFFFF;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Table-(NUM) has called a waiter" underline="true" wrappingWidth="175.02886962890625" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" text="Accept" textAlignment="JUSTIFY" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" text="Decline" textAlignment="JUSTIFY" />
+            <Button fx:id="accept_button" mnemonicParsing="false" onAction="#waiter_accepts" prefHeight="26.0" prefWidth="177.0" text="Accept" textAlignment="JUSTIFY" />
+            <Button fx:id="decline_button" mnemonicParsing="false" onAction="#waiter_declines" prefHeight="26.0" prefWidth="177.0" text="Decline" textAlignment="JUSTIFY" />
          </children>
       </VBox>
    </children>

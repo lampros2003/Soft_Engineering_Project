@@ -13,9 +13,6 @@ module com.mainpackage {
     
     // Main package
     opens com.mainpackage to javafx.fxml;
-    opens com.payBill.controller to javafx.fxml;
-    exports com.payBill.controller;
-    exports com.payBill.util;
     exports com.mainpackage;
     
     // Login package
@@ -30,4 +27,10 @@ module com.mainpackage {
     opens com.chefView to javafx.fxml;
     exports com.chefView;
 
+    // waiter package
+    opens com.waiter to javafx.fxml;
+    exports com.waiter;
+    //schedule package
+    opens com.schedule to javafx.fxml;
+    exports com.schedule;
 }
