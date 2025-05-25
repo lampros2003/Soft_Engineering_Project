@@ -31,7 +31,17 @@ module com.mainpackage {
     // waiter package
     opens com.waiter to javafx.fxml;
     exports com.waiter;
+
     //schedule package
     opens com.schedule to javafx.fxml;
     exports com.schedule;
+
+    opens com.tables to javafx.fxml;
+    exports com.tables;
+
+    opens com.payBill.controller to javafx.fxml;
+    exports com.payBill.controller;
+
+    opens com.payBill.util to javafx.fxml;
+    exports com.payBill.util;
 }
