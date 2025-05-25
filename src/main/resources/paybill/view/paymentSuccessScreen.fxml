@@ -35,7 +35,7 @@
       <Button layoutX="502.0" layoutY="363.0" mnemonicParsing="false" onAction="#sendReceiptButton" text="send receipt" />
       <ImageView fitHeight="109.0" fitWidth="145.0" layoutX="242.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/misc/approve.png" />
+            <Image url="@../../images/misc/approve.png" />
          </image>
       </ImageView>
       <Text fx:id="warningText" fill="#a10505" layoutX="-10.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="619.2000427246094">
