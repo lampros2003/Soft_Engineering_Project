@@ -6,6 +6,7 @@ module com.mainpackage {
     requires javafx.media;
     requires javafx.swing;
     requires java.logging;
+    requires eu.hansolo.toolbox;
 
     // Analytics UI package
     opens com.analyticsui.demo1 to javafx.fxml;
