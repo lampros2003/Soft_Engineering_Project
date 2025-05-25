@@ -26,4 +26,10 @@ module com.mainpackage {
     // Chef package
     opens com.chefView to javafx.fxml;
     exports com.chefView;
+
+    // waiter package
+    opens com.waiter to javafx.fxml;
+    exports com.waiter;
+    //schedule package
+    opens com.
 }

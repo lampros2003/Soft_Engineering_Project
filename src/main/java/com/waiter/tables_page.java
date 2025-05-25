@@ -1,8 +1,11 @@
 package com.waiter;
 
+import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class tables_page {
 
@@ -24,6 +27,8 @@ public class tables_page {
     @FXML
     void get_table(ActionEvent event) {
         System.out.println("Button pressed");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/waiter/options_page.fxml");
     }
 
 }
