@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/util/SceneSwitching.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/MainScreen.fxml" beforeDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +15,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -30,12 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/menu" />
-      </map>
-    </option>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="giorgos" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,6 +40,9 @@
     &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;
   }
 }</component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="z1hvTqE1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -60,25 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.com.mainpackage.Main.executor": "Run",
-    "Application.com.payBill.Main.executor": "Run",
-    "Application.com.smart_restaurant.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#3 on dev&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
@@ -90,22 +78,11 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="com.analyticsui" />
-      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\common\view" />
-      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\java" />
-      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\paybill\images" />
-      <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources\paybill" />
-      <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.mainpackage.Main">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.analyticsui.demo1.HelloApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Soft-Eng_Project" />
       <extension name="coverage">
         <pattern>
@@ -117,12 +94,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.mainpackage.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mainpackage.Main" />
       <module name="Soft-Eng_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.*" />
+          <option name="PATTERN" value="com.mainpackage.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,20 +107,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Application.HelloApplication" />
-      <item itemvalue="Application.com.mainpackage.Main" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.mainpackage.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -158,6 +138,29 @@
       <workItem from="1747318869540" duration="1850000" />
       <workItem from="1747339022947" duration="593000" />
       <workItem from="1747398459882" duration="5491000" />
+      <workItem from="1747562377580" duration="60000" />
+      <workItem from="1747573353204" duration="1000" />
+      <workItem from="1747577669031" duration="1805000" />
+      <workItem from="1747647738068" duration="26000" />
+      <workItem from="1747661213638" duration="14002000" />
+      <workItem from="1747746312240" duration="1989000" />
+      <workItem from="1747761380558" duration="1000" />
+      <workItem from="1747762122061" duration="9176000" />
+      <workItem from="1747836138751" duration="5777000" />
+      <workItem from="1747929950370" duration="4202000" />
+      <workItem from="1748002098215" duration="257000" />
+      <workItem from="1748021068915" duration="3000" />
+      <workItem from="1748026783636" duration="593000" />
+      <workItem from="1748029616289" duration="9017000" />
+      <workItem from="1748041592896" duration="869000" />
+      <workItem from="1748081945580" duration="5037000" />
+      <workItem from="1748088533363" duration="2000" />
+      <workItem from="1748088547139" duration="3087000" />
+      <workItem from="1748112582323" duration="2000" />
+      <workItem from="1748122636186" duration="473000" />
+      <workItem from="1748123480195" duration="3974000" />
+      <workItem from="1748127521468" duration="1023000" />
+      <workItem from="1748162609677" duration="5916000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -191,7 +194,111 @@
       <option name="project" value="LOCAL" />
       <updated>1747417606133</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updates">
+      <option name="closed" value="true" />
+      <created>1747662593668</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747662593668</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updates">
+      <option name="closed" value="true" />
+      <created>1747662633424</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747662633424</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updates - added new classes and rename some old classes">
+      <option name="closed" value="true" />
+      <created>1747690277687</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747690277687</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Use Case 8 - Call Waiter update">
+      <option name="closed" value="true" />
+      <created>1747769156575</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1747769156575</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update methods and classes">
+      <option name="closed" value="true" />
+      <created>1748041867932</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748041867932</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fix">
+      <option name="closed" value="true" />
+      <created>1748125511832</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748125511832</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added manageMenu classes and fxml files">
+      <option name="closed" value="true" />
+      <created>1748125551809</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748125551809</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added fxml files">
+      <option name="closed" value="true" />
+      <created>1748125568723</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748125568723</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix method name">
+      <option name="closed" value="true" />
+      <created>1748125835326</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748125835326</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix method name">
+      <option name="closed" value="true" />
+      <created>1748125868320</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748125868320</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fix class and method names">
+      <option name="closed" value="true" />
+      <created>1748126378196</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748126378196</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fix class and method names">
+      <option name="closed" value="true" />
+      <created>1748127000431</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748127000431</updated>
+    </task>
+    <task id="LOCAL-00017" summary="comment code with errors">
+      <option name="closed" value="true" />
+      <created>1748168476961</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748168476961</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +321,16 @@
     <MESSAGE value="Change login and menu screens to the proper direcotries" />
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
     <MESSAGE value="added waiterViewController" />
-    <option name="LAST_COMMIT_MESSAGE" value="added waiterViewController" />
+    <MESSAGE value="updates" />
+    <MESSAGE value="Updates - added new classes and rename some old classes" />
+    <MESSAGE value="Use Case 8 - Call Waiter update" />
+    <MESSAGE value="update methods and classes" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="added manageMenu classes and fxml files" />
+    <MESSAGE value="added fxml files" />
+    <MESSAGE value="fix method name" />
+    <MESSAGE value="fix class and method names" />
+    <MESSAGE value="comment code with errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment code with errors" />
   </component>
 </project>
