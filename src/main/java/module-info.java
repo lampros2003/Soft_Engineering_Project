@@ -31,5 +31,6 @@ module com.mainpackage {
     opens com.waiter to javafx.fxml;
     exports com.waiter;
     //schedule package
-    opens com.
+    opens com.schedule to javafx.fxml;
+    exports com.schedule;
 }
