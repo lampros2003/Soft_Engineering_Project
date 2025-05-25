@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/util/SceneSwitching.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com.mainUI/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mainUI/MainScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/MainScreen.fxml" beforeDir="false" />
-    </list>
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added waiterViewController" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,25 +50,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.com.mainpackage.Main.executor": "Run",
-    "Application.com.payBill.Main.executor": "Run",
-    "Application.com.smart_restaurant.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.mainpackage.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.payBill.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.smart_restaurant.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
