@@ -1,6 +1,5 @@
 package com.login;
 
-import com.invMGMT.view.InvMGMTScreen;
 import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +25,12 @@ public class LoginController {
     private void loginAsAdministrator(ActionEvent event) {
         System.out.println("loginAsAdministrator");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
+//        InvMGMTScreen invMGMTScreen=new InvMGMTScreen(stage);
+        SceneSwitching.switchScene(stage, "/analytics/hello-view.fxml");
+//        System.out.println("here");
+//        invMGMTScreen.changeTitle("Inventory Management");
+//        SceneSwitching.switchScene(stage, "/adminUI/AdminScreen.fxml")
+
     }
 
     @FXML

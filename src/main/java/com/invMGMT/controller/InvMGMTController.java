@@ -1,5 +1,4 @@
 package com.invMGMT.controller;
- import com.invMGMT.view.InvMGMTScreen;
  import javafx.scene.Node;
  import javafx.scene.Parent;
  import javafx.scene.Scene;
