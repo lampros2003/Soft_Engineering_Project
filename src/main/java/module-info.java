@@ -52,6 +52,10 @@ module com.mainpackage {
     exports com.adminView;
 
     // Call Waiter package
-    exports com.callWaiter;
-    opens com.callWaiter to javafx.fxml;
+    exports com.callWaiter to javafx.fxml;
+    opens com.callWaiter;
+
+    // Common package
+    exports com.common to javafx.fxml;
+    opens com.common;
 }

@@ -1,6 +1,7 @@
 package com.adminView;
 
 import com.common.DBManager;
+import com.common.Ingredient;
 import com.menu.Menu;
 import com.menu.MenuItem;
 
@@ -18,4 +19,9 @@ public class ModifyMenuClass {
 
         return new Menu(items);
     }
+
+    public List<Ingredient> getRecommendedIngredients() {
+        return dbManager.queryRecommendedIngredients();
+    }
+
 }

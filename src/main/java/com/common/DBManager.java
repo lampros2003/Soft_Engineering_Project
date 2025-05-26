@@ -3,6 +3,8 @@ package com.common;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.menu.MenuItem;
 
@@ -50,6 +52,33 @@ public class DBManager {
         return items;
     }
 
+    public List<Ingredient> queryRecommendedIngredients() {
+        List<Ingredient> recommended = new ArrayList<>();
+
+        String sql = """
+                SELECT name, quantity
+                FROM INGREDIENTS
+                WHERE quantity >= 10
+                ORDER BY quantity DESC;
+                """;
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String quantity = rs.getString("quantity");
+
+                recommended.add(new Ingredient(name, Integer.parseInt(quantity)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return recommended;
+    }
 
     public void closeConnection(Connection connection) {
         if (connection != null) {
