@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/images/LOGO.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/images/misc/approve.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/misc/approve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/paymentSuccessScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/view/paymentSuccessScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ManageMenuClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DatabaseManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/ManageRequestStatusClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/RequestStatusWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/RequestStatusWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="giorgos" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,23 +66,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.schedule_use_case.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#3 on dev",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;giorgos&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main\resources\images\misc" />
@@ -178,6 +190,7 @@
       <workItem from="1748123480195" duration="3974000" />
       <workItem from="1748127521468" duration="1023000" />
       <workItem from="1748162609677" duration="5916000" />
+      <workItem from="1748245203130" duration="644000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -323,7 +336,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748175560480</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix">
+      <option name="closed" value="true" />
+      <created>1748177247813</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748177247813</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix">
+      <option name="closed" value="true" />
+      <created>1748177256177</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748177256177</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

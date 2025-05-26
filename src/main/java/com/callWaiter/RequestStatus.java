@@ -1,4 +1,4 @@
-package com.menu;
+package com.callWaiter;
 
 public class RequestStatus {
     private final int tableNumber;

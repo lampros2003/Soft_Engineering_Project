@@ -1,35 +1,34 @@
-//package com.adminView;
-//
-//import com.mainpackage.SceneSwitching;
-//import eu.hansolo.toolbox.observables.ObservableList;
-//import javafx.collections.FXCollections;
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.scene.Node;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.ButtonType;
-//import javafx.scene.control.ListView;
-//import javafx.scene.control.TableView;
-//import javafx.stage.Stage;
-//
-//import javax.swing.table.TableColumn;
-//import java.awt.*;
-//import java.util.ArrayList;
-//import java.util.Optional;
-//
-//public class MenuModificationScreen {
-//    @FXML private TableView<MenuItem> menuTable;
-//    @FXML private TableColumn dishColumn;
-//    @FXML private TableColumn<MenuItem, Double> priceColumn;
-//    @FXML private ListView<String> recommendedList;
-//    @FXML private ListView<String> expiredList;
+package com.adminView;
+
+import com.mainpackage.SceneSwitching;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+
+import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Optional;
+
+public class MenuModificationScreen {
+    @FXML private TableView<MenuItem> menuTable;
+    @FXML private TableColumn dishColumn;
+    @FXML private TableColumn priceColumn;
+    @FXML private ListView<String> recommendedList;
+    @FXML private ListView<String> expiredList;
 //    private final ManageMenuClass manage = new ManageMenuClass();
 //    private ObservableList<MenuItem> menuItems;
-//
-//    public MenuModificationScreen(ListView<String> recommendedList) {
-//        this.recommendedList = recommendedList;
-//    }
-//
+
+    public MenuModificationScreen(ListView<String> recommendedList) {
+        this.recommendedList = recommendedList;
+    }
+
 //    @FXML
 //    public void initialize() {
 //        Menu data = manage.displayMenu();
@@ -67,15 +66,15 @@
 //            info.show();
 //        }
 //    }
-//
-//    @FXML
-//    private void onModifyMenu(ActionEvent event) {
-//        System.out.println("Modify Menu button clicked");
-//    }
-//
-//    @FXML
-//    private void redirectToDashboard(ActionEvent event) {
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
-//    }
-//}
+
+    @FXML
+    private void onModifyMenu(ActionEvent event) {
+        System.out.println("Modify Menu button clicked");
+    }
+
+    @FXML
+    private void redirectToDashboard(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
+    }
+}

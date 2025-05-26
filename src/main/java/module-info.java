@@ -28,11 +28,11 @@ module com.mainpackage {
     opens com.chefView to javafx.fxml;
     exports com.chefView;
 
-    // waiter package
+    // Waiter package
     opens com.waiter to javafx.fxml;
     exports com.waiter;
 
-    //schedule package
+    // Schedule package
     opens com.schedule to javafx.fxml;
     exports com.schedule;
 
@@ -44,4 +44,9 @@ module com.mainpackage {
 
     opens com.payBill.util to javafx.fxml;
     exports com.payBill.util;
+
+    opens com.adminView to javafx.fxml;
+    exports com.adminView;
+    exports com.callWaiter;
+    opens com.callWaiter to javafx.fxml;
 }

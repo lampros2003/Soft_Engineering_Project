@@ -7,5 +7,10 @@
       <schema-mapping />
       <load-sources>user_and_system_sources</load-sources>
     </data-source>
+    <data-source name="database" uuid="b0b78115-ff2b-4b57-b242-11cc804befce">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" />
+      <auth-provider>no-auth</auth-provider>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
