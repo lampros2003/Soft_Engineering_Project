@@ -4,23 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="fill some tables and changed the path">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ManageMenuClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DatabaseManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageRequestStatusClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/ManageRequestStatusClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/DBManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/RequestStatusWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/RequestStatusWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,30 +66,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;giorgos&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DBManager.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.schedule_use_case.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "giorgos",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "SQL Dialects",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project" />
       <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main\resources\images\misc" />
       <recent name="C:\Users\Giorgos\Desktop\Τεχνολογία Λογισμικού\Soft_Engineering_Project\src\main\resources" />
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.menu" />
-      <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.login" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -97,6 +105,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="DBManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.common.DBManager" />
+      <module name="Soft-Eng_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.analyticsui.demo1.HelloApplication" />
       <module name="Soft-Eng_Project" />
@@ -139,10 +160,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DBManager" />
         <item itemvalue="Application.schedule_use_case" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +211,7 @@
       <workItem from="1748123480195" duration="3974000" />
       <workItem from="1748127521468" duration="1023000" />
       <workItem from="1748162609677" duration="5916000" />
-      <workItem from="1748245203130" duration="644000" />
+      <workItem from="1748245203130" duration="7036000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -352,7 +373,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748177256177</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="structure changes about call waiter and menu modification">
+      <option name="closed" value="true" />
+      <created>1748245889590</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1748245889590</updated>
+    </task>
+    <task id="LOCAL-00022" summary="fill some tables and changed the path">
+      <option name="closed" value="true" />
+      <created>1748247904374</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748247904374</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +422,12 @@
     <MESSAGE value="fix class and method names" />
     <MESSAGE value="comment code with errors" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="structure changes about call waiter and menu modification" />
+    <MESSAGE value="fill some tables and changed the path" />
+    <option name="LAST_COMMIT_MESSAGE" value="fill some tables and changed the path" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

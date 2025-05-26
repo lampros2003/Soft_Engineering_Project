@@ -15,7 +15,7 @@ public class InventoryManager {
         this.stage=stage;
         this.loader= SceneSwitching.switchSceneR(stage,"/invMGMT/invMGMT.fxml");
         this.db=new DBManager();
-        this.inventory=db.getIngredints();
+        this.inventory=db.getIngredients();
         InventoryListController listController=loader.getController();
         listController.display(this.inventory);
     }

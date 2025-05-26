@@ -1,71 +1,43 @@
 package com.adminView;
 
 import com.mainpackage.SceneSwitching;
+import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import javax.swing.table.TableColumn;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Optional;
+import com.menu.Menu;
+import com.menu.MenuItem;
 
 public class MenuModificationScreen {
-    @FXML private TableView<MenuItem> menuTable;
-    @FXML private TableColumn dishColumn;
-    @FXML private TableColumn priceColumn;
-    @FXML private ListView<String> recommendedList;
-    @FXML private ListView<String> expiredList;
-//    private final ManageMenuClass manage = new ManageMenuClass();
-//    private ObservableList<MenuItem> menuItems;
+    private ModifyMenuClass menuManager = new ModifyMenuClass();
 
-    public MenuModificationScreen(ListView<String> recommendedList) {
-        this.recommendedList = recommendedList;
+    @FXML private TableView<MenuItem> menuTable;
+    @FXML private TableColumn<MenuItem, String> dishColumn;
+    @FXML private TableColumn<MenuItem, Double> priceColumn;
+    @FXML private TableColumn<MenuItem, String> ingredientsColumn;
+
+    public void initialize() {
+        Menu menu = menuManager.getCurrentMenu();
+        displayMenu(menu);
     }
 
-//    @FXML
-//    public void initialize() {
-//        Menu data = manage.displayMenu();
-//        menuItems = FXCollections.observableArrayList(data.getItems());
-//        menuTable.setItems(menuItems);
-//
-//        dishColumn.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getName()));
-//        priceColumn.setCellValueFactory(c -> new javafx.beans.property.SimpleDoubleProperty(c.getValue().getPrice()).asObject());
-//
-//        menuTable.setEditable(true);
-//        dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        dishColumn.setOnEditCommit(e -> e.getRowValue().setName(e.getNewValue()));
-//        priceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-//        priceColumn.setOnEditCommit(e -> e.getRowValue().setPrice(e.getNewValue()));
-//
-//        recommendedList.setItems(FXCollections.observableArrayList(manage.getRecommendedIngredients()));
-//        expiredList.setItems(FXCollections.observableArrayList(manage.getExpiredOffers()));
-//    }
-//
-//    @FXML
-//    private void onModifyMenu() {
-//        com.menu.Menu updatedMenu = new Menu(new ArrayList<>(menuItems));
-//        if (!manage.checkIfChangesAreValid(updatedMenu)) {
-//            Alert error = new Alert(Alert.AlertType.ERROR, "Το μενού είναι άδειο!", ButtonType.OK);
-//            error.show();
-//            return;
-//        }
-//
-//        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Να αποθηκευτούν οι αλλαγές;", ButtonType.OK, ButtonType.CANCEL);
-//        Optional<ButtonType> result = confirm.showAndWait();
-//        if (result.isPresent() && result.get() == ButtonType.OK) {
-//            boolean success = manage.modifyMenu(updatedMenu);
-//            Alert info = new Alert(success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR,
-//                    success ? "Αποθήκευση επιτυχής!" : "Αποτυχία αποθήκευσης!");
-//            info.show();
-//        }
-//    }
+    private void displayMenu(Menu menu) {
+        ObservableList<MenuItem> menuItems = FXCollections.observableArrayList(menu.getItems());
+
+        dishColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName()));
+
+        priceColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getPrice()).asObject());
+
+        ingredientsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngredients()));
+
+        menuTable.setItems(menuItems);
+    }
 
     @FXML
     private void onModifyMenu(ActionEvent event) {

@@ -1,30 +1,66 @@
 package com.common;
 
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.menu.MenuItem;
+
 public class DBManager {
-    public  Ingredient[] getIngredints(){
-        Ingredient[] temp={new Ingredient("patates",1),new Ingredient("ntomates",2)};
+
+    private static final String URL = "jdbc:sqlite:database.db";
+
+    public Connection connect() throws SQLException {
+        return DriverManager.getConnection(URL);
+    }
+
+    public Ingredient[] getIngredients() {
+        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
         return temp;
     }
-//    public Menu loadMenuData() {
-//        List<MenuItem> items = new ArrayList<>();
-//        items.add(new MenuItem("Pizza", 9.99));
-//        items.add(new MenuItem("Burger", 6.49));
-//        return new Menu(items);
-//    }
-//
-//    public List<String> queryRecommendedIngredients() {
-//        return List.of("Mozzarella", "Basil", "Tomato");
-//    }
-//
-//    public List<String> queryExpiredOffers() {
-//        return List.of("2-for-1 Burger", "Free Soda with Pasta");
-//    }
-//
-//    public boolean updateMenuData(Menu newData) {
-//        System.out.println("Update menu:");
-//        for (MenuItem item : newData.getItems()) {
-//            System.out.println(item.getName() + " - " + item.getPrice());
-//        }
-//        return true;
-//    }
+
+    public List<MenuItem> loadMenuData() {
+        List<MenuItem> items = new ArrayList<>();
+        String sql = """
+                SELECT d.name AS dish_name,
+                       d.value AS price,
+                       GROUP_CONCAT(i.name, ', ') AS ingredients
+                FROM DISH d
+                JOIN CONSISTS c ON d.name = c.dishId
+                JOIN INGREDIENTS i ON i.name = c.ingredientId
+                GROUP BY d.name, d.value;
+                """;
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String name = rs.getString("dish_name");
+                double price = rs.getDouble("price");
+                String ingredients = rs.getString("ingredients");
+
+                items.add(new MenuItem(name, price, ingredients));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return items;
+    }
+
+
+    public void closeConnection(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
+
+

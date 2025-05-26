@@ -1,4 +1,4 @@
-package com.adminView;
+package com.menu;
 
 import com.callWaiter.ManageRequestStatusClass;
 import com.callWaiter.RequestStatusWindow;

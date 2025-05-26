@@ -43,8 +43,9 @@
                            <children>
                               <TableView fx:id="menuTable" layoutY="8.0" prefHeight="390.0" prefWidth="421.0">
                                 <columns>
-                                  <TableColumn fx:id="dishColumn" prefWidth="303.9999809265137" text="Dish" />
-                                  <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
+                                  <TableColumn fx:id="dishColumn" prefWidth="143.2000389099121" text="Dish" />
+                                    <TableColumn fx:id="ingredientsColumn" minWidth="0.0" prefWidth="164.20001220703125" text="Ingredients" />
+                                  <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="111.20002746582031" text="Price" />
                                 </columns>
                               </TableView>
                            </children>
