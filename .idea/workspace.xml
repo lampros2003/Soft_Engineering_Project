@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/DealItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b0b78115-ff2b-4b57-b242-11cc804befce.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b0b78115-ff2b-4b57-b242-11cc804befce/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="added show menu and recommended ingredients feature for use case 7 (Modify Menu)">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2025_4_50_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2025_4_50_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +208,11 @@
       <workItem from="1748162609677" duration="5916000" />
       <workItem from="1748245203130" duration="11803000" />
       <workItem from="1748258238446" duration="1272000" />
-      <workItem from="1748259539477" duration="2132000" />
+      <workItem from="1748259539477" duration="5076000" />
+      <workItem from="1748276986935" duration="4000" />
+      <workItem from="1748285176911" duration="551000" />
+      <workItem from="1748295723923" duration="2000" />
+      <workItem from="1748295851458" duration="2225000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -402,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748252729104</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added show menu and recommended ingredients feature for use case 7 (Modify Menu)">
+      <option name="closed" value="true" />
+      <created>1748262152191</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748262152191</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,7 +451,8 @@
     <MESSAGE value="fill some tables and changed the path" />
     <MESSAGE value="added loadMenu feature for Menu Modification Screen" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="added show menu and recommended ingredients feature for use case 7 (Modify Menu)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added show menu and recommended ingredients feature for use case 7 (Modify Menu)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -60,6 +60,9 @@ public class MenuModificationScreen {
         recommendedIngredientsTable.setEditable(true);
         displayRecommendedIngredients(ingredient);
 
+        // Show deals table
+
+
     }
 
     private void displayRecommendedIngredients(List<Ingredient> ingredients) {
@@ -84,10 +87,63 @@ public class MenuModificationScreen {
         menuTable.setItems(menuItems);
     }
 
+//    @FXML
+//    private void onAddToDeals(ActionEvent event) {
+//        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();
+//
+//        if (selectedItem == null) {
+//            showAlert("Please select a dish from the menu first.");
+//            return;
+//        }
+//
+//        double discount = 0.2; // 20% έκπτωση (μπορεί να γίνει input αργότερα)
+//
+//        boolean success = menuManager.addDeal(selectedItem.getName(), discount);
+//
+//        if (success) {
+//            displayDeals(menuManager.getDeals()); // refresh πίνακα προσφορών
+//            showAlert("Dish added to deals successfully!");
+//        } else {
+//            showAlert("This dish is already in the deals or an error occurred.");
+//        }
+//    }
+//
+//    private void showAlert(String s) {
+//    }
+
     @FXML
     private void onModifyMenu(ActionEvent event) {
-        System.out.println("Modify Menu button clicked");
+        ObservableList<MenuItem> updatedItems = menuTable.getItems();
+
+        for (MenuItem item : updatedItems) {
+            if (!isValid(item)) {
+                showAlert("Invalid data in one or more dishes.");
+                return;
+            }
+        }
+
+        boolean success = menuManager.updateMenuItems(updatedItems);
+
+        if (success) {
+            showAlert("Menu updated successfully!");
+        } else {
+            showAlert("Update failed.");
+        }
     }
+
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
+    private boolean isValid(MenuItem item) {
+        return item.getName() != null && !item.getName().trim().isEmpty()
+               && item.getIngredients() != null && !item.getIngredients().trim().isEmpty()
+               && item.getPrice() >= 0;
+    }
+
 
     @FXML
     private void redirectToDashboard(ActionEvent event) {

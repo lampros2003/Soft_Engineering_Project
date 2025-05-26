@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.menu.DealItem;
 import com.menu.MenuItem;
 
 public class DBManager {
@@ -79,6 +80,57 @@ public class DBManager {
 
         return recommended;
     }
+
+//    public List<DealItem> queryRecommendedDeals() {
+//
+//    }
+
+    public List<DealItem> loadDeals() {
+        List<DealItem> deals = new ArrayList<>();
+        String sql = """
+                    SELECT d.name, d.value, de.discount
+                    FROM DEAL de
+                    JOIN DISH d ON de.name = d.name;
+                """;
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String name = rs.getString("name");
+                double price = rs.getDouble("value");
+                double discount = rs.getDouble("discount");
+                deals.add(new DealItem(name, price, discount));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return deals;
+    }
+
+    public boolean updateMenu(List<MenuItem> items) {
+        String sql = "UPDATE DISH SET value = ? WHERE name = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            for (MenuItem item : items) {
+                stmt.setDouble(1, item.getPrice());
+                stmt.setString(2, item.getName());
+                stmt.executeUpdate();
+            }
+
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public void closeConnection(Connection connection) {
         if (connection != null) {
