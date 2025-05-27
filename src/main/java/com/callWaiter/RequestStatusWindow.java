@@ -1,11 +1,7 @@
-package com.menu;
+package com.callWaiter;
 
-import com.mainpackage.SceneSwitching;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 public class RequestStatusWindow {

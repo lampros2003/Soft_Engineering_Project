@@ -1,0 +1,12 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_25_5_2025_3_37_μ_μ__[Changes]" date="1748176667482" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_3_37_μ_μ__[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 25/5/2025 3:37 μ.μ. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="src/main/resources/paybill/images/misc/approve.png" />
+    <option name="AFTER_PATH" value="src/main/resources/images/misc/approve.png" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_3_37_μ_μ__[Changes]/approve.png" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="src/main/resources/paybill/images/LOGO.png" />
+  </binary>
+</changelist>
