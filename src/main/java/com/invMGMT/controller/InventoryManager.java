@@ -20,7 +20,15 @@ public class InventoryManager {
         listController.setManager(this);
         listController.display(this.inventory);
     }
-    public void itemDetails(){
-        this.loader=SceneSwitching.switchSceneR(stage,"/invMGMT/itemDetails.fxml");
+    public void itemDetails(String id){
+//        ItemDetailsController idController=new ItemDetailsController();
+        this.loader=SceneSwitching.switchSceneR(this.stage,"/invMGMT/itemDetails.fxml");
+        Ingredient temp=this.db.getSpecificIngredient(id);
+        ItemDetailsController idController=this.loader.getController();
+        idController.setManager(this);
+        idController.updateText(temp.getName(),temp.getInfo());
+    }
+    public void removeItem(String id) {
+        db.removeIngredient(id);
     }
 }

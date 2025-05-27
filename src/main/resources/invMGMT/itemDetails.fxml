@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="881.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="881.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.invMGMT.controller.ItemDetailsController">
    <children>
       <Pane layoutX="128.0" layoutY="62.0" prefHeight="399.0" prefWidth="755.0" styleClass="text">
          <children>
-            <Text layoutX="284.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" />
-            <Text layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Details" />
+            <Text fx:id="itemName" layoutX="284.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" />
+            <Text fx:id="itemDetails" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Details" />
          </children></Pane>
       <Pane prefHeight="460.0" prefWidth="128.0" style="-fx-background-color: #433D3D;">
          <children>
-            <Button layoutY="376.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Edit Item" />
-            <Button layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Remove Item" />
+            <Button layoutY="376.0" mnemonicParsing="false" onAction="#editItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Edit Item" />
+            <Button layoutY="412.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Remove Item" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>

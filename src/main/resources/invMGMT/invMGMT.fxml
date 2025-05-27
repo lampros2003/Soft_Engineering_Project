@@ -25,7 +25,7 @@
             <Pane layoutY="60.0" />
             <Pane layoutY="104.0" />
             <Button layoutY="68.0" mnemonicParsing="false" onAction="#addIngredientButton" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="add Ingredient" />
-            <Button layoutY="112.0" mnemonicParsing="false" onAction="#modifySelectedIngredint" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="modify Ingredient" />
+            <Button layoutY="112.0" mnemonicParsing="false" onAction="#modifySelectedIngredint" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text=" Ingredient's details" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>
