@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+    Confirmation‑summary screen.
+    • Back arrow in top‑left corner
+    • Heading centred: "Your reservation has been registered."
+    • Read‑only text‑box (TextArea) that will later be filled with a generated summary.
+      Prompt‑text acts as placeholder when empty.
+    • Two dark buttons: SUBMIT REQUEST   |   EDIT RESERVATION
+-->
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConfirmationController"
+            prefWidth="560" prefHeight="340" style="-fx-background-color: #f4f4f6;">
+
+    <children>
+        <!-- Back arrow button -->
+        <Button fx:id="backButton" text="←" onAction="#handleBack"
+                style="-fx-background-color: transparent; -fx-font-size: 18;"
+                AnchorPane.topAnchor="14" AnchorPane.leftAnchor="14" />
+
+        <!-- Main column -->
+        <VBox alignment="TOP_CENTER" spacing="26"
+              AnchorPane.topAnchor="46" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+
+            <!-- Heading -->
+            <Label text="Your reservation has been registered.">
+                <font><Font size="18"/></font>
+            </Label>
+
+            <!-- Details label -->
+            <Label text="Reservation details:" />
+
+            <!-- Placeholder / summary text box -->
+            <TextArea fx:id="summaryArea" prefRowCount="6" prefWidth="360" wrapText="true" editable="false"
+                      promptText="Reservation number: #12345\nName: John Doe\nParty size: 3 people\nConfirmation sent via email at: john@gmail.com\nAdditional arrangements: -"
+                      style="-fx-border-color: transparent; -fx-background-color: rgba(0,0,0,0.03); -fx-background-radius: 4;" />
+
+            <!-- Buttons row -->
+            <HBox alignment="CENTER" spacing="26">
+                <children>
+                    <Button fx:id="submitButton" text="SUBMIT REQUEST" onAction="#handleSubmit"
+                            style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 10 36; -fx-font-size: 13;" />
+
+                    <Button fx:id="editButton" text="EDIT RESERVATION" onAction="#handleEdit"
+                            style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 10 36; -fx-font-size: 13;" />
+                </children>
+            </HBox>
+
+            <!-- bottom padding -->
+            <padding>
+                <Insets top="0" right="20" bottom="20" left="20" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
+
+
