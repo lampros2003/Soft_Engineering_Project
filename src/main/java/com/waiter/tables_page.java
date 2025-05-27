@@ -27,7 +27,8 @@ public class tables_page {
     @FXML
     void get_table(ActionEvent event) {
         System.out.println("Button pressed");
-
+        Stage cstage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        options_screen.Display(cstage);
     }
 
 }

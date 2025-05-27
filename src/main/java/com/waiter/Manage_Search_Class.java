@@ -8,7 +8,8 @@ public class Manage_Search_Class {
         boolean status = DatabaseManager.Check_if_Order_Exists(table_number);
         if (status) {
             System.out.println("Order exists");
-            options_screen.Display();
+            //Stage cstage = null;
+            //options_screen.Display(cstage);
 
         } else {
             System.out.println("Order does not exist");

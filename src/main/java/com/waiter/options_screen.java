@@ -15,10 +15,9 @@ public class options_screen {
     @FXML
     private Pane cancel_button;
 
-    public static void Display() {
+    public static void Display(Stage stage) {
         System.out.println("Displaying options screen");
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/waiter/options_page.fxml");
+        SceneSwitching.switchScene(stage,"/waiter/options_page.fxml");
     }
 
     @FXML
