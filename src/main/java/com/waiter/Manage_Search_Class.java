@@ -10,6 +10,9 @@ public class Manage_Search_Class {
             System.out.println("Order exists");
             //Stage cstage = null;
             //options_screen.Display(cstage);
+            options_screen john = new options_screen();
+            john.Display(null);
+
 
         } else {
             System.out.println("Order does not exist");

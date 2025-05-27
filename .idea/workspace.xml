@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/SceneSwitching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/Manage_Search_Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/Manage_Search_Class.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/options_screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/options_screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/tables_page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/tables_page.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -329,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748365468400</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="comment code with errors">
+      <option name="closed" value="true" />
+      <created>1748366899999</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748366899999</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,19 +361,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/panos" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
