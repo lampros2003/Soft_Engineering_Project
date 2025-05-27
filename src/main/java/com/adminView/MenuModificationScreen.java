@@ -1,81 +1,153 @@
-//package com.adminView;
-//
-//import com.mainpackage.SceneSwitching;
-//import eu.hansolo.toolbox.observables.ObservableList;
-//import javafx.collections.FXCollections;
-//import javafx.event.ActionEvent;
-//import javafx.fxml.FXML;
-//import javafx.scene.Node;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.ButtonType;
-//import javafx.scene.control.ListView;
-//import javafx.scene.control.TableView;
-//import javafx.stage.Stage;
-//
-//import javax.swing.table.TableColumn;
-//import java.awt.*;
-//import java.util.ArrayList;
-//import java.util.Optional;
-//
-//public class MenuModificationScreen {
-//    @FXML private TableView<MenuItem> menuTable;
-//    @FXML private TableColumn dishColumn;
-//    @FXML private TableColumn<MenuItem, Double> priceColumn;
-//    @FXML private ListView<String> recommendedList;
-//    @FXML private ListView<String> expiredList;
-//    private final ManageMenuClass manage = new ManageMenuClass();
-//    private ObservableList<MenuItem> menuItems;
-//
-//    public MenuModificationScreen(ListView<String> recommendedList) {
-//        this.recommendedList = recommendedList;
-//    }
-//
+package com.adminView;
+
+import com.common.Ingredient;
+import com.mainpackage.SceneSwitching;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+
+import com.menu.Menu;
+import com.menu.MenuItem;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
+
+import java.util.List;
+
+public class MenuModificationScreen {
+    private ModifyMenuClass menuManager = new ModifyMenuClass();
+
+    @FXML
+    private TableView<MenuItem> menuTable;
+    @FXML
+    private TableColumn<MenuItem, String> dishColumn;
+    @FXML
+    private TableColumn<MenuItem, Double> priceColumn;
+    @FXML
+    private TableColumn<MenuItem, String> ingredientsColumn;
+
+    @FXML
+    private TableView<Ingredient> recommendedIngredientsTable;
+    @FXML
+    private TableColumn<Ingredient, String> ingredientName;
+    @FXML
+    private TableColumn<Ingredient, Integer> ingredientQuantity;
+
+    public void initialize() {
+        // Show the menu table
+        Menu menu = menuManager.getCurrentMenu();
+
+        dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
+        ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        menuTable.setEditable(true);
+        displayMenu(menu);
+
+        // Show the recommended ingredients table
+        List<Ingredient> ingredient = menuManager.getRecommendedIngredients();
+
+        ingredientName.setCellFactory(TextFieldTableCell.forTableColumn());
+        ingredientQuantity.setCellFactory(TextFieldTableCell.<Ingredient, Integer>forTableColumn(new IntegerStringConverter()));
+
+        recommendedIngredientsTable.setEditable(true);
+        displayRecommendedIngredients(ingredient);
+
+        // Show deals table
+
+
+    }
+
+    private void displayRecommendedIngredients(List<Ingredient> ingredients) {
+        ObservableList<Ingredient> data = FXCollections.observableArrayList(ingredients);
+
+        ingredientName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
+
+        ingredientQuantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());
+
+        recommendedIngredientsTable.setItems(data);
+    }
+
+    private void displayMenu(Menu menu) {
+        ObservableList<MenuItem> menuItems = FXCollections.observableArrayList(menu.getItems());
+
+        dishColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName()));
+
+        priceColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getPrice()).asObject());
+
+        ingredientsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngredients()));
+
+        menuTable.setItems(menuItems);
+    }
+
 //    @FXML
-//    public void initialize() {
-//        Menu data = manage.displayMenu();
-//        menuItems = FXCollections.observableArrayList(data.getItems());
-//        menuTable.setItems(menuItems);
+//    private void onAddToDeals(ActionEvent event) {
+//        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();
 //
-//        dishColumn.setCellValueFactory(c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getName()));
-//        priceColumn.setCellValueFactory(c -> new javafx.beans.property.SimpleDoubleProperty(c.getValue().getPrice()).asObject());
-//
-//        menuTable.setEditable(true);
-//        dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        dishColumn.setOnEditCommit(e -> e.getRowValue().setName(e.getNewValue()));
-//        priceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-//        priceColumn.setOnEditCommit(e -> e.getRowValue().setPrice(e.getNewValue()));
-//
-//        recommendedList.setItems(FXCollections.observableArrayList(manage.getRecommendedIngredients()));
-//        expiredList.setItems(FXCollections.observableArrayList(manage.getExpiredOffers()));
-//    }
-//
-//    @FXML
-//    private void onModifyMenu() {
-//        com.menu.Menu updatedMenu = new Menu(new ArrayList<>(menuItems));
-//        if (!manage.checkIfChangesAreValid(updatedMenu)) {
-//            Alert error = new Alert(Alert.AlertType.ERROR, "Το μενού είναι άδειο!", ButtonType.OK);
-//            error.show();
+//        if (selectedItem == null) {
+//            showAlert("Please select a dish from the menu first.");
 //            return;
 //        }
 //
-//        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Να αποθηκευτούν οι αλλαγές;", ButtonType.OK, ButtonType.CANCEL);
-//        Optional<ButtonType> result = confirm.showAndWait();
-//        if (result.isPresent() && result.get() == ButtonType.OK) {
-//            boolean success = manage.modifyMenu(updatedMenu);
-//            Alert info = new Alert(success ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR,
-//                    success ? "Αποθήκευση επιτυχής!" : "Αποτυχία αποθήκευσης!");
-//            info.show();
+//        double discount = 0.2; // 20% έκπτωση (μπορεί να γίνει input αργότερα)
+//
+//        boolean success = menuManager.addDeal(selectedItem.getName(), discount);
+//
+//        if (success) {
+//            displayDeals(menuManager.getDeals()); // refresh πίνακα προσφορών
+//            showAlert("Dish added to deals successfully!");
+//        } else {
+//            showAlert("This dish is already in the deals or an error occurred.");
 //        }
 //    }
 //
-//    @FXML
-//    private void onModifyMenu(ActionEvent event) {
-//        System.out.println("Modify Menu button clicked");
+//    private void showAlert(String s) {
 //    }
-//
-//    @FXML
-//    private void redirectToDashboard(ActionEvent event) {
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
-//    }
-//}
+
+    @FXML
+    private void onModifyMenu(ActionEvent event) {
+        ObservableList<MenuItem> updatedItems = menuTable.getItems();
+
+        for (MenuItem item : updatedItems) {
+            if (!isValid(item)) {
+                showAlert("Invalid data in one or more dishes.");
+                return;
+            }
+        }
+
+        boolean success = menuManager.updateMenuItems(updatedItems);
+
+        if (success) {
+            showAlert("Menu updated successfully!");
+        } else {
+            showAlert("Update failed.");
+        }
+    }
+
+    private void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
+    private boolean isValid(MenuItem item) {
+        return item.getName() != null && !item.getName().trim().isEmpty()
+               && item.getIngredients() != null && !item.getIngredients().trim().isEmpty()
+               && item.getPrice() >= 0;
+    }
+
+
+    @FXML
+    private void redirectToDashboard(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
+    }
+}
