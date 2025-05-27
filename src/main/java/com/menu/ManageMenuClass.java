@@ -1,5 +1,7 @@
 package com.menu;
 
+import com.callWaiter.ManageRequestStatusClass;
+import com.callWaiter.RequestStatusWindow;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

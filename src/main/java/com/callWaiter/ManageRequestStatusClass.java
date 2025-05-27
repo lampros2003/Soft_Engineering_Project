@@ -1,8 +1,7 @@
-package com.menu;
+package com.callWaiter;
 
 import com.waiter.ManageWaiterScreenClass;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
