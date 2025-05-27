@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_40_____Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_40_μ_μ__[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_44_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_5_2025_7_44_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_____Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_π_μ__[Changes]1/MainSceneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_11_54_π_μ__[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_04_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_04_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_24_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_24_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_27_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_5_2025_12_27_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_____Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/invMGMT.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/invMGMT/itemDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/invMGMT/itemDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/ItemDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/ItemDetailsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,10 +139,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.com.mainpackage.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.com.smart_restaurant.Main" />
         <item itemvalue="Application.com.smart_restaurant.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>

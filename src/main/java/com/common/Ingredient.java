@@ -7,7 +7,7 @@ public class Ingredient {
     public Ingredient(String name,int quantity){
         this.name=name;
         this.quantity=quantity;
-        this.allergen="";
+        this.allergen=null;
     }
     public Ingredient(String name,int quantity,String allergen){
         this.name=name;

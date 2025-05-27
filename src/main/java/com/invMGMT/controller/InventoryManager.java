@@ -11,6 +11,7 @@ public class InventoryManager {
     FXMLLoader loader;
     DatabaseManager db;
     Ingredient[] inventory;
+    private Ingredient selectedIngredient;
     public void init(Stage stage){
         this.stage=stage;
         this.loader= SceneSwitching.switchSceneR(stage,"/invMGMT/invMGMT.fxml");
@@ -26,9 +27,15 @@ public class InventoryManager {
         Ingredient temp=this.db.getSpecificIngredient(id);
         ItemDetailsController idController=this.loader.getController();
         idController.setManager(this);
-        idController.updateText(temp.getName(),temp.getInfo());
+        this.selectedIngredient=temp;
+        idController.display(temp);
     }
     public void removeItem(String id) {
         db.removeIngredient(id);
+    }
+    public void editItem(String item){
+        this.loader=SceneSwitching.switchSceneR(this.stage,"/invMGMT/itemEdit.fxml");
+        editItemController controller=this.loader.getController();
+        controller.init(selectedIngredient);
     }
 }

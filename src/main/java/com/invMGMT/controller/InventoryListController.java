@@ -36,8 +36,8 @@ public class InventoryListController {
     }
     public void modifySelectedIngredint(){
         System.out.println("modify");
-        if(invList.getSelectionModel().getSelectedItems()!=null) {
-            String modifyId = invList.getSelectionModel().getSelectedItems().get(0).getText().split("-")[0];
+        if(invList.getSelectionModel().getSelectedItem()!=null) {
+            String modifyId = invList.getSelectionModel().getSelectedItem().getText().split("-")[0];
             System.out.println(modifyId);
             inventoryManager.itemDetails(modifyId);
         }
