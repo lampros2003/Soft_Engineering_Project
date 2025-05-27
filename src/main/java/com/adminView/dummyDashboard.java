@@ -24,4 +24,18 @@ public class dummyDashboard {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/adminView/manageMenu.fxml");
     }
+    @FXML
+    void analytics(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/analytics/hello-view.fxml");
+    }
+
+    @FXML
+    void tableManagement(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/com/tables/TablesScreen.fxml");
+    }
+
+
+
 }

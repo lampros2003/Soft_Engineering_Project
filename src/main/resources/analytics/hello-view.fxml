@@ -10,6 +10,12 @@
    <top>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #252020;">
          <children>
+            <Button mnemonicParsing="false" onAction="#returnToDashboard" style="-fx-background-color: #444444;" text="← Back to Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />

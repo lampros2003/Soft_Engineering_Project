@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import java.lang.String?>
@@ -21,11 +22,12 @@
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #252020;" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" onAction="#onBackButtonClicked" style="-fx-background-color: transparent;">
-                    <graphic>
-                        <Pane prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ffffff; -fx-shape: 'M15,8 L5,16 L15,24 Z';" />
-                    </graphic>
+                <Button mnemonicParsing="false" onAction="#onBackButtonClicked" style="-fx-background-color: #444444;" text="← Back to Dashboard" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
                 </Button>
+                <Region HBox.hgrow="ALWAYS" />
                 <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="Dashboard" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />

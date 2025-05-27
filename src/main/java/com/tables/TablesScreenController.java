@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import com.mainpackage.SceneSwitching;
 
 public class TablesScreenController implements Initializable {
 
@@ -393,13 +394,12 @@ public class TablesScreenController implements Initializable {
     }
 
     /**
-     * Handle the Back button click
+     * Handle the Back button click to return to the dummyDashboard
      */
     @FXML
     public void onBackButtonClicked(ActionEvent event) {
-        // Return to previous screen
-        // For now, just print a message
-        System.out.println("Back button clicked - would return to previous screen");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
     }
 
     /**
