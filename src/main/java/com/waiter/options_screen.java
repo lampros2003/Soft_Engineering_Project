@@ -15,6 +15,12 @@ public class options_screen {
     @FXML
     private Pane cancel_button;
 
+    public static void Display() {
+        System.out.println("Displaying options screen");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/waiter/options_page.fxml");
+    }
+
     @FXML
     void clicked_Cancel(MouseEvent event) {
         System.out.println("Cancel button clicked");

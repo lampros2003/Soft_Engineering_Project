@@ -1,13 +1,7 @@
 package com.schedule;
 
 import com.mainpackage.PopUp;
-import com.mainpackage.SceneSwitching;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
-import javafx.scene.text.Text;
+import com.mainpackage.PopUp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

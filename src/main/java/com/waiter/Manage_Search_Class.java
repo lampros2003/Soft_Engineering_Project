@@ -1,0 +1,17 @@
+package com.waiter;
+
+import com.common.DatabaseManager;
+
+public class Manage_Search_Class {
+    public void Search_Tables_Order(int table_number){
+        System.out.println("Search order for table "+" "+table_number);
+        boolean status = DatabaseManager.Check_if_Order_Exists(table_number);
+        if (status) {
+            System.out.println("Order exists");
+            options_screen.Display();
+
+        } else {
+            System.out.println("Order does not exist");
+        }
+    }
+}

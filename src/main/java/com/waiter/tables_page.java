@@ -27,8 +27,7 @@ public class tables_page {
     @FXML
     void get_table(ActionEvent event) {
         System.out.println("Button pressed");
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/waiter/options_page.fxml");
+
     }
 
 }
