@@ -40,6 +40,7 @@ public class MenuModificationScreen {
     @FXML
     private TableColumn<Ingredient, Integer> ingredientQuantity;
 
+    // Methods to be implemented
     //public void display(){}
     //public void noOffersExpiredNotification(){}
     //public void displayExpiredOffers(){}
