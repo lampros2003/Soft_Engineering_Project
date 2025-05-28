@@ -1,5 +1,6 @@
 package com.adminView;
 
+import com.invMGMT.controller.InventoryManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -35,7 +36,10 @@ public class dummyDashboard {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/com/tables/TablesScreen.fxml");
     }
-
+    @FXML void inventoryManagement(ActionEvent event){
+        InventoryManager im=new InventoryManager();
+        im.init((Stage) ((Node) event.getSource()).getScene().getWindow());
+    }
 
 
 }
