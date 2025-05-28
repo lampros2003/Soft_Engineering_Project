@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import com.mainpackage.SceneSwitching;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -43,7 +45,11 @@ public class HelloController
     @FXML private Label lastMonthOrdersLabel;
     @FXML private Label lastMonthStatsLabel;
 
-
+    @FXML
+    void returnToDashboard(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
+    }
 
     private void navigateToDetailedView(String metricName, String currentValue, String metricType, Node sourceNode) {
         try {

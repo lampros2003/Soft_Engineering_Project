@@ -10,7 +10,6 @@ import java.net.URL;
 
 /**
  * Main application class for the Tables Screen.
- *
  * To run this application without warnings, use the VM argument:
  * --enable-native-access=javafx.graphics
  */
