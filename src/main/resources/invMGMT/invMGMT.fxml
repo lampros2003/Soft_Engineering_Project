@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="881.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.invMGMT.controller.InventoryListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="881.0" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="128.0" layoutY="62.0" prefHeight="399.0" prefWidth="755.0" styleClass="text">
          <children>
@@ -25,7 +25,7 @@
             <Pane layoutY="60.0" />
             <Pane layoutY="104.0" />
             <Button layoutY="68.0" mnemonicParsing="false" onAction="#addIngredientButton" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="add Ingredient" />
-            <Button layoutY="112.0" mnemonicParsing="false" onAction="#modifySelectedIngredint" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text="modify Ingredient" />
+            <Button layoutY="112.0" mnemonicParsing="false" onAction="#modifySelectedIngredint" prefHeight="36.0" prefWidth="128.0" styleClass="action-button" text=" Ingredient's details" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>
