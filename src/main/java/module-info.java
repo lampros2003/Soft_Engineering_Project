@@ -26,4 +26,7 @@ module com.mainpackage {
     // Chef package
     opens com.chefView to javafx.fxml;
     exports com.chefView;
+
+    opens com.reservation to javafx.fxml;
+    exports com.reservation;
 }

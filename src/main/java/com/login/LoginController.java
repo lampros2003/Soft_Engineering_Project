@@ -4,8 +4,13 @@ import com.invMGMT.view.InvMGMTScreen;
 import com.mainpackage.SceneSwitching;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
     
@@ -36,7 +41,8 @@ public class LoginController {
 
     @FXML
     private void loginAsFrontDesk(ActionEvent event) {
-        System.out.println("loginAsFrontDesk");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/reservation/reservation_date.fxml");
     }
 
     @FXML

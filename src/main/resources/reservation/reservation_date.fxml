@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="320.0" prefWidth="500" style="-fx-background-color: #f4f4f6;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="ResDateController">
+<AnchorPane prefHeight="320.0" prefWidth="500" style="-fx-background-color: #f4f4f6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reservation.ResDateController">
 
 
     <children>
@@ -43,7 +42,7 @@
                 </HBox>
 
 
-                <Button fx:id="okButton" onAction="#handleOkButton" style="-fx-background-color: transparent;                                -fx-border-color: #34d399;                                -fx-border-width: 2;                                -fx-border-radius: 4;                                -fx-background-radius: 4;                                -fx-padding: 6 24 6 24;" text="OK" />
+                <Button fx:id="okButton" style="-fx-background-color: transparent;                                -fx-border-color: #34d399;                                -fx-border-width: 2;                                -fx-border-radius: 4;                                -fx-background-radius: 4;                                -fx-padding: 6 24 6 24;" text="OK" />
             </children>
 
 
@@ -53,6 +52,3 @@
         </VBox>
     </children>
 </AnchorPane>
-
-
-
