@@ -18,4 +18,13 @@ public class DatabaseManager {
     public void removeIngredient(String id){
         System.out.println(id+ " removed or at least lets pretend it got removed (; -;)");
     }
+    public void editIngredient(String id,Ingredient changes){
+        System.out.println(id+" changed to"+ changes.getInfo());
+    }
+    public void addIngredient(Ingredient ing){
+        System.out.println(ing.getName()+ing.getInfo()+" added");
+    }
+    public boolean checkIfNameAlreadyExists(String name){
+        return true;
+    }
 }

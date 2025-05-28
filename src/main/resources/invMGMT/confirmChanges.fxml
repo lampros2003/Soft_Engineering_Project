@@ -9,17 +9,17 @@
    <children>
       <Pane layoutX="128.0" layoutY="62.0" prefHeight="399.0" prefWidth="755.0" styleClass="text">
          <children>
-            <Text fx:id="itemName" layoutX="284.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name" />
-            <Text fx:id="itemDetails" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Details" />
+            <Text layoutX="-4.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to make the following changes?" textAlignment="CENTER" wrappingWidth="762.13671875" />
+            <Text fx:id="changesText" layoutX="87.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="changes" wrappingWidth="613.2640380859375" />
          </children></Pane>
       <Pane prefHeight="460.0" prefWidth="128.0" style="-fx-background-color: #433D3D;">
          <children>
-            <Button layoutY="376.0" mnemonicParsing="false" onAction="#editItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Edit Item" />
-            <Button layoutY="412.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Remove Item" />
+            <Button layoutY="376.0" mnemonicParsing="false" onAction="#confirmChanges" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Yes" />
+            <Button layoutY="412.0" mnemonicParsing="false" onAction="#cancelChanges" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="No" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>
-            <Text fill="WHITE" layoutX="375.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory" />
+            <Text fill="WHITE" layoutX="-8.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Changes" textAlignment="CENTER" wrappingWidth="897.3270263671875" />
          </children>
       </Pane>
    </children>

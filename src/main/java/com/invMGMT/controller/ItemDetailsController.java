@@ -1,6 +1,7 @@
 package com.invMGMT.controller;
 
 import com.common.Ingredient;
+import com.common.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -9,13 +10,13 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-public class ItemDetailsController {
+public class ItemDetailsController extends Screen {
     private InventoryManager manager;
     @FXML public Text itemDetails;
     @FXML public Text itemName;
     Ingredient ing;
 
-    public void display(Ingredient ing){
+    public void init(Ingredient ing){
         this.ing=ing;
         itemName.setText(ing.getName());
         itemDetails.setText(ing.getInfo());

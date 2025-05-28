@@ -1,7 +1,9 @@
 package com.invMGMT.controller;
 
  import com.common.Ingredient;
+ import com.common.Screen;
  import javafx.fxml.FXML;
+ import javafx.fxml.Initializable;
  import javafx.scene.Node;
  import javafx.scene.Parent;
  import javafx.scene.Scene;
@@ -10,26 +12,26 @@ package com.invMGMT.controller;
  import javafx.scene.text.Text;
  import javafx.stage.Stage;
 
+ import java.net.URL;
+ import java.util.ResourceBundle;
 
-public class InventoryListController {
-    private Stage stage;
-    private Scene scene;
+
+public class InventoryListController extends Screen {
     private Parent root;
     @FXML ListView<Text> invList;
     public InventoryManager inventoryManager;
+
+    Ingredient[] inventory;
     public void addIngredientButton(ActionEvent event){
-        System.out.println("add ingredient");
+        inventoryManager.addItem();
     }
     public void invMGMTButton(ActionEvent event){
         stage=getStage(event);
         InventoryManager im=new InventoryManager();
         im.init(stage);
     }
-    private Stage getStage(ActionEvent event) {
-        return stage=(Stage)((Node) event.getSource()).getScene().getWindow();
-    }
-
-    public void display(Ingredient[] inv) {
+    public void init(Ingredient[] inv) {
+//        this.inventory=inv;
         for(int i=0;i<inv.length;i++) {
             invList.getItems().add(new Text(inv[i].getName() +"- Available: "+ inv[i].getQuantity()));
         }
@@ -46,4 +48,5 @@ public class InventoryListController {
     public void setManager(InventoryManager manager){
         this.inventoryManager=manager;
     }
+
 }

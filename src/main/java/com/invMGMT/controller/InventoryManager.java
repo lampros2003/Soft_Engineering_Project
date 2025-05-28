@@ -12,30 +12,61 @@ public class InventoryManager {
     DatabaseManager db;
     Ingredient[] inventory;
     private Ingredient selectedIngredient;
+    private Ingredient modifiedIngredient;
     public void init(Stage stage){
         this.stage=stage;
-        this.loader= SceneSwitching.switchSceneR(stage,"/invMGMT/invMGMT.fxml");
+        InventoryListController inventoryList=new InventoryListController();
+        inventoryList.display(stage,"/invMGMT/invMGMT.fxml");
         this.db=new DatabaseManager();
         this.inventory=db.getIngredints();
-        InventoryListController listController=loader.getController();
-        listController.setManager(this);
-        listController.display(this.inventory);
+        inventoryList.setManager(this);
+        inventoryList.init(this.inventory);
     }
     public void itemDetails(String id){
-//        ItemDetailsController idController=new ItemDetailsController();
-        this.loader=SceneSwitching.switchSceneR(this.stage,"/invMGMT/itemDetails.fxml");
+        ItemDetailsController idController=new ItemDetailsController();
+        idController.display(this.stage,"/invMGMT/itemDetails.fxml");
         Ingredient temp=this.db.getSpecificIngredient(id);
-        ItemDetailsController idController=this.loader.getController();
         idController.setManager(this);
         this.selectedIngredient=temp;
-        idController.display(temp);
+        idController.init(temp);
     }
     public void removeItem(String id) {
         db.removeIngredient(id);
     }
     public void editItem(String item){
-        this.loader=SceneSwitching.switchSceneR(this.stage,"/invMGMT/itemEdit.fxml");
-        editItemController controller=this.loader.getController();
-        controller.init(selectedIngredient);
+        editItemController editController=new editItemController();
+        editController.display(this.stage,"/invMGMT/itemEdit.fxml");
+        editController.getManager(this);
+        editController.init(selectedIngredient);
+    }
+    public void passModifications(String name,String quantity,String allergen){
+        confirmController controller=new confirmController();
+        controller.display(this.stage,"/invMGMT/confirmChanges.fxml");
+        controller.getManager(this);
+        controller.init(name,quantity,allergen);
+    }
+    public void passAnswer(String name,String quantity,String allergen,String mode){
+        if(check(name,quantity,allergen)){
+            this.modifiedIngredient=new Ingredient(name,Integer.parseInt(quantity),allergen);
+            if(mode=="edit")
+                this.modifiedIngredient.saveChanges(this.db,this.selectedIngredient.getName());
+            else if(mode=="add")
+                this.modifiedIngredient.saveChanges(this.db);
+            init(this.stage);
+        }else{
+            ErrorController controller=new ErrorController();
+            controller.display(this.stage,"/common/view/errorScreen.fxml");
+            controller.showErrorMessage("invalid input!");
+            controller.getManager(this);
+        }
+    }
+    public void addItem(){
+        AddItemController controller=new AddItemController();
+        controller.display(this.stage,"/invMGMT/itemEdit.fxml");
+        controller.getManager(this);
+        controller.init();
+    }
+    public boolean check(String name,String quantity,String allergen){
+        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9]+") && this.db.checkIfNameAlreadyExists(name);
     }
 }
