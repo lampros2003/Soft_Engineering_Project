@@ -70,6 +70,6 @@ public class InventoryManager {
         controller.init();
     }
     public boolean check(String name,String quantity,String allergen,String oldName){
-        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9\\-]+") && this.db.checkIfNameAlreadyExists(name,oldName);
+        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9\\- ]+") && this.db.checkIfNameAlreadyExists(name,oldName);
     }
 }

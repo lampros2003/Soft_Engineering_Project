@@ -71,7 +71,7 @@ public class DBManager {
             stmt.setString(1,changes.getName());
             stmt.setInt(2,changes.getQuantity());
             stmt.setString(4,id);
-            stmt.setString(3,changes.getAllergen());
+            stmt.setString(3,(changes.getAllergen()=="")? null:changes.getAllergen());
             stmt.execute();
 
         } catch (SQLException e) {
@@ -85,7 +85,7 @@ public class DBManager {
         ) {
             stmt.setString(1,ing.getName());
             stmt.setInt(2,ing.getQuantity());
-            stmt.setString(3,ing.getAllergen());
+            stmt.setString(3,(ing.getAllergen()=="")? null:ing.getAllergen());
             stmt.execute();
 
         } catch (SQLException e) {
