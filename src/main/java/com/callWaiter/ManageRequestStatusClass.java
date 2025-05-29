@@ -1,51 +1,82 @@
 package com.callWaiter;
 
 import com.waiter.ManageWaiterScreenClass;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManageRequestStatusClass {
-    private List<RequestStatus> requests;
-    private ManageWaiterScreenClass waiterManager;
-    private RequestStatus requestStatus;
+
+    private static final List<RequestStatus> requests = new ArrayList<>();
+    private final ManageWaiterScreenClass waiterManager;
     private final int tableNumber;
 
+    // Constructor με tableNumber (ΑΠΑΡΑΙΤΗΤΟ)
     public ManageRequestStatusClass(int tableNumber) {
-        requests = new ArrayList<>();
-        this.waiterManager = new ManageWaiterScreenClass();
         this.tableNumber = tableNumber;
+        this.waiterManager = new ManageWaiterScreenClass();
     }
 
-//    public boolean checkIfRequested() {
-//        for (RequestStatus r : requests) {
-//            if (r.getTableNumber() == this.tableNumber && r.isActive()) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
     public void createNewRequest() {
-        requestStatus = new RequestStatus(this.tableNumber, "Pending");
-        requests.add(requestStatus);
+        RequestStatus newStatus = new RequestStatus();
+        newStatus.setTableNumber(tableNumber);
+        newStatus.setStatus("Pending");
+        newStatus.setActive(true);
+        requests.add(newStatus);
+    }
+
+    // Ελέγχει αν υπάρχει ήδη ενεργό αίτημα για αυτό το τραπέζι
+    public boolean checkIfRequested() {
+        return requests.stream()
+                .anyMatch(r -> r.getTableNumber() == this.tableNumber && r.isActive());
+    }
+
+    private RequestStatus getCurrentRequest() {
+        return requests.stream()
+                .filter(r -> r.getTableNumber() == this.tableNumber)
+                .findFirst()
+                .orElse(null);
     }
 
     public void callWaiter() {
-        requestStatus.initializeStatus();
+        if (checkIfRequested()) {
+            System.out.println("Request already active for table " + tableNumber);
+            return; // Εδώ μπορείς να εμφανίσεις Alert στο UI
+        }
+
+        initializeStatus();
         waiterManager.notifyAllWaiters();
-        startCountingTime();
+        System.out.println("Waiter called for table " + tableNumber);
     }
 
-    public String getRequestStatus() {
-        return requestStatus.getRequestStatus();
+    public void cancelRequest() {
+        RequestStatus status = getCurrentRequest();
+        if (status != null) {
+            status.setStatus("Cancelled");
+            status.setActive(false);
+        }
     }
 
-    public void startCountingTime(){
-
+    public void waiterAccepted() {
+        RequestStatus status = getCurrentRequest();
+        if (status != null) {
+            status.setStatus("Accepted");
+        }
     }
 
-    public void stopCountingTime(){
+    public void waiterArrived() {
+        RequestStatus status = getCurrentRequest();
+        if (status != null) {
+            status.setStatus("Arrived");
+            status.setActive(false);
+        }
+    }
 
+    public void reNotify() {
+        RequestStatus status = getCurrentRequest();
+        if (status != null && "Accepted".equals(status.getStatus())) {
+            status.setStatus("Pending");
+            status.setActive(true);
+            waiterManager.notifyAllWaiters();
+        }
     }
 }

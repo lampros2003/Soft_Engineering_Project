@@ -1,36 +1,39 @@
 package com.callWaiter;
 
 public class RequestStatus {
-    private final int tableNumber;
+    private int tableNumber;
     private String status;
+    private boolean active;
 
-    public RequestStatus(int tableNumber, String pending) {
+    public RequestStatus() {}
+
+    public RequestStatus(int tableNumber, String status, boolean active) {
         this.tableNumber = tableNumber;
-        this.initializeStatus();
+        this.status = status;
+        this.active = active;
     }
 
-    public void initializeStatus() {
-        status = "Pending";
+    public int getTableNumber() {
+        return tableNumber;
     }
 
-    public void updateRequestStatusAccepted() {
-        status = "Accepted";
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
     }
 
-    public void updateRequestStatusArrived() {
-        status = "Arrived";
-    }
-
-    public void cancelRequestStatus() {
-        status = "Canceled";
-    }
-
-    public String getRequestStatus() {
+    public String getStatus() {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public boolean isActive() {
-        return status.equals("Pending") || status.equals("Accepted");
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

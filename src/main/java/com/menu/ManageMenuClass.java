@@ -24,15 +24,15 @@ public class ManageMenuClass {
     public void callWaiter() {
         try {
             // Create an instance of ManageRequestStatusClass
-            requestManager = new ManageRequestStatusClass(this.tableNumber);
+            requestManager = new ManageRequestStatusClass(1);
 
-//            if (!requestManager.checkIfRequested()) {
-//                requestManager.createNewRequest();
-//                requestManager.callWaiter();
-//                showRequestStatus(requestManager);
-//            } else {
-//                showAlreadyRequestedError(requestManager);
-//            }
+            if (!requestManager.checkIfRequested()) {
+                requestManager.createNewRequest();
+                requestManager.callWaiter();
+                showRequestStatus(requestManager);
+            } else {
+                showAlreadyRequestedError(requestManager);
+            }
 
         } catch (Exception e) {
             System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
