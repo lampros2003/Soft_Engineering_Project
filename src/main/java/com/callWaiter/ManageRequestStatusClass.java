@@ -17,14 +17,14 @@ public class ManageRequestStatusClass {
         this.tableNumber = tableNumber;
     }
 
-    public boolean checkIfRequested() {
-        for (RequestStatus r : requests) {
-            if (r.getTableNumber() == this.tableNumber && r.isActive()) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean checkIfRequested() {
+//        for (RequestStatus r : requests) {
+//            if (r.getTableNumber() == this.tableNumber && r.isActive()) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public void createNewRequest() {
         requestStatus = new RequestStatus(this.tableNumber, "Pending");

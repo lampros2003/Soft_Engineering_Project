@@ -28,14 +28,14 @@
             <Button fx:id="backToMainScreen" layoutX="643.0" layoutY="20.0" mnemonicParsing="false" onAction="#redirectToDashboard" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back to Dashboard" textFill="WHITE" />
          </children>
       </Pane>
-      <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="540.0" prefWidth="794.0">
+      <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="541.0" prefWidth="794.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1065.0" prefWidth="778.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="778.0">
                <children>
-                  <TableView fx:id="recommendedIngredientsTable" layoutX="476.0" layoutY="91.0" prefHeight="390.0" prefWidth="285.0">
+                  <TableView fx:id="recommendedIngredientsTable" layoutX="550.0" layoutY="91.0" prefHeight="390.0" prefWidth="218.0">
                      <columns>
-                        <TableColumn fx:id="ingredientName" prefWidth="174.39996337890625" text="Ingredient" />
-                        <TableColumn fx:id="ingredientQuantity" prefWidth="108.00006103515625" text="Quantity" />
+                        <TableColumn fx:id="ingredientName" prefWidth="108.0" text="Ingredient" />
+                        <TableColumn fx:id="ingredientQuantity" prefWidth="117.60009765625" text="Quantity" />
                      </columns>
                   </TableView>
                   <Text layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Manage Menu" textAlignment="CENTER" wrappingWidth="345.3367462158203">
@@ -43,40 +43,22 @@
                         <Font name="Comic Sans MS" size="48.0" />
                      </font>
                   </Text>
-                  <AnchorPane layoutY="516.0" minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="777.0">
-                     <children>
-                        <Text layoutX="37.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Deals" textAlignment="CENTER" wrappingWidth="154.13671875">
-                           <font>
-                              <Font name="Comic Sans MS" size="48.0" />
-                           </font>
-                        </Text>
-                        <Pane layoutX="37.0" layoutY="78.0" prefHeight="438.0" prefWidth="738.0">
-                           <children>
-                              <TableView fx:id="dealsTable" layoutX="14.0" layoutY="24.0" prefHeight="390.0" prefWidth="421.0">
-                                 <columns>
-                                    <TableColumn fx:id="dishColumnForDeal" prefWidth="170.39992904663086" text="Dish" />
-                                    <TableColumn fx:id="priceColumnForDeal" minWidth="0.0" prefWidth="136.80006408691406" text="Discount" />
-                                    <TableColumn fx:id="priceColumnForDeal1" minWidth="0.0" prefWidth="114.39996337890625" text="expiresOn" />
-                                 </columns>
-                              </TableView>
-                              <TableView fx:id="expiredOffersTable" layoutX="441.0" layoutY="24.0" prefHeight="390.0" prefWidth="283.0">
-                                 <columns>
-                                    <TableColumn fx:id="expiredOffersColumn" prefWidth="303.9999809265137" text="Expired Offers" />
-                                    <TableColumn fx:id="priceColumn11" minWidth="0.0" prefWidth="116.800048828125" text="Price" />
-                                 </columns>
-                              </TableView>
-                           </children></Pane>
-                     </children>
-                  </AnchorPane>
                   <Button fx:id="modifyBtn" layoutX="653.0" layoutY="35.0" mnemonicParsing="false" onAction="#onModifyMenu" style="-fx-background-color: gray; -fx-font-weight: bold;" text="Modify Menu" textFill="WHITE" />
-                  <TableView fx:id="menuTable" layoutX="28.0" layoutY="91.0" prefHeight="390.0" prefWidth="408.0">
+                  <TableView fx:id="menuTable" layoutX="28.0" layoutY="91.0" prefHeight="390.0" prefWidth="517.0">
                     <columns>
-                      <TableColumn fx:id="dishColumn" prefWidth="143.2000389099121" text="Dish" />
-                        <TableColumn fx:id="ingredientsColumn" minWidth="0.0" prefWidth="164.20001220703125" text="Ingredients" />
-                      <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="97.5999755859375" text="Price" />
+                      <TableColumn fx:id="dishColumn" prefWidth="114.39999008178711" text="Dish" />
+                        <TableColumn fx:id="ingredientsColumn" minWidth="0.0" prefWidth="116.80006408691406" text="Ingredients" />
+                      <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="95.199951171875" text="Price" />
+                        <TableColumn fx:id="discountColumn" minWidth="0.0" prefWidth="85.5999755859375" text="Discount" />
+                        <TableColumn fx:id="discountColumn1" minWidth="0.0" prefWidth="102.39996337890625" text="Deal Expires On" />
                     </columns>
                   </TableView>
-                  <Text layoutX="476.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recommended Ingedients based on availability">
+                  <Text layoutX="554.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recommended Ingedients based on availability" wrappingWidth="210.69024658203125">
+                     <font>
+                        <Font name="Arial Italic" size="10.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="484.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make modifications and then press Modify Menu">
                      <font>
                         <Font name="Arial Italic" size="12.0" />
                      </font>

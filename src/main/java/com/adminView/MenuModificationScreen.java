@@ -22,8 +22,10 @@ import javafx.util.converter.IntegerStringConverter;
 import java.util.List;
 
 public class MenuModificationScreen {
+    // Class to manage menu modifications
     private ModifyMenuClass menuManager = new ModifyMenuClass();
 
+    // FXML components
     @FXML
     private TableView<MenuItem> menuTable;
     @FXML
@@ -32,6 +34,10 @@ public class MenuModificationScreen {
     private TableColumn<MenuItem, Double> priceColumn;
     @FXML
     private TableColumn<MenuItem, String> ingredientsColumn;
+    @FXML
+    private TableColumn<MenuItem, Double> discountColumn;
+    @FXML
+    private TableColumn<MenuItem, String> expirationColumn;
 
     @FXML
     private TableView<Ingredient> recommendedIngredientsTable;
@@ -40,22 +46,19 @@ public class MenuModificationScreen {
     @FXML
     private TableColumn<Ingredient, Integer> ingredientQuantity;
 
-    // Methods to be implemented
-    //public void display(){}
-    //public void noOffersExpiredNotification(){}
-    //public void displayExpiredOffers(){}
-    //public void displayUpdatedMenu(){}
-
-
     public void initialize() {
         // Show the menu table
         Menu menu = menuManager.getCurrentMenu();
 
+        // UI related commands, so they should be initialized in the initialize method
+        // Set up the menu table columns
         dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
         ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
 
+        // Administrator can modify only the price of the dishes
         menuTable.setEditable(true);
+
         displayMenu(menu);
 
         // Show the recommended ingredients table
@@ -64,12 +67,18 @@ public class MenuModificationScreen {
         ingredientName.setCellFactory(TextFieldTableCell.forTableColumn());
         ingredientQuantity.setCellFactory(TextFieldTableCell.<Ingredient, Integer>forTableColumn(new IntegerStringConverter()));
 
-        recommendedIngredientsTable.setEditable(true);
         displayRecommendedIngredients(ingredient);
 
-        // Show deals table
+        priceColumn.setOnEditCommit(event -> {
+            MenuItem item = event.getRowValue();
+            item.setPrice(event.getNewValue());
+        });
 
-
+        discountColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
+        discountColumn.setOnEditCommit(event -> {
+            MenuItem item = event.getRowValue();
+            item.setDiscount(event.getNewValue());
+        });
     }
 
     private void displayRecommendedIngredients(List<Ingredient> ingredients) {
@@ -94,48 +103,9 @@ public class MenuModificationScreen {
         menuTable.setItems(menuItems);
     }
 
-//    @FXML
-//    private void onAddToDeals(ActionEvent event) {
-//        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedItem == null) {
-//            showAlert("Please select a dish from the menu first.");
-//            return;
-//        }
-//
-//        double discount = 0.2; // 20% έκπτωση (μπορεί να γίνει input αργότερα)
-//
-//        boolean success = menuManager.addDeal(selectedItem.getName(), discount);
-//
-//        if (success) {
-//            displayDeals(menuManager.getDeals()); // refresh πίνακα προσφορών
-//            showAlert("Dish added to deals successfully!");
-//        } else {
-//            showAlert("This dish is already in the deals or an error occurred.");
-//        }
-//    }
-//
-//    private void showAlert(String s) {
-//    }
-
     @FXML
-    private void onModifyMenu(ActionEvent event) {
-        ObservableList<MenuItem> updatedItems = menuTable.getItems();
-
-        for (MenuItem item : updatedItems) {
-            if (!isValid(item)) {
-                showAlert("Invalid data in one or more dishes.");
-                return;
-            }
-        }
-
-        boolean success = menuManager.updateMenuItems(updatedItems);
-
-        if (success) {
-            showAlert("Menu updated successfully!");
-        } else {
-            showAlert("Update failed.");
-        }
+    private void onAddMenu(ActionEvent event) {
+        System.out.println("Add Menu button clicked");
     }
 
     private void showAlert(String msg) {
@@ -145,12 +115,27 @@ public class MenuModificationScreen {
         alert.showAndWait();
     }
 
-    private boolean isValid(MenuItem item) {
-        return item.getName() != null && !item.getName().trim().isEmpty()
-               && item.getIngredients() != null && !item.getIngredients().trim().isEmpty()
-               && item.getPrice() >= 0;
-    }
+    @FXML
+    private void onModifyMenu(ActionEvent event) {
+        ObservableList<MenuItem> updatedItems = menuTable.getItems();
 
+        for (MenuItem item : updatedItems) {
+            System.out.println(item.getDiscount());
+            if (!menuManager.checkIfChangesAreValid(item)) {
+                showAlert("Invalid data in menu.");
+                return;
+            }
+        }
+
+        boolean successMenu = menuManager.updateMenuItems(updatedItems);
+        boolean successDeals = menuManager.updateDeals(updatedItems);
+
+        if (successMenu && successDeals) {
+            showAlert("Menu and Deals updated successfully!");
+        } else {
+            showAlert("Something went wrong updating the database.");
+        }
+    }
 
     @FXML
     private void redirectToDashboard(ActionEvent event) {
