@@ -27,8 +27,8 @@ public class ManageMenuClass {
             requestManager = new ManageRequestStatusClass(1);
 
             if (!requestManager.checkIfRequested()) {
-                requestManager.createNewRequest();
-                requestManager.callWaiter();
+                requestManager.initializeStatus();  // <-- Χρησιμοποιούμε αυτή αντί για createNewRequest()
+                requestManager.callWaiter();        // <-- Εδώ μπορείς να ειδοποιήσεις τους σερβιτόρους αν θέλεις
                 showRequestStatus(requestManager);
             } else {
                 showAlreadyRequestedError(requestManager);
@@ -38,6 +38,7 @@ public class ManageMenuClass {
             System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
         }
     }
+
 
     private void showAlreadyRequestedError(ManageRequestStatusClass requestManager) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/errorHandling/alreadyRequested.fxml"));

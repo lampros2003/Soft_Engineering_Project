@@ -16,7 +16,8 @@ public class ManageRequestStatusClass {
         this.waiterManager = new ManageWaiterScreenClass();
     }
 
-    public void createNewRequest() {
+    // Δημιουργεί νέο αίτημα και το προσθέτει στη static λίστα
+    public void initializeStatus() {
         RequestStatus newStatus = new RequestStatus();
         newStatus.setTableNumber(tableNumber);
         newStatus.setStatus("Pending");
@@ -30,6 +31,7 @@ public class ManageRequestStatusClass {
                 .anyMatch(r -> r.getTableNumber() == this.tableNumber && r.isActive());
     }
 
+    // Βρίσκει το αίτημα του συγκεκριμένου τραπεζιού
     private RequestStatus getCurrentRequest() {
         return requests.stream()
                 .filter(r -> r.getTableNumber() == this.tableNumber)
@@ -37,6 +39,7 @@ public class ManageRequestStatusClass {
                 .orElse(null);
     }
 
+    // Καλεί σερβιτόρο: Αν δεν υπάρχει ενεργό αίτημα, δημιουργεί και ειδοποιεί
     public void callWaiter() {
         if (checkIfRequested()) {
             System.out.println("Request already active for table " + tableNumber);
@@ -48,6 +51,7 @@ public class ManageRequestStatusClass {
         System.out.println("Waiter called for table " + tableNumber);
     }
 
+    // Ακύρωση αιτήματος
     public void cancelRequest() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -56,6 +60,7 @@ public class ManageRequestStatusClass {
         }
     }
 
+    // Αποδοχή από σερβιτόρο
     public void waiterAccepted() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -63,6 +68,7 @@ public class ManageRequestStatusClass {
         }
     }
 
+    // Ο σερβιτόρος έφτασε
     public void waiterArrived() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -71,6 +77,7 @@ public class ManageRequestStatusClass {
         }
     }
 
+    // Αν δεν ήρθε ποτέ, ξαναειδοποιεί όλους τους σερβιτόρους
     public void reNotify() {
         RequestStatus status = getCurrentRequest();
         if (status != null && "Accepted".equals(status.getStatus())) {
