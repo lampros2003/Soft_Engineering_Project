@@ -21,7 +21,6 @@ public class DBManager {
     }
 
     public Ingredient[] getIngredients() {
-//        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
         List<Ingredient> results=new ArrayList<Ingredient>();
         String sql="SELECT * FROM INGREDIENTS";
         try (Connection conn = connect();
@@ -39,25 +38,63 @@ public class DBManager {
         return results.toArray(Ingredient[]::new);
     }
     public Ingredient getSpecificIngredient(String name){
-        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
-        for(int i=0;i<temp.length;i++){
-            if(Objects.equals(temp[i].getName(), name)){
-                return temp[i];
-            }
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM INGREDIENTS WHERE UPPER(name)=UPPER(?)");
+             ) {
+            stmt.setString(1,name);
+            ResultSet rs= stmt.executeQuery();
+            rs.next();
+            Ingredient temp=new Ingredient(rs.getString("name"),rs.getInt("quantity"),rs.getString("allergen"));
+            return temp;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
     public void removeIngredient(String id){
         System.out.println(id+ " removed or at least lets pretend it got removed (; -;)");
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement("DELETE FROM INGREDIENTS WHERE name=?");
+        ) {
+            stmt.setString(1,id);
+            stmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void editIngredient(String id,Ingredient changes){
-        System.out.println(id+" changed to"+ changes.getInfo());
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE INGREDIENTS SET name=?,quantity=?,allergen=? WHERE name=?");
+        ) {
+            stmt.setString(1,changes.getName());
+            stmt.setInt(2,changes.getQuantity());
+            stmt.setString(4,id);
+            stmt.setString(3,changes.getAllergen());
+            stmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void addIngredient(Ingredient ing){
-        System.out.println(ing.getName()+ing.getInfo()+" added");
+        System.out.println(ing.getName()+" "+ing.getInfo()+" added");
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO INGREDIENTS VALUES(?,?,?)");
+        ) {
+            stmt.setString(1,ing.getName());
+            stmt.setInt(2,ing.getQuantity());
+            stmt.setString(3,ing.getAllergen());
+            stmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-    public boolean checkIfNameAlreadyExists(String name){
-        return true;
+    public boolean checkIfNameAlreadyExists(String name,String oldName){
+        System.out.println(oldName);
+        return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.equals(name));
     }
 
 

@@ -49,7 +49,7 @@ public class InventoryManager {
         controller.init(name,quantity,allergen);
     }
     public void passAnswer(String name,String quantity,String allergen,String mode){
-        if(check(name,quantity,allergen)){
+        if(check(name,quantity,allergen,(mode.equals("edit"))? this.selectedIngredient.getName():null)){
             this.modifiedIngredient=new Ingredient(name,Integer.parseInt(quantity),allergen);
             if(mode=="edit")
                 this.modifiedIngredient.saveChanges(this.db,this.selectedIngredient.getName());
@@ -69,7 +69,7 @@ public class InventoryManager {
         controller.getManager(this);
         controller.init();
     }
-    public boolean check(String name,String quantity,String allergen){
-        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9]+") && this.db.checkIfNameAlreadyExists(name);
+    public boolean check(String name,String quantity,String allergen,String oldName){
+        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9\\-]+") && this.db.checkIfNameAlreadyExists(name,oldName);
     }
 }
