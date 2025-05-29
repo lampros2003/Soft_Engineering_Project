@@ -499,7 +499,7 @@
     </routine>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-05-27.16:20:28</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-05-29.21:40:41</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -2061,115 +2061,125 @@ tableNum</ColNames>
       <Position>5</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <key id="659" parent="570">
+    <column id="659" parent="570" name="width">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>integer|0s</StoredType>
+    </column>
+    <column id="660" parent="570" name="height">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StoredType>INTEGER|0s</StoredType>
+    </column>
+    <key id="661" parent="570">
       <ColNames>tableNumber</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="660" parent="571" name="waiterId">
+    <column id="662" parent="571" name="waiterId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="661" parent="571" name="orderId">
+    <column id="663" parent="571" name="orderId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="662" parent="571">
+    <foreign-key id="664" parent="571">
       <ColNames>waiterId</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>waiterId</RefColNames>
       <RefTableName>WAITER</RefTableName>
     </foreign-key>
-    <foreign-key id="663" parent="571">
+    <foreign-key id="665" parent="571">
       <ColNames>orderId</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>ORDER</RefTableName>
     </foreign-key>
-    <index id="664" parent="571" name="sqlite_autoindex_TAKES_1">
+    <index id="666" parent="571" name="sqlite_autoindex_TAKES_1">
       <ColNames>waiterId
 orderId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="665" parent="571">
+    <key id="667" parent="571">
       <ColNames>waiterId
 orderId</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_TAKES_1</UnderlyingIndexName>
     </key>
-    <column id="666" parent="572" name="waiterId">
+    <column id="668" parent="572" name="waiterId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="667" parent="572">
+    <foreign-key id="669" parent="572">
       <ColNames>waiterId</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>EMPLOYEE</RefTableName>
     </foreign-key>
-    <key id="668" parent="572">
+    <key id="670" parent="572">
       <ColNames>waiterId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="669" parent="573" name="employeeId">
+    <column id="671" parent="573" name="employeeId">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <column id="670" parent="573" name="shiftId">
+    <column id="672" parent="573" name="shiftId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="671" parent="573">
+    <foreign-key id="673" parent="573">
       <ColNames>employeeId</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>EMPLOYEE</RefTableName>
     </foreign-key>
-    <foreign-key id="672" parent="573">
+    <foreign-key id="674" parent="573">
       <ColNames>shiftId</ColNames>
       <OnDelete>cascade</OnDelete>
       <OnUpdate>cascade</OnUpdate>
       <RefColNames>id</RefColNames>
       <RefTableName>SHIFT</RefTableName>
     </foreign-key>
-    <index id="673" parent="573" name="sqlite_autoindex_WORKSON_1">
+    <index id="675" parent="573" name="sqlite_autoindex_WORKSON_1">
       <ColNames>employeeId
 shiftId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="674" parent="573">
+    <key id="676" parent="573">
       <ColNames>employeeId
 shiftId</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_WORKSON_1</UnderlyingIndexName>
     </key>
-    <column id="675" parent="574" name="type">
+    <column id="677" parent="574" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="676" parent="574" name="name">
+    <column id="678" parent="574" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="677" parent="574" name="tbl_name">
+    <column id="679" parent="574" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="678" parent="574" name="rootpage">
+    <column id="680" parent="574" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="679" parent="574" name="sql">
+    <column id="681" parent="574" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>

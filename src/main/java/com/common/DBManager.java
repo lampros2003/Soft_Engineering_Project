@@ -9,27 +9,27 @@ import java.util.regex.Pattern;
 
 import com.menu.DealItem;
 import com.menu.MenuItem;
+import com.tables.TableStatus;
+import com.tables.TablesScreenController.TableState;
+import javafx.geometry.Point2D;
 
 public class DBManager {
 
     private static final String URL = "jdbc:sqlite:database.db";
-
-
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL);
     }
 
     public Ingredient[] getIngredients() {
-//        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
-        List<Ingredient> results=new ArrayList<Ingredient>();
-        String sql="SELECT * FROM INGREDIENTS";
+        List<Ingredient> results = new ArrayList<Ingredient>();
+        String sql = "SELECT * FROM INGREDIENTS";
         try (Connection conn = connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                Ingredient temp=new Ingredient(rs.getString("name"),rs.getInt("quantity"),rs.getString("allergen"));
+                Ingredient temp = new Ingredient(rs.getString("name"), rs.getInt("quantity"), rs.getString("allergen"));
                 results.add(temp);
             }
 
@@ -38,30 +38,32 @@ public class DBManager {
         }
         return results.toArray(Ingredient[]::new);
     }
-    public Ingredient getSpecificIngredient(String name){
+
+    public Ingredient getSpecificIngredient(String name) {
         Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
-        for(int i=0;i<temp.length;i++){
-            if(Objects.equals(temp[i].getName(), name)){
+        for (int i = 0; i < temp.length; i++) {
+            if (Objects.equals(temp[i].getName(), name)) {
                 return temp[i];
             }
         }
         return null;
     }
-    public void removeIngredient(String id){
-        System.out.println(id+ " removed or at least lets pretend it got removed (; -;)");
+
+    public void removeIngredient(String id) {
+        System.out.println(id + " removed or at least lets pretend it got removed (; -;)");
     }
-    public void editIngredient(String id,Ingredient changes){
-        System.out.println(id+" changed to"+ changes.getInfo());
+
+    public void editIngredient(String id, Ingredient changes) {
+        System.out.println(id + " changed to" + changes.getInfo());
     }
-    public void addIngredient(Ingredient ing){
-        System.out.println(ing.getName()+ing.getInfo()+" added");
+
+    public void addIngredient(Ingredient ing) {
+        System.out.println(ing.getName() + ing.getInfo() + " added");
     }
-    public boolean checkIfNameAlreadyExists(String name){
+
+    public boolean checkIfNameAlreadyExists(String name) {
         return true;
     }
-
-
-
 
     public List<MenuItem> loadMenuData() {
         List<MenuItem> items = new ArrayList<>();
@@ -122,10 +124,6 @@ public class DBManager {
         return recommended;
     }
 
-//    public List<DealItem> queryRecommendedDeals() {
-//
-//    }
-
     public List<DealItem> loadDeals() {
         List<DealItem> deals = new ArrayList<>();
         String sql = """
@@ -172,6 +170,187 @@ public class DBManager {
         }
     }
 
+    /**
+     * Initialize the TABLE table structure in the database
+     * This creates the table if it doesn't exist, but preserves existing data
+     */
+    public void initializeTableStructure() {
+        // Create the TABLE table with the correct structure if it doesn't exist
+        String createTableSql = "CREATE TABLE IF NOT EXISTS [TABLE] (" +
+                "tableNumber INTEGER PRIMARY KEY, " +
+                "status TEXT, " +
+                "locationX INTEGER, " +
+                "locationY INTEGER, " +
+                "capacity INTEGER, " +
+                "width INTEGER, " +
+                "height INTEGER)";
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement()) {
+
+            // Create the table if it doesn't exist (preserves data if it does)
+            stmt.execute(createTableSql);
+            System.out.println("Verified TABLE table structure exists");
+
+        } catch (SQLException e) {
+            System.err.println("Error initializing table structure: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Get all tables from the database
+     */
+    public List<TableStatus> getTables() {
+        List<TableStatus> tables = new ArrayList<>();
+        String sql = "SELECT * FROM [TABLE]";
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                int id = rs.getInt("tableNumber");
+                String status = rs.getString("status");
+                int locationX = rs.getInt("locationX");
+                int locationY = rs.getInt("locationY");
+                int capacity = rs.getInt("capacity");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+
+                // Convert string status to enum
+                TableState tableState = TableState.AVAILABLE; // Default
+                if (status != null) {
+                    if (status.equalsIgnoreCase("OCCUPIED")) {
+                        tableState = TableState.OCCUPIED;
+                    } else if (status.equalsIgnoreCase("UNAVAILABLE")) {
+                        tableState = TableState.UNAVAILABLE;
+                    }
+                }
+
+                // Create table status object
+                TableStatus tableStatus = new TableStatus(
+                        id,
+                        new Point2D(locationX, locationY),
+                        width,
+                        height,
+                        capacity,
+                        tableState,
+                        0, // Default guest count
+                        null, // Default occupied time
+                        "", // Default server name
+                        locationX / 150, // Approximate column index
+                        locationY / 150  // Approximate row index
+                );
+
+                tables.add(tableStatus);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error getting tables: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return tables;
+    }
+
+    /**
+     * Save a table to the database
+     */
+    public boolean saveTable(TableStatus table) {
+        String sql = "INSERT OR REPLACE INTO [TABLE] (tableNumber, status, locationX, locationY, capacity, width, height) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, table.getId());
+            pstmt.setString(2, table.getState().toString());
+
+            // Get position coordinates
+            Point2D position = table.getPosition();
+            int locationX = (int) position.getX();
+            int locationY = (int) position.getY();
+
+            pstmt.setInt(3, locationX);
+            pstmt.setInt(4, locationY);
+            pstmt.setInt(5, table.getSeatingCapacity());
+            pstmt.setInt(6, (int) table.getWidth());
+            pstmt.setInt(7, (int) table.getHeight());
+
+            pstmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.err.println("Error saving table: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Update table status in the database
+     */
+    public boolean updateTableStatus(int tableId, TableState state) {
+        String sql = "UPDATE [TABLE] SET status = ? WHERE tableNumber = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, state.toString());
+            pstmt.setInt(2, tableId);
+
+            pstmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.err.println("Error updating table status: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Delete a table from the database
+     */
+    public boolean deleteTable(int tableId) {
+        String sql = "DELETE FROM [TABLE] WHERE tableNumber = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, tableId);
+            pstmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.err.println("Error deleting table: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Get the next available table ID
+     */
+    public int getNextTableId() {
+        String sql = "SELECT MAX(tableNumber) as maxId FROM [TABLE]";
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            if (rs.next()) {
+                int maxId = rs.getInt("maxId");
+                return maxId + 1;
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error getting next table ID: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return 1; // Default to 1 if no tables exist
+    }
 
     public void closeConnection(Connection connection) {
         if (connection != null) {
@@ -182,7 +361,4 @@ public class DBManager {
             }
         }
     }
-
 }
-
-

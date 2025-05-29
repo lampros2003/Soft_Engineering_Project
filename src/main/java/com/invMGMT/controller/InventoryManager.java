@@ -1,7 +1,7 @@
 package com.invMGMT.controller;
 
 import com.common.DBManager;
-import com.common.DatabaseManager;
+//import com.common.DatabaseManager;
 import com.common.Ingredient;
 import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXMLLoader;

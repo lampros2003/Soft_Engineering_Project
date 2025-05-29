@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import com.common.DBManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +45,7 @@ public class TableLayoutEditorController implements Initializable {
     private RestaurantLayout workingLayout;
     private final Map<Integer, TableBounds> tableBoundsMap = new HashMap<>();
     private TableStatus selectedTable = null;
+    private DBManager dbManager;
 
     // Colors for different table states
     private final Color OCCUPIED_COLOR = Color.web("#F39C12"); // Orange
@@ -68,15 +70,17 @@ public class TableLayoutEditorController implements Initializable {
 
     // Class to store table bounds for hit testing
     private record TableBounds(int tableId, double x, double y, double width, double height) {
-
         public boolean contains(double pointX, double pointY) {
-                return pointX >= x && pointX <= x + width &&
-                        pointY >= y && pointY <= y + height;
-            }
+            return pointX >= x && pointX <= x + width &&
+                    pointY >= y && pointY <= y + height;
         }
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Initialize database manager
+        dbManager = new DBManager();
+
         // Initialize spinners with value factories
         seatingSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 20, 4));
         widthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(60, 200, 100, 10));
@@ -123,37 +127,12 @@ public class TableLayoutEditorController implements Initializable {
     public void setMainController(TablesScreenController controller) {
         this.mainController = controller;
 
-        // Create a deep copy of the layout to work with
-        this.workingLayout = cloneLayout(controller.getRestaurantLayout());
+        // Create a deep copy of the layout to work with (in memory only, no database operations)
+        this.workingLayout = controller.getRestaurantLayout().createDeepCopy();
 
         // Set up the canvas and render the tables
         setupCanvas();
         renderTables();
-    }
-
-    /**
-     * Create a deep copy of the layout to prevent modifying the original until save
-     */
-    private RestaurantLayout cloneLayout(RestaurantLayout original) {
-        RestaurantLayout clone = new RestaurantLayout(
-            original.getLayoutName(),
-            original.getDescription()
-        );
-
-        // Clone all tables
-        for (TableStatus table : original.getAllTables()) {
-            clone.addTable(
-                table.getPosition(),
-                table.getWidth(),
-                table.getHeight(),
-                table.getSeatingCapacity(),
-                table.getState(),
-                table.getColumnIndex(),
-                table.getRowIndex()
-            );
-        }
-
-        return clone;
     }
 
     /**
@@ -366,7 +345,6 @@ public class TableLayoutEditorController implements Initializable {
             newX = Math.max(0, Math.min(newX, editorCanvas.getWidth() - draggedTable.getWidth()));
             newY = Math.max(0, Math.min(newY, editorCanvas.getHeight() - draggedTable.getHeight()));
 
-            // Update the table's position
             // Create a new version of the table with updated position
             TableStatus updatedTable = new TableStatus(
                 draggedTable.getId(),
@@ -382,8 +360,8 @@ public class TableLayoutEditorController implements Initializable {
                 0  // Row index is not used with direct positioning
             );
 
-            // Replace the table in the working layout
-            workingLayout.replaceTable(updatedTable);
+            // Replace the table in the working layout without saving to database
+            workingLayout.replaceTableInMemory(updatedTable);
 
             // Update the dragged table reference
             draggedTable = updatedTable;
@@ -449,15 +427,15 @@ public class TableLayoutEditorController implements Initializable {
      * Create a new table at the specified position
      */
     private void addTableAt(double x, double y) {
-        // Create a new table at the specified position
-        TableStatus newTable = workingLayout.addTable(
+        // Create a new table at the specified position (in memory only)
+        TableStatus newTable = workingLayout.addTableInMemory(
             new Point2D(x, y),
             widthSpinner.getValue(),
             heightSpinner.getValue(),
             seatingSpinner.getValue(),
             tableStateComboBox.getValue(),
             0, // Column index not used with direct positioning
-            0  // Row index not used with direct positioning
+            0  // Row index is not used with direct positioning
         );
 
         // Select the new table
@@ -475,6 +453,13 @@ public class TableLayoutEditorController implements Initializable {
         selectedTableLabel.setText("Table " + table.getId() + " - Seats: " +
                                   table.getSeatingCapacity() + " - " + table.getState());
         removeTableButton.setDisable(false);
+
+        // Update the spinner and combobox values to match the selected table
+        seatingSpinner.getValueFactory().setValue(table.getSeatingCapacity());
+        widthSpinner.getValueFactory().setValue((int) table.getWidth());
+        heightSpinner.getValueFactory().setValue((int) table.getHeight());
+        tableStateComboBox.setValue(table.getState());
+
         renderTables();
     }
 
@@ -508,8 +493,8 @@ public class TableLayoutEditorController implements Initializable {
             if (foundPosition) break;
         }
 
-        // Add a new table with the specified properties
-        TableStatus newTable = workingLayout.addTable(
+        // Add a new table with the specified properties (in memory only)
+        TableStatus newTable = workingLayout.addTableInMemory(
             new Point2D(newX, newY),
             widthSpinner.getValue(),
             heightSpinner.getValue(),
@@ -548,12 +533,54 @@ public class TableLayoutEditorController implements Initializable {
     @FXML
     void onRemoveTableClicked(ActionEvent event) {
         if (selectedTable != null) {
-            workingLayout.removeTable(selectedTable.getId());
+            workingLayout.removeTableInMemory(selectedTable.getId());
 
             // Clear selection
             selectedTable = null;
             selectedTableLabel.setText("No table selected");
             removeTableButton.setDisable(true);
+
+            // Re-render tables
+            renderTables();
+        }
+    }
+
+    /**
+     * Update the selected table with current spinner values
+     */
+    @FXML
+    void onUpdateTableClicked(ActionEvent event) {
+        if (selectedTable != null) {
+            // Get the values from the spinners and combobox
+            int width = widthSpinner.getValue();
+            int height = heightSpinner.getValue();
+            int seatingCapacity = seatingSpinner.getValue();
+            TablesScreenController.TableState state = tableStateComboBox.getValue();
+
+            // Create a new table with updated properties
+            TableStatus updatedTable = new TableStatus(
+                selectedTable.getId(),
+                selectedTable.getPosition(),
+                width,
+                height,
+                seatingCapacity,
+                state,
+                selectedTable.getGuestsCount(),
+                selectedTable.getOccupiedTime(),
+                selectedTable.getServerName(),
+                selectedTable.getColumnIndex(),
+                selectedTable.getRowIndex()
+            );
+
+            // Update the table in the working layout (in memory only)
+            workingLayout.replaceTableInMemory(updatedTable);
+
+            // Update the selected table reference
+            selectedTable = updatedTable;
+
+            // Update label
+            selectedTableLabel.setText("Table " + selectedTable.getId() + " - Seats: " +
+                                      selectedTable.getSeatingCapacity() + " - " + selectedTable.getState());
 
             // Re-render tables
             renderTables();
@@ -577,6 +604,7 @@ public class TableLayoutEditorController implements Initializable {
     void onSaveClicked(ActionEvent event) {
         if (mainController != null) {
             // Update the layout in the main controller
+            // This will trigger saving to the database
             mainController.updateLayout(workingLayout);
         }
 
