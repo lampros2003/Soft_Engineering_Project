@@ -3,6 +3,7 @@ package com.common;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,9 +21,47 @@ public class DBManager {
     }
 
     public Ingredient[] getIngredients() {
-        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
-        return temp;
+//        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
+        List<Ingredient> results=new ArrayList<Ingredient>();
+        String sql="SELECT * FROM INGREDIENTS";
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Ingredient temp=new Ingredient(rs.getString("name"),rs.getInt("quantity"),rs.getString("allergen"));
+                results.add(temp);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return results.toArray(Ingredient[]::new);
     }
+    public Ingredient getSpecificIngredient(String name){
+        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
+        for(int i=0;i<temp.length;i++){
+            if(Objects.equals(temp[i].getName(), name)){
+                return temp[i];
+            }
+        }
+        return null;
+    }
+    public void removeIngredient(String id){
+        System.out.println(id+ " removed or at least lets pretend it got removed (; -;)");
+    }
+    public void editIngredient(String id,Ingredient changes){
+        System.out.println(id+" changed to"+ changes.getInfo());
+    }
+    public void addIngredient(Ingredient ing){
+        System.out.println(ing.getName()+ing.getInfo()+" added");
+    }
+    public boolean checkIfNameAlreadyExists(String name){
+        return true;
+    }
+
+
+
 
     public List<MenuItem> loadMenuData() {
         List<MenuItem> items = new ArrayList<>();
