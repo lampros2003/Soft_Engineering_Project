@@ -514,6 +514,8 @@ public class TablesScreenController implements Initializable {
      * This is called by the editor controller when the user saves changes
      */
     public void updateLayout(RestaurantLayout newLayout) {
+        System.out.println("Updating layout with " + newLayout.getTableCount() + " tables");
+        
         // Replace the current layout with the new one
         this.restaurantLayout = newLayout;
         

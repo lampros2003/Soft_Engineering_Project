@@ -258,26 +258,43 @@ public class DBManager {
      * Save a table to the database
      */
     public boolean saveTable(TableStatus table) {
-        String sql = "INSERT OR REPLACE INTO [TABLE] (tableNumber, status, locationX, locationY, capacity, width, height) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        // First check if the table already exists
+        boolean tableExists = tableExists(table.getId());
+        
+        String sql;
+        if (tableExists) {
+            // Update existing table
+            sql = "UPDATE [TABLE] SET status = ?, locationX = ?, locationY = ?, capacity = ?, width = ?, height = ? WHERE tableNumber = ?";
+        } else {
+            // Insert new table
+            sql = "INSERT INTO [TABLE] (status, locationX, locationY, capacity, width, height, tableNumber) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        }
 
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1, table.getId());
-            pstmt.setString(2, table.getState().toString());
 
             // Get position coordinates
             Point2D position = table.getPosition();
             int locationX = (int) position.getX();
             int locationY = (int) position.getY();
 
-            pstmt.setInt(3, locationX);
-            pstmt.setInt(4, locationY);
-            pstmt.setInt(5, table.getSeatingCapacity());
-            pstmt.setInt(6, (int) table.getWidth());
-            pstmt.setInt(7, (int) table.getHeight());
+            // Set parameters (order is different for UPDATE vs INSERT)
+            pstmt.setString(1, table.getState().toString());
+            pstmt.setInt(2, locationX);
+            pstmt.setInt(3, locationY);
+            pstmt.setInt(4, table.getSeatingCapacity());
+            pstmt.setInt(5, (int) table.getWidth());
+            pstmt.setInt(6, (int) table.getHeight());
+            pstmt.setInt(7, table.getId());
 
             pstmt.executeUpdate();
+            
+            if (!tableExists) {
+                System.out.println("Created new table in database: Table " + table.getId());
+            } else {
+                System.out.println("Updated existing table in database: Table " + table.getId());
+            }
+            
             return true;
 
         } catch (SQLException e) {
@@ -285,6 +302,30 @@ public class DBManager {
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * Check if a table with the given ID exists in the database
+     */
+    public boolean tableExists(int tableId) {
+        String sql = "SELECT COUNT(*) FROM [TABLE] WHERE tableNumber = ?";
+        
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, tableId);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error checking if table exists: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return false;
     }
 
     /**

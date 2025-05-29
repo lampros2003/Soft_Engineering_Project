@@ -428,6 +428,8 @@ public class TableLayoutEditorController implements Initializable {
      */
     private void addTableAt(double x, double y) {
         // Create a new table at the specified position (in memory only)
+        System.out.println("Adding new table at position (" + x + ", " + y + ")");
+        
         TableStatus newTable = workingLayout.addTableInMemory(
             new Point2D(x, y),
             widthSpinner.getValue(),
@@ -437,6 +439,8 @@ public class TableLayoutEditorController implements Initializable {
             0, // Column index not used with direct positioning
             0  // Row index is not used with direct positioning
         );
+        
+        System.out.println("Created new table with ID: " + newTable.getId());
 
         // Select the new table
         selectTable(newTable);
@@ -603,6 +607,8 @@ public class TableLayoutEditorController implements Initializable {
     @FXML
     void onSaveClicked(ActionEvent event) {
         if (mainController != null) {
+            System.out.println("Saving layout with " + workingLayout.getTableCount() + " tables");
+            
             // Update the layout in the main controller
             // This will trigger saving to the database
             mainController.updateLayout(workingLayout);

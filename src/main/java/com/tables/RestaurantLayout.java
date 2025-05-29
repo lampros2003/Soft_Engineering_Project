@@ -302,9 +302,30 @@ public class RestaurantLayout implements Serializable {
      * Save all tables to the database (useful after bulk updates)
      */
     public void saveAllTablesToDatabase() {
+        // First get existing table IDs from the database for comparison
+        List<Integer> existingTableIds = new ArrayList<>();
+        List<TableStatus> currentTables = dbManager.getTables();
+        for (TableStatus table : currentTables) {
+            existingTableIds.add(table.getId());
+        }
+        
+        // Keep track of saved tables to identify deleted ones
+        Set<Integer> savedTableIds = new HashSet<>();
+        
+        // Save all tables in the layout
         for (TableStatus table : tables.values()) {
             dbManager.saveTable(table);
+            savedTableIds.add(table.getId());
         }
+        
+        // Delete any tables that exist in the database but not in the layout
+        for (Integer existingId : existingTableIds) {
+            if (!savedTableIds.contains(existingId)) {
+                dbManager.deleteTable(existingId);
+                System.out.println("Deleted table from database: Table " + existingId);
+            }
+        }
+        
         System.out.println("Saved " + tables.size() + " tables to database");
     }
 
@@ -316,6 +337,7 @@ public class RestaurantLayout implements Serializable {
         copy.nextTableId = this.nextTableId;
         copy.columns = this.columns;
         copy.rows = this.rows;
+        copy.loaded = true;  // Mark as loaded to prevent additional DB loads
         
         // Copy all tables without saving to database
         for (TableStatus table : this.tables.values()) {
