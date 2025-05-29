@@ -1,7 +1,6 @@
 package com.invMGMT.controller;
 
 import com.common.DBManager;
-import com.common.DatabaseManager;
 import com.common.Ingredient;
 import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,6 @@ import javafx.stage.Stage;
 public class InventoryManager {
     Stage stage;
     FXMLLoader loader;
-//    DatabaseManager db;
     DBManager db;
     Ingredient[] inventory;
     private Ingredient selectedIngredient;
@@ -19,7 +17,6 @@ public class InventoryManager {
         this.stage=stage;
         InventoryListController inventoryList=new InventoryListController();
         inventoryList.display(stage,"/invMGMT/invMGMT.fxml");
-//        this.db=new DatabaseManager();
         this.db=new DBManager();
         this.inventory=db.getIngredients();
         inventoryList.setManager(this);
