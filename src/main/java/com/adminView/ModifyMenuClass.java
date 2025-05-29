@@ -41,5 +41,17 @@ public class ModifyMenuClass {
                && item.getIngredients() != null && !item.getIngredients().trim().isEmpty()
                && item.getPrice() >= 0;
     }
+
+    public void checkExpiredOffers(MenuModificationScreen screen) {
+        DBManager db = new DBManager();
+        List<MenuItem> expired = db.queryExpiredOffers();
+
+        if (expired == null || expired.isEmpty()) {
+            screen.noExpiredOfferNotification();
+        } else {
+            screen.displayExpiredOffers(expired);
+        }
+    }
+
 }
 

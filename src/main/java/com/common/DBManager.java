@@ -54,33 +54,41 @@ public class DBManager {
         return items;
     }
 
-//    public List<DealItem> queryExpiredOffers(){
-//        List<DealItem> expiredOffers = new ArrayList<>();
-//
-//        String sql = """
-//                SELECT D.name AS dish_name, D.expiresOn AS expires_on, D.discount AS discount
-//                FROM DEAL D
-//                WHERE expiresOn < CURRENT_DATE
-//                """;
-//
-//        try (Connection conn = connect();
-//             Statement stmt = conn.createStatement();
-//             ResultSet rs = stmt.executeQuery(sql)) {
-//
-//            while (rs.next()) {
-//                String dish_name = rs.getString("dish_name");
-//                String expiresOn = rs.getString("expires_on");
-//                Integer discount = rs.getInt("discount");
-//
-//                expiredOffers.add(new DealItem(dish_name, expiresOn, discount));
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return expiredOffers;
-//    }
+    public List<MenuItem> queryExpiredOffers() {
+        List<MenuItem> expiredOffers = new ArrayList<>();
+        String sql = """
+                SELECT d.name AS dish_name,
+                       d.value AS price,
+                       GROUP_CONCAT(i.name, ', ') AS ingredients,
+                       exp.discount AS discount,
+                       exp.expiresOn AS expires_on
+                FROM DISH d
+                JOIN CONSISTS c ON d.name = c.dishId
+                JOIN INGREDIENTS i ON i.name = c.ingredientId
+                JOIN DEAL exp ON exp.name = d.name
+                WHERE exp.expiresOn < DATE('now')
+                GROUP BY d.name, d.value;
+                """;
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String name = rs.getString("dish_name");
+                String ingredients = rs.getString("ingredients");
+                double price = rs.getDouble("price");
+                double discount = rs.getDouble("discount");
+                String expires_on = rs.getString("expires_on");
+
+                expiredOffers.add(new MenuItem(name, price, ingredients, discount, expires_on));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return expiredOffers;
+    }
 
     public List<Ingredient> queryRecommendedIngredients() {
         List<Ingredient> recommended = new ArrayList<>();
@@ -116,8 +124,6 @@ public class DBManager {
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            System.out.println("Connected to: " + conn.getMetaData().getURL());
-
             for (MenuItem item : items) {
                 stmt.setDouble(1, item.getPrice());
                 stmt.setString(2, item.getName());
@@ -138,20 +144,35 @@ public class DBManager {
     }
 
     public boolean updateDeals(List<MenuItem> items) {
-        String sql = "INSERT OR REPLACE INTO DEAL (name, discount, expiresOn) VALUES (?, ?, DATE('now', '+7 day'))";
+        String selectSql = "SELECT discount FROM DEAL WHERE name = ?";
+        String insertOrReplaceSql = "INSERT OR REPLACE INTO DEAL (name, discount, expiresOn) VALUES (?, ?, DATE('now', '+7 day'))";
 
         try (Connection conn = connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement selectStmt = conn.prepareStatement(selectSql);
+             PreparedStatement updateStmt = conn.prepareStatement(insertOrReplaceSql)) {
 
             for (MenuItem item : items) {
-                if (item.getDiscount() >= 0.0) {
-                    stmt.setString(1, item.getName());
-                    stmt.setDouble(2, item.getDiscount());
-                    System.out.println("Inserting deal: name = " + item.getName() + ", discount = " + item.getDiscount());
+                if (item.getDiscount() > 0.0) {
+                    boolean needsUpdate = true;
 
-                    stmt.executeUpdate();
+                    selectStmt.setString(1, item.getName());
+                    try (ResultSet rs = selectStmt.executeQuery()) {
+                        if (rs.next()) {
+                            double existingDiscount = rs.getDouble("discount");
+                            if (Double.compare(existingDiscount, item.getDiscount()) == 0) {
+                                needsUpdate = false;
+                            }
+                        }
+                    }
+
+                    if (needsUpdate) {
+                        updateStmt.setString(1, item.getName());
+                        updateStmt.setDouble(2, item.getDiscount());
+                        updateStmt.executeUpdate();
+                    }
                 }
             }
+
             return true;
 
         } catch (SQLException e) {

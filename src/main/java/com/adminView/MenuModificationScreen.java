@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import com.menu.Menu;
@@ -81,6 +82,7 @@ public class MenuModificationScreen {
 
         displayRecommendedIngredients(ingredient);
 
+        menuManager.checkExpiredOffers(this);
 
     }
 
@@ -119,6 +121,30 @@ public class MenuModificationScreen {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
+    public void noExpiredOfferNotification() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No expired Offers found.");
+        alert.setHeaderText(null);
+        alert.setContentText("No expired Offers found.");
+        alert.showAndWait();
+    }
+
+    public void displayExpiredOffers(List<MenuItem> expiredOffers) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Expired Offers Found");
+        alert.setHeaderText("Expired Offers Found:");
+
+        StringBuilder content = new StringBuilder();
+        for (MenuItem item : expiredOffers) {
+            content.append("• ").append(item.getName())
+                    .append(" (expired: ").append(item.getExpiresOn()).append(")\n");
+        }
+
+        alert.setContentText(content.toString());
+        alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         alert.showAndWait();
     }
 
