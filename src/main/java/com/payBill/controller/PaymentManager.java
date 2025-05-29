@@ -1,4 +1,5 @@
 package com.payBill.controller;
+import com.common.DBManager;
 import com.common.Order;
 import com.payBill.util.BankAPI;
 import com.payBill.util.EmailAPI;
@@ -14,20 +15,22 @@ public class PaymentManager {
     Order order;
     Stage stage;
     float totalCost;
+    DBManager db;
     public PaymentManager(){}
     public void init(Stage stage,Order order){
         this.stage=stage;
-        loader=SceneSwitching.switchSceneR(stage,"/paybill/view/summuryPayment.fxml");
-        OrderSummurizationController summuryController=loader.getController();
+        OrderSummurizationController summuryController=new OrderSummurizationController();
+        summuryController.display(this.stage,"/paybill/view/summuryPayment.fxml");
         summuryController.getManager(this);
         this.order=order;
+        this.db=new DBManager();
         this.totalCost=this.order.calculateTotalCost();
 
         summuryController.displaySummury(this.order,this.totalCost);
     }
     public void orderApproved(){
-        loader=SceneSwitching.switchSceneR(this.stage,"/paybill/view/payment.fxml");
-        BankPageController bankController=loader.getController();
+        BankPageController bankController=new BankPageController();
+        bankController.display(this.stage,"/paybill/view/payment.fxml");
         bankController.getManager(this);
     }
     public void passCredentials(String name,String cardNum,String cvc){
@@ -35,21 +38,21 @@ public class PaymentManager {
         boolean transactionComplete=BankAPI.askVerification(name,cardNum,cvc);
         if(transactionComplete) {
             this.order.updateStatus();
-            loader=SceneSwitching.switchSceneR(this.stage,"/paybill/view/paymentSuccessScreen.fxml");
-            AfterPaymentController afterController=loader.getController();
+//            this.db.updateOrderStatus(this.order);
+            AfterPaymentController afterController=new AfterPaymentController();
+            afterController.display(this.stage,"/paybill/view/paymentSuccessScreen.fxml");
             afterController.getManager(this);
         }else{
             BankErrorPageController errorController=new BankErrorPageController();
-            loader=SceneSwitching.switchSceneR(this.stage,"/common/view/errorScreen.fxml",errorController);
+            errorController.display(this.stage,"/common/view/errorScreen.fxml");
             errorController.showErrorAndBack("Bank Error!",this.order);
         }
 
     }
-    public void sendEmail(String emailAddress){
+    public void sendEmail(String emailAddress,AfterPaymentController afterController){
         if(emailAddress.matches("[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+")) {//checks if inputs follow the email address pattern
             EmailAPI.sendEmail(emailAddress,"this is a receipt");
         } else {
-            AfterPaymentController afterController = loader.getController();
             afterController.getManager(this);
             afterController.showWarning();
         }

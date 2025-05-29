@@ -97,6 +97,19 @@ public class DBManager {
         return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.equals(name));
     }
 
+    public void updateOrderStatus(Order order){//DO NOT USE YET
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE ORDER SET state=? WHERE id=?");
+        ) {
+            stmt.setString(1,order.getStatus());
+//            stmt.setInt(2,IDGOESHERE());
+            stmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

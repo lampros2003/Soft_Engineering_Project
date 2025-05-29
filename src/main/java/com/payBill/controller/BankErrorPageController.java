@@ -1,13 +1,14 @@
 package com.payBill.controller;
 
 import com.common.Order;
+import com.common.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class BankErrorPageController {
+public class BankErrorPageController extends Screen {
     @FXML private Text errorText;
     Order order;
     public void backButton(ActionEvent event){

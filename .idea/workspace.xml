@@ -6,11 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Merge branch 'feature/invMGMT' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/common/DatabaseManager.java&#10;#&#9;src/main/java/com/common/Ingredient.java&#10;#&#9;src/main/java/com/invMGMT/controller/InventoryManager.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/Ingredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/InventoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/AfterPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/AfterPaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/BankErrorPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/BankErrorPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/BankPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/BankPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/OrderSummurizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/payment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/view/payment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/paymentSuccessScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/view/paymentSuccessScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/paybill/view/summuryPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/paybill/view/summuryPayment.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
