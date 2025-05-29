@@ -50,7 +50,7 @@
                         <TableColumn fx:id="ingredientsColumn" minWidth="0.0" prefWidth="116.80006408691406" text="Ingredients" />
                       <TableColumn fx:id="priceColumn" minWidth="0.0" prefWidth="95.199951171875" text="Price" />
                         <TableColumn fx:id="discountColumn" minWidth="0.0" prefWidth="85.5999755859375" text="Discount" />
-                        <TableColumn fx:id="discountColumn1" minWidth="0.0" prefWidth="102.39996337890625" text="Deal Expires On" />
+                        <TableColumn fx:id="expirationColumn" minWidth="0.0" prefWidth="102.39996337890625" text="Deal Expires On" />
                     </columns>
                   </TableView>
                   <Text layoutX="554.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recommended Ingedients based on availability" wrappingWidth="210.69024658203125">

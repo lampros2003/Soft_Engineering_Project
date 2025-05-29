@@ -7,10 +7,12 @@ public class MenuItem {
     private double discount;
     private String expiresOn;
 
-    public MenuItem(String name, double price, String ingredients) {
+    public MenuItem(String name, double price, String ingredients, double discount, String expiresOn) {
         this.name = name;
         this.price = price;
         this.ingredients = ingredients;
+        this.discount = discount;
+        this.expiresOn = expiresOn;
     }
 
     public String getName() {

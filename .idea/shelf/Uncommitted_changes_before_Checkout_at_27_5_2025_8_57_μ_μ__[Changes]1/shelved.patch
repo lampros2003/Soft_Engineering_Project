@@ -1,0 +1,18 @@
+Index: src/main/java/com/adminView/confirmChangesWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/adminView/confirmChangesWindow.java b/src/main/java/com/adminView/confirmChangesWindow.java
+new file mode 100644
+--- /dev/null	(date 1748366476562)
++++ b/src/main/java/com/adminView/confirmChangesWindow.java	(date 1748366476562)
+@@ -0,0 +1,8 @@
++package com.adminView;
++
++public class confirmChangesWindow {
++    //public void display() {
++        // Logic to display confirmation window
++        // This could include a confirmation message and buttons for "Confirm" and "Cancel"
++    }
++}

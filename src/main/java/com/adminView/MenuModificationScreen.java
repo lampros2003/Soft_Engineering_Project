@@ -53,10 +53,22 @@ public class MenuModificationScreen {
         // UI related commands, so they should be initialized in the initialize method
         // Set up the menu table columns
         dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
 
-        // Administrator can modify only the price of the dishes
+        ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
+        priceColumn.setOnEditCommit(event -> {
+            MenuItem item = event.getRowValue();
+            item.setPrice(event.getNewValue());
+        });
+
+        discountColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
+        discountColumn.setOnEditCommit(event -> {
+            MenuItem item = event.getRowValue();
+            item.setDiscount(event.getNewValue());
+        });
+
+        // Administrator can make menu modifications
         menuTable.setEditable(true);
 
         displayMenu(menu);
@@ -69,16 +81,7 @@ public class MenuModificationScreen {
 
         displayRecommendedIngredients(ingredient);
 
-        priceColumn.setOnEditCommit(event -> {
-            MenuItem item = event.getRowValue();
-            item.setPrice(event.getNewValue());
-        });
 
-        discountColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
-        discountColumn.setOnEditCommit(event -> {
-            MenuItem item = event.getRowValue();
-            item.setDiscount(event.getNewValue());
-        });
     }
 
     private void displayRecommendedIngredients(List<Ingredient> ingredients) {
@@ -99,6 +102,10 @@ public class MenuModificationScreen {
         priceColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getPrice()).asObject());
 
         ingredientsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngredients()));
+
+        discountColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getDiscount()).asObject());
+
+        expirationColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getExpiresOn()));
 
         menuTable.setItems(menuItems);
     }

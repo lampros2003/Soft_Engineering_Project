@@ -44,9 +44,7 @@ public class DBManager {
                 double discount = rs.getDouble("discount");
                 String expires_on = rs.getString("expires_on");
 
-                System.out.println("Loaded item: " + name + ", Price: " + price + ", Ingredients: " + ingredients + ", Discount: " + discount);
-
-                items.add(new MenuItem(name, price, ingredients));
+                items.add(new MenuItem(name, price, ingredients, discount, expires_on));
             }
 
         } catch (SQLException e) {
