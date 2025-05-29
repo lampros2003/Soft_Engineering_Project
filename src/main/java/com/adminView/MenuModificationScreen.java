@@ -40,6 +40,13 @@ public class MenuModificationScreen {
     @FXML
     private TableColumn<Ingredient, Integer> ingredientQuantity;
 
+    // Methods to be implemented
+    //public void display(){}
+    //public void noOffersExpiredNotification(){}
+    //public void displayExpiredOffers(){}
+    //public void displayUpdatedMenu(){}
+
+
     public void initialize() {
         // Show the menu table
         Menu menu = menuManager.getCurrentMenu();

@@ -13,6 +13,8 @@ public class DBManager {
 
     private static final String URL = "jdbc:sqlite:database.db";
 
+
+
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL);
     }
