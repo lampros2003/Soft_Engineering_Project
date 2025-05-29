@@ -30,7 +30,7 @@
       </Pane>
       <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="541.0" prefWidth="794.0">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="778.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="778.0">
                <children>
                   <TableView fx:id="recommendedIngredientsTable" layoutX="550.0" layoutY="91.0" prefHeight="390.0" prefWidth="218.0">
                      <columns>
