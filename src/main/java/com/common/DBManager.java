@@ -97,7 +97,7 @@ public class DBManager {
     }
     public boolean checkIfNameAlreadyExists(String name,String oldName){
         System.out.println(oldName);
-        return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.equals(name));
+        return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.toUpperCase().equals(name.toUpperCase()));
     }
 
     public void updateOrderStatus(Order order){//DO NOT USE YET
