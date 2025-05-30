@@ -226,19 +226,11 @@ public class TablesScreenController implements Initializable {
         double tableHeight = table.getHeight();
 
         // Set color based on table state
-        Color tableColor;
-        switch (table.getState()) {
-            case AVAILABLE:
-                tableColor = AVAILABLE_COLOR;
-                break;
-            case OCCUPIED:
-                tableColor = OCCUPIED_COLOR;
-                break;
-            case UNAVAILABLE:
-            default:
-                tableColor = UNAVAILABLE_COLOR;
-                break;
-        }
+        Color tableColor = switch (table.getState()) {
+            case AVAILABLE -> AVAILABLE_COLOR;
+            case OCCUPIED -> OCCUPIED_COLOR;
+            default -> UNAVAILABLE_COLOR;
+        };
 
         // Draw table rectangle with rounded corners
         gc.setFill(tableColor);
@@ -276,20 +268,13 @@ public class TablesScreenController implements Initializable {
     private void drawChairMarkers(GraphicsContext gc, TableStatus table, double tableX, double tableY,
                                  double tableWidth, double tableHeight) {
         int seating = table.getSeatingCapacity();
-        Color markerColor;
+        Color markerColor = switch (table.getState()) {
+            case AVAILABLE -> Color.web("#2ECC71").darker();
+            case OCCUPIED -> Color.web("#F39C12").darker();
+            default -> Color.web("#999999");
+        };
 
         // Set chair marker color based on table state
-        switch (table.getState()) {
-            case AVAILABLE:
-                markerColor = Color.web("#2ECC71").darker();
-                break;
-            case OCCUPIED:
-                markerColor = Color.web("#F39C12").darker();
-                break;
-            default:
-                markerColor = Color.web("#999999");
-                break;
-        }
 
         gc.setFill(markerColor);
 
@@ -379,7 +364,7 @@ public class TablesScreenController implements Initializable {
                 try {
                     int guestCount = Integer.parseInt(count);
                     if (guestCount > 0 && guestCount <= table.getSeatingCapacity()) {
-                        restaurantLayout.seatParty(table.getId(), guestCount, "Server"); // Could add server selection
+                        restaurantLayout.seatParty(table.getId(), guestCount, "Server");
                         renderTables();
                     } else {
                         showAlert("Invalid Input", "Please enter a valid guest count (1-" + table.getSeatingCapacity() + ")");
