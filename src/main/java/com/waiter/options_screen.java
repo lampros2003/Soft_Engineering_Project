@@ -2,18 +2,25 @@ package com.waiter;
 
 import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class options_screen {
-
+    FXMLLoader loader;
     @FXML
     private Pane Edit_button;
 
     @FXML
     private Pane cancel_button;
+
+    public void Display(Stage stage) {
+        System.out.println("Displaying options screen");
+        this.loader= SceneSwitching.switchSceneR(stage,"/waiter/options_page.fxml");
+        this.loader.setController(this);
+    }
 
     @FXML
     void clicked_Cancel(MouseEvent event) {
