@@ -61,4 +61,8 @@ module com.mainpackage {
     // Common package
     exports com.common to javafx.fxml;
     opens com.common;
+
+    // Error Handling package
+    exports com.errorHandling to javafx.fxml;
+    opens com.errorHandling;
 }
