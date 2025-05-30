@@ -4,30 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManageWaiterScreenClass {
-    private List<waiterViewController> waiters;
+    private List<waiter_app> waiters;
 
     public ManageWaiterScreenClass() {
         waiters = new ArrayList<>();
     }
 
-    // Καταχώρηση νέου WaiterScreen (αν έχεις πολλούς σερβιτόρους)
-    public void registerWaiter(waiterViewController waiter) {
+    public void registerWaiter(waiter_app waiter) {
         waiters.add(waiter);
     }
 
-    // Ειδοποίηση όλων των σερβιτόρων
-    public void notifyAllWaiters() {
-        for (waiterViewController waiter : waiters) {
-//            waiter.displayNotification("New request from customer!");
-        }
-    }
+//    public void notifyAllWaiters() {
+//        if (waiters.isEmpty()) {
+//            System.out.println("No waiters registered to notify.");
+//            return;
+//        }
+//
+//        for (waiter_app waiter : waiters) {
+//            waiter.displayPopup("Request received at table ");
+//        }
+//    }
 
-    // Χειρισμός αποδοχής αιτήματος από έναν σερβιτόρο
     public void acceptRequest() {
         System.out.println("A waiter accepted the request.");
     }
 
-    // Όταν ο σερβιτόρος φτάσει στο τραπέζι
     public void waiterArrived() {
         System.out.println("Waiter has arrived at the table.");
     }

@@ -1,8 +1,14 @@
 package com.callWaiter;
 
+import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 public class RequestStatusWindow {
 
@@ -29,8 +35,10 @@ public class RequestStatusWindow {
         addMessage("Request arrived by waiter.");
     }
 
-    public void cancelRequestStatus(){
-        addMessage("Request canceled.");
+    @FXML
+    public void cancelRequestStatus() {
+        addMessage("Request cancelled.");
+        manager.cancelRequest();
     }
 
     public void addMessage(String message) {

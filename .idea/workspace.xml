@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/errorHandling/alreadyRequested.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/errorHandling/ErrorNotificationScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/common/view/confirmScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/common/view/confirmScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +60,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
@@ -76,8 +80,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
+
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
@@ -144,8 +149,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="waiter_app" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.waiter.waiter_app" />
+      <module name="Soft-Eng_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.waiter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.TablesScreenApplication" />
+
+      <item itemvalue="Application.waiter_app" />
+
       <item itemvalue="Application.schedule_use_case" />
       <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.Main" />
@@ -156,6 +176,7 @@
         <item itemvalue="Application.TablesScreenApplication" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.schedule_use_case" />
+        <item itemvalue="Application.waiter_app" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -342,31 +363,7 @@
       <option name="project" value="LOCAL" />
       <updated>1748168476961</updated>
     </task>
-    <task id="LOCAL-00018" summary="updates">
-      <option name="closed" value="true" />
-      <created>1748366189279</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1748366189279</updated>
-    </task>
-    <task id="LOCAL-00019" summary="updates">
-      <option name="closed" value="true" />
-      <created>1748543266837</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1748543266837</updated>
-    </task>
-    <task id="LOCAL-00020" summary="updates">
-      <option name="closed" value="true" />
-      <created>1748545105335</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1748545105335</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,6 +386,7 @@
     <MESSAGE value="Change login and menu screens to the proper direcotries" />
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
     <MESSAGE value="added waiterViewController" />
+    <MESSAGE value="updates" />
     <MESSAGE value="Updates - added new classes and rename some old classes" />
     <MESSAGE value="Use Case 8 - Call Waiter update" />
     <MESSAGE value="update methods and classes" />
@@ -398,15 +396,8 @@
     <MESSAGE value="fix method name" />
     <MESSAGE value="fix class and method names" />
     <MESSAGE value="comment code with errors" />
-    <MESSAGE value="updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates" />
-  </component>
-  <component name="VgoProject">
-    <integration-enabled>false</integration-enabled>
-    <settings-migrated>true</settings-migrated>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+
+    <option name="LAST_COMMIT_MESSAGE" value="comment code with errors" />
+
   </component>
 </project>
