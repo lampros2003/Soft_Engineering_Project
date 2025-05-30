@@ -157,44 +157,24 @@ public class HelloController
             boolean isPercentage = metricType.equals("percentage");
 
             // Determine the database key based on the metricName
-            switch (metricName) {
-                case "Occupied Tables":
-                    dbKey = "occupied_tables";
-                    break;
-                case "Earnings":
-                    dbKey = "total_earnings";
-                    break;
-                case "Orders Placed":
-                    dbKey = "total_orders";
-                    break;
-                case "Customer Satisfaction": // Changed from "Other Statistic"
-                    dbKey = "customer_satisfaction";
-                    break;
-                case "Monthly Occupation":
-                    dbKey = "monthly_occupation";
-                    break;
-                case "Monthly Earnings":
-                    dbKey = "monthly_earnings";
-                    break;
-                case "Monthly Orders":
-                    dbKey = "monthly_orders";
-                    break;
-                case "Monthly Customer Satisfaction": // Changed from "Monthly Statistics"
-                    dbKey = "monthly_stats";
-                    break;
-                case "Last Month's Occupation":
-                    dbKey = "last_month_tables";
-                    break;
-                case "Last Month's Earnings":
-                    dbKey = "last_month_earnings";
-                    break;
-                case "Last Month's Orders":
-                    dbKey = "last_month_orders";
-                    break;
-                case "Last Month's Customer Satisfaction": // Changed from "Last Month's Statistics"
-                    dbKey = "last_month_customers";
-                    break;
-            }
+            dbKey = switch (metricName) {
+                case "Occupied Tables" -> "occupied_tables";
+                case "Earnings" -> "total_earnings";
+                case "Orders Placed" -> "total_orders";
+                case "Customer Satisfaction" -> // Changed from "Other Statistic"
+                        "customer_satisfaction";
+                case "Monthly Occupation" -> "monthly_occupation";
+                case "Monthly Earnings" -> "monthly_earnings";
+                case "Monthly Orders" -> "monthly_orders";
+                case "Monthly Customer Satisfaction" -> // Changed from "Monthly Statistics"
+                        "monthly_stats";
+                case "Last Month's Occupation" -> "last_month_tables";
+                case "Last Month's Earnings" -> "last_month_earnings";
+                case "Last Month's Orders" -> "last_month_orders";
+                case "Last Month's Customer Satisfaction" -> // Changed from "Last Month's Statistics"
+                        "last_month_customers";
+                default -> dbKey;
+            };
 
             if (dbKey != null) {
                 currentValue = dbManager.getGeneralData(dbKey);

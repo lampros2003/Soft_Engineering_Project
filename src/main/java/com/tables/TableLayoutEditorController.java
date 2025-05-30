@@ -550,48 +550,6 @@ public class TableLayoutEditorController implements Initializable {
     }
 
     /**
-     * Update the selected table with current spinner values
-     */
-    @FXML
-    void onUpdateTableClicked(ActionEvent event) {
-        if (selectedTable != null) {
-            // Get the values from the spinners and combobox
-            int width = widthSpinner.getValue();
-            int height = heightSpinner.getValue();
-            int seatingCapacity = seatingSpinner.getValue();
-            TablesScreenController.TableState state = tableStateComboBox.getValue();
-
-            // Create a new table with updated properties
-            TableStatus updatedTable = new TableStatus(
-                selectedTable.getId(),
-                selectedTable.getPosition(),
-                width,
-                height,
-                seatingCapacity,
-                state,
-                selectedTable.getGuestsCount(),
-                selectedTable.getOccupiedTime(),
-                selectedTable.getServerName(),
-                selectedTable.getColumnIndex(),
-                selectedTable.getRowIndex()
-            );
-
-            // Update the table in the working layout (in memory only)
-            workingLayout.replaceTableInMemory(updatedTable);
-
-            // Update the selected table reference
-            selectedTable = updatedTable;
-
-            // Update label
-            selectedTableLabel.setText("Table " + selectedTable.getId() + " - Seats: " +
-                                      selectedTable.getSeatingCapacity() + " - " + selectedTable.getState());
-
-            // Re-render tables
-            renderTables();
-        }
-    }
-
-    /**
      * Cancel editing and close the window
      */
     @FXML

@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/AnalyticsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/analytics/AnalyticsData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/DetailViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/analytics/DetailViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/analytics/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/analytics/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/analytics/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tables/RestaurantLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tables/RestaurantLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tables/TableLayoutEditorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tables/TableLayoutEditorController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +52,9 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="z1hvTqE1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -73,7 +74,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "git-widget-placeholder": "add__db__to__analytics",
+    "git-widget-placeholder": "Create__tests__for__tables",
     "go.import.settings.migrated": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
