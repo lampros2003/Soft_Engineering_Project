@@ -22,12 +22,12 @@ public class Ingredient {
     }
     public String getAllergen(){return this.allergen;}
     public String getInfo(){
-        return (allergen==null)? "Quantity: "+ this.quantity + "\n\nAllergen: None" :"Quantity: "+ this.quantity + "allergen:" + this.allergen;
+        return (allergen==null)? "Quantity: "+ this.quantity + "\n\nAllergen: None" :"Quantity: "+ this.quantity + "\n\nAllergen:" + this.allergen;
     };
-    public void saveChanges(DatabaseManager db,String oldName){
+    public void saveChanges(DBManager db,String oldName){
         db.editIngredient(oldName,this);
     }
-    public void saveChanges(DatabaseManager db){
+    public void saveChanges(DBManager db){
         db.addIngredient(this);
     }
 }

@@ -1,0 +1,479 @@
+Index: src/main/java/com/common/DBManager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.common;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.regex.Matcher;\r\nimport java.util.regex.Pattern;\r\n\r\nimport com.menu.DealItem;\r\nimport com.menu.MenuItem;\r\n\r\npublic class DBManager {\r\n\r\n    private static final String URL = \"jdbc:sqlite:database.db\";\r\n\r\n\r\n\r\n    public Connection connect() throws SQLException {\r\n        return DriverManager.getConnection(URL);\r\n    }\r\n\r\n    public Ingredient[] getIngredients() {\r\n        Ingredient[] temp = {new Ingredient(\"patates\", 1), new Ingredient(\"ntomates\", 2)};\r\n        return temp;\r\n    }\r\n\r\n    public List<MenuItem> loadMenuData() {\r\n        List<MenuItem> items = new ArrayList<>();\r\n        String sql = \"\"\"\r\n                SELECT d.name AS dish_name,\r\n                       d.value AS price,\r\n                       GROUP_CONCAT(i.name, ', ') AS ingredients\r\n                FROM DISH d\r\n                JOIN CONSISTS c ON d.name = c.dishId\r\n                JOIN INGREDIENTS i ON i.name = c.ingredientId\r\n                GROUP BY d.name, d.value;\r\n                \"\"\";\r\n\r\n        try (Connection conn = connect();\r\n             Statement stmt = conn.createStatement();\r\n             ResultSet rs = stmt.executeQuery(sql)) {\r\n\r\n            while (rs.next()) {\r\n                String name = rs.getString(\"dish_name\");\r\n                double price = rs.getDouble(\"price\");\r\n                String ingredients = rs.getString(\"ingredients\");\r\n\r\n                items.add(new MenuItem(name, price, ingredients));\r\n            }\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return items;\r\n    }\r\n\r\n    public List<Ingredient> queryRecommendedIngredients() {\r\n        List<Ingredient> recommended = new ArrayList<>();\r\n\r\n        String sql = \"\"\"\r\n                SELECT name, quantity\r\n                FROM INGREDIENTS\r\n                WHERE quantity >= 10\r\n                ORDER BY quantity DESC;\r\n                \"\"\";\r\n\r\n        try (Connection conn = connect();\r\n             Statement stmt = conn.createStatement();\r\n             ResultSet rs = stmt.executeQuery(sql)) {\r\n\r\n            while (rs.next()) {\r\n                String name = rs.getString(\"name\");\r\n                String quantity = rs.getString(\"quantity\");\r\n\r\n                recommended.add(new Ingredient(name, Integer.parseInt(quantity)));\r\n            }\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return recommended;\r\n    }\r\n\r\n//    public List<DealItem> queryRecommendedDeals() {\r\n//\r\n//    }\r\n\r\n    public List<DealItem> loadDeals() {\r\n        List<DealItem> deals = new ArrayList<>();\r\n        String sql = \"\"\"\r\n                    SELECT d.name, d.value, de.discount\r\n                    FROM DEAL de\r\n                    JOIN DISH d ON de.name = d.name;\r\n                \"\"\";\r\n\r\n        try (Connection conn = connect();\r\n             Statement stmt = conn.createStatement();\r\n             ResultSet rs = stmt.executeQuery(sql)) {\r\n\r\n            while (rs.next()) {\r\n                String name = rs.getString(\"name\");\r\n                double price = rs.getDouble(\"value\");\r\n                double discount = rs.getDouble(\"discount\");\r\n                deals.add(new DealItem(name, price, discount));\r\n            }\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return deals;\r\n    }\r\n\r\n    public boolean updateMenu(List<MenuItem> items) {\r\n        String sql = \"UPDATE DISH SET value = ? WHERE name = ?\";\r\n\r\n        try (Connection conn = connect();\r\n             PreparedStatement stmt = conn.prepareStatement(sql)) {\r\n\r\n            for (MenuItem item : items) {\r\n                stmt.setDouble(1, item.getPrice());\r\n                stmt.setString(2, item.getName());\r\n                stmt.executeUpdate();\r\n            }\r\n\r\n            return true;\r\n\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n    public void closeConnection(Connection connection) {\r\n        if (connection != null) {\r\n            try {\r\n                connection.close();\r\n            } catch (SQLException e) {\r\n                e.printStackTrace();\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/common/DBManager.java b/src/main/java/com/common/DBManager.java
+--- a/src/main/java/com/common/DBManager.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/common/DBManager.java	(date 1748511891394)
+@@ -13,17 +13,11 @@
+ 
+     private static final String URL = "jdbc:sqlite:database.db";
+ 
+-
+-
++    // Connection method to connect to the SQLite database
+     public Connection connect() throws SQLException {
+         return DriverManager.getConnection(URL);
+     }
+ 
+-    public Ingredient[] getIngredients() {
+-        Ingredient[] temp = {new Ingredient("patates", 1), new Ingredient("ntomates", 2)};
+-        return temp;
+-    }
+-
+     public List<MenuItem> loadMenuData() {
+         List<MenuItem> items = new ArrayList<>();
+         String sql = """
+@@ -55,6 +49,34 @@
+         return items;
+     }
+ 
++    public List<DealItem> queryExpiredOffers(){
++        List<DealItem> expiredOffers = new ArrayList<>();
++
++        String sql = """
++                SELECT D.name AS dish_name, D.expiresOn AS expires_on, D.discount AS discount
++                FROM DEAL D
++                WHERE expiresOn < CURRENT_DATE
++                """;
++
++        try (Connection conn = connect();
++             Statement stmt = conn.createStatement();
++             ResultSet rs = stmt.executeQuery(sql)) {
++
++            while (rs.next()) {
++                String dish_name = rs.getString("dish_name");
++                String expiresOn = rs.getString("expires_on");
++                Integer discount = rs.getInt("discount");
++
++                expiredOffers.add(new DealItem(dish_name, expiresOn, discount));
++            }
++
++        } catch (SQLException e) {
++            e.printStackTrace();
++        }
++
++        return expiredOffers;
++    }
++
+     public List<Ingredient> queryRecommendedIngredients() {
+         List<Ingredient> recommended = new ArrayList<>();
+ 
+@@ -83,8 +105,30 @@
+         return recommended;
+     }
+ 
+-//    public List<DealItem> queryRecommendedDeals() {
++//    public List<DealItem> addDeal()
++//
++//    {
++//        private String name;
++//        private double price;
+ //
++//    public DealItem(String name, double price){
++//        this.name = name;
++//        this.price = price;
++//    }
++//
++//        public String getName () {
++//        return name;
++//    }
++//        public double getPrice () {
++//        return price;
++//    }
++//
++//        public void setName (String name){
++//        this.name = name;
++//    }
++//        public void setPrice ( double price){
++//        this.price = price;
++//    }
+ //    }
+ 
+     public List<DealItem> loadDeals() {
+Index: src/main/java/com/adminView/MenuModificationScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.adminView;\r\n\r\nimport com.common.Ingredient;\r\nimport com.mainpackage.SceneSwitching;\r\nimport javafx.beans.property.SimpleIntegerProperty;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.beans.property.SimpleDoubleProperty;\r\nimport javafx.beans.property.SimpleStringProperty;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.Node;\r\nimport javafx.scene.control.*;\r\nimport javafx.scene.control.cell.TextFieldTableCell;\r\nimport javafx.stage.Stage;\r\n\r\nimport com.menu.Menu;\r\nimport com.menu.MenuItem;\r\nimport javafx.util.converter.DoubleStringConverter;\r\nimport javafx.util.converter.IntegerStringConverter;\r\n\r\nimport java.util.List;\r\n\r\npublic class MenuModificationScreen {\r\n    private ModifyMenuClass menuManager = new ModifyMenuClass();\r\n\r\n    @FXML\r\n    private TableView<MenuItem> menuTable;\r\n    @FXML\r\n    private TableColumn<MenuItem, String> dishColumn;\r\n    @FXML\r\n    private TableColumn<MenuItem, Double> priceColumn;\r\n    @FXML\r\n    private TableColumn<MenuItem, String> ingredientsColumn;\r\n\r\n    @FXML\r\n    private TableView<Ingredient> recommendedIngredientsTable;\r\n    @FXML\r\n    private TableColumn<Ingredient, String> ingredientName;\r\n    @FXML\r\n    private TableColumn<Ingredient, Integer> ingredientQuantity;\r\n\r\n    // Methods to be implemented\r\n    //public void display(){}\r\n    //public void noOffersExpiredNotification(){}\r\n    //public void displayExpiredOffers(){}\r\n    //public void displayUpdatedMenu(){}\r\n\r\n\r\n    public void initialize() {\r\n        // Show the menu table\r\n        Menu menu = menuManager.getCurrentMenu();\r\n\r\n        dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());\r\n        priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));\r\n        ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());\r\n\r\n        menuTable.setEditable(true);\r\n        displayMenu(menu);\r\n\r\n        // Show the recommended ingredients table\r\n        List<Ingredient> ingredient = menuManager.getRecommendedIngredients();\r\n\r\n        ingredientName.setCellFactory(TextFieldTableCell.forTableColumn());\r\n        ingredientQuantity.setCellFactory(TextFieldTableCell.<Ingredient, Integer>forTableColumn(new IntegerStringConverter()));\r\n\r\n        recommendedIngredientsTable.setEditable(true);\r\n        displayRecommendedIngredients(ingredient);\r\n\r\n        // Show deals table\r\n\r\n\r\n    }\r\n\r\n    private void displayRecommendedIngredients(List<Ingredient> ingredients) {\r\n        ObservableList<Ingredient> data = FXCollections.observableArrayList(ingredients);\r\n\r\n        ingredientName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));\r\n\r\n        ingredientQuantity.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getQuantity()).asObject());\r\n\r\n        recommendedIngredientsTable.setItems(data);\r\n    }\r\n\r\n    private void displayMenu(Menu menu) {\r\n        ObservableList<MenuItem> menuItems = FXCollections.observableArrayList(menu.getItems());\r\n\r\n        dishColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName()));\r\n\r\n        priceColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getPrice()).asObject());\r\n\r\n        ingredientsColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIngredients()));\r\n\r\n        menuTable.setItems(menuItems);\r\n    }\r\n\r\n//    @FXML\r\n//    private void onAddToDeals(ActionEvent event) {\r\n//        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();\r\n//\r\n//        if (selectedItem == null) {\r\n//            showAlert(\"Please select a dish from the menu first.\");\r\n//            return;\r\n//        }\r\n//\r\n//        double discount = 0.2; // 20% έκπτωση (μπορεί να γίνει input αργότερα)\r\n//\r\n//        boolean success = menuManager.addDeal(selectedItem.getName(), discount);\r\n//\r\n//        if (success) {\r\n//            displayDeals(menuManager.getDeals()); // refresh πίνακα προσφορών\r\n//            showAlert(\"Dish added to deals successfully!\");\r\n//        } else {\r\n//            showAlert(\"This dish is already in the deals or an error occurred.\");\r\n//        }\r\n//    }\r\n//\r\n//    private void showAlert(String s) {\r\n//    }\r\n\r\n    @FXML\r\n    private void onModifyMenu(ActionEvent event) {\r\n        ObservableList<MenuItem> updatedItems = menuTable.getItems();\r\n\r\n        for (MenuItem item : updatedItems) {\r\n            if (!isValid(item)) {\r\n                showAlert(\"Invalid data in one or more dishes.\");\r\n                return;\r\n            }\r\n        }\r\n\r\n        boolean success = menuManager.updateMenuItems(updatedItems);\r\n\r\n        if (success) {\r\n            showAlert(\"Menu updated successfully!\");\r\n        } else {\r\n            showAlert(\"Update failed.\");\r\n        }\r\n    }\r\n\r\n    private void showAlert(String msg) {\r\n        Alert alert = new Alert(Alert.AlertType.INFORMATION);\r\n        alert.setHeaderText(null);\r\n        alert.setContentText(msg);\r\n        alert.showAndWait();\r\n    }\r\n\r\n    private boolean isValid(MenuItem item) {\r\n        return item.getName() != null && !item.getName().trim().isEmpty()\r\n               && item.getIngredients() != null && !item.getIngredients().trim().isEmpty()\r\n               && item.getPrice() >= 0;\r\n    }\r\n\r\n\r\n    @FXML\r\n    private void redirectToDashboard(ActionEvent event) {\r\n        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\r\n        SceneSwitching.switchScene(stage, \"/adminView/dummyDashboard.fxml\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/adminView/MenuModificationScreen.java b/src/main/java/com/adminView/MenuModificationScreen.java
+--- a/src/main/java/com/adminView/MenuModificationScreen.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/adminView/MenuModificationScreen.java	(date 1748510881510)
+@@ -2,6 +2,7 @@
+ 
+ import com.common.Ingredient;
+ import com.mainpackage.SceneSwitching;
++import com.menu.DealItem;
+ import javafx.beans.property.SimpleIntegerProperty;
+ import javafx.collections.ObservableList;
+ import javafx.collections.FXCollections;
+@@ -9,7 +10,10 @@
+ import javafx.beans.property.SimpleStringProperty;
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
+ import javafx.scene.Node;
++import javafx.scene.Parent;
++import javafx.scene.Scene;
+ import javafx.scene.control.*;
+ import javafx.scene.control.cell.TextFieldTableCell;
+ import javafx.stage.Stage;
+@@ -19,9 +23,11 @@
+ import javafx.util.converter.DoubleStringConverter;
+ import javafx.util.converter.IntegerStringConverter;
+ 
++import java.io.IOException;
+ import java.util.List;
+ 
+ public class MenuModificationScreen {
++    // Class to manage menu modifications
+     private ModifyMenuClass menuManager = new ModifyMenuClass();
+ 
+     @FXML
+@@ -41,16 +47,29 @@
+     private TableColumn<Ingredient, Integer> ingredientQuantity;
+ 
+     // Methods to be implemented
+-    //public void display(){}
+     //public void noOffersExpiredNotification(){}
+     //public void displayExpiredOffers(){}
+     //public void displayUpdatedMenu(){}
+ 
++    public void display() {
++        try {
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("/adminView/manageMenu.fxml"));
++            Parent root = loader.load();
++
++            Stage stage = new Stage();
++            stage.setTitle("Modify Menu");
++            stage.setScene(new Scene(root));
++            stage.show();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++    }
+ 
+     public void initialize() {
+         // Show the menu table
+         Menu menu = menuManager.getCurrentMenu();
+ 
++        // Set up the menu table columns
+         dishColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+         priceColumn.setCellFactory(TextFieldTableCell.<MenuItem, Double>forTableColumn(new DoubleStringConverter()));
+         ingredientsColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+@@ -70,6 +89,7 @@
+         // Show deals table
+ 
+ 
++
+     }
+ 
+     private void displayRecommendedIngredients(List<Ingredient> ingredients) {
+@@ -94,29 +114,30 @@
+         menuTable.setItems(menuItems);
+     }
+ 
+-//    @FXML
+-//    private void onAddToDeals(ActionEvent event) {
+-//        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();
+-//
+-//        if (selectedItem == null) {
+-//            showAlert("Please select a dish from the menu first.");
+-//            return;
+-//        }
+-//
+-//        double discount = 0.2; // 20% έκπτωση (μπορεί να γίνει input αργότερα)
+-//
+-//        boolean success = menuManager.addDeal(selectedItem.getName(), discount);
+-//
+-//        if (success) {
+-//            displayDeals(menuManager.getDeals()); // refresh πίνακα προσφορών
+-//            showAlert("Dish added to deals successfully!");
+-//        } else {
+-//            showAlert("This dish is already in the deals or an error occurred.");
+-//        }
+-//    }
+-//
+-//    private void showAlert(String s) {
+-//    }
++    @FXML
++    private void onAddDeal(ActionEvent event) {
++        MenuItem selectedItem = menuTable.getSelectionModel().getSelectedItem();
++        if (selectedItem == null) {
++            showAlert("Please select a dish to add to deals.");
++            return;
++        }
++
++        // Π.χ. default 20% έκπτωση — μπορεί να γίνει input στο μέλλον
++        double discount = 0.2;
++
++        boolean added = menuManager.addDeal(new DealItem(selectedItem.getName(), selectedItem.getPrice(), discount));
++        if (added) {
++            displayDeals(menuManager.getDeals());
++            showAlert("Added to deals!");
++        } else {
++            showAlert("Already in deals or error occurred.");
++        }
++    }
++
++    @FXML
++    private void onAddMenu(ActionEvent event) {
++
++    }
+ 
+     @FXML
+     private void onModifyMenu(ActionEvent event) {
+Index: src/main/java/com/menu/Ingredient.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/menu/Ingredient.java b/src/main/java/com/menu/Ingredient.java
+new file mode 100644
+--- /dev/null	(date 1748426840106)
++++ b/src/main/java/com/menu/Ingredient.java	(date 1748426840106)
+@@ -0,0 +1,4 @@
++package com.menu;
++
++public class Ingredient {
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d\" name=\"Changes\" comment=\"updates\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"panos2\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;giorgoskon3&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"z1hvTqE1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2wuIdP1dNBFwSpGmkh8OZtqC9Cu\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.schedule_use_case.executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"dev\",\r\n    \"junie.onboarding.icon.badge.shown\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\myljo\\Desktop\\Σχολή\\Τεχνολογία Λογισμικού\\Project\\Soft_Engineering_Project\\src\\main\\resources\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\com.menu\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\com.login\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\images\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\java\\mainpackage\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n      <recent name=\"com.analyticsui\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.analyticsui.demo1.HelloApplication\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.analyticsui.demo1.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mainpackage.Main\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.mainpackage.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"schedule_use_case\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.schedule.schedule_use_case\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.schedule.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.schedule_use_case\" />\r\n      <item itemvalue=\"Application.HelloApplication\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.schedule_use_case\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.schedule_use_case\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d\" name=\"Changes\" comment=\"\" />\r\n      <created>1746885118348</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1746885118348</updated>\r\n      <workItem from=\"1746885119397\" duration=\"1423000\" />\r\n      <workItem from=\"1747301817046\" duration=\"1144000\" />\r\n      <workItem from=\"1747311788446\" duration=\"10000\" />\r\n      <workItem from=\"1747318869540\" duration=\"1850000\" />\r\n      <workItem from=\"1747339022947\" duration=\"593000\" />\r\n      <workItem from=\"1747398459882\" duration=\"5491000\" />\r\n      <workItem from=\"1747562377580\" duration=\"60000\" />\r\n      <workItem from=\"1747573353204\" duration=\"1000\" />\r\n      <workItem from=\"1747577669031\" duration=\"1805000\" />\r\n      <workItem from=\"1747647738068\" duration=\"26000\" />\r\n      <workItem from=\"1747661213638\" duration=\"14002000\" />\r\n      <workItem from=\"1747746312240\" duration=\"1989000\" />\r\n      <workItem from=\"1747761380558\" duration=\"1000\" />\r\n      <workItem from=\"1747762122061\" duration=\"9176000\" />\r\n      <workItem from=\"1747836138751\" duration=\"5777000\" />\r\n      <workItem from=\"1747929950370\" duration=\"4202000\" />\r\n      <workItem from=\"1748002098215\" duration=\"257000\" />\r\n      <workItem from=\"1748021068915\" duration=\"3000\" />\r\n      <workItem from=\"1748026783636\" duration=\"593000\" />\r\n      <workItem from=\"1748029616289\" duration=\"9017000\" />\r\n      <workItem from=\"1748041592896\" duration=\"869000\" />\r\n      <workItem from=\"1748081945580\" duration=\"5037000\" />\r\n      <workItem from=\"1748088533363\" duration=\"2000\" />\r\n      <workItem from=\"1748088547139\" duration=\"3087000\" />\r\n      <workItem from=\"1748112582323\" duration=\"2000\" />\r\n      <workItem from=\"1748122636186\" duration=\"473000\" />\r\n      <workItem from=\"1748123480195\" duration=\"3974000\" />\r\n      <workItem from=\"1748127521468\" duration=\"1023000\" />\r\n      <workItem from=\"1748162609677\" duration=\"5916000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initital commit for the project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746886649337</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746886649338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Change login and menu screens to the proper direcotries\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747158985014</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747158985014</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"added login buttons and added respective actions in LoginController\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747335071814</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747335071814</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"added waiterViewController\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747417606133</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747417606133</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747662593668</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747662593668</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747662633424</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747662633424</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Updates - added new classes and rename some old classes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747690277687</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747690277687</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Use Case 8 - Call Waiter update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747769156575</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747769156575</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"update methods and classes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748041867932</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748041867932</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"fix\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125511832</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125511832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"added manageMenu classes and fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125551809</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125551809</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"added fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125568723</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125568723</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"fix method name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125835326</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125835326</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"fix method name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125868320</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125868320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"fix class and method names\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748126378196</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748126378196</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"fix class and method names\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748127000431</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748127000431</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"comment code with errors\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748168476961</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748168476961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748366189279</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748366189279</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"19\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initital commit for the project\" />\r\n    <MESSAGE value=\"Fixing the the project  structure.\" />\r\n    <MESSAGE value=\"Change login and menu screens to the proper direcotries\" />\r\n    <MESSAGE value=\"added login buttons and added respective actions in LoginController\" />\r\n    <MESSAGE value=\"added waiterViewController\" />\r\n    <MESSAGE value=\"Updates - added new classes and rename some old classes\" />\r\n    <MESSAGE value=\"Use Case 8 - Call Waiter update\" />\r\n    <MESSAGE value=\"update methods and classes\" />\r\n    <MESSAGE value=\"fix\" />\r\n    <MESSAGE value=\"added manageMenu classes and fxml files\" />\r\n    <MESSAGE value=\"added fxml files\" />\r\n    <MESSAGE value=\"fix method name\" />\r\n    <MESSAGE value=\"fix class and method names\" />\r\n    <MESSAGE value=\"comment code with errors\" />\r\n    <MESSAGE value=\"updates\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updates\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/.idea/workspace.xml	(date 1748511968475)
+@@ -4,8 +4,16 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
++    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="add some comments">
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/adminView/confirmChangesWindow.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/com/menu/Ingredient.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminView/manageMenu.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -23,7 +31,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="panos2" />
++        <entry key="$PROJECT_DIR$" value="dev" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -51,23 +59,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.HelloApplication.executor": "Run",
+-    "Application.Main.executor": "Run",
+-    "Application.schedule_use_case.executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "dev",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;giorgos&quot;,
++    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
+@@ -122,17 +130,17 @@
+       </method>
+     </configuration>
+     <list>
+-      <item itemvalue="Application.schedule_use_case" />
+       <item itemvalue="Application.HelloApplication" />
+       <item itemvalue="Application.Main" />
++      <item itemvalue="Application.schedule_use_case" />
+     </list>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.schedule_use_case" />
+         <item itemvalue="Application.Main" />
+         <item itemvalue="Application.HelloApplication" />
++        <item itemvalue="Application.schedule_use_case" />
++        <item itemvalue="Application.schedule_use_case" />
+         <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.schedule_use_case" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -180,6 +188,14 @@
+       <workItem from="1748123480195" duration="3974000" />
+       <workItem from="1748127521468" duration="1023000" />
+       <workItem from="1748162609677" duration="5916000" />
++      <workItem from="1748373569236" duration="53000" />
++      <workItem from="1748386798148" duration="644000" />
++      <workItem from="1748418822518" duration="3000" />
++      <workItem from="1748424250128" duration="3189000" />
++      <workItem from="1748445766136" duration="4000" />
++      <workItem from="1748453597952" duration="3000" />
++      <workItem from="1748470331635" duration="926000" />
++      <workItem from="1748509316811" duration="2511000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initital commit for the project">
+       <option name="closed" value="true" />
+Index: src/main/java/com/adminView/ModifyMenuClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.adminView;\r\n\r\nimport com.common.DBManager;\r\nimport com.common.Ingredient;\r\nimport com.menu.DealItem;\r\nimport com.menu.Menu;\r\nimport com.menu.MenuItem;\r\n\r\nimport java.util.List;\r\n\r\npublic class ModifyMenuClass {\r\n    private DBManager dbManager;\r\n\r\n    public ModifyMenuClass() {\r\n        this.dbManager = new DBManager();\r\n    }\r\n\r\n    public Menu getCurrentMenu() {\r\n        List<MenuItem> items = dbManager.loadMenuData();\r\n\r\n        return new Menu(items);\r\n    }\r\n\r\n    public List<Ingredient> getRecommendedIngredients() {\r\n        return dbManager.queryRecommendedIngredients();\r\n    }\r\n\r\n    public List<DealItem> getDeals() {\r\n        return dbManager.loadDeals();\r\n    }\r\n\r\n    public boolean updateMenuItems(List<MenuItem> items) {\r\n        return dbManager.updateMenu(items);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/adminView/ModifyMenuClass.java b/src/main/java/com/adminView/ModifyMenuClass.java
+--- a/src/main/java/com/adminView/ModifyMenuClass.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/adminView/ModifyMenuClass.java	(date 1748511930675)
+@@ -14,6 +14,8 @@
+     public ModifyMenuClass() {
+         this.dbManager = new DBManager();
+     }
++// public void checkIfChangesAreValid(){};
++// public void confirmChanges(){};
+ 
+     public Menu getCurrentMenu() {
+         List<MenuItem> items = dbManager.loadMenuData();
+@@ -33,4 +35,6 @@
+         return dbManager.updateMenu(items);
+     }
+ 
++    public boolean addDeal(DealItem dealItem) {
++    }
+ }
+Index: src/main/java/com/callWaiter/RequestStatus.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.callWaiter;\r\n\r\npublic class RequestStatus {\r\n    private final int tableNumber;\r\n    private String status;\r\n\r\n    public RequestStatus(int tableNumber, String pending) {\r\n        this.tableNumber = tableNumber;\r\n        this.initializeStatus();\r\n    }\r\n\r\n    public void initializeStatus() {\r\n        status = \"Pending\";\r\n    }\r\n\r\n    public void updateRequestStatusAccepted() {\r\n        status = \"Accepted\";\r\n    }\r\n\r\n    public void updateRequestStatusArrived() {\r\n        status = \"Arrived\";\r\n    }\r\n\r\n    public void cancelRequestStatus() {\r\n        status = \"Canceled\";\r\n    }\r\n\r\n    public String getRequestStatus() {\r\n        return status;\r\n    }\r\n\r\n    public int getTableNumber() {\r\n        return tableNumber;\r\n    }\r\n\r\n    public boolean isActive() {\r\n        return status.equals(\"Pending\") || status.equals(\"Accepted\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/callWaiter/RequestStatus.java b/src/main/java/com/callWaiter/RequestStatus.java
+--- a/src/main/java/com/callWaiter/RequestStatus.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/callWaiter/RequestStatus.java	(date 1748510663243)
+@@ -29,9 +29,6 @@
+         return status;
+     }
+ 
+-    public int getTableNumber() {
+-        return tableNumber;
+-    }
+ 
+     public boolean isActive() {
+         return status.equals("Pending") || status.equals("Accepted");
+Index: src/main/java/com/menu/ManageMenuClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.menu;\r\n\r\nimport com.callWaiter.ManageRequestStatusClass;\r\nimport com.callWaiter.RequestStatusWindow;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\n\r\npublic class ManageMenuClass {\r\n    ManageRequestStatusClass requestManager;\r\n    private int tableNumber = 1; // Example table number, replace with actual value\r\n\r\n    public ManageMenuClass(int tableNumber) {\r\n        this.tableNumber = tableNumber;\r\n    }\r\n\r\n    public void callWaiter() {\r\n        try {\r\n            // Create an instance of ManageRequestStatusClass\r\n            requestManager = new ManageRequestStatusClass(this.tableNumber);\r\n\r\n            if (!requestManager.checkIfRequested()) {\r\n                requestManager.createNewRequest();\r\n                requestManager.callWaiter();\r\n                showRequestStatus(requestManager);\r\n            } else {\r\n                showAlreadyRequestedError(requestManager);\r\n            }\r\n\r\n        } catch (Exception e) {\r\n            System.out.println(\"Σφάλμα στην κλήση σερβιτόρου: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    private void showAlreadyRequestedError(ManageRequestStatusClass requestManager) throws IOException {\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/errorHandling/alreadyRequested.fxml\"));\r\n        Parent root = loader.load();\r\n\r\n        RequestStatusWindow controller = loader.getController();\r\n        controller.setManager(requestManager);\r\n\r\n        Stage stage = new Stage();\r\n        stage.setTitle(\"Request Status\");\r\n        stage.setScene(new Scene(root));\r\n        stage.show();\r\n    }\r\n\r\n    private void showRequestStatus(ManageRequestStatusClass requestManager) throws Exception {\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/menu/RequestStatusWindow.fxml\"));\r\n        Parent root = loader.load();\r\n\r\n        RequestStatusWindow controller = loader.getController();\r\n        controller.setManager(requestManager);\r\n\r\n        Stage stage = new Stage();\r\n        stage.setTitle(\"Request Status\");\r\n        stage.setScene(new Scene(root));\r\n        stage.show();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/menu/ManageMenuClass.java b/src/main/java/com/menu/ManageMenuClass.java
+--- a/src/main/java/com/menu/ManageMenuClass.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/menu/ManageMenuClass.java	(date 1748509798050)
+@@ -17,6 +17,10 @@
+         this.tableNumber = tableNumber;
+     }
+ 
++    // public void checkIfRequested(){}
++    // public void startCountingTime(){}
++    // public void stopCountingTime(){}
++
+     public void callWaiter() {
+         try {
+             // Create an instance of ManageRequestStatusClass
+Index: src/main/java/com/adminView/confirmChangesWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/adminView/confirmChangesWindow.java b/src/main/java/com/adminView/confirmChangesWindow.java
+new file mode 100644
+--- /dev/null	(date 1748387815255)
++++ b/src/main/java/com/adminView/confirmChangesWindow.java	(date 1748387815255)
+@@ -0,0 +1,8 @@
++//package com.adminView;
++//
++//public class confirmChangesWindow {
++//    //public void display() {
++//        // Logic to display confirmation window
++//        // This could include a confirmation message and buttons for "Confirm" and "Cancel"
++//    }
++//}
+Index: src/main/resources/adminView/manageMenu.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ScrollPane?>\r\n<?import javafx.scene.control.TableColumn?>\r\n<?import javafx.scene.control.TableView?>\r\n<?import javafx.scene.image.Image?>\r\n<?import javafx.scene.image.ImageView?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.layout.Pane?>\r\n<?import javafx.scene.text.Font?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<AnchorPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"600.0\" prefWidth=\"800.0\" xmlns=\"http://javafx.com/javafx/23.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.adminView.MenuModificationScreen\">\r\n   <children>\r\n      <Pane nodeOrientation=\"LEFT_TO_RIGHT\" prefHeight=\"65.0\" prefWidth=\"800.0\" style=\"-fx-background-color: white;\">\r\n         <children>\r\n            <Text layoutX=\"100.0\" layoutY=\"38.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-weight: bold;\" text=\"Restaurant Name\" wrappingWidth=\"173.7089385986328\">\r\n               <font>\r\n                  <Font size=\"16.0\" />\r\n               </font>\r\n            </Text>\r\n            <ImageView fitHeight=\"150.0\" fitWidth=\"54.0\" layoutX=\"33.0\" layoutY=\"9.0\" pickOnBounds=\"true\" preserveRatio=\"true\">\r\n               <image>\r\n                  <Image url=\"@../images/LOGO.png\" />\r\n               </image>\r\n            </ImageView>\r\n            <Button fx:id=\"backToMainScreen\" layoutX=\"643.0\" layoutY=\"20.0\" mnemonicParsing=\"false\" onAction=\"#redirectToDashboard\" style=\"-fx-background-color: gray; -fx-font-weight: bold;\" text=\"back to Dashboard\" textFill=\"WHITE\" />\r\n         </children>\r\n      </Pane>\r\n      <ScrollPane fx:id=\"dish1Btn\" layoutX=\"3.0\" layoutY=\"59.0\" prefHeight=\"540.0\" prefWidth=\"794.0\">\r\n         <content>\r\n            <AnchorPane minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"1065.0\" prefWidth=\"778.0\">\r\n               <children>\r\n                  <TableView fx:id=\"recommendedIngredientsTable\" layoutX=\"476.0\" layoutY=\"91.0\" prefHeight=\"390.0\" prefWidth=\"285.0\">\r\n                     <columns>\r\n                        <TableColumn fx:id=\"ingredientName\" prefWidth=\"174.39996337890625\" text=\"Ingredient\" />\r\n                        <TableColumn fx:id=\"ingredientQuantity\" prefWidth=\"108.00006103515625\" text=\"Quantity\" />\r\n                     </columns>\r\n                  </TableView>\r\n                  <Text layoutX=\"37.0\" layoutY=\"67.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-weight: bold;\" text=\"Manage Menu\" textAlignment=\"CENTER\" wrappingWidth=\"345.3367462158203\">\r\n                     <font>\r\n                        <Font name=\"Comic Sans MS\" size=\"48.0\" />\r\n                     </font>\r\n                  </Text>\r\n                  <AnchorPane layoutY=\"516.0\" minHeight=\"0.0\" minWidth=\"0.0\" prefHeight=\"603.0\" prefWidth=\"777.0\">\r\n                     <children>\r\n                        <Text layoutX=\"37.0\" layoutY=\"67.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" style=\"-fx-font-weight: bold;\" text=\"Deals\" textAlignment=\"CENTER\" wrappingWidth=\"154.13671875\">\r\n                           <font>\r\n                              <Font name=\"Comic Sans MS\" size=\"48.0\" />\r\n                           </font>\r\n                        </Text>\r\n                        <Pane layoutX=\"37.0\" layoutY=\"78.0\" prefHeight=\"438.0\" prefWidth=\"738.0\">\r\n                           <children>\r\n                              <TableView fx:id=\"dealsTable\" layoutX=\"14.0\" layoutY=\"24.0\" prefHeight=\"390.0\" prefWidth=\"421.0\">\r\n                                 <columns>\r\n                                    <TableColumn fx:id=\"dishColumnForDeal\" prefWidth=\"170.39992904663086\" text=\"Dish\" />\r\n                                    <TableColumn fx:id=\"priceColumnForDeal\" minWidth=\"0.0\" prefWidth=\"136.80006408691406\" text=\"Discount\" />\r\n                                    <TableColumn fx:id=\"priceColumnForDeal1\" minWidth=\"0.0\" prefWidth=\"114.39996337890625\" text=\"expiresOn\" />\r\n                                 </columns>\r\n                              </TableView>\r\n                              <TableView fx:id=\"expiredOffersTable\" layoutX=\"441.0\" layoutY=\"24.0\" prefHeight=\"390.0\" prefWidth=\"283.0\">\r\n                                 <columns>\r\n                                    <TableColumn fx:id=\"expiredOffersColumn\" prefWidth=\"303.9999809265137\" text=\"Expired Offers\" />\r\n                                    <TableColumn fx:id=\"priceColumn11\" minWidth=\"0.0\" prefWidth=\"116.800048828125\" text=\"Price\" />\r\n                                 </columns>\r\n                              </TableView>\r\n                           </children></Pane>\r\n                     </children>\r\n                  </AnchorPane>\r\n                  <Button fx:id=\"modifyBtn\" layoutX=\"653.0\" layoutY=\"35.0\" mnemonicParsing=\"false\" onAction=\"#onModifyMenu\" style=\"-fx-background-color: gray; -fx-font-weight: bold;\" text=\"Modify Menu\" textFill=\"WHITE\" />\r\n                  <TableView fx:id=\"menuTable\" layoutX=\"28.0\" layoutY=\"91.0\" prefHeight=\"390.0\" prefWidth=\"408.0\">\r\n                    <columns>\r\n                      <TableColumn fx:id=\"dishColumn\" prefWidth=\"143.2000389099121\" text=\"Dish\" />\r\n                        <TableColumn fx:id=\"ingredientsColumn\" minWidth=\"0.0\" prefWidth=\"164.20001220703125\" text=\"Ingredients\" />\r\n                      <TableColumn fx:id=\"priceColumn\" minWidth=\"0.0\" prefWidth=\"97.5999755859375\" text=\"Price\" />\r\n                    </columns>\r\n                  </TableView>\r\n                  <Text layoutX=\"476.0\" layoutY=\"85.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Recommended Ingedients based on availability\">\r\n                     <font>\r\n                        <Font name=\"Arial Italic\" size=\"12.0\" />\r\n                     </font>\r\n                  </Text>\r\n               </children>\r\n            </AnchorPane>\r\n         </content>\r\n      </ScrollPane>\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/adminView/manageMenu.fxml b/src/main/resources/adminView/manageMenu.fxml
+--- a/src/main/resources/adminView/manageMenu.fxml	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/resources/adminView/manageMenu.fxml	(date 1748510819525)
+@@ -4,6 +4,7 @@
+ <?import javafx.scene.control.ScrollPane?>
+ <?import javafx.scene.control.TableColumn?>
+ <?import javafx.scene.control.TableView?>
++<?import javafx.scene.control.TextField?>
+ <?import javafx.scene.image.Image?>
+ <?import javafx.scene.image.ImageView?>
+ <?import javafx.scene.layout.AnchorPane?>
+@@ -28,7 +29,7 @@
+             <Button fx:id="backToMainScreen" layoutX="643.0" layoutY="20.0" mnemonicParsing="false" onAction="#redirectToDashboard" style="-fx-background-color: gray; -fx-font-weight: bold;" text="back to Dashboard" textFill="WHITE" />
+          </children>
+       </Pane>
+-      <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="540.0" prefWidth="794.0">
++      <ScrollPane fx:id="dish1Btn" layoutX="3.0" layoutY="59.0" prefHeight="706.0" prefWidth="794.0">
+          <content>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1065.0" prefWidth="778.0">
+                <children>
+@@ -81,6 +82,9 @@
+                         <Font name="Arial Italic" size="12.0" />
+                      </font>
+                   </Text>
++                  <Button fx:id="addDealBtn" layoutX="371.0" layoutY="491.0" mnemonicParsing="false" onAction="#onAddDeal" text="add Deal" />
++                  <Button fx:id="addMenuBtn" layoutX="269.0" layoutY="491.0" mnemonicParsing="false" onAction="#onAddMenu" text="add to Menu" />
++                  <TextField layoutX="37.0" layoutY="491.0" prefHeight="26.0" prefWidth="202.0" />
+                </children>
+             </AnchorPane>
+          </content>

@@ -14,8 +14,9 @@
          </children></Pane>
       <Pane prefHeight="460.0" prefWidth="128.0" style="-fx-background-color: #433D3D;">
          <children>
-            <Button layoutY="376.0" mnemonicParsing="false" onAction="#editItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Edit Item" />
-            <Button layoutY="412.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Remove Item" />
+            <Button layoutY="346.0" mnemonicParsing="false" onAction="#editItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Edit Item" />
+            <Button layoutY="378.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Remove Item" />
+            <Button layoutY="411.0" mnemonicParsing="false" onAction="#backButton" prefHeight="25.0" prefWidth="128.0" styleClass="action-button" text="Back" />
          </children></Pane>
       <Pane prefHeight="62.0" prefWidth="881.0" style="-fx-background-color: #232121;">
          <children>

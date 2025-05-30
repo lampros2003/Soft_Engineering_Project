@@ -1,0 +1,142 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d\" name=\"Changes\" comment=\"Merge branch 'feature/invMGMT' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/common/DatabaseManager.java&#10;#&#9;src/main/java/com/common/Ingredient.java&#10;#&#9;src/main/java/com/invMGMT/controller/InventoryManager.java\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/adminView/dummyDashboard.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/adminView/dummyDashboard.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"panos2\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;giorgoskon3&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,\r\n    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"z1hvTqE1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2wuIdP1dNBFwSpGmkh8OZtqC9Cu\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,\r\n    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\myljo\\Desktop\\Σχολή\\Τεχνολογία Λογισμικού\\Project\\Soft_Engineering_Project\\src\\main\\resources\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\com.menu\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\com.login\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\resources\\images\" />\r\n      <recent name=\"C:\\00mysruff\\Soft_Engineering_Project\\src\\main\\java\\mainpackage\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"\" />\r\n      <recent name=\"com.analyticsui\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"HelloApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.analyticsui.demo1.HelloApplication\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.analyticsui.demo1.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mainpackage.Main\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.mainpackage.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"schedule_use_case\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.schedule.schedule_use_case\" />\r\n      <module name=\"Soft-Eng_Project\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.schedule.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.schedule_use_case\" />\r\n      <item itemvalue=\"Application.HelloApplication\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.schedule_use_case\" />\r\n        <item itemvalue=\"Application.HelloApplication\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n        <item itemvalue=\"Application.schedule_use_case\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d\" name=\"Changes\" comment=\"\" />\r\n      <created>1746885118348</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1746885118348</updated>\r\n      <workItem from=\"1746885119397\" duration=\"1423000\" />\r\n      <workItem from=\"1747301817046\" duration=\"1144000\" />\r\n      <workItem from=\"1747311788446\" duration=\"10000\" />\r\n      <workItem from=\"1747318869540\" duration=\"1850000\" />\r\n      <workItem from=\"1747339022947\" duration=\"593000\" />\r\n      <workItem from=\"1747398459882\" duration=\"5491000\" />\r\n      <workItem from=\"1747562377580\" duration=\"60000\" />\r\n      <workItem from=\"1747573353204\" duration=\"1000\" />\r\n      <workItem from=\"1747577669031\" duration=\"1805000\" />\r\n      <workItem from=\"1747647738068\" duration=\"26000\" />\r\n      <workItem from=\"1747661213638\" duration=\"14002000\" />\r\n      <workItem from=\"1747746312240\" duration=\"1989000\" />\r\n      <workItem from=\"1747761380558\" duration=\"1000\" />\r\n      <workItem from=\"1747762122061\" duration=\"9176000\" />\r\n      <workItem from=\"1747836138751\" duration=\"5777000\" />\r\n      <workItem from=\"1747929950370\" duration=\"4202000\" />\r\n      <workItem from=\"1748002098215\" duration=\"257000\" />\r\n      <workItem from=\"1748021068915\" duration=\"3000\" />\r\n      <workItem from=\"1748026783636\" duration=\"593000\" />\r\n      <workItem from=\"1748029616289\" duration=\"9017000\" />\r\n      <workItem from=\"1748041592896\" duration=\"869000\" />\r\n      <workItem from=\"1748081945580\" duration=\"5037000\" />\r\n      <workItem from=\"1748088533363\" duration=\"2000\" />\r\n      <workItem from=\"1748088547139\" duration=\"3087000\" />\r\n      <workItem from=\"1748112582323\" duration=\"2000\" />\r\n      <workItem from=\"1748122636186\" duration=\"473000\" />\r\n      <workItem from=\"1748123480195\" duration=\"3974000\" />\r\n      <workItem from=\"1748127521468\" duration=\"1023000\" />\r\n      <workItem from=\"1748162609677\" duration=\"5916000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initital commit for the project\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746886649337</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746886649338</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Change login and menu screens to the proper direcotries\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747158985014</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747158985014</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"added login buttons and added respective actions in LoginController\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747335071814</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747335071814</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"added waiterViewController\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747417606133</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747417606133</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747662593668</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747662593668</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747662633424</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747662633424</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Updates - added new classes and rename some old classes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747690277687</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747690277687</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Use Case 8 - Call Waiter update\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747769156575</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747769156575</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"update methods and classes\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748041867932</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748041867932</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"fix\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125511832</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125511832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"added manageMenu classes and fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125551809</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125551809</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"added fxml files\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125568723</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125568723</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"fix method name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125835326</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125835326</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"fix method name\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748125868320</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748125868320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"fix class and method names\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748126378196</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748126378196</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"fix class and method names\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748127000431</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748127000431</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"comment code with errors\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748168476961</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748168476961</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"updates\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748366189279</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748366189279</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"19\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initital commit for the project\" />\r\n    <MESSAGE value=\"Fixing the the project  structure.\" />\r\n    <MESSAGE value=\"Change login and menu screens to the proper direcotries\" />\r\n    <MESSAGE value=\"added login buttons and added respective actions in LoginController\" />\r\n    <MESSAGE value=\"added waiterViewController\" />\r\n    <MESSAGE value=\"Updates - added new classes and rename some old classes\" />\r\n    <MESSAGE value=\"Use Case 8 - Call Waiter update\" />\r\n    <MESSAGE value=\"update methods and classes\" />\r\n    <MESSAGE value=\"fix\" />\r\n    <MESSAGE value=\"added manageMenu classes and fxml files\" />\r\n    <MESSAGE value=\"added fxml files\" />\r\n    <MESSAGE value=\"fix method name\" />\r\n    <MESSAGE value=\"fix class and method names\" />\r\n    <MESSAGE value=\"comment code with errors\" />\r\n    <MESSAGE value=\"updates\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"updates\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e208c3059ff51c4a0a1287e3123cbc03e120cebb)
++++ b/.idea/workspace.xml	(date 1748548240566)
+@@ -4,10 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Merge branch 'feature/invMGMT' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/common/DatabaseManager.java&#10;#&#9;src/main/java/com/common/Ingredient.java&#10;#&#9;src/main/java/com/invMGMT/controller/InventoryManager.java">
++    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
++      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/dummyDashboard.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/adminView/dummyDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminView/dummyDashboard.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/MenuModificationScreen.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adminView/ModifyMenuClass.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,7 +28,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="panos2" />
++        <entry key="$PROJECT_DIR$" value="dev" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -53,23 +56,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.HelloApplication.executor": "Run",
++    "Application.Main.executor": "Run",
++    "Application.schedule_use_case.executor": "Run",
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "feature/manageMenu",
++    "junie.onboarding.icon.badge.shown": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
+@@ -131,13 +134,21 @@
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.schedule_use_case" />
+         <item itemvalue="Application.HelloApplication" />
++        <item itemvalue="Application.schedule_use_case" />
++        <item itemvalue="Application.schedule_use_case" />
+         <item itemvalue="Application.Main" />
+-        <item itemvalue="Application.schedule_use_case" />
+       </list>
+     </recent_temporary>
+   </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
++        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
++      </set>
++    </attachedChunks>
++  </component>
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+       <changelist id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="" />
+@@ -319,7 +330,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1748366189279</updated>
+     </task>
+-    <option name="localTasksCounter" value="19" />
++    <task id="LOCAL-00019" summary="updates">
++      <option name="closed" value="true" />
++      <created>1748543266837</created>
++      <option name="number" value="00019" />
++      <option name="presentableId" value="LOCAL-00019" />
++      <option name="project" value="LOCAL" />
++      <updated>1748543266837</updated>
++    </task>
++    <task id="LOCAL-00020" summary="updates">
++      <option name="closed" value="true" />
++      <created>1748545105335</created>
++      <option name="number" value="00020" />
++      <option name="presentableId" value="LOCAL-00020" />
++      <option name="project" value="LOCAL" />
++      <updated>1748545105335</updated>
++    </task>
++    <option name="localTasksCounter" value="21" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -353,6 +380,16 @@
+     <MESSAGE value="comment code with errors" />
+     <MESSAGE value="updates" />
+     <option name="LAST_COMMIT_MESSAGE" value="updates" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <breakpoint enabled="true" type="java-exception">
++          <properties class="org.sqlite.SQLiteException" package="org.sqlite" />
++          <option name="timeStamp" value="2" />
++        </breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />

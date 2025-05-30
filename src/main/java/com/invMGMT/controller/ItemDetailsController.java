@@ -30,6 +30,9 @@ public class ItemDetailsController extends Screen {
         manager.removeItem(itemName.getText());
         manager.init((Stage) ((Node) event.getSource()).getScene().getWindow());
     }
+    public void backButton(ActionEvent event){
+        manager.init((Stage) ((Node) event.getSource()).getScene().getWindow());
+    }
     public void setManager(InventoryManager manager){
         this.manager=manager;
     }
