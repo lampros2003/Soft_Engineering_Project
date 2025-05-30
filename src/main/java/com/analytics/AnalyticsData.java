@@ -1,5 +1,6 @@
 package com.analytics;
 
+import com.common.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
@@ -12,14 +13,14 @@ public class AnalyticsData {
     private String metricType;
     private XYChart.Series<String, Number> chartSeries;
     private ObservableList<MetricDataPoint> tableData;
-    private AnalyticsDBManager dbManager;
+    private DBManager dbManager;
 
     public AnalyticsData(String dataKey, String metricName, String currentValue, String metricType) {
         this.dataKey = dataKey;
         this.metricName = metricName;
         this.currentValue = currentValue;
         this.metricType = metricType;
-        this.dbManager = new AnalyticsDBManager();
+        this.dbManager = new DBManager();
         // Ensure today's detail table exists
         // Load today's data
         loadDataFromDB();
@@ -28,12 +29,12 @@ public class AnalyticsData {
     /** Load today's data from ANALYTICS_TODAY table; empty if none */
     private void loadDataFromDB() {
         try {
-            java.util.List<AnalyticsDBManager.TodayRecord> today = dbManager.getTodayData(dataKey);
+            java.util.List<DBManager.TodayRecord> today = dbManager.getTodayData(dataKey);
             chartSeries = new XYChart.Series<>();
             chartSeries.setName(metricName);
             tableData = FXCollections.observableArrayList();
             if (today != null) {
-                for (AnalyticsDBManager.TodayRecord rec : today) {
+                for (DBManager.TodayRecord rec : today) {
                     String hour = rec.getHour();
                     double val = rec.getValue();
                     double ch = rec.getChange();
