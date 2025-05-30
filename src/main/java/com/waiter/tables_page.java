@@ -25,7 +25,7 @@ public class tables_page {
     private Button table5;
 
     @FXML
-    void get_table(ActionEvent event) {
+    private void Select_Table(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
         String buttonId = clickedButton.getId();
         int tableNumber = Integer.parseInt(buttonId.replace("table", ""));

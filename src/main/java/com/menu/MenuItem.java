@@ -6,7 +6,6 @@ public class MenuItem {
     private String ingredients;
     private double discount;
     private String expiresOn;
-
     public MenuItem(String name, double price, String ingredients, double discount, String expiresOn) {
         this.name = name;
         this.price = price;

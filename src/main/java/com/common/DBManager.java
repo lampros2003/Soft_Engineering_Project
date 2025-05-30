@@ -22,7 +22,7 @@ public class DBManager {
     public boolean Check_if_Order_Exists(int tableNumber) {
         boolean exists = false;
         System.out.println("Checking if order exists in the database");
-        String sql = "SELECT * FROM 'ORDER' WHERE tableNumber ="+tableNumber+" AND state = 'pending'";
+        String sql = "SELECT * FROM 'ORDERS' WHERE table_id ="+tableNumber+" AND status = 'pending'";
 
         try (Connection conn = connect();
              Statement stmt = conn.createStatement();
@@ -120,7 +120,6 @@ public class DBManager {
         System.out.println(oldName);
         return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.toUpperCase().equals(name.toUpperCase()));
     }
-
     public void updateOrderStatus(Order order){//DO NOT USE YET
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement("UPDATE ORDER SET state=? WHERE id=?");
@@ -133,7 +132,6 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-
     public List<MenuItem> loadMenuData() {
         List<MenuItem> items = new ArrayList<>();
         String sql = """
@@ -530,7 +528,7 @@ public class DBManager {
         }
     }
 
-    public Order QueryOrder(int tableNumber) {
+    public Order queryOrder(int tableNumber) {
         //Order order = new Order();
         List<OrderItem> orderItems = new ArrayList<>();
         String sql = """
@@ -541,11 +539,11 @@ public class DBManager {
                             d.value AS dishPrice,
                             COUNT(*) AS dishCount,
                             GROUP_CONCAT(h.comment, '; ') AS comments
-                        FROM "ORDER" o
+                        FROM "ORDERS" o
                         JOIN "HAS" h ON o.id = h.orderId
                         JOIN "DISH" d ON h.dishId = d.name
-                        WHERE o.tableNumber = """+tableNumber+""" 
-                          AND o.state = 'pending'
+                        WHERE o.table_id = """+tableNumber+""" 
+                          AND o.status = 'pending'
                         GROUP BY o.id, o.tableNumber, d.name, d.value
                         ORDER BY o.id, d.name;""";
         try (Connection conn = connect();
@@ -565,7 +563,7 @@ public class DBManager {
     }
 
     public void cancelOrder(int tableNumber) {
-        String sql = "UPDATE 'ORDER' SET state = 'cancelled' WHERE tableNumber = "+tableNumber+" AND state = 'pending'";
+        String sql = "UPDATE 'ORDERS' SET status = 'cancelled' WHERE table_id = "+tableNumber+" AND state = 'pending'";
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);

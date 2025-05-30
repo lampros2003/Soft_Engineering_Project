@@ -1,5 +1,6 @@
 package com.mainpackage;
 
+import com.placeOrder.PlaceOrderManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -11,7 +12,8 @@ public class MainScreen {
     @FXML
     private void btnORDERClicked(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneSwitching.switchScene(stage, "/menu/MenuWindow.fxml");
+        PlaceOrderManager pm=new PlaceOrderManager();
+        pm.init(stage);
     }
 
     @FXML

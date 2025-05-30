@@ -63,7 +63,7 @@ public class MenuWindow {
             e.printStackTrace();
         }
     }
-    public void displayOrderPage_for_waiter_2(Stage stage){
+    public void displayOrderPage_for_waiter(Stage stage){
         System.out.println("Displaying order_Page_for_waiter");
         try {
             this.loader = SceneSwitching.switchSceneR(stage, "/waiter/menu_screen_for_phone.fxml");

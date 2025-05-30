@@ -31,6 +31,7 @@ public class RequestStatusWindow {
 
     public void cancelRequestStatus(){
         addMessage("Request canceled.");
+        manager.cancelRequest();
     }
 
     public void addMessage(String message) {
