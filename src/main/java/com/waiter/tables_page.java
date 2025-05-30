@@ -38,5 +38,13 @@ public class tables_page {
         manager.Search_Tables_Order(tableNumber,stage);
     }
 
+    public void display(Stage stage) {
+        System.out.println("Displaying tables_page");
+        try {
+            SceneSwitching.switchSceneR(stage, "/waiter/tables_page.fxml",this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
