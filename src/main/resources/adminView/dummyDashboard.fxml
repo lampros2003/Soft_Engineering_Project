@@ -32,6 +32,7 @@
             <Button fx:id="analyticsBtn" mnemonicParsing="false" onAction="#analytics" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #252020; -fx-text-fill: white;" text="Analytics" />
             <Button fx:id="tableManagementBtn" mnemonicParsing="false" onAction="#tableManagement" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #252020; -fx-text-fill: white;" text="Table Management" />
             <Button mnemonicParsing="false" onAction="#inventoryManagement" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #252020; -fx-text-fill: white;" text="Inventory Management" />
+            <Button fx:id="scheduleButton" mnemonicParsing="false" onAction="#schedule" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #252020; -fx-text-fill: white;" text="Schedule" />
          </children>
       </VBox>
    </children>
