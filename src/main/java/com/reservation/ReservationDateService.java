@@ -7,7 +7,10 @@ import com.tables.TableStatus;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Simple in-memory “blackboard” that every controller can write to and read from
@@ -112,10 +115,48 @@ public final class ReservationDateService {
     }
 
     public static void clear() {
+        reservationDate   = null;
+        reservationTime   = null;
+        numberOfPeople    = 0;
+        tableNumber = 0;     // or tableNumber, if that’s your field
+
+        firstName         = null;
+        lastName          = null;
+        telephoneNumber   = null;
+        arrangement       = null;
     }
 
-    public List<TableStatus> getAvailableTables(int numberOfPeople) {
-        //
+    private static final List<TableStatus> ALL_TABLES = List.of(
+//            new TableStatus(1, 2),
+//            new TableStatus(2, 2),
+//            new TableStatus(3, 4),
+//            new TableStatus(4, 4),
+//            new TableStatus(5, 4),
+//            new TableStatus(6, 6),
+//            new TableStatus(7, 6),
+//            new TableStatus(8, 8)
+    );
+    private static final Set<Integer> BOOKED_TABLE_IDS = new HashSet<>();
+
+    public static List<TableStatus> getAvailableTables(int numberOfPeople) {
+
+        List<TableStatus> free = new ArrayList<>();
+
+        for (TableStatus tbl : ALL_TABLES) {
+            boolean fits = tbl.getSeatingCapacity() >= numberOfPeople;
+
+            boolean unused = !BOOKED_TABLE_IDS.contains(tbl.getId());
+
+            if (fits && unused) {
+                free.add(tbl);
+            }
+        }
+        return free;
+    }
+
+    /* call this helper right after saveReservation() succeeds         */
+    private static void markTableAsBooked() {
+        BOOKED_TABLE_IDS.add(tableNumber);
     }
 }
 
