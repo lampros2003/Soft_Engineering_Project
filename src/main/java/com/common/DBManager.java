@@ -557,7 +557,7 @@ public class DBManager {
     }
 
     public void cancelOrder(int tableNumber) {
-        String sql = "UPDATE 'ORDERS' SET status = 'cancelled' WHERE table_id = "+tableNumber+" AND state = 'pending'";
+        String sql = "UPDATE 'ORDERS' SET status = 'cancelled' WHERE table_id = "+tableNumber+" AND status = 'pending'";
         try (Connection conn = connect();
              Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
