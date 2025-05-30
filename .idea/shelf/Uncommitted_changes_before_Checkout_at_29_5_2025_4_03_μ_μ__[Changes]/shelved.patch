@@ -1,0 +1,42 @@
+Index: src/main/java/com/invMGMT/controller/InventoryManager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.invMGMT.controller;\r\n\r\nimport com.common.DBManager;\r\nimport com.common.Ingredient;\r\nimport com.mainpackage.SceneSwitching;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.stage.Stage;\r\n\r\npublic class InventoryManager {\r\n    Stage stage;\r\n    FXMLLoader loader;\r\n    DBManager db;\r\n    Ingredient[] inventory;\r\n    public void init(Stage stage){\r\n        this.stage=stage;\r\n        this.loader= SceneSwitching.switchSceneR(stage,\"/invMGMT/invMGMT.fxml\");\r\n        this.db=new DBManager();\r\n        this.inventory=db.getIngredients();\r\n        InventoryListController listController=loader.getController();\r\n        listController.display(this.inventory);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/invMGMT/controller/InventoryManager.java b/src/main/java/com/invMGMT/controller/InventoryManager.java
+--- a/src/main/java/com/invMGMT/controller/InventoryManager.java	(revision 4a2fc740247eec68ac4111d26a8072328483848a)
++++ b/src/main/java/com/invMGMT/controller/InventoryManager.java	(date 1748523536605)
+@@ -6,17 +6,17 @@
+ import javafx.fxml.FXMLLoader;
+ import javafx.stage.Stage;
+ 
+-public class InventoryManager {
+-    Stage stage;
+-    FXMLLoader loader;
+-    DBManager db;
+-    Ingredient[] inventory;
+-    public void init(Stage stage){
+-        this.stage=stage;
+-        this.loader= SceneSwitching.switchSceneR(stage,"/invMGMT/invMGMT.fxml");
+-        this.db=new DBManager();
+-        this.inventory=db.getIngredients();
+-        InventoryListController listController=loader.getController();
+-        listController.display(this.inventory);
+-    }
+-}
++//public class InventoryManager {
++//    Stage stage;
++//    FXMLLoader loader;
++//    DBManager db;
++//    Ingredient[] inventory;
++//    public void init(Stage stage){
++//        this.stage=stage;
++//        this.loader= SceneSwitching.switchSceneR(stage,"/invMGMT/invMGMT.fxml");
++//        this.db=new DBManager();
++//        this.inventory=db.getIngredients();
++//        InventoryListController listController=loader.getController();
++//        listController.display(this.inventory);
++//    }
++//}

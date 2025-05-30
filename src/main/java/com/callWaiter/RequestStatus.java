@@ -29,9 +29,6 @@ public class RequestStatus {
         return status;
     }
 
-    public int getTableNumber() {
-        return tableNumber;
-    }
 
     public boolean isActive() {
         return status.equals("Pending") || status.equals("Accepted");

@@ -25,6 +25,7 @@ public class dummyDashboard {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/adminView/manageMenu.fxml");
     }
+
     @FXML
     void analytics(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
