@@ -1,5 +1,6 @@
 package com.analytics;
 
+import com.common.DBManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
 public class GeneralDataController
 {
     // Database manager
-    private AnalyticsDBManager dbManager;
+    private DBManager dbManager;
 
     // Today's Analytics
     @FXML private VBox occupiedTablesCard;
@@ -49,7 +50,7 @@ public class GeneralDataController
     @FXML
     public void initialize() {
         // Initialize database manager
-        dbManager = new AnalyticsDBManager();
+        dbManager = new DBManager();
         // Initialize the database table if it doesn't exist
 
         // Load data from database

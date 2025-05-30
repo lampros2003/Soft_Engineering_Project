@@ -3,13 +3,7 @@ package com.common;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import com.common.Order;
-import com.common.OrderItem;
-import com.menu.DealItem;
 import com.menu.MenuItem;
 import com.tables.TableStatus;
 import com.tables.TablesScreenController.TableState;
@@ -571,6 +565,71 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+    public String getGeneralData(String key) {
+        String sql = "SELECT data_value FROM GENERAL_DATA WHERE data_key = ?";
+
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, key);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("data_value");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving data for key " + key + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Fetch today's detailed data rows for a given key
+     */
+    public List<DBManager.TodayRecord> getTodayData(String key) throws SQLException {
+        String query = "SELECT data_hour, data_value, data_change FROM ANALYTICS_TODAY " +
+                "WHERE data_key = ? ORDER BY data_hour";
+        List<DBManager.TodayRecord> list = new java.util.ArrayList<>();
+        try (Connection conn = connect(); PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, key);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String hour = rs.getString("data_hour");
+                double val = rs.getDouble("data_value");
+                double change = rs.getDouble("data_change");
+                list.add(new DBManager.TodayRecord(hour, val, change));
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Container for a single today's detail record
+     */
+    public static class TodayRecord {
+        private final String hour;
+        private final double value;
+        private final double change;
+
+        public TodayRecord(String hour, double value, double change) {
+            this.hour = hour;
+            this.value = value;
+            this.change = change;
+        }
+
+        public String getHour() {
+            return hour;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        public double getChange() {
+            return change;
+        }}
 }
 
 
