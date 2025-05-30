@@ -15,18 +15,23 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.application.Platform;
+import javafx.util.Pair;
+import java.util.Optional;
 
 public class TableLayoutEditorController implements Initializable {
 
@@ -354,23 +359,32 @@ public class TableLayoutEditorController implements Initializable {
         double mouseX = event.getX();
         double mouseY = event.getY();
 
-        if (event.getClickCount() == 2) {
-            addTableAt(mouseX, mouseY);
-            return;
-        }
-
-        boolean tableClicked = false;
+        // Check if we clicked on an existing table
+        TableStatus clickedTable = null;
         for (TableBounds bounds : tableBoundsMap.values()) {
             if (bounds.contains(mouseX, mouseY)) {
-                TableStatus table = getTableById(bounds.tableId());
-                if (table != null) {
-                    selectTable(table);
-                    tableClicked = true;
-                    break;
-                }
+                clickedTable = getTableById(bounds.tableId());
+                break;
             }
         }
-        if (!tableClicked) {
+
+        // Handle double-click
+        if (event.getClickCount() == 2) {
+            if (clickedTable != null) {
+                // Double-clicked on an existing table - edit it
+                showTableEditDialog(clickedTable);
+                return;
+            } else {
+                // Double-clicked on empty space - add new table
+                addTableAt(mouseX, mouseY);
+                return;
+            }
+        }
+
+        // Handle single-click (selection)
+        if (clickedTable != null) {
+            selectTable(clickedTable);
+        } else {
             clearTableSelection();
         }
     }
@@ -536,5 +550,90 @@ public class TableLayoutEditorController implements Initializable {
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * Show a dialog to edit table properties
+     */
+    private void showTableEditDialog(TableStatus table) {
+        if (table == null || workingLayout == null) return;
+
+        // Create the custom dialog
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Edit Table " + table.getId());
+        dialog.setHeaderText("Edit table properties");
+
+        // Set the button types (OK and Cancel)
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        // Create a grid for the form layout
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new javafx.geometry.Insets(20, 150, 10, 10));
+
+        // Create form controls with the table's current values
+        Spinner<Integer> editSeatingSpinner = new Spinner<>(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 20, table.getSeatingCapacity()));
+        Spinner<Integer> editWidthSpinner = new Spinner<>(new SpinnerValueFactory.IntegerSpinnerValueFactory(60, 200, (int) Math.round(table.getWidth()), 10));
+        Spinner<Integer> editHeightSpinner = new Spinner<>(new SpinnerValueFactory.IntegerSpinnerValueFactory(60, 180, (int) Math.round(table.getHeight()), 10));
+
+        ComboBox<TablesScreenController.TableState> editStateComboBox = new ComboBox<>(FXCollections.observableArrayList(
+            TablesScreenController.TableState.AVAILABLE,
+            TablesScreenController.TableState.OCCUPIED,
+            TablesScreenController.TableState.UNAVAILABLE
+        ));
+        editStateComboBox.setValue(table.getState());
+
+        // Add controls to the grid
+        grid.add(new Label("Seating Capacity:"), 0, 0);
+        grid.add(editSeatingSpinner, 1, 0);
+        grid.add(new Label("Width:"), 0, 1);
+        grid.add(editWidthSpinner, 1, 1);
+        grid.add(new Label("Height:"), 0, 2);
+        grid.add(editHeightSpinner, 1, 2);
+        grid.add(new Label("State:"), 0, 3);
+        grid.add(editStateComboBox, 1, 3);
+
+        dialog.getDialogPane().setContent(grid);
+
+        // Request focus on the seating field by default
+        Platform.runLater(editSeatingSpinner::requestFocus);
+
+        // Show the dialog and process the result
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Point2D position = table.getPosition();
+
+            // Create updated table with new values
+            TableStatus updatedTable = new TableStatus(
+                table.getId(),
+                position,
+                editWidthSpinner.getValue(),
+                editHeightSpinner.getValue(),
+                editSeatingSpinner.getValue(),
+                editStateComboBox.getValue(),
+                table.getGuestsCount(),
+                table.getOccupiedTime(),
+                table.getServerName(),
+                table.getColumnIndex(),
+                table.getRowIndex()
+            );
+
+            // Validate changes (e.g., check for overlaps with new size)
+            if (table.getWidth() != updatedTable.getWidth() || table.getHeight() != updatedTable.getHeight()) {
+                // Table size changed, check for overlaps
+                if (!isPositionFree(position.getX(), position.getY(),
+                        updatedTable.getWidth(), updatedTable.getHeight(), table)) {
+                    showErrorAlert("Size Change Conflict",
+                        "The new table size would cause an overlap with another table. Changes not applied.");
+                    return;
+                }
+            }
+
+            // Apply the changes
+            workingLayout.replaceTableInMemory(updatedTable);
+            selectTable(updatedTable); // This will update UI and canvas
+        }
     }
 }

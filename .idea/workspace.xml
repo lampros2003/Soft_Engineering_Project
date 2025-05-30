@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Refactor db. Finalise analytics acces to db">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-    </list>
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Add validation back in(mistakenly removed on previous commit)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -388,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748636247627</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add validation back in(mistakenly removed on previous commit)">
+      <option name="closed" value="true" />
+      <created>1748638231238</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748638231238</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +428,8 @@
     <MESSAGE value="updates" />
     <MESSAGE value="add callWaiter feature" />
     <MESSAGE value="Refactor db. Finalise analytics acces to db" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor db. Finalise analytics acces to db" />
+    <MESSAGE value="Add validation back in(mistakenly removed on previous commit)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add validation back in(mistakenly removed on previous commit)" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
