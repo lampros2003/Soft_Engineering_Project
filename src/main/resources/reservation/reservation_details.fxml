@@ -10,63 +10,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!--
-    Reservation‑details screen (step 3).
-    • Back arrow top‑left
-    • Two purple cards in first row:  Name   |   Email confirmation
-    • One purple card below on right: Additional arrangements (multiline)
-    • Dark NEXT button centred near bottom
--->
 
-<AnchorPane prefHeight="335" prefWidth="560" style="-fx-background-color: #f4f4f6;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="DetailsController">
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.reservation.DetailsController"
+            prefWidth="560.0" prefHeight="335.0"
+            style="-fx-background-color: white;">
 
-    <children>
-        <!-- Back arrow button -->
-        <Button fx:id="backButton" onAction="#handleBack" style="-fx-background-color: transparent; -fx-font-size: 18;" text="←" AnchorPane.leftAnchor="14" AnchorPane.topAnchor="14" />
 
-        <!-- Main content column -->
-        <VBox alignment="TOP_CENTER" spacing="34" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="46">
+    <Label text="Guest Details"
+           style="-fx-font-size: 20; -fx-font-weight: bold;"
+           layoutX="25" layoutY="20"/>
 
-            <!-- Row 1: name + email -->
-            <HBox alignment="CENTER" spacing="40">
-                <children>
-                    <!-- Name card -->
-                    <VBox spacing="10" style="-fx-background-color: #efe9fb; -fx-background-radius: 8; -fx-padding: 16 20 20 20;">
-                        <Label text="* Name for the reservation:">
-                            <font><Font size="14" /></font>
-                        </Label>
-                        <TextField fx:id="nameField" prefWidth="220" promptText="eg. John Doe" style="-fx-border-color: #a58be0; -fx-border-radius: 6; -fx-background-radius: 6;" />
-                    </VBox>
 
-                    <!-- Email card -->
-                    <VBox spacing="10" style="-fx-background-color: #efe9fb; -fx-background-radius: 8; -fx-padding: 16 20 20 20;">
-                        <Label text="Send a confirmation via email?">
-                            <font><Font size="14" /></font>
-                        </Label>
-                        <TextField fx:id="emailField" prefWidth="220" promptText="eg. john@gmail.com" style="-fx-border-color: #a58be0; -fx-border-radius: 6; -fx-background-radius: 6;" />
-                    </VBox>
-                </children>
-            </HBox>
+    <GridPane hgap="12" vgap="14"
+              layoutX="25" layoutY="70">
 
-            <!-- Row 2: additional arrangements (aligned right) -->
-            <HBox alignment="CENTER_RIGHT">
-                <children>
-                    <VBox prefHeight="105.0" prefWidth="519.0" spacing="10" style="-fx-background-color: #efe9fb; -fx-background-radius: 8; -fx-padding: 16 20 20 20;">
-                        <Label text="Do you need additional arrangements?">
-                            <font><Font size="14" /></font>
-                        </Label>
-                        <TextArea fx:id="arrangementsField" prefRowCount="3" prefWidth="400" promptText="eg. wheelchair accessibility, no. of toddler chairs needed,…" style="-fx-border-color: #a58be0; -fx-border-radius: 6; -fx-background-radius: 6;" />
-                    </VBox>
-                </children>
-            </HBox>
+        <Label text="First name:"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="firstNameField"
+                   promptText="John"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-            <!-- NEXT button -->
-            <Button fx:id="nextButton" onAction="#handleNext" style="-fx-background-color: #1f1f1f; -fx-text-fill: white; -fx-background-radius: 4; -fx-padding: 10 38; -fx-font-size: 14;" text="NEXT" />
+        <Label text="Last name:"   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="lastNameField"
+                   promptText="Doe"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
-            <!-- add some bottom padding -->
-            <padding>
-                <Insets bottom="20" left="20" right="20" top="0" />
-            </padding>
-        </VBox>
-    </children>
+        <Label text="Telephone:"   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="telephoneField"
+                   promptText="0712345678"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Arrangement:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="arrangementBox"
+                  prefWidth="180"
+                  GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+
+    <Button text="Back"
+            onAction="#handleBack"
+            layoutX="340" layoutY="290" prefWidth="80"/>
+
+    <Button text="Next"
+            onAction="#handleNext"
+            layoutX="430" layoutY="290" prefWidth="80"/>
 </AnchorPane>

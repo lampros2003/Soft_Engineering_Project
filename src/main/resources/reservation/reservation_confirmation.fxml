@@ -17,7 +17,7 @@
       Prompt‑text acts as placeholder when empty.
     • Two dark buttons: SUBMIT REQUEST   |   EDIT RESERVATION
 -->
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConfirmationController"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reservation.ConfirmationController"
             prefWidth="560" prefHeight="340" style="-fx-background-color: #f4f4f6;">
 
     <children>

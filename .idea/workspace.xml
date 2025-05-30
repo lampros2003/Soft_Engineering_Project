@@ -4,17 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ErrorPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ErrorPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/Navigation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationConfirmationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationTimeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/reservation/TableSelectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reservation/error_page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reservation/table_selection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_55_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_19_5_2025_10_57_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_19_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_19_____Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_26_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_26_____Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_1_52_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_1_52_____Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2025_4_50_____Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_5_2025_4_50_μ_μ__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_5_2025_2_18_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_5_2025_2_18_____Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/schedule/SchedulingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/schedule/SchedulingPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/options_screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/options_screen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/ConfirmationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ConfirmationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/DateUnavailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/DateUnavailable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/DetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/DetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/ResDateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/ResTimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationTimeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/TimeUnavailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/TimeUnavailable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation/date_unavailable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation/date_unavailable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation/reservation_confirmation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation/reservation_confirmation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation/reservation_date.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation/reservation_date.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation/reservation_details.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation/reservation_details.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation/reservation_time.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation/reservation_time.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -47,6 +84,12 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="z1hvTqE1" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -61,9 +104,11 @@
     "Application.Main.executor": "Run",
     "Application.schedule_use_case.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "#3 on dev",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ana",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -73,6 +118,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.reservation" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\myljo\Desktop\Σχολή\Τεχνολογία Λογισμικού\Project\Soft_Engineering_Project\src\main\resources" />
       <recent name="C:\00mysruff\Soft_Engineering_Project\src\main\resources\com.menu" />
@@ -143,6 +191,7 @@
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="" />
@@ -179,6 +228,8 @@
       <workItem from="1748123480195" duration="3974000" />
       <workItem from="1748127521468" duration="1023000" />
       <workItem from="1748162609677" duration="5916000" />
+      <workItem from="1748604650474" duration="18467000" />
+      <workItem from="1748633424302" duration="1118000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />

@@ -44,4 +44,8 @@ module com.mainpackage {
 
     opens com.payBill.util to javafx.fxml;
     exports com.payBill.util;
+
+    opens com.reservation to javafx.fxml;
+    exports com.reservation;
+
 }

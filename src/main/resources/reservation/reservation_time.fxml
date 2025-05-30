@@ -8,7 +8,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ResTimeController"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reservation.ReservationTimeController"
             prefWidth="560" prefHeight="333"
             style="-fx-background-color: #f4f4f6;">
 
@@ -23,7 +23,7 @@
               AnchorPane.topAnchor="40" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
 
             <!-- Time picker (use a Spinner as a simple time selector) -->
-            <Spinner fx:id="timeSpinner" prefWidth="140" prefHeight="120" />
+            <Spinner fx:id="timeSpinner" prefWidth="140" prefHeight="120" AnchorPane.leftAnchor="25" AnchorPane.topAnchor="60"/>
 
             <!-- Availability message -->
             <Label fx:id="availabilityLabel"

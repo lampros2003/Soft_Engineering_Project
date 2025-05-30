@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.reservation.TableSelectionController"
+            prefWidth="500" prefHeight="400">
+
+    <!-- Title -->
+    <Label text="Select a Table"
+           layoutX="20" layoutY="20"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+    <!-- List of available tables -->
+    <ListView fx:id="tableListView"
+              layoutX="20" layoutY="60"
+              prefWidth="460" prefHeight="250"/>
+
+    <!-- Back / Next buttons -->
+    <Button text="Back"
+            layoutX="270" layoutY="330"
+            prefWidth="100"
+            onAction="#onBackClick"/>
+
+    <Button text="Next"
+            layoutX="380" layoutY="330"
+            prefWidth="100"
+            onAction="#onNextClick"/>
+
+    <!-- Simple message area for “no tables” cases -->
+    <Label fx:id="messageLabel"
+           layoutX="20" layoutY="330"
+           style="-fx-text-fill: red;"/>
+</AnchorPane>
