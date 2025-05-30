@@ -42,7 +42,7 @@ public class MenuWindow {
 
     @FXML
     void callWaiter(ActionEvent event) throws IOException {
-            menuManager.callWaiter();
+
     }
     public void display(Stage stage){
         System.out.println("Displaying MenuWindow");

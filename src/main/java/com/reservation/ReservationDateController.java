@@ -29,7 +29,7 @@ public class ReservationDateController {
                 @Override
                 public void updateItem(LocalDate item, boolean empty) {
                     super.updateItem(item, empty);
-                    setDisable(empty || !availableDates.contains(item));
+//                    setDisable(empty || !availableDates.contains(item));
                 }
             });
 
