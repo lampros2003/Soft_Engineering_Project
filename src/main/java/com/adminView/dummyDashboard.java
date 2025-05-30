@@ -42,5 +42,11 @@ public class dummyDashboard {
         im.init((Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
+    @FXML
+    void schedule(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/schedule/SchedulingPage.fxml");
+    }
+
 
 }

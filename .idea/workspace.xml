@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Merge branch 'feature/invMGMT' into dev&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/common/DatabaseManager.java&#10;#&#9;src/main/java/com/common/Ingredient.java&#10;#&#9;src/main/java/com/invMGMT/controller/InventoryManager.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/placeOrder/PlaceOrderManager.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="updates">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/testInvMGMT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/invMGMT/controller/testInvMGMT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/MainScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/controller/PaymentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/payBill/util/BankAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/payBill/util/BankAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/menu/MenuWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/menu/MenuWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/invMGMT" />
+        <entry key="$PROJECT_DIR$" value="add_db_to+tables" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,9 +40,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,
-    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;
+    &quot;accountId&quot;: &quot;137608ff-b80f-402c-a1fb-f478a3e99769&quot;
   }
 }</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="z1hvTqE1" />
   </component>
@@ -64,13 +61,15 @@
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.TablesScreenApplication.executor": "Run",
     "Application.schedule_use_case.executor": "Run",
-    "Application.testInvMGMT.executor": "Run",
-    "Application.testPayBill.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "placeOrder",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "dev",
+    "go.import.settings.migrated": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -119,6 +118,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TablesScreenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tables.TablesScreenApplication" />
+      <module name="Soft-Eng_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tables.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="schedule_use_case" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.schedule.schedule_use_case" />
       <module name="Soft-Eng_Project" />
@@ -132,35 +144,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testInvMGMT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.invMGMT.controller.testInvMGMT" />
-      <module name="Soft-Eng_Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.invMGMT.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testPayBill" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.payBill.testPayBill" />
-      <module name="Soft-Eng_Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.payBill.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.testPayBill" />
-      <item itemvalue="Application.testInvMGMT" />
+      <item itemvalue="Application.TablesScreenApplication" />
       <item itemvalue="Application.schedule_use_case" />
       <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.Main" />
@@ -168,12 +153,20 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.testInvMGMT" />
-        <item itemvalue="Application.testPayBill" />
-        <item itemvalue="Application.schedule_use_case" />
+        <item itemvalue="Application.TablesScreenApplication" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.schedule_use_case" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -211,6 +204,7 @@
       <workItem from="1748123480195" duration="3974000" />
       <workItem from="1748127521468" duration="1023000" />
       <workItem from="1748162609677" duration="5916000" />
+      <workItem from="1748600788757" duration="16811000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -356,7 +350,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748366189279</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="updates">
+      <option name="closed" value="true" />
+      <created>1748543266837</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748543266837</updated>
+    </task>
+    <task id="LOCAL-00020" summary="updates">
+      <option name="closed" value="true" />
+      <created>1748545105335</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748545105335</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,6 +400,10 @@
     <MESSAGE value="comment code with errors" />
     <MESSAGE value="updates" />
     <option name="LAST_COMMIT_MESSAGE" value="updates" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
