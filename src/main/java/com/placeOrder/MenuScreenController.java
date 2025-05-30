@@ -1,5 +1,6 @@
 package com.placeOrder;
 
+import com.callWaiter.ManageRequestStatusClass;
 import com.common.Screen;
 import com.invMGMT.controller.InventoryManager;
 import com.menu.Menu;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 public class MenuScreenController extends Screen implements Initializable {
     @FXML ListView<Text> menuList;
     @FXML ListView<Text> orderList;
+    private int tableNumber = 1;
     public void placeOrder(){
         if(orderList.getItems().size()!=0) {
             System.out.println("placeOrder");
@@ -35,6 +37,21 @@ public class MenuScreenController extends Screen implements Initializable {
         System.out.println("add allergen");
     }
     public void callWaiter(){
+        try {
+            // Create an instance of ManageRequestStatusClass
+            ManageRequestStatusClass requestManager = new ManageRequestStatusClass(this.tableNumber);
+
+//            if (!requestManager.checkIfRequested()) {
+//                requestManager.createNewRequest();
+//                requestManager.callWaiter();
+//                showRequestStatus(requestManager);
+//            } else {
+//                showAlreadyRequestedError(requestManager);
+//            }
+
+        } catch (Exception e) {
+            System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
+        }
         System.out.println("call waiter");
     }
     public void redirectToMainScreen(){
