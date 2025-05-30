@@ -33,13 +33,13 @@ public class InventoryListController extends Screen {
     public void init(Ingredient[] inv) {
 //        this.inventory=inv;
         for(int i=0;i<inv.length;i++) {
-            invList.getItems().add(new Text(inv[i].getName() +"- Available: "+ inv[i].getQuantity()));
+            invList.getItems().add(new Text(inv[i].getName() +"/ Available: "+ inv[i].getQuantity()));
         }
     }
     public void modifySelectedIngredint(){
         System.out.println("modify");
         if(invList.getSelectionModel().getSelectedItem()!=null) {
-            String modifyId = invList.getSelectionModel().getSelectedItem().getText().split("-")[0];
+            String modifyId = invList.getSelectionModel().getSelectedItem().getText().split("/")[0];
             System.out.println(modifyId);
             inventoryManager.itemDetails(modifyId);
         }
