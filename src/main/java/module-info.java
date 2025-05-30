@@ -8,25 +8,40 @@ module com.mainpackage {
     requires java.logging;
 
     // Analytics UI package
-    opens com.analyticsui.demo1 to javafx.fxml;
-    exports com.analyticsui.demo1;
-    
+    opens com.analytics to javafx.fxml;
+    exports com.analytics;
+
     // Main package
     opens com.mainpackage to javafx.fxml;
     exports com.mainpackage;
-    
+
     // Login package
     opens com.login to javafx.fxml;
     exports com.login;
-    
+
     // Menu package
     opens com.menu to javafx.fxml;
     exports com.menu;
+    opens com.invMGMT.controller to javafx.fxml;
 
     // Chef package
     opens com.chefView to javafx.fxml;
     exports com.chefView;
 
-    opens com.reservation to javafx.fxml;
-    exports com.reservation;
+    // waiter package
+    opens com.waiter to javafx.fxml;
+    exports com.waiter;
+
+    //schedule package
+    opens com.schedule to javafx.fxml;
+    exports com.schedule;
+
+    opens com.tables to javafx.fxml;
+    exports com.tables;
+
+    opens com.payBill.controller to javafx.fxml;
+    exports com.payBill.controller;
+
+    opens com.payBill.util to javafx.fxml;
+    exports com.payBill.util;
 }

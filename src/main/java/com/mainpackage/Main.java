@@ -18,6 +18,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        // Customer's view
         Parent root;
         // Load UI from fxml file
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainUI/MainScreen.fxml")));

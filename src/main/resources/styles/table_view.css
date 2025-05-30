@@ -1,0 +1,28 @@
+.chair-marker {
+    -fx-background-color: #888888;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+}
+
+.chair-marker-available {
+    -fx-background-color: #2ECC71;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+}
+
+.table-unavailable:hover {
+    -fx-cursor: not-allowed;
+}
+
+.table-available:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+.table-selected Rectangle {
+    -fx-fill: #F39C12;
+}
