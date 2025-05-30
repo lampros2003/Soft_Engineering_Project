@@ -30,7 +30,7 @@ public class testInvMGMT {
                 passNumber++;
         }
         for(int i=0;i<invalidQuantity.length;i++){
-            System.out.println("add ingredient with valid name:"+ invalidQuantity[i]);
+            System.out.println("add ingredient with invalid quantity:"+ invalidQuantity[i]);
             boolean currentTest=iv.check("test",invalidQuantity[i],null,null);
             System.out.println("expected output false. Real output:"+ currentTest+"\n");
             testNumber++;
@@ -38,7 +38,7 @@ public class testInvMGMT {
                 passNumber++;
         }
         for(int i=0;i<validQuantity.length;i++){
-            System.out.println("add ingredient with valid name:"+ validQuantity[i]);
+            System.out.println("add ingredient with valid quantity:"+ validQuantity[i]);
             boolean currentTest=iv.check("test",validQuantity[i],null,null);
             System.out.println("expected output false. Real output:"+ currentTest+"\n");
             testNumber++;

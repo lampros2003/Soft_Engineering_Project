@@ -57,6 +57,7 @@ public class PaymentManager {
     public void sendEmail(String emailAddress,AfterPaymentController afterController){
         if(emailAddress.matches("[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+")) {//checks if inputs follow the email address pattern
             EmailAPI.sendEmail(emailAddress,"this is a receipt");
+            SceneSwitching.switchScene(this.stage,"/mainUI/MainScreen.fxml");
         } else {
             afterController.getManager(this);
             afterController.showWarning();
