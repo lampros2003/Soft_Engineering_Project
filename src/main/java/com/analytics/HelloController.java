@@ -17,8 +17,9 @@ import java.util.logging.Logger;
 
 public class HelloController
 {
+    // Database manager
+    private AnalyticsDBManager dbManager;
 
-    
     // Today's Analytics
     @FXML private VBox occupiedTablesCard;
     @FXML private VBox earningsCard;
@@ -34,7 +35,7 @@ public class HelloController
     @FXML private Label monthlyEarningsLabel;
     @FXML private Label monthlyOrdersLabel;
     @FXML private Label monthlyStatsLabel;
-    
+
     // Last Month's Analytics
     @FXML private VBox lastMonthOccupationCard;
     @FXML private VBox lastMonthEarningsCard;
@@ -46,6 +47,104 @@ public class HelloController
     @FXML private Label lastMonthStatsLabel;
 
     @FXML
+    public void initialize() {
+        // Initialize database manager
+        dbManager = new AnalyticsDBManager();
+        // Initialize the database table if it doesn't exist
+
+        // Load data from database
+        loadDataFromDatabase();
+    }
+
+    /**
+     * Load data from database and update the UI
+     */
+    private void loadDataFromDatabase() {
+        // Find and update labels for Today's Analytics
+        updateTodayAnalyticsLabels();
+
+        // Update Month's Analytics (labels already have fx:id)
+        updateLabelFromDB(monthlyOccupationLabel, "monthly_occupation");
+        updateLabelFromDB(monthlyEarningsLabel, "monthly_earnings", true, false); // Add currency formatting
+        updateLabelFromDB(monthlyOrdersLabel, "monthly_orders");
+        updateLabelFromDB(monthlyStatsLabel, "monthly_stats", false, true); // Add percentage formatting
+
+        // Update Last Month's Analytics (labels already have fx:id)
+        updateLastMonthAnalyticsLabels();
+    }
+
+    /**
+     * Update the labels for Last Month's Analytics section
+     */
+    private void updateLastMonthAnalyticsLabels() {
+        updateLabelFromDB(lastMonthOccupationLabel, "last_month_tables");
+        updateLabelFromDB(lastMonthEarningsLabel, "last_month_earnings", true, false); // Add currency formatting
+        updateLabelFromDB(lastMonthOrdersLabel, "last_month_orders");
+        updateLabelFromDB(lastMonthStatsLabel, "last_month_customers"); // This was monthly_stats, changed to last_month_customers
+    }
+
+    /**
+     * Update the labels for Today's Analytics section (which don't have fx:id)
+     */
+    private void updateTodayAnalyticsLabels() {
+        // Find labels in cards
+        Label occupiedTablesLabel = findLabelInCard(occupiedTablesCard);
+        Label earningsLabel = findLabelInCard(earningsCard);
+        Label ordersPlacedLabel = findLabelInCard(ordersPlacedCard);
+        Label otherStatisticLabel = findLabelInCard(otherStatisticCard);
+
+        // Update the labels with data from database
+        updateLabelFromDB(occupiedTablesLabel, "occupied_tables");
+        updateLabelFromDB(earningsLabel, "total_earnings", true, false); // Add currency formatting
+        updateLabelFromDB(ordersPlacedLabel, "total_orders");
+        updateLabelFromDB(otherStatisticLabel, "customer_satisfaction", false, true); // Add percentage formatting
+    }
+
+    /**
+     * Find the value label in a card (the third child, which shows the value)
+     */
+    private Label findLabelInCard(VBox card) {
+        if (card != null && card.getChildren().size() >= 3 && card.getChildren().get(2) instanceof Label) {
+            return (Label) card.getChildren().get(2);
+        }
+        return null;
+    }
+
+    /**
+     * Update a label with data from the database
+     */
+    private void updateLabelFromDB(Label label, String key) {
+        updateLabelFromDB(label, key, false, false); // Default no special formatting
+    }
+
+    /**
+     * Update a label with data from the database, with optional currency/percentage formatting
+     */
+    private void updateLabelFromDB(Label label, String key, boolean isCurrency, boolean isPercentage) {
+        if (label != null) {
+            String value = dbManager.getGeneralData(key);
+            if (value != null) {
+                if (isCurrency && !value.startsWith("$")) {
+                    label.setText("$" + value);
+                } else if (isPercentage && !value.endsWith("%")) {
+                    label.setText(value + "%");
+                } else {
+                    label.setText(value);
+                }
+            } else {
+                // Set a default placeholder if data is not found
+                if (isCurrency) {
+                    label.setText("$0.00");
+                } else if (isPercentage) {
+                    label.setText("0%");
+                } else {
+                    label.setText("N/A");
+                }
+            }
+        }
+    }
+
+    @FXML
     void returnToDashboard(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneSwitching.switchScene(stage, "/adminView/dummyDashboard.fxml");
@@ -53,11 +152,72 @@ public class HelloController
 
     private void navigateToDetailedView(String metricName, String currentValue, String metricType, Node sourceNode) {
         try {
+            String dbKey = null;
+            boolean isCurrency = metricType.equals("currency");
+            boolean isPercentage = metricType.equals("percentage");
+
+            // Determine the database key based on the metricName
+            switch (metricName) {
+                case "Occupied Tables":
+                    dbKey = "occupied_tables";
+                    break;
+                case "Earnings":
+                    dbKey = "total_earnings";
+                    break;
+                case "Orders Placed":
+                    dbKey = "total_orders";
+                    break;
+                case "Customer Satisfaction": // Changed from "Other Statistic"
+                    dbKey = "customer_satisfaction";
+                    break;
+                case "Monthly Occupation":
+                    dbKey = "monthly_occupation";
+                    break;
+                case "Monthly Earnings":
+                    dbKey = "monthly_earnings";
+                    break;
+                case "Monthly Orders":
+                    dbKey = "monthly_orders";
+                    break;
+                case "Monthly Customer Satisfaction": // Changed from "Monthly Statistics"
+                    dbKey = "monthly_stats";
+                    break;
+                case "Last Month's Occupation":
+                    dbKey = "last_month_tables";
+                    break;
+                case "Last Month's Earnings":
+                    dbKey = "last_month_earnings";
+                    break;
+                case "Last Month's Orders":
+                    dbKey = "last_month_orders";
+                    break;
+                case "Last Month's Customer Satisfaction": // Changed from "Last Month's Statistics"
+                    dbKey = "last_month_customers";
+                    break;
+            }
+
+            if (dbKey != null) {
+                currentValue = dbManager.getGeneralData(dbKey);
+                if (currentValue == null) { // Default if key not found
+                    currentValue = isCurrency ? "$0.00" : (isPercentage ? "0%" : "N/A");
+                } else {
+                    if (isCurrency && !currentValue.startsWith("$")) {
+                        currentValue = "$" + currentValue;
+                    } else if (isPercentage && !currentValue.endsWith("%")) {
+                        currentValue = currentValue + "%";
+                    }
+                }
+            } else {
+                // Fallback to the label's text if no direct dbKey mapping (should ideally not happen for these specific cards)
+                Label sourceLabel = getLabelFromCardOrSelf(sourceNode);
+                if (sourceLabel != null) currentValue = sourceLabel.getText();
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/analytics/detailed-view.fxml"));
             Parent detailedViewRoot = loader.load();
 
             DetailViewController controller = loader.getController();
-            AnalyticsData data = new AnalyticsData(metricName, currentValue, metricType);
+            AnalyticsData data = new AnalyticsData(dbKey, metricName, currentValue, metricType);
             controller.setAnalyticsData(data);
 
             // Create a new stage for the detailed view
@@ -77,6 +237,16 @@ public class HelloController
             logger.log(Level.SEVERE, "Failed to load detailed view", e);
         }
     }
+
+    private Label getLabelFromCardOrSelf(Node sourceNode) {
+        if (sourceNode instanceof Label) {
+            return (Label) sourceNode;
+        } else if (sourceNode instanceof VBox) {
+            return findLabelInCard((VBox) sourceNode);
+        }
+        return null;
+    }
+
     // Today's Analytics handlers (existing)
     @FXML
     protected void onOccupiedTablesCardClicked() {
@@ -95,7 +265,7 @@ public class HelloController
 
     @FXML
     protected void onOtherStatisticCardClicked() {
-        navigateToDetailedView("Other Statistic", "N/A", "general", otherStatisticCard);
+        navigateToDetailedView("Customer Satisfaction", "N/A", "percentage", otherStatisticCard);
     }
 
     // Month's Analytics handlers
@@ -116,7 +286,7 @@ public class HelloController
 
     @FXML
     protected void onMonthlyStatsCardClicked() {
-        navigateToDetailedView("Monthly Statistics", monthlyStatsLabel.getText(), "general", monthlyStatsCard);
+        navigateToDetailedView("Monthly Customer Satisfaction", monthlyStatsLabel.getText(), "percentage", monthlyStatsCard);
     }
 
     // Last Month's Analytics handlers
@@ -137,7 +307,6 @@ public class HelloController
 
     @FXML
     protected void onLastMonthStatsCardClicked() {
-        navigateToDetailedView("Last Month's Statistics", lastMonthStatsLabel.getText(), "general", lastMonthStatsCard);
+        navigateToDetailedView("Last Month's Customer Satisfaction", lastMonthStatsLabel.getText(), "percentage", lastMonthStatsCard);
     }
 }
-

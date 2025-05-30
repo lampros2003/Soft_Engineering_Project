@@ -260,7 +260,7 @@ public class DBManager {
     public boolean saveTable(TableStatus table) {
         // First check if the table already exists
         boolean tableExists = tableExists(table.getId());
-        
+
         String sql;
         if (tableExists) {
             // Update existing table
@@ -288,13 +288,13 @@ public class DBManager {
             pstmt.setInt(7, table.getId());
 
             pstmt.executeUpdate();
-            
+
             if (!tableExists) {
                 System.out.println("Created new table in database: Table " + table.getId());
             } else {
                 System.out.println("Updated existing table in database: Table " + table.getId());
             }
-            
+
             return true;
 
         } catch (SQLException e) {
@@ -309,22 +309,22 @@ public class DBManager {
      */
     public boolean tableExists(int tableId) {
         String sql = "SELECT COUNT(*) FROM [TABLE] WHERE tableNumber = ?";
-        
+
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
             pstmt.setInt(1, tableId);
             ResultSet rs = pstmt.executeQuery();
-            
+
             if (rs.next()) {
                 return rs.getInt(1) > 0;
             }
-            
+
         } catch (SQLException e) {
             System.err.println("Error checking if table exists: " + e.getMessage());
             e.printStackTrace();
         }
-        
+
         return false;
     }
 
@@ -403,3 +403,9 @@ public class DBManager {
         }
     }
 }
+
+
+
+
+
+

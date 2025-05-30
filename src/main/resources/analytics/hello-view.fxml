@@ -152,7 +152,7 @@
                   </VBox>
                   <VBox fx:id="otherStatisticCard" alignment="TOP_CENTER" onMouseClicked="#onOtherStatisticCardClicked" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 0);">
                      <children>
-                        <Label text="Other Statistic">
+                        <Label text="Customer Satisfaction">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -273,7 +273,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <children>
-                        <Label text="Other Statistic">
+                        <Label text="Customer Satisfaction">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -391,7 +391,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                      <children>
-                        <Label text="Other Statistic">
+                        <Label text="Customer Satisfaction">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
