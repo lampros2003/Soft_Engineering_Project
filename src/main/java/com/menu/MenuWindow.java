@@ -1,15 +1,21 @@
 package com.menu;
 
+import com.common.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 import com.mainpackage.SceneSwitching;
 
 import java.io.IOException;
 
 
 public class MenuWindow {
+    @FXML
+    public FXMLLoader loader;
+
     public static int tableNumber = 1; // Example table number, replace with actual value
     private final static ManageMenuClass menuManager = new ManageMenuClass(tableNumber);
 
@@ -37,5 +43,34 @@ public class MenuWindow {
     @FXML
     void callWaiter(ActionEvent event) throws IOException {
             menuManager.callWaiter();
+    }
+    public void display(Stage stage){
+        System.out.println("Displaying MenuWindow");
+        try {
+            this.loader = SceneSwitching.switchSceneR(stage, "/menu/MenuWindow.fxml");
+            this.loader.setController(this);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void displayOrderPage_for_waiter(Order order, Stage stage){
+        System.out.println("Displaying order_Page_for_waiter");
+        try {
+            this.loader = SceneSwitching.switchSceneR(stage, "/waiter/menu_screen_for_phone.fxml");
+            this.loader.setController(this);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void displayOrderPage_for_waiter_2(Stage stage){
+        System.out.println("Displaying order_Page_for_waiter");
+        try {
+            this.loader = SceneSwitching.switchSceneR(stage, "/waiter/menu_screen_for_phone.fxml");
+            this.loader.setController(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

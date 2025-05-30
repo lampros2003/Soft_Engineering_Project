@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.common.Order;
+import com.common.OrderItem;
 import com.menu.DealItem;
 import com.menu.MenuItem;
 
@@ -14,8 +16,24 @@ public class DBManager {
 
     private static final String URL = "jdbc:sqlite:database.db";
 
-    public static boolean Check_if_Order_Exists(int tableNumber) {
-        return true;
+    public boolean Check_if_Order_Exists(int tableNumber) {
+        boolean exists = false;
+        System.out.println("Checking if order exists in the database");
+        String sql = "SELECT * FROM 'ORDER' WHERE tableNumber ="+tableNumber+" AND state = 'pending'";
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()){
+                exists = true;
+
+            }else{
+                exists = false;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return exists;
     }
 
     // Connection method to connect to the SQLite database
@@ -283,6 +301,50 @@ public class DBManager {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public Order QueryOrder(int tableNumber) {
+        //Order order = new Order();
+        List<OrderItem> orderItems = new ArrayList<>();
+        String sql = """
+                        SELECT
+                            o.id AS orderId,
+                            o.tableNumber,
+                            d.name AS dishName,
+                            d.value AS dishPrice,
+                            COUNT(*) AS dishCount,
+                            GROUP_CONCAT(h.comment, '; ') AS comments
+                        FROM "ORDER" o
+                        JOIN "HAS" h ON o.id = h.orderId
+                        JOIN "DISH" d ON h.dishId = d.name
+                        WHERE o.tableNumber = """+tableNumber+""" 
+                          AND o.state = 'pending'
+                        GROUP BY o.id, o.tableNumber, d.name, d.value
+                        ORDER BY o.id, d.name;""";
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()){
+                OrderItem newItem = new OrderItem(rs.getString("dishName"), rs.getInt("dishCount"), rs.getFloat("dishPrice"));
+                orderItems.add(newItem);
+
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        OrderItem[] arrayItems = orderItems.toArray(new OrderItem[0]);
+        Order order = new Order(arrayItems);
+        return order;
+    }
+
+    public void cancelOrder(int tableNumber) {
+        String sql = "UPDATE 'ORDER' SET state = 'cancelled' WHERE tableNumber = "+tableNumber+" AND state = 'pending'";
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+        }catch(SQLException e){
+            e.printStackTrace();
         }
     }
 }
