@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.reservation.DetailsController"
+            prefWidth="560.0" prefHeight="335.0"
+            style="-fx-background-color: white;">
+
+
+    <Label text="Guest Details"
+           style="-fx-font-size: 20; -fx-font-weight: bold;"
+           layoutX="25" layoutY="20"/>
+
+
+    <GridPane hgap="12" vgap="14"
+              layoutX="25" layoutY="70">
+
+        <Label text="First name:"  GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="firstNameField"
+                   promptText="John"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Last name:"   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="lastNameField"
+                   promptText="Doe"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Telephone:"   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="telephoneField"
+                   promptText="0712345678"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Arrangement:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="arrangementBox"
+                  prefWidth="180"
+                  GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+
+    <Button text="Back"
+            onAction="#handleBack"
+            layoutX="340" layoutY="290" prefWidth="80"/>
+
+    <Button text="Next"
+            onAction="#handleNext"
+            layoutX="430" layoutY="290" prefWidth="80"/>
+</AnchorPane>

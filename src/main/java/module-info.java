@@ -6,8 +6,6 @@ module com.mainpackage {
     requires javafx.media;
     requires javafx.swing;
     requires java.logging;
-    requires java.sql;
-    requires eu.hansolo.toolbox;
 
     // Analytics UI package
     opens com.analytics to javafx.fxml;
@@ -33,11 +31,11 @@ module com.mainpackage {
     opens com.chefView to javafx.fxml;
     exports com.chefView;
 
-    // Waiter package
+    // waiter package
     opens com.waiter to javafx.fxml;
     exports com.waiter;
 
-    // Schedule package
+    //schedule package
     opens com.schedule to javafx.fxml;
     exports com.schedule;
 
@@ -49,6 +47,10 @@ module com.mainpackage {
 
     opens com.payBill.util to javafx.fxml;
     exports com.payBill.util;
+
+    opens com.reservation to javafx.fxml;
+    exports com.reservation;
+
 
     // Admin View package
     opens com.adminView to javafx.fxml;

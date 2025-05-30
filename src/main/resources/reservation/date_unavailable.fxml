@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F5F5F7;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.reservation.DateUnavailable">
+
+    <!-- Back-arrow button -->
+    <Button fx:id="backButton" layoutX="16" layoutY="10" onAction="#handleBack" prefHeight="28" prefWidth="28" style="-fx-background-color: #1E90FF;                    -fx-text-fill: white;                    -fx-font-size: 14;                    -fx-background-radius: 4;" text="⤺" />
+
+    <!-- Centre-aligned content -->
+    <VBox alignment="CENTER" layoutY="131.0" spacing="16" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
+
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold;" text="Sorry!" />
+
+        <Label fx:id="messageLabel" style="-fx-font-size: 14;" text="For dd/mm/yyyy we don’t have any availability." wrapText="true" />
+
+        <!-- Action buttons -->
+        <HBox alignment="CENTER" spacing="24">
+            <Button fx:id="goBackButton" onAction="#handleBack" style="-fx-background-color: #2B2B2B;                            -fx-text-fill: white;                            -fx-font-size: 12;                            -fx-background-radius: 4;                            -fx-padding: 10 24;" text="GO BACK" />
+
+            <Button fx:id="orderToGoButton" onAction="#handleOrderToGo" style="-fx-background-color: #2B2B2B;                            -fx-text-fill: white;                            -fx-font-size: 12;                            -fx-background-radius: 4;                            -fx-padding: 10 24;" text="ORDER TO GO" />
+        </HBox>
+
+        <padding>
+            <Insets bottom="20" />
+        </padding>
+    </VBox>
+</AnchorPane>
