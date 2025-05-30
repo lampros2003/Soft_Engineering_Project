@@ -31,7 +31,7 @@ public class Main extends Application {
         primaryStage.show();
 
         // Set window size unchangeable
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
 
     }
 
