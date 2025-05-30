@@ -27,6 +27,9 @@ import javafx.stage.Stage;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import com.mainpackage.SceneSwitching;
 
 public class TablesScreenController implements Initializable {
@@ -73,6 +76,7 @@ public class TablesScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Initialize the restaurant layout
         restaurantLayout = RestaurantLayout.createSampleLayout();
+        // Note: createSampleLayout() now loads tables from database internally
 
         // Set up the canvas size listener to handle window resizing
         setupCanvasSizeListener();
@@ -222,19 +226,11 @@ public class TablesScreenController implements Initializable {
         double tableHeight = table.getHeight();
 
         // Set color based on table state
-        Color tableColor;
-        switch (table.getState()) {
-            case AVAILABLE:
-                tableColor = AVAILABLE_COLOR;
-                break;
-            case OCCUPIED:
-                tableColor = OCCUPIED_COLOR;
-                break;
-            case UNAVAILABLE:
-            default:
-                tableColor = UNAVAILABLE_COLOR;
-                break;
-        }
+        Color tableColor = switch (table.getState()) {
+            case AVAILABLE -> AVAILABLE_COLOR;
+            case OCCUPIED -> OCCUPIED_COLOR;
+            default -> UNAVAILABLE_COLOR;
+        };
 
         // Draw table rectangle with rounded corners
         gc.setFill(tableColor);
@@ -272,20 +268,13 @@ public class TablesScreenController implements Initializable {
     private void drawChairMarkers(GraphicsContext gc, TableStatus table, double tableX, double tableY,
                                  double tableWidth, double tableHeight) {
         int seating = table.getSeatingCapacity();
-        Color markerColor;
+        Color markerColor = switch (table.getState()) {
+            case AVAILABLE -> Color.web("#2ECC71").darker();
+            case OCCUPIED -> Color.web("#F39C12").darker();
+            default -> Color.web("#999999");
+        };
 
         // Set chair marker color based on table state
-        switch (table.getState()) {
-            case AVAILABLE:
-                markerColor = Color.web("#2ECC71").darker();
-                break;
-            case OCCUPIED:
-                markerColor = Color.web("#F39C12").darker();
-                break;
-            default:
-                markerColor = Color.web("#999999");
-                break;
-        }
 
         gc.setFill(markerColor);
 
@@ -347,10 +336,98 @@ public class TablesScreenController implements Initializable {
             TableStatus table = getTableById(clickedTable.get().tableId());
 
             if (table != null) {
-                System.out.println("Table details: " + table.toString());
-                // Could show a dialog with table details here
+                // Double click to handle quick status change
+                if (event.getClickCount() == 2) {
+                    handleTableStateChange(table);
+                } else {
+                    // Show table details dialog
+                    showTableDetailsDialog(table);
+                }
             }
         }
+    }
+
+    /**
+     * Handle changing a table's state with a double-click
+     */
+    private void handleTableStateChange(TableStatus table) {
+        if (table.getState() == TableState.AVAILABLE) {
+            // Show dialog to enter guest count
+            TextInputDialog dialog = new TextInputDialog("1");
+            dialog.setTitle("Seat Guests");
+            dialog.setHeaderText("Table " + table.getId() + " - Capacity: " + table.getSeatingCapacity());
+            dialog.setContentText("Number of guests:");
+
+            // Traditional way to get the response value
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(count -> {
+                try {
+                    int guestCount = Integer.parseInt(count);
+                    if (guestCount > 0 && guestCount <= table.getSeatingCapacity()) {
+                        restaurantLayout.seatParty(table.getId(), guestCount, "Server");
+                        renderTables();
+                    } else {
+                        showAlert("Invalid Input", "Please enter a valid guest count (1-" + table.getSeatingCapacity() + ")");
+                    }
+                } catch (NumberFormatException e) {
+                    showAlert("Invalid Input", "Please enter a valid number");
+                }
+            });
+        } else if (table.getState() == TableState.OCCUPIED) {
+            // Ask to clear the table
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Clear Table");
+            confirm.setHeaderText("Clear Table " + table.getId());
+            confirm.setContentText("Do you want to mark this table as available?");
+
+            Optional<ButtonType> result = confirm.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                restaurantLayout.clearTable(table.getId());
+                renderTables();
+            }
+        } else {
+            // Toggle unavailable to available
+            TableState newState = TableState.AVAILABLE;
+            restaurantLayout.getTable(table.getId()).setState(newState);
+            renderTables();
+        }
+    }
+
+    /**
+     * Show a dialog with table details
+     */
+    private void showTableDetailsDialog(TableStatus table) {
+        StringBuilder details = new StringBuilder();
+        details.append("Table ID: ").append(table.getId()).append("\n");
+        details.append("Status: ").append(table.getState()).append("\n");
+        details.append("Seating Capacity: ").append(table.getSeatingCapacity()).append("\n");
+
+        if (table.isOccupied()) {
+            details.append("Guests: ").append(table.getGuestsCount()).append("\n");
+            if (table.getServerName() != null && !table.getServerName().isEmpty()) {
+                details.append("Server: ").append(table.getServerName()).append("\n");
+            }
+            if (table.getOccupiedTime() != null) {
+                details.append("Occupied Since: ").append(table.getOccupiedTime()).append("\n");
+            }
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Table Details");
+        alert.setHeaderText("Table " + table.getId() + " Information");
+        alert.setContentText(details.toString());
+        alert.showAndWait();
+    }
+
+    /**
+     * Show an alert with custom text
+     */
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -422,7 +499,15 @@ public class TablesScreenController implements Initializable {
      * This is called by the editor controller when the user saves changes
      */
     public void updateLayout(RestaurantLayout newLayout) {
+        System.out.println("Updating layout with " + newLayout.getTableCount() + " tables");
+        
+        // Replace the current layout with the new one
         this.restaurantLayout = newLayout;
+        
+        // Save all tables to database (bulk update)
+        restaurantLayout.saveAllTablesToDatabase();
+        
+        // Refresh the UI
         setupCanvas();
         renderTables();
     }

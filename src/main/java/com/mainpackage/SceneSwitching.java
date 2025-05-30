@@ -44,4 +44,16 @@ public class SceneSwitching {
             return null;
         }
     }
+    public static void switchSceneB(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneSwitching.class.getResource(fxmlPath));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("SmartRestaurant");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {}
+
+    }
 }

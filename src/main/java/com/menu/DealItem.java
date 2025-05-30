@@ -11,7 +11,7 @@ public class DealItem {
         this.discount = discount;
     }
 
-    public String getDishName() {
+    public String getName() {
         return dishName;
     }
 
