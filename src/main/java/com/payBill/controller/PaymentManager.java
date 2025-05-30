@@ -35,21 +35,24 @@ public class PaymentManager {
     }
     public void passCredentials(String name,String cardNum,String cvc){
         System.out.println("xoxoxox you just got doxxed: \n"+cardNum+"\n" + name + "\n" + cvc);
-        if()
-            System.out.println("ok");
-        boolean transactionComplete=BankAPI.askVerification(name,cardNum,cvc);
-        if(transactionComplete) {
-            this.order.updateStatus();
+        if(!check(name,cardNum,cvc)){
+            BankErrorPageController errorController = new BankErrorPageController();
+            errorController.display(this.stage, "/common/view/errorScreen.fxml");
+            errorController.showErrorAndBack("Credentials Do not follow the correct format", this.order);
+        }else {
+            boolean transactionComplete = BankAPI.askVerification(name, cardNum, cvc);
+            if (transactionComplete) {
+                this.order.updateStatus();
 //            this.db.updateOrderStatus(this.order);
-            AfterPaymentController afterController=new AfterPaymentController();
-            afterController.display(this.stage,"/paybill/view/paymentSuccessScreen.fxml");
-            afterController.getManager(this);
-        }else{
-            BankErrorPageController errorController=new BankErrorPageController();
-            errorController.display(this.stage,"/common/view/errorScreen.fxml");
-            errorController.showErrorAndBack("Bank Error!",this.order);
+                AfterPaymentController afterController = new AfterPaymentController();
+                afterController.display(this.stage, "/paybill/view/paymentSuccessScreen.fxml");
+                afterController.getManager(this);
+            } else {
+                BankErrorPageController errorController = new BankErrorPageController();
+                errorController.display(this.stage, "/common/view/errorScreen.fxml");
+                errorController.showErrorAndBack("Bank Error!", this.order);
+            }
         }
-
     }
     public void sendEmail(String emailAddress,AfterPaymentController afterController){
         if(emailAddress.matches("[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+")) {//checks if inputs follow the email address pattern
@@ -61,15 +64,21 @@ public class PaymentManager {
 
 
     }
-    public boolean check(String name,String cardNum){
-        return name.matches("[A-Za-z ]+") && cardNum.matches("[0-9]{8,19}");
+    public boolean check(String name,String cardNum,String cvc){
+        return name.matches("[A-Za-z ]+") && cardNum.matches("[0-9]{8,19}") && luhn(cardNum) && cvc.matches("[0-9]{3,3}");
     }
     public boolean luhn(String num){
         int sum=0;
-        for(int i=0;i<num.length()-1;i++){
+        int forwardIndex=0;
+        for(int i=num.length()-2;i>-1;i--){
             int temp=num.charAt(i)-'0';
-            temp*=2;
-
+            if(forwardIndex%2==0) {
+                temp *= 2;
+                temp = (temp < 10) ? temp : temp-9;
+            }
+            sum+=temp;
+            forwardIndex++;
         }
+        return (10-(sum%10))%10==(num.charAt(num.length()-1)-'0');
     }
 }
