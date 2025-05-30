@@ -50,7 +50,7 @@ public class ReservationDateController {
             return;
         }
 
-        if (selectedDate == null || numberOfPeople <= 0) {
+        if (  numberOfPeople <= 0) {
             ErrorPage.display("Please select a valid date and enter a positive number of people.");
             return;
         }
