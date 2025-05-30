@@ -84,7 +84,7 @@
       <recent name="com.analyticsui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.testPayBill">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.analyticsui.demo1.HelloApplication" />
       <module name="Soft-Eng_Project" />
@@ -159,8 +159,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.testPayBill" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.testPayBill" />
         <item itemvalue="Application.testInvMGMT" />
         <item itemvalue="Application.schedule_use_case" />
         <item itemvalue="Application.HelloApplication" />
