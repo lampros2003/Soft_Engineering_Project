@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class options_screen {
     Manage_Waiter_Class manager = new Manage_Waiter_Class();
-    int table_number = 3;
+    private int table_number = 0;
     FXMLLoader loader;
     @FXML
     private Text Title;
@@ -41,18 +41,18 @@ public class options_screen {
     }
 
     @FXML
-    void clicked_Cancel(MouseEvent event) {
+    private void clicked_Cancel(MouseEvent event) {
         System.out.println("Cancel button clicked "+"Table Number:"+this.table_number);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         manager.cancelOrder(this.table_number);
     }
 
     @FXML
-    void clicked_edit(MouseEvent event) {
+    private void clicked_edit(MouseEvent event) {
         System.out.println("Edit button clicked "+"Table Number:"+this.table_number);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        manager.Get_Order_From_DB(this.table_number,stage);
+        manager.getOrderFromDB(this.table_number,stage);
         tables_page tables_page = new tables_page();
         tables_page.display(stage);
     }

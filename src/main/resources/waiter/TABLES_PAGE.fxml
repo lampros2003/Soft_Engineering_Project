@@ -73,7 +73,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="table1" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#get_table" text="-&gt;" />
+                              <Button fx:id="table1" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#Select_Table" text="-&gt;" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -94,7 +94,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="table2" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#get_table" text="-&gt;" />
+                              <Button fx:id="table2" layoutX="6.0" layoutY="7.0" mnemonicParsing="false" onAction="#Select_Table" text="-&gt;" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -115,7 +115,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="table3" layoutX="6.0" layoutY="10.0" mnemonicParsing="false" onAction="#get_table" text="-&gt;" />
+                              <Button fx:id="table3" layoutX="6.0" layoutY="10.0" mnemonicParsing="false" onAction="#Select_Table" text="-&gt;" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -136,7 +136,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="table4" layoutX="6.0" layoutY="10.0" mnemonicParsing="false" onAction="#get_table" text="-&gt;" />
+                              <Button fx:id="table4" layoutX="6.0" layoutY="10.0" mnemonicParsing="false" onAction="#Select_Table" text="-&gt;" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -157,7 +157,7 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" GridPane.columnIndex="1">
                            <children>
-                              <Button fx:id="table5" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#get_table" text="-&gt;" />
+                              <Button fx:id="table5" layoutX="6.0" layoutY="6.0" mnemonicParsing="false" onAction="#Select_Table" text="-&gt;" />
                            </children>
                         </AnchorPane>
                      </children>

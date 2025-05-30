@@ -19,11 +19,11 @@ public class no_order_screen {
     private Pane create_order_button;
 
     @FXML
-    void clicked_create(MouseEvent event) {
+    void select_make_order(MouseEvent event) {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MenuWindow menuWindow = new MenuWindow();
-        menuWindow.displayOrderPage_for_waiter_2(stage);
+        menuWindow.displayOrderPage_for_waiter(stage);
     }
 
     public void Display(int tableNumber, Stage stage) {
