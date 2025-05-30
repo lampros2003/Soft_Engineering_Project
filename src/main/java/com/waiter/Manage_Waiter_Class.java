@@ -17,7 +17,7 @@ public class Manage_Waiter_Class {
             op.Display(table_number, stage);
         } else {
             System.out.println("Order does not exist");
-            no_order_screen op = new no_order_screen();
+            notification_window op = new notification_window();
             op.Display(table_number, stage);
         }
     }

@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class no_order_screen {
+public class notification_window {
     FXMLLoader loader;
 
     @FXML
