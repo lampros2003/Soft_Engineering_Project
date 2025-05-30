@@ -42,7 +42,7 @@
    <top>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLE-(NUM)" textAlignment="CENTER" wrappingWidth="335.0" />
+            <Text fx:id="Title" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLE-(NUM)" textAlignment="CENTER" wrappingWidth="335.0" />
             <Text layoutX="-3.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There is no order placed on this Table" textAlignment="CENTER" underline="true" wrappingWidth="341.01719665527344" />
          </children>
       </Pane>

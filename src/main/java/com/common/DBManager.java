@@ -14,6 +14,26 @@ public class DBManager {
 
     private static final String URL = "jdbc:sqlite:database.db";
 
+    public boolean Check_if_Order_Exists(int tableNumber) {
+        boolean exists = false;
+        System.out.println("Checking if order exists in the database");
+        String sql = "SELECT * FROM 'ORDER' WHERE tableNumber ="+tableNumber+" AND state = 'pending'";
+
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()){
+                exists = true;
+
+            }else{
+                exists = false;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
     // Connection method to connect to the SQLite database
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL);
@@ -230,6 +250,23 @@ public class DBManager {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Order QueryOrder(int tableNumber) {
+        Order order = null;
+        String sql = "SELECT * FROM 'ORDER' WHERE tableNumber ="+tableNumber+" AND state = 'pending'";
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()){
+                //order.O
+            }else{
+
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return order;
     }
 }
 
