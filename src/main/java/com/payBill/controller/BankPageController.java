@@ -1,13 +1,14 @@
 package com.payBill.controller;
 
 
+import com.common.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class BankPageController {
+public class BankPageController extends Screen {
     @FXML private TextField cardsNum;
     @FXML private TextField fullName;
     @FXML private TextField cvc;

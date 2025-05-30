@@ -27,6 +27,9 @@ import javafx.stage.Stage;
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
 import com.mainpackage.SceneSwitching;
 
 public class TablesScreenController implements Initializable {
@@ -73,6 +76,7 @@ public class TablesScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // Initialize the restaurant layout
         restaurantLayout = RestaurantLayout.createSampleLayout();
+        // Note: createSampleLayout() now loads tables from database internally
 
         // Set up the canvas size listener to handle window resizing
         setupCanvasSizeListener();
@@ -347,10 +351,98 @@ public class TablesScreenController implements Initializable {
             TableStatus table = getTableById(clickedTable.get().tableId());
 
             if (table != null) {
-                System.out.println("Table details: " + table.toString());
-                // Could show a dialog with table details here
+                // Double click to handle quick status change
+                if (event.getClickCount() == 2) {
+                    handleTableStateChange(table);
+                } else {
+                    // Show table details dialog
+                    showTableDetailsDialog(table);
+                }
             }
         }
+    }
+
+    /**
+     * Handle changing a table's state with a double-click
+     */
+    private void handleTableStateChange(TableStatus table) {
+        if (table.getState() == TableState.AVAILABLE) {
+            // Show dialog to enter guest count
+            TextInputDialog dialog = new TextInputDialog("1");
+            dialog.setTitle("Seat Guests");
+            dialog.setHeaderText("Table " + table.getId() + " - Capacity: " + table.getSeatingCapacity());
+            dialog.setContentText("Number of guests:");
+
+            // Traditional way to get the response value
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(count -> {
+                try {
+                    int guestCount = Integer.parseInt(count);
+                    if (guestCount > 0 && guestCount <= table.getSeatingCapacity()) {
+                        restaurantLayout.seatParty(table.getId(), guestCount, "Server"); // Could add server selection
+                        renderTables();
+                    } else {
+                        showAlert("Invalid Input", "Please enter a valid guest count (1-" + table.getSeatingCapacity() + ")");
+                    }
+                } catch (NumberFormatException e) {
+                    showAlert("Invalid Input", "Please enter a valid number");
+                }
+            });
+        } else if (table.getState() == TableState.OCCUPIED) {
+            // Ask to clear the table
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Clear Table");
+            confirm.setHeaderText("Clear Table " + table.getId());
+            confirm.setContentText("Do you want to mark this table as available?");
+
+            Optional<ButtonType> result = confirm.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                restaurantLayout.clearTable(table.getId());
+                renderTables();
+            }
+        } else {
+            // Toggle unavailable to available
+            TableState newState = TableState.AVAILABLE;
+            restaurantLayout.getTable(table.getId()).setState(newState);
+            renderTables();
+        }
+    }
+
+    /**
+     * Show a dialog with table details
+     */
+    private void showTableDetailsDialog(TableStatus table) {
+        StringBuilder details = new StringBuilder();
+        details.append("Table ID: ").append(table.getId()).append("\n");
+        details.append("Status: ").append(table.getState()).append("\n");
+        details.append("Seating Capacity: ").append(table.getSeatingCapacity()).append("\n");
+
+        if (table.isOccupied()) {
+            details.append("Guests: ").append(table.getGuestsCount()).append("\n");
+            if (table.getServerName() != null && !table.getServerName().isEmpty()) {
+                details.append("Server: ").append(table.getServerName()).append("\n");
+            }
+            if (table.getOccupiedTime() != null) {
+                details.append("Occupied Since: ").append(table.getOccupiedTime()).append("\n");
+            }
+        }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Table Details");
+        alert.setHeaderText("Table " + table.getId() + " Information");
+        alert.setContentText(details.toString());
+        alert.showAndWait();
+    }
+
+    /**
+     * Show an alert with custom text
+     */
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**
@@ -422,7 +514,15 @@ public class TablesScreenController implements Initializable {
      * This is called by the editor controller when the user saves changes
      */
     public void updateLayout(RestaurantLayout newLayout) {
+        System.out.println("Updating layout with " + newLayout.getTableCount() + " tables");
+        
+        // Replace the current layout with the new one
         this.restaurantLayout = newLayout;
+        
+        // Save all tables to database (bulk update)
+        restaurantLayout.saveAllTablesToDatabase();
+        
+        // Refresh the UI
         setupCanvas();
         renderTables();
     }

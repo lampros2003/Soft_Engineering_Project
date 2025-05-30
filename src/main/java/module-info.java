@@ -17,6 +17,9 @@ module com.mainpackage {
     opens com.mainpackage to javafx.fxml;
     exports com.mainpackage;
 
+    opens com.placeOrder to javafx.fxml;
+    exports com.placeOrder;
+
     // Login package
     opens com.login to javafx.fxml;
     exports com.login;

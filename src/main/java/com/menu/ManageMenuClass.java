@@ -17,10 +17,6 @@ public class ManageMenuClass {
         this.tableNumber = tableNumber;
     }
 
-    // public void checkIfRequested(){}
-    // public void startCountingTime(){}
-    // public void stopCountingTime(){}
-
     public void callWaiter() {
         try {
             requestManager = new ManageRequestStatusClass(1);

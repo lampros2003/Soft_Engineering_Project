@@ -2,6 +2,7 @@ package com.payBill.controller;
 
 import com.common.Order;
 import com.common.OrderItem;
+import com.common.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -11,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class OrderSummurizationController{
+public class OrderSummurizationController extends Screen {
     private Stage stage;
     private PaymentManager manager;
     @FXML private VBox orderList;
@@ -22,9 +23,6 @@ public class OrderSummurizationController{
     }
     public void callWaiterButton(ActionEvent event) {
         System.out.println("-> to call waiter use case");
-    }
-    private Stage getStage(ActionEvent event) {
-        return stage=(Stage)((Node) event.getSource()).getScene().getWindow();
     }
     public void displaySummury(Order order,float totalCost){
         for(int i=0;i<order.items.length;i++){

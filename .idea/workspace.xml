@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/errorHandling/alreadyRequested.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/errorHandling/ErrorNotificationScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/common/view/confirmScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/common/view/confirmScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="add_db_to+tables" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,9 +43,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/lampros2003/Soft_Engineering_Project.git&quot;,
-    &quot;accountId&quot;: &quot;3682f072-990f-4922-8162-f1e726178548&quot;
+    &quot;accountId&quot;: &quot;137608ff-b80f-402c-a1fb-f478a3e99769&quot;
   }
 }</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="z1hvTqE1" />
   </component>
@@ -55,21 +60,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.schedule_use_case.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/callWaiter&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.TablesScreenApplication.executor": "Run",
+    "Application.schedule_use_case.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "dev",
+    "go.import.settings.migrated": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+
   }
 }</component>
   <component name="RecentsManager">
@@ -112,6 +123,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TablesScreenApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tables.TablesScreenApplication" />
+      <module name="Soft-Eng_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tables.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="schedule_use_case" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.schedule.schedule_use_case" />
       <module name="Soft-Eng_Project" />
@@ -139,7 +163,9 @@
       </method>
     </configuration>
     <list>
+
       <item itemvalue="Application.waiter_app" />
+
       <item itemvalue="Application.schedule_use_case" />
       <item itemvalue="Application.HelloApplication" />
       <item itemvalue="Application.Main" />
@@ -147,6 +173,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TablesScreenApplication" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.schedule_use_case" />
         <item itemvalue="Application.waiter_app" />
@@ -198,6 +225,7 @@
       <workItem from="1748123480195" duration="3974000" />
       <workItem from="1748127521468" duration="1023000" />
       <workItem from="1748162609677" duration="5916000" />
+      <workItem from="1748600788757" duration="16811000" />
     </task>
     <task id="LOCAL-00001" summary="Initital commit for the project">
       <option name="closed" value="true" />
@@ -368,6 +396,8 @@
     <MESSAGE value="fix method name" />
     <MESSAGE value="fix class and method names" />
     <MESSAGE value="comment code with errors" />
+
     <option name="LAST_COMMIT_MESSAGE" value="comment code with errors" />
+
   </component>
 </project>
