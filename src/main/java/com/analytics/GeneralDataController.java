@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HelloController
+public class GeneralDataController
 {
     // Database manager
     private AnalyticsDBManager dbManager;
@@ -213,7 +213,7 @@ public class HelloController
             // Show the detailed view as a popup
             detailStage.show();
         } catch (IOException e) {
-            Logger logger = Logger.getLogger(HelloController.class.getName());
+            Logger logger = Logger.getLogger(GeneralDataController.class.getName());
             logger.log(Level.SEVERE, "Failed to load detailed view", e);
         }
     }

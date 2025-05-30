@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="676.0" prefWidth="565.0" style="-fx-background-color: #3c3232;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.analytics.HelloController">
+<BorderPane prefHeight="676.0" prefWidth="565.0" style="-fx-background-color: #3c3232;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.analytics.GeneralDataController">
    <top>
       <HBox alignment="CENTER" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #252020;">
          <children>
