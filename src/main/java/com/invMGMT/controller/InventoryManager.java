@@ -1,7 +1,6 @@
 package com.invMGMT.controller;
 
 import com.common.DBManager;
-import com.common.DatabaseManager;
 import com.common.Ingredient;
 import com.mainpackage.SceneSwitching;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +14,14 @@ public class InventoryManager {
     Ingredient[] inventory;
     private Ingredient selectedIngredient;
     private Ingredient modifiedIngredient;
+    public InventoryManager(){
+        this.db=new DBManager();
+    }
     public void init(Stage stage){
         this.stage=stage;
         InventoryListController inventoryList=new InventoryListController();
         inventoryList.display(stage,"/invMGMT/invMGMT.fxml");
 //        this.db=new DatabaseManager();
-        this.db=new DBManager();
         this.inventory=db.getIngredients();
         inventoryList.setManager(this);
         inventoryList.init(this.inventory);
@@ -70,6 +71,6 @@ public class InventoryManager {
         controller.init();
     }
     public boolean check(String name,String quantity,String allergen,String oldName){
-        return quantity.matches("[0-9]+") && name.matches("[A-Za-z0-9\\- ]+") && this.db.checkIfNameAlreadyExists(name,oldName);
+        return quantity.matches("[1-9][0-9]+|[0-9]") && name.matches("[A-Za-z0-9\\- ]+") && this.db.checkIfNameAlreadyExists(name,oldName);
     }
 }

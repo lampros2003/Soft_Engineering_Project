@@ -21,7 +21,7 @@ public class Main extends Application {
         // Customer's view
         Parent root;
         // Load UI from fxml file
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/mainUI/MainScreen.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/payBill/view/mainButNotReally.fxml")));//"/mainUI/MainScreen.fxml")));
         // Construct the main Window
         Scene scene = new Scene(root);
 

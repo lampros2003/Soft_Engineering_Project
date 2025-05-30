@@ -35,6 +35,8 @@ public class PaymentManager {
     }
     public void passCredentials(String name,String cardNum,String cvc){
         System.out.println("xoxoxox you just got doxxed: \n"+cardNum+"\n" + name + "\n" + cvc);
+        if()
+            System.out.println("ok");
         boolean transactionComplete=BankAPI.askVerification(name,cardNum,cvc);
         if(transactionComplete) {
             this.order.updateStatus();
@@ -58,5 +60,16 @@ public class PaymentManager {
         }
 
 
+    }
+    public boolean check(String name,String cardNum){
+        return name.matches("[A-Za-z ]+") && cardNum.matches("[0-9]{8,19}");
+    }
+    public boolean luhn(String num){
+        int sum=0;
+        for(int i=0;i<num.length()-1;i++){
+            int temp=num.charAt(i)-'0';
+            temp*=2;
+
+        }
     }
 }
