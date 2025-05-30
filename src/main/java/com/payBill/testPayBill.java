@@ -13,6 +13,9 @@ public class testPayBill {
         String[] validName={"john doe","Obi Wan Kenobi","Solid Snake","Sephiroth","DoomGuy"};
         String[] invalidCVC={"1569","6513","0","52","cat","0sr","5.10"};
         String[] validCVC={"123","048","655","875"};
+        String[] invalidEmail={"invalid","4412sda","hello-there@obi.wan","john@doe"};
+        String[] validEmail={"john@doe.com","arthur@dent.com","helloThere@obi.wan","john32@doe.com"};
+
         for(int i=0;i<invalidCardsNums.length;i++){
             System.out.println("check card for number:"+" "+ invalidCardsNums[i]);
             testNumber++;
@@ -62,6 +65,24 @@ public class testPayBill {
             System.out.println("check card for cvc:"+" "+ validCVC[i]);
             testNumber++;
             boolean check=test.check(validName[0],validCardsNums[0],validCVC[i]);
+            System.out.println("expected output: true. Real output: "+ check);
+            if(check) {
+                passNumber++;
+            }
+        }
+        for(int i=0;i<invalidEmail.length;i++){
+            System.out.println("check email:"+" "+ invalidEmail[i]);
+            testNumber++;
+            boolean check=invalidEmail[i].matches("[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+");
+            System.out.println("expected output: false. Real output: "+ check);
+            if(!check) {
+                passNumber++;
+            }
+        }
+        for(int i=0;i<validEmail.length;i++){
+            System.out.println("check email:"+" "+ validEmail[i]);
+            testNumber++;
+            boolean check=validEmail[i].matches("[A-Za-z0-9]+@[A-Za-z0-9]+\\.[A-Za-z0-9]+");
             System.out.println("expected output: true. Real output: "+ check);
             if(check) {
                 passNumber++;

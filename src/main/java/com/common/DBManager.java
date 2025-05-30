@@ -14,6 +14,10 @@ public class DBManager {
 
     private static final String URL = "jdbc:sqlite:database.db";
 
+    public static boolean Check_if_Order_Exists(int tableNumber) {
+        return true;
+    }
+
     // Connection method to connect to the SQLite database
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(URL);
