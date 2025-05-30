@@ -19,28 +19,30 @@ public class ManageMenuClass {
 
     public void callWaiter() {
         try {
-            // Create an instance of ManageRequestStatusClass
-            requestManager = new ManageRequestStatusClass(this.tableNumber);
+            requestManager = new ManageRequestStatusClass(1);
 
-//            if (!requestManager.checkIfRequested()) {
-//                requestManager.createNewRequest();
-//                requestManager.callWaiter();
-//                showRequestStatus(requestManager);
-//            } else {
-//                showAlreadyRequestedError(requestManager);
-//            }
+            if (!requestManager.checkIfRequested()) {
+                requestManager.initializeStatus();
+
+                System.out.println("Calling waiter...");
+                requestManager.callWaiter();
+
+                System.out.println("Showing request status...");
+                showRequestStatus(requestManager);
+            } else {
+                System.out.println("Request already active. Showing error...");
+                showAlreadyRequestedError(requestManager);
+            }
 
         } catch (Exception e) {
-            System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
+            System.out.println("Error in callWaiter method: " + e.getMessage());
+            e.printStackTrace(); // Log the full stack trace for debugging
         }
     }
 
     private void showAlreadyRequestedError(ManageRequestStatusClass requestManager) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/errorHandling/alreadyRequested.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/error/alreadyRequestedError.fxml"));
         Parent root = loader.load();
-
-        RequestStatusWindow controller = loader.getController();
-        controller.setManager(requestManager);
 
         Stage stage = new Stage();
         stage.setTitle("Request Status");

@@ -3,14 +3,21 @@ package com.placeOrder;
 import com.callWaiter.ManageRequestStatusClass;
 import com.common.Screen;
 import com.invMGMT.controller.InventoryManager;
+import com.mainpackage.SceneSwitching;
+import com.menu.ManageMenuClass;
 import com.menu.Menu;
 import com.menu.MenuItem;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +26,12 @@ import java.util.ResourceBundle;
 public class MenuScreenController extends Screen implements Initializable {
     @FXML ListView<Text> menuList;
     @FXML ListView<Text> orderList;
-    private int tableNumber = 1;
+    @FXML
+    public FXMLLoader loader;
+
+    public static int tableNumber = 1; // Example table number, replace with actual value
+    private final static ManageMenuClass menuManager = new ManageMenuClass(tableNumber);
+
     public void placeOrder(){
         if(orderList.getItems().size()!=0) {
             System.out.println("placeOrder");
@@ -36,26 +48,15 @@ public class MenuScreenController extends Screen implements Initializable {
     public void allergenInfo(){
         System.out.println("add allergen");
     }
-    public void callWaiter(){
-        try {
-            // Create an instance of ManageRequestStatusClass
-            ManageRequestStatusClass requestManager = new ManageRequestStatusClass(this.tableNumber);
-
-//            if (!requestManager.checkIfRequested()) {
-//                requestManager.createNewRequest();
-//                requestManager.callWaiter();
-//                showRequestStatus(requestManager);
-//            } else {
-//                showAlreadyRequestedError(requestManager);
-//            }
-
-        } catch (Exception e) {
-            System.out.println("Σφάλμα στην κλήση σερβιτόρου: " + e.getMessage());
-        }
-        System.out.println("call waiter");
+    @FXML
+    void callWaiter(ActionEvent event) throws IOException {
+        menuManager.callWaiter();
     }
-    public void redirectToMainScreen(){
-        System.out.println("back");
+
+    @FXML
+    void redirectToMainScreen(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneSwitching.switchScene(stage, "/mainUI/MainScreen.fxml");
     }
     public void addItem(){
         if(menuList.getSelectionModel().getSelectedItem()!=null){
