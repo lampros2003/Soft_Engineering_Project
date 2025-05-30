@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import com.common.DBManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +13,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -41,11 +41,9 @@ public class TableLayoutEditorController implements Initializable {
     @FXML private Label selectedTableLabel;
     @FXML private Button removeTableButton;
 
-
     private RestaurantLayout workingLayout;
     private final Map<Integer, TableBounds> tableBoundsMap = new HashMap<>();
     private TableStatus selectedTable = null;
-    private DBManager dbManager;
 
     // Colors for different table states
     private final Color OCCUPIED_COLOR = Color.web("#F39C12"); // Orange
@@ -57,6 +55,7 @@ public class TableLayoutEditorController implements Initializable {
     private static final double MIN_CANVAS_WIDTH = 800;
     private static final double MIN_CANVAS_HEIGHT = 600;
     private static final double ADDITIONAL_PADDING = 100; // Extra space beyond the last table
+    private static final double GRID_CELL_SIZE = 150.0; // Added constant
 
     // Variables for table dragging
     private TableStatus draggedTable = null;
@@ -78,9 +77,6 @@ public class TableLayoutEditorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialize database manager
-        dbManager = new DBManager();
-
         // Initialize spinners with value factories
         seatingSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 20, 4));
         widthSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(60, 200, 100, 10));
@@ -109,9 +105,7 @@ public class TableLayoutEditorController implements Initializable {
      */
     private void setupCanvasSizeListener() {
         // Listen for changes in the scroll pane's viewport size
-        editorScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> {
-            Platform.runLater(this::setupCanvas);
-        });
+        editorScrollPane.viewportBoundsProperty().addListener((obs, oldBounds, newBounds) -> Platform.runLater(this::setupCanvas));
 
         // Also add listener to scene changes to catch initial sizing
         editorScrollPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
@@ -126,36 +120,39 @@ public class TableLayoutEditorController implements Initializable {
      */
     public void setMainController(TablesScreenController controller) {
         this.mainController = controller;
-
-        // Create a deep copy of the layout to work with (in memory only, no database operations)
         this.workingLayout = controller.getRestaurantLayout().createDeepCopy();
+        Platform.runLater(this::setupCanvas); // Ensure canvas is set up after scene is available
+    }
 
-        // Set up the canvas and render the tables
-        setupCanvas();
-        renderTables();
+    /**
+     * Helper method to get the visual coordinates of a table on the canvas.
+     * It uses the table's direct position if available and valid (not 0,0),
+     * otherwise calculates based on grid indices.
+     */
+    private Point2D getTableVisualCoordinates(TableStatus table) {
+        Point2D position = table.getPosition();
+        if (position != null && (position.getX() != 0 || position.getY() != 0)) {
+            return position;
+        } else {
+            double x = table.getColumnIndex() * GRID_CELL_SIZE + CANVAS_PADDING;
+            double y = table.getRowIndex() * GRID_CELL_SIZE + CANVAS_PADDING;
+            return new Point2D(x, y);
+        }
     }
 
     /**
      * Set up the canvas with the appropriate size
      */
     private void setupCanvas() {
-        // Calculate required canvas size based on table positions
+        if (workingLayout == null) return; // Guard against null layout
+
         double maxX = CANVAS_PADDING;
         double maxY = CANVAS_PADDING;
 
         for (TableStatus table : workingLayout.getAllTables()) {
-            // Get position - either from direct X/Y or from grid position
-            double tableX;
-            double tableY;
-
-            Point2D position = table.getPosition();
-            if (position != null && (position.getX() != 0 || position.getY() != 0)) {
-                tableX = position.getX();
-                tableY = position.getY();
-            } else {
-                tableX = table.getColumnIndex() * 150 + CANVAS_PADDING;
-                tableY = table.getRowIndex() * 150 + CANVAS_PADDING;
-            }
+            Point2D visualPos = getTableVisualCoordinates(table);
+            double tableX = visualPos.getX();
+            double tableY = visualPos.getY();
 
             double tableRight = tableX + table.getWidth();
             double tableBottom = tableY + table.getHeight();
@@ -164,27 +161,20 @@ public class TableLayoutEditorController implements Initializable {
             if (tableBottom > maxY) maxY = tableBottom;
         }
 
-        // Add padding to ensure some extra space beyond the last table
         maxX += ADDITIONAL_PADDING;
         maxY += ADDITIONAL_PADDING;
 
-        // Calculate minimum size based on viewport and content
         double viewportWidth = editorScrollPane.getViewportBounds().getWidth();
         double viewportHeight = editorScrollPane.getViewportBounds().getHeight();
 
-        // The canvas should be at least as large as the viewport or the minimum size
         double canvasWidth = Math.max(Math.max(viewportWidth, MIN_CANVAS_WIDTH), maxX);
         double canvasHeight = Math.max(Math.max(viewportHeight, MIN_CANVAS_HEIGHT), maxY);
 
-        // Set the size of the canvas
         editorCanvas.setWidth(canvasWidth);
         editorCanvas.setHeight(canvasHeight);
-
-        // Also update the container's preferred size
         editorCanvasContainer.setPrefWidth(canvasWidth);
         editorCanvasContainer.setPrefHeight(canvasHeight);
 
-        // Re-render tables since canvas size changed
         renderTables();
     }
 
@@ -192,20 +182,17 @@ public class TableLayoutEditorController implements Initializable {
      * Render tables on the canvas
      */
     private void renderTables() {
-        // Clear the canvas and reset bounds map
+        if (workingLayout == null) return; // Guard against null layout
+
         GraphicsContext gc = editorCanvas.getGraphicsContext2D();
         gc.clearRect(0, 0, editorCanvas.getWidth(), editorCanvas.getHeight());
         tableBoundsMap.clear();
-
-        // Draw a grid background for easy positioning reference
         drawGridBackground(gc);
 
-        // Draw tables
         for (TableStatus table : workingLayout.getAllTables()) {
             drawTable(gc, table);
         }
 
-        // If there's a selected table, highlight it
         if (selectedTable != null) {
             highlightSelectedTable(gc);
         }
@@ -215,17 +202,12 @@ public class TableLayoutEditorController implements Initializable {
      * Draw a grid background on the canvas to help with positioning
      */
     private void drawGridBackground(GraphicsContext gc) {
-        // Set grid line properties
         gc.setStroke(Color.web("#EEEEEE"));
         gc.setLineWidth(0.5);
-
-        // Draw vertical grid lines
-        for (int x = 0; x <= editorCanvas.getWidth(); x += 50) {
+        for (double x = 0; x <= editorCanvas.getWidth(); x += 50) { // Grid lines every 50px
             gc.strokeLine(x, 0, x, editorCanvas.getHeight());
         }
-
-        // Draw horizontal grid lines
-        for (int y = 0; y <= editorCanvas.getHeight(); y += 50) {
+        for (double y = 0; y <= editorCanvas.getHeight(); y += 50) {
             gc.strokeLine(0, y, editorCanvas.getWidth(), y);
         }
     }
@@ -234,50 +216,31 @@ public class TableLayoutEditorController implements Initializable {
      * Draw a table on the canvas
      */
     private void drawTable(GraphicsContext gc, TableStatus table) {
-        // Get table position and dimensions
-        double tableX;
-        double tableY;
-
-        // If the table has a position, use it, otherwise use grid coordinates
-        Point2D position = table.getPosition();
-        if (position != null && (position.getX() != 0 || position.getY() != 0)) {
-            tableX = position.getX();
-            tableY = position.getY();
-        } else {
-            tableX = table.getColumnIndex() * 150 + CANVAS_PADDING;
-            tableY = table.getRowIndex() * 150 + CANVAS_PADDING;
-        }
-
+        Point2D visualPos = getTableVisualCoordinates(table);
+        double tableX = visualPos.getX();
+        double tableY = visualPos.getY();
         double tableWidth = table.getWidth();
         double tableHeight = table.getHeight();
 
-        // Set color based on table state
         Color tableColor = switch (table.getState()) {
             case AVAILABLE -> AVAILABLE_COLOR;
             case OCCUPIED -> OCCUPIED_COLOR;
             default -> UNAVAILABLE_COLOR;
         };
 
-        // Draw table rectangle with rounded corners
         gc.setFill(tableColor);
         gc.fillRoundRect(tableX, tableY, tableWidth, tableHeight, 10, 10);
-
-        // Draw table border
         gc.setStroke(Color.WHITE);
         gc.setLineWidth(2);
         gc.strokeRoundRect(tableX, tableY, tableWidth, tableHeight, 10, 10);
 
-        // Add table ID
         gc.setFill(Color.WHITE);
         gc.setFont(new Font("Arial", 16));
         gc.setTextAlign(TextAlignment.CENTER);
-        gc.fillText(String.valueOf(table.getId()), tableX + tableWidth/2, tableY + tableHeight/2 + 5);
-
-        // Add seating capacity
+        gc.fillText(String.valueOf(table.getId()), tableX + tableWidth / 2, tableY + tableHeight / 2 + 5);
         gc.setFont(new Font("Arial", 12));
-        gc.fillText("Seats: " + table.getSeatingCapacity(), tableX + tableWidth/2, tableY + tableHeight/2 + 25);
+        gc.fillText("Seats: " + table.getSeatingCapacity(), tableX + tableWidth / 2, tableY + tableHeight / 2 + 25);
 
-        // Store table bounds for interaction
         tableBoundsMap.put(table.getId(), new TableBounds(table.getId(), tableX, tableY, tableWidth, tableHeight));
     }
 
@@ -285,6 +248,7 @@ public class TableLayoutEditorController implements Initializable {
      * Highlight the currently selected table
      */
     private void highlightSelectedTable(GraphicsContext gc) {
+        if (selectedTable == null) return;
         TableBounds bounds = tableBoundsMap.get(selectedTable.getId());
         if (bounds != null) {
             gc.setStroke(Color.YELLOW);
@@ -299,27 +263,17 @@ public class TableLayoutEditorController implements Initializable {
     private void onCanvasMousePressed(MouseEvent event) {
         double mouseX = event.getX();
         double mouseY = event.getY();
-
-        // Find if a table was clicked
         draggedTable = null;
         for (TableBounds bounds : tableBoundsMap.values()) {
             if (bounds.contains(mouseX, mouseY)) {
-                // Get the table and prepare for dragging
                 TableStatus table = getTableById(bounds.tableId());
                 if (table != null) {
                     draggedTable = table;
                     dragStartX = mouseX;
                     dragStartY = mouseY;
-
-                    // Get the initial table position
-                    Point2D position = table.getPosition();
-                    if (position != null && (position.getX() != 0 || position.getY() != 0)) {
-                        tableStartX = position.getX();
-                        tableStartY = position.getY();
-                    } else {
-                        tableStartX = table.getColumnIndex() * 150 + CANVAS_PADDING;
-                        tableStartY = table.getRowIndex() * 150 + CANVAS_PADDING;
-                    }
+                    Point2D initialVisualPos = getTableVisualCoordinates(table);
+                    tableStartX = initialVisualPos.getX();
+                    tableStartY = initialVisualPos.getY();
                     break;
                 }
             }
@@ -333,42 +287,38 @@ public class TableLayoutEditorController implements Initializable {
         if (draggedTable != null) {
             double mouseX = event.getX();
             double mouseY = event.getY();
-
-            // Calculate the new table position
             double deltaX = mouseX - dragStartX;
             double deltaY = mouseY - dragStartY;
-
             double newX = tableStartX + deltaX;
             double newY = tableStartY + deltaY;
 
-            // Ensure the table stays within the canvas bounds
-            newX = Math.max(0, Math.min(newX, editorCanvas.getWidth() - draggedTable.getWidth()));
-            newY = Math.max(0, Math.min(newY, editorCanvas.getHeight() - draggedTable.getHeight()));
+            // Ensure the table stays within the canvas bounds (0,0 to canvas.width/height - table.width/height)
+            newX = Math.max(CANVAS_PADDING, Math.min(newX, editorCanvas.getWidth() - draggedTable.getWidth() - CANVAS_PADDING));
+            newY = Math.max(CANVAS_PADDING, Math.min(newY, editorCanvas.getHeight() - draggedTable.getHeight() - CANVAS_PADDING));
 
-            // Create a new version of the table with updated position
+            // Check for overlaps before moving
+            if (!isPositionFree(newX, newY, draggedTable.getWidth(), draggedTable.getHeight(), draggedTable)) {
+                return; // Don't move if it overlaps
+            }
+
             TableStatus updatedTable = new TableStatus(
-                draggedTable.getId(),
-                new Point2D(newX, newY),
-                draggedTable.getWidth(),
-                draggedTable.getHeight(),
-                draggedTable.getSeatingCapacity(),
-                draggedTable.getState(),
-                draggedTable.getGuestsCount(),
-                draggedTable.getOccupiedTime(),
-                draggedTable.getServerName(),
-                0, // Column index not used with direct positioning
-                0  // Row index is not used with direct positioning
+                draggedTable.getId(), new Point2D(newX, newY), draggedTable.getWidth(), draggedTable.getHeight(),
+                draggedTable.getSeatingCapacity(), draggedTable.getState(), draggedTable.getGuestsCount(),
+                draggedTable.getOccupiedTime(), draggedTable.getServerName(),
+                0, 0 // Grid indices are not primary for direct positioning
             );
-
-            // Replace the table in the working layout without saving to database
             workingLayout.replaceTableInMemory(updatedTable);
-
-            // Update the dragged table reference
-            draggedTable = updatedTable;
-
-            // Re-render the tables
+            draggedTable = updatedTable; // Update reference to the dragged table
             renderTables();
         }
+    }
+
+    private void showErrorAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     /**
@@ -376,14 +326,22 @@ public class TableLayoutEditorController implements Initializable {
      */
     private void onCanvasMouseReleased(MouseEvent event) {
         if (draggedTable != null) {
-            // Set the selected table to the one that was just dragged
-            selectedTable = draggedTable;
-            selectedTableLabel.setText("Table " + selectedTable.getId() + " - Seats: " +
-                                      selectedTable.getSeatingCapacity() + " - " + selectedTable.getState());
-            removeTableButton.setDisable(false);
+            // Check for overlaps one last time before finalizing
+            if (!isPositionFree(draggedTable.getPosition().getX(), draggedTable.getPosition().getY(), draggedTable.getWidth(), draggedTable.getHeight(), draggedTable)) {
+                showErrorAlert("Placement Conflict", "The table cannot be placed here as it overlaps with another table. Please try a different location.");
+                TableStatus revertedTable = new TableStatus(
+                    draggedTable.getId(), new Point2D(tableStartX, tableStartY), draggedTable.getWidth(), draggedTable.getHeight(),
+                    draggedTable.getSeatingCapacity(), draggedTable.getState(), draggedTable.getGuestsCount(),
+                    draggedTable.getOccupiedTime(), draggedTable.getServerName(),
+                    0, 0
+                );
+                workingLayout.replaceTableInMemory(revertedTable);
+                draggedTable = revertedTable; // update draggedTable to the reverted one
+            }
 
+            TableStatus tableToSelect = draggedTable;
             draggedTable = null;
-            renderTables();
+            selectTable(tableToSelect); // This will call renderTables
         }
     }
 
@@ -391,17 +349,16 @@ public class TableLayoutEditorController implements Initializable {
      * Handle mouse clicks for selecting tables or placing new tables
      */
     private void onCanvasMouseClicked(MouseEvent event) {
+        if (draggedTable != null) return; // Don't process click if a drag was just completed
+
         double mouseX = event.getX();
         double mouseY = event.getY();
 
-        // Check if this is a double click for placing a new table
         if (event.getClickCount() == 2) {
-            // Place a new table at the clicked position
             addTableAt(mouseX, mouseY);
             return;
         }
 
-        // Find if a table was clicked
         boolean tableClicked = false;
         for (TableBounds bounds : tableBoundsMap.values()) {
             if (bounds.contains(mouseX, mouseY)) {
@@ -413,40 +370,37 @@ public class TableLayoutEditorController implements Initializable {
                 }
             }
         }
-
-        // If no table was clicked, clear the selection
         if (!tableClicked) {
-            selectedTable = null;
-            selectedTableLabel.setText("No table selected");
-            removeTableButton.setDisable(true);
-            renderTables();
+            clearTableSelection();
         }
     }
 
     /**
-     * Create a new table at the specified position
+     * Create a new table at the specified position (on double-click)
      */
     private void addTableAt(double x, double y) {
-        // Create a new table at the specified position (in memory only)
-        System.out.println("Adding new table at position (" + x + ", " + y + ")");
-        
+        double newTableWidth = widthSpinner.getValue();
+        double newTableHeight = heightSpinner.getValue();
+
+        // Adjust x, y to be the top-left corner for the new table, centered on the click
+        double adjustedX = x - newTableWidth / 2;
+        double adjustedY = y - newTableHeight / 2;
+
+        // Ensure it's within canvas padding
+        adjustedX = Math.max(CANVAS_PADDING, Math.min(adjustedX, editorCanvas.getWidth() - newTableWidth - CANVAS_PADDING));
+        adjustedY = Math.max(CANVAS_PADDING, Math.min(adjustedY, editorCanvas.getHeight() - newTableHeight - CANVAS_PADDING));
+
+        if (!isPositionFree(adjustedX, adjustedY, newTableWidth, newTableHeight, null)) {
+            showErrorAlert("Cannot Add Table", "The selected position overlaps with an existing table.");
+            return;
+        }
+
         TableStatus newTable = workingLayout.addTableInMemory(
-            new Point2D(x, y),
-            widthSpinner.getValue(),
-            heightSpinner.getValue(),
-            seatingSpinner.getValue(),
-            tableStateComboBox.getValue(),
-            0, // Column index not used with direct positioning
-            0  // Row index is not used with direct positioning
+            new Point2D(adjustedX, adjustedY), newTableWidth, newTableHeight,
+            seatingSpinner.getValue(), tableStateComboBox.getValue(),
+            0, 0 // Grid indices not primary
         );
-        
-        System.out.println("Created new table with ID: " + newTable.getId());
-
-        // Select the new table
-        selectTable(newTable);
-
-        // Re-render the tables
-        renderTables();
+        selectTable(newTable); // This calls renderTables
     }
 
     /**
@@ -454,16 +408,27 @@ public class TableLayoutEditorController implements Initializable {
      */
     private void selectTable(TableStatus table) {
         this.selectedTable = table;
-        selectedTableLabel.setText("Table " + table.getId() + " - Seats: " +
-                                  table.getSeatingCapacity() + " - " + table.getState());
-        removeTableButton.setDisable(false);
+        if (table != null) {
+            selectedTableLabel.setText("Table " + table.getId() + " - Seats: " +
+                                      table.getSeatingCapacity() + " - " + table.getState());
+            removeTableButton.setDisable(false);
+            seatingSpinner.getValueFactory().setValue(table.getSeatingCapacity());
+            widthSpinner.getValueFactory().setValue((int) Math.round(table.getWidth()));
+            heightSpinner.getValueFactory().setValue((int) Math.round(table.getHeight()));
+            tableStateComboBox.setValue(table.getState());
+        } else {
+            clearTableSelection(); // Handles UI update for no selection
+        }
+        renderTables();
+    }
 
-        // Update the spinner and combobox values to match the selected table
-        seatingSpinner.getValueFactory().setValue(table.getSeatingCapacity());
-        widthSpinner.getValueFactory().setValue((int) table.getWidth());
-        heightSpinner.getValueFactory().setValue((int) table.getHeight());
-        tableStateComboBox.setValue(table.getState());
-
+    /**
+     * Clears the current table selection and updates the UI accordingly.
+     */
+    private void clearTableSelection() {
+        selectedTable = null;
+        selectedTableLabel.setText("No table selected");
+        removeTableButton.setDisable(true);
         renderTables();
     }
 
@@ -471,25 +436,27 @@ public class TableLayoutEditorController implements Initializable {
      * Get a table by its ID
      */
     private TableStatus getTableById(int id) {
+        if (workingLayout == null) return null;
         return workingLayout.getTable(id);
     }
 
     /**
-     * Add a new table to the layout
+     * Add a new table to the layout (via button)
      */
     @FXML
     void onAddTableClicked(ActionEvent event) {
-        // Find a suitable location for the new table
+        double newTableWidth = widthSpinner.getValue();
+        double newTableHeight = heightSpinner.getValue();
         double newX = CANVAS_PADDING;
         double newY = CANVAS_PADDING;
-
-        // Try to avoid overlap with existing tables
         boolean foundPosition = false;
-        for (int y = 0; y < 800; y += 150) {
-            for (int x = 0; x < 800; x += 150) {
-                if (isPositionFree(x, y, widthSpinner.getValue(), heightSpinner.getValue())) {
-                    newX = x;
-                    newY = y;
+
+        // Try to find a free grid spot
+        for (double ySearch = CANVAS_PADDING; ySearch < editorCanvas.getHeight() - newTableHeight; ySearch += GRID_CELL_SIZE / 2) {
+            for (double xSearch = CANVAS_PADDING; xSearch < editorCanvas.getWidth() - newTableWidth; xSearch += GRID_CELL_SIZE / 2) {
+                if (isPositionFree(xSearch, ySearch, newTableWidth, newTableHeight, null)) {
+                    newX = xSearch;
+                    newY = ySearch;
                     foundPosition = true;
                     break;
                 }
@@ -497,34 +464,42 @@ public class TableLayoutEditorController implements Initializable {
             if (foundPosition) break;
         }
 
-        // Add a new table with the specified properties (in memory only)
+        if (!foundPosition) {
+            showErrorAlert("Cannot Add Table", "No free space found to add a new table automatically. Try double-clicking on a free spot.");
+            return;
+        }
+
         TableStatus newTable = workingLayout.addTableInMemory(
-            new Point2D(newX, newY),
-            widthSpinner.getValue(),
-            heightSpinner.getValue(),
-            seatingSpinner.getValue(),
-            tableStateComboBox.getValue(),
-            0, // Column index not used with direct positioning
-            0  // Row index is not used with direct positioning
+            new Point2D(newX, newY), newTableWidth, newTableHeight,
+            seatingSpinner.getValue(), tableStateComboBox.getValue(),
+            0, 0 // Grid indices not primary
         );
-
-        // Select the new table
         selectTable(newTable);
-
-        // Render the updated tables
-        renderTables();
     }
 
     /**
-     * Check if a position is free of existing tables
+     * Check if a position is free of existing tables, optionally ignoring one table.
+     * @param tableToIgnore The table to ignore during checks (e.g., the one being dragged). Can be null.
      */
-    private boolean isPositionFree(double x, double y, int width, int height) {
-        for (TableBounds bounds : tableBoundsMap.values()) {
-            // Check if the new table would overlap with an existing table
-            if (x < bounds.x + bounds.width &&
-                x + width > bounds.x &&
-                y < bounds.y + bounds.height &&
-                y + height > bounds.y) {
+    private boolean isPositionFree(double x, double y, double width, double height, TableStatus tableToIgnore) {
+        if (workingLayout == null) return true; // If no layout, position is free
+
+        for (TableStatus existingTable : workingLayout.getAllTables()) {
+            if (tableToIgnore != null && existingTable.getId() == tableToIgnore.getId()) {
+                continue; // Skip checking against the table itself
+            }
+
+            Point2D existingPos = getTableVisualCoordinates(existingTable);
+            double existingX = existingPos.getX();
+            double existingY = existingPos.getY();
+            double existingWidth = existingTable.getWidth();
+            double existingHeight = existingTable.getHeight();
+
+            // Standard Axis-Aligned Bounding Box (AABB) collision detection
+            if (x < existingX + existingWidth &&
+                x + width > existingX &&
+                y < existingY + existingHeight &&
+                y + height > existingY) {
                 return false; // Overlap detected
             }
         }
@@ -536,16 +511,9 @@ public class TableLayoutEditorController implements Initializable {
      */
     @FXML
     void onRemoveTableClicked(ActionEvent event) {
-        if (selectedTable != null) {
+        if (selectedTable != null && workingLayout != null) {
             workingLayout.removeTableInMemory(selectedTable.getId());
-
-            // Clear selection
-            selectedTable = null;
-            selectedTableLabel.setText("No table selected");
-            removeTableButton.setDisable(true);
-
-            // Re-render tables
-            renderTables();
+            clearTableSelection(); // This calls renderTables
         }
     }
 
@@ -554,7 +522,6 @@ public class TableLayoutEditorController implements Initializable {
      */
     @FXML
     void onCancelClicked(ActionEvent event) {
-        // Close the window without saving changes
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -564,15 +531,9 @@ public class TableLayoutEditorController implements Initializable {
      */
     @FXML
     void onSaveClicked(ActionEvent event) {
-        if (mainController != null) {
-            System.out.println("Saving layout with " + workingLayout.getTableCount() + " tables");
-            
-            // Update the layout in the main controller
-            // This will trigger saving to the database
+        if (mainController != null && workingLayout != null) {
             mainController.updateLayout(workingLayout);
         }
-
-        // Close the window
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

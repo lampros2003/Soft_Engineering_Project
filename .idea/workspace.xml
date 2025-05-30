@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="add callWaiter feature">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3409c921-2af5-464f-adad-d837eaef7cab.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/AnalyticsDBManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/AnalyticsData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/analytics/AnalyticsData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/analytics/GeneralDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/analytics/GeneralDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/common/DBManager.java" afterDir="false" />
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="Refactor db. Finalise analytics acces to db">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +372,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748629753361</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactor db. Finalise analytics acces to db">
+      <option name="closed" value="true" />
+      <created>1748635246715</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748635246715</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Refactor db. Finalise analytics acces to db">
+      <option name="closed" value="true" />
+      <created>1748636247627</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748636247627</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,7 +422,8 @@
     <MESSAGE value="comment code with errors" />
     <MESSAGE value="updates" />
     <MESSAGE value="add callWaiter feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="add callWaiter feature" />
+    <MESSAGE value="Refactor db. Finalise analytics acces to db" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor db. Finalise analytics acces to db" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
