@@ -120,7 +120,6 @@ public class DBManager {
         System.out.println(oldName);
         return getSpecificIngredient(name).getName()==null || (oldName!=null && oldName.toUpperCase().equals(name.toUpperCase()));
     }
-
     public void updateOrderStatus(Order order){//DO NOT USE YET
         try (Connection conn = connect();
              PreparedStatement stmt = conn.prepareStatement("UPDATE ORDER SET state=? WHERE id=?");
@@ -133,7 +132,6 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-
     public List<MenuItem> loadMenuData() {
         List<MenuItem> items = new ArrayList<>();
         String sql = """
