@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationDateController {
@@ -20,7 +21,9 @@ public class ReservationDateController {
     public void initialize() {
         try {
             YearMonth currentMonth = YearMonth.now();
-            List<LocalDate> availableDates = dateService.getAvailableDates(currentMonth);
+            List<LocalDate> availableDates = new ArrayList<LocalDate>();
+
+            /*dateService.getAvailableDates(currentMonth);*/
 
             datePicker.setDayCellFactory(picker -> new DateCell() {
                 @Override

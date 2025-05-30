@@ -6,6 +6,7 @@ module com.mainpackage {
     requires javafx.media;
     requires javafx.swing;
     requires java.logging;
+    requires java.sql;
 
     // Analytics UI package
     opens com.analytics to javafx.fxml;

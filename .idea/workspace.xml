@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="add callWaiter feature">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_19_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_19_____Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_26_____Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_25_5_2025_12_26_____Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/ReservationDateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reservation/TableSelectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reservation/TableSelectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748629753361</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactor db. Finalise analytics acces to db">
+      <option name="closed" value="true" />
+      <created>1748635246715</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748635246715</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -406,7 +419,8 @@
     <MESSAGE value="comment code with errors" />
     <MESSAGE value="updates" />
     <MESSAGE value="add callWaiter feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="add callWaiter feature" />
+    <MESSAGE value="Refactor db. Finalise analytics acces to db" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor db. Finalise analytics acces to db" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>

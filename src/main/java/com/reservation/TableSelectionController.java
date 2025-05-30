@@ -53,7 +53,7 @@ public class TableSelectionController {
             ErrorPage.display("Please select a table first.");
             return;
         }
-        ReservationDateService.setReservationTableId(chosen.getId());
+        //ReservationDateService.setReservationTableId(chosen.getId());
         Navigation.goTo("reservation_details.fxml",
                 (Stage) tableListView.getScene().getWindow());
     }
