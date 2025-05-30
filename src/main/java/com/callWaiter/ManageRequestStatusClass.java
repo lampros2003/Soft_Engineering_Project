@@ -1,6 +1,10 @@
 package com.callWaiter;
 
+import com.mainpackage.SceneSwitching;
 import com.waiter.ManageWaiterScreenClass;
+import javafx.scene.Node;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,13 +14,12 @@ public class ManageRequestStatusClass {
     private final ManageWaiterScreenClass waiterManager;
     private final int tableNumber;
 
-    // Constructor με tableNumber (ΑΠΑΡΑΙΤΗΤΟ)
     public ManageRequestStatusClass(int tableNumber) {
         this.tableNumber = tableNumber;
         this.waiterManager = new ManageWaiterScreenClass();
     }
 
-    // Δημιουργεί νέο αίτημα και το προσθέτει στη static λίστα
+    // Creates new request status for the table
     public void initializeStatus() {
         RequestStatus newStatus = new RequestStatus();
         newStatus.setTableNumber(tableNumber);
@@ -25,13 +28,13 @@ public class ManageRequestStatusClass {
         requests.add(newStatus);
     }
 
-    // Ελέγχει αν υπάρχει ήδη ενεργό αίτημα για αυτό το τραπέζι
+    // Checks if there is an active request for the specific table
     public boolean checkIfRequested() {
         return requests.stream()
                 .anyMatch(r -> r.getTableNumber() == this.tableNumber && r.isActive());
     }
 
-    // Βρίσκει το αίτημα του συγκεκριμένου τραπεζιού
+    // Gets the current request status for the specific table
     private RequestStatus getCurrentRequest() {
         return requests.stream()
                 .filter(r -> r.getTableNumber() == this.tableNumber)
@@ -39,19 +42,19 @@ public class ManageRequestStatusClass {
                 .orElse(null);
     }
 
-    // Καλεί σερβιτόρο: Αν δεν υπάρχει ενεργό αίτημα, δημιουργεί και ειδοποιεί
+    // Calls the waiter for the specific table
     public void callWaiter() {
         if (checkIfRequested()) {
-            System.out.println("Request already active for table " + tableNumber);
-            return; // Εδώ μπορείς να εμφανίσεις Alert στο UI
+            System.out.println("Request active for table " + tableNumber);
+            return;
         }
 
         initializeStatus();
-        waiterManager.notifyAllWaiters();
+//        waiterManager.notifyAllWaiters();
         System.out.println("Waiter called for table " + tableNumber);
     }
 
-    // Ακύρωση αιτήματος
+    // Cancels the current request for the specific table
     public void cancelRequest() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -60,7 +63,7 @@ public class ManageRequestStatusClass {
         }
     }
 
-    // Αποδοχή από σερβιτόρο
+    // Accepts the request by the waiter
     public void waiterAccepted() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -68,7 +71,7 @@ public class ManageRequestStatusClass {
         }
     }
 
-    // Ο σερβιτόρος έφτασε
+    // Marks the request as arrived by the waiter
     public void waiterArrived() {
         RequestStatus status = getCurrentRequest();
         if (status != null) {
@@ -77,13 +80,13 @@ public class ManageRequestStatusClass {
         }
     }
 
-    // Αν δεν ήρθε ποτέ, ξαναειδοποιεί όλους τους σερβιτόρους
+    // Re-notifies the waiters if the request is still active
     public void reNotify() {
         RequestStatus status = getCurrentRequest();
         if (status != null && "Accepted".equals(status.getStatus())) {
             status.setStatus("Pending");
             status.setActive(true);
-            waiterManager.notifyAllWaiters();
+//            waiterManager.notifyAllWaiters();
         }
     }
 }

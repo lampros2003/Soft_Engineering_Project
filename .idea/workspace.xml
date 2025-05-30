@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="update call waiter feature - fixed classes and methods from previous time">
+    <list default="true" id="ca4b2886-3c2a-4c59-b2e3-99e50bd86b8d" name="Changes" comment="comment code with errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/callWaiter/ManageRequestStatusClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/ManageRequestStatusClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/callWaiter/RequestStatusWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mainpackage/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/menu/ManageMenuClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/ManageWaiterScreenClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/ManageWaiterScreenClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/waiter/waiter_app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/waiter/waiter_app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/error/alreadyRequestedError.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/waiter/TABLES_PAGE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/waiter/TABLES_PAGE.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="recover_dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,7 +66,6 @@
     "Application.HelloApplication.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.schedule_use_case.executor": "Run",
-    "Application.waiter_app.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -146,12 +153,20 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.waiter_app" />
-        <item itemvalue="Application.schedule_use_case" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.schedule_use_case" />
+        <item itemvalue="Application.waiter_app" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -326,23 +341,7 @@
       <option name="project" value="LOCAL" />
       <updated>1748168476961</updated>
     </task>
-    <task id="LOCAL-00018" summary="updates">
-      <option name="closed" value="true" />
-      <created>1748366189279</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1748366189279</updated>
-    </task>
-    <task id="LOCAL-00019" summary="update call waiter feature - fixed classes and methods from previous time">
-      <option name="closed" value="true" />
-      <created>1748557566349</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1748557566349</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +364,7 @@
     <MESSAGE value="Change login and menu screens to the proper direcotries" />
     <MESSAGE value="added login buttons and added respective actions in LoginController" />
     <MESSAGE value="added waiterViewController" />
+    <MESSAGE value="updates" />
     <MESSAGE value="Updates - added new classes and rename some old classes" />
     <MESSAGE value="Use Case 8 - Call Waiter update" />
     <MESSAGE value="update methods and classes" />
@@ -374,12 +374,6 @@
     <MESSAGE value="fix method name" />
     <MESSAGE value="fix class and method names" />
     <MESSAGE value="comment code with errors" />
-    <MESSAGE value="updates" />
-    <MESSAGE value="update call waiter feature - fixed classes and methods from previous time" />
-    <option name="LAST_COMMIT_MESSAGE" value="update call waiter feature - fixed classes and methods from previous time" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="comment code with errors" />
   </component>
 </project>

@@ -13,6 +13,10 @@ public class RequestStatus {
         this.active = active;
     }
 
+    public void showRequestStatus() {
+        System.out.println("Table: " + tableNumber + ", Status: " + status + ", Active: " + active);
+    }
+
     public int getTableNumber() {
         return tableNumber;
     }
